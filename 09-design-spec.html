@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Design spec</title>
+<style>@font-face{font-family:"Archivo";src:url("../assets/fonts/archivo-variable.woff2") format("woff2");font-weight:100 900;font-stretch:62% 125%;font-style:normal;font-display:swap}</style>
+</head>
+<body>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+
+<div style="width: 880px; min-height: 1500px; box-sizing: border-box; background: #FAFAF7; color: #111; font-family: 'Archivo', system-ui, sans-serif; padding: 48px; display: flex; flex-direction: column; gap: 40px">
+
+  <section style="display: flex; flex-direction: column; gap: 14px">
+    <h2 style="margin: 0; font-size: 40px; line-height: 0.9; font-weight: 800; font-stretch: 62%">Colour</h2>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px">
+      <div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 80px; background: #111111; border: 2px solid #111; border-radius: 12px"></div><span style="font-size: 14px; font-weight: 700">Ink #111111</span><span style="font-size: 13px; color: #4A4A46">Text, lines, buttons</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 80px; background: #FAFAF7; border: 2px solid #111; border-radius: 12px"></div><span style="font-size: 14px; font-weight: 700">Paper #FAFAF7</span><span style="font-size: 13px; color: #4A4A46">Page background</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 80px; background: #FFFFFF; border: 2px solid #111; border-radius: 12px"></div><span style="font-size: 14px; font-weight: 700">White #FFFFFF</span><span style="font-size: 13px; color: #4A4A46">Cards</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 80px; background: #4A4A46; border: 2px solid #111; border-radius: 12px"></div><span style="font-size: 14px; font-weight: 700">Grey #4A4A46</span><span style="font-size: 13px; color: #4A4A46">Small labels only</span></div>
+    </div>
+    <p style="margin: 0; font-size: 15px; line-height: 1.5">No accent colour. Photos bring the colour.</p>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 14px">
+    <h2 style="margin: 0; font-size: 40px; line-height: 0.9; font-weight: 800; font-stretch: 62%">Type: Archivo</h2>
+    <div style="display: grid; grid-template-columns: 200px minmax(0, 1fr); row-gap: 16px; column-gap: 24px; align-items: baseline">
+      <span style="font-size: 13px; color: #4A4A46">Headline · 58 · 800 · width 62%</span><span style="font-size: 58px; line-height: 0.88; font-weight: 800; font-stretch: 62%">Looking for his next role</span>
+      <span style="font-size: 13px; color: #4A4A46">Pop-up title · 72 · 800 · 62%</span><span style="font-size: 72px; line-height: 0.86; font-weight: 800; font-stretch: 62%">Festival trophies</span>
+      <span style="font-size: 13px; color: #4A4A46">Section · 56 · 800 · 62%</span><span style="font-size: 56px; line-height: 0.9; font-weight: 800; font-stretch: 62%">Selected projects</span>
+      <span style="font-size: 13px; color: #4A4A46">Card title, pull quote · 40 · 800 · 62%</span><span style="font-size: 40px; line-height: 0.92; font-weight: 800; font-stretch: 62%">Construction site communication app</span>
+      <span style="font-size: 13px; color: #4A4A46">Sub-heading · 28 · 800 · 62%</span><span style="font-size: 28px; font-weight: 800; font-stretch: 62%">What I did</span>
+      <span style="font-size: 13px; color: #4A4A46">Roles · 19 · 700 · 85%</span><span style="font-size: 19px; font-weight: 700; font-stretch: 85%">Learning and programme design</span>
+      <span style="font-size: 13px; color: #4A4A46">Lead · 17 to 21 · 500</span><span style="font-size: 20px; line-height: 1.35; font-weight: 500">I build learning experiences and collaboration tools.</span>
+      <span style="font-size: 13px; color: #4A4A46">Body · 17 · 400 · line 1.55</span><span style="font-size: 17px; line-height: 1.55">Workers used it to get ignored problems fixed, like language barriers and missing drinking water.</span>
+      <span style="font-size: 13px; color: #4A4A46">Buttons, links · 15 to 17 · 600 to 700</span><span style="font-size: 16px; font-weight: 700">Know someone hiring? Here's how to help.</span>
+      <span style="font-size: 13px; color: #4A4A46">Labels · 13 · 600</span><span style="font-size: 13px; font-weight: 600">Designing compelling experiences</span>
+      <span style="font-size: 13px; color: #4A4A46">Fine print · 11 to 12.5 · 500 · 85%</span><span style="font-size: 12.5px; font-weight: 500; font-stretch: 85%">Sheffield Doc/Fest, UK's leading documentary film festival</span>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 14px">
+    <h2 style="margin: 0; font-size: 40px; line-height: 0.9; font-weight: 800; font-stretch: 62%">Shapes and spacing</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center">
+      <span style="min-height: 52px; padding: 0 24px; display: flex; align-items: center; background: #111; color: #FAFAF7; border-radius: 26px; font-weight: 700; font-size: 17px">Email me</span>
+      <span style="min-height: 52px; padding: 0 24px; display: flex; align-items: center; border: 2px solid #111; border-radius: 26px; font-weight: 700; font-size: 17px; box-sizing: border-box">View my CV</span>
+      <span style="min-height: 44px; padding: 0 16px; display: flex; align-items: center; gap: 8px; background: #111; color: #FAFAF7; border-radius: 22px; font-weight: 600; font-size: 15px"><svg width="15" height="15" viewBox="0 0 100 100" aria-hidden="true"><polygon points="77.7,5.3 56.8,24.2 51.3,0 42.9,23 24.6,1.8 30.2,29.3 4,19.9 22.6,40.7 0,46.4 21.6,55 0.2,73.2 27.9,67.5 18.3,93.9 39.3,75.2 44.7,100 53.1,76.2 71.5,97.5 65.8,69.9 92.1,79.3 73.4,58.4 100,53 74.4,44.4 95.9,26 68.3,31.8" fill="#FAFAF7"/></svg>Active filter</span>
+      <span style="width: 120px; height: 80px; border: 2px solid #111; border-radius: 20px; background: #FFF; display: flex; align-items: center; justify-content: center; font-size: 12px">Card, radius 20</span>
+      <span style="width: 60px; height: 60px; border: 2px solid #111; border-radius: 10px; background: #FFF; display: flex; align-items: center; justify-content: center; font-size: 11px">Thumb 10</span>
+      <img src="../assets/svg/rule-wavy.svg" alt="" aria-hidden="true" style="width: 160px; height: 10px">
+    </div>
+    <p style="margin: 0; font-size: 15px; line-height: 1.6">Lines are always 2px ink, straight or wavy. Buttons are pills, at least 44px tall. Spacing steps: 4, 8, 14, 18, 22, 28, 40. Phone gutter 20px. Card padding 18px. Sticky top bar 48px.</p>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 14px">
+    <h2 style="margin: 0; font-size: 40px; line-height: 0.9; font-weight: 800; font-stretch: 62%">Image style</h2>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px">
+      <figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="position: relative; height: 120px; border: 2px solid #111; border-radius: 16px; overflow: hidden"><img src="../assets/images/euston-presenting.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1)"><div style="position: absolute; inset: 0; background: rgba(250,250,247,0.45); border-left: 2px solid #111; transform: translateX(50%)"><img src="../assets/svg/cover-straight.svg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></div></div><figcaption style="font-size: 13px">Straight · communication tools</figcaption></figure>
+      <figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="position: relative; height: 120px; border: 2px solid #111; border-radius: 16px; overflow: hidden"><img src="../assets/images/render.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1)"><div style="position: absolute; inset: 0; background: rgba(250,250,247,0.45); border-left: 2px solid #111; transform: translateX(50%)"><img src="../assets/svg/cover-wavy.svg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></div></div><figcaption style="font-size: 13px">Wavy · helping people learn</figcaption></figure>
+      <figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="position: relative; height: 120px; border: 2px solid #111; border-radius: 16px; overflow: hidden"><img src="../assets/images/winners-2017.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1)"><div style="position: absolute; inset: 0; background: rgba(250,250,247,0.45); border-left: 2px solid #111; transform: translateX(50%)"><img src="../assets/svg/cover-contour.svg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></div></div><figcaption style="font-size: 13px">Contours · experiences</figcaption></figure>
+      <figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><img src="../assets/images/portrait-shed.jpg" alt="" style="width: 100%; height: 120px; object-fit: cover; object-position: 50% 28%; border: 2px solid #111; border-radius: 16px; box-sizing: border-box; display: block"><figcaption style="font-size: 13px">Portrait · no cover</figcaption></figure>
+    </div>
+    <p style="margin: 0; font-size: 15px; line-height: 1.6">Photos run full colour inside a 2px ink frame with rounded corners. Project photos start grey under a hand-drawn cover (ink lines over a 45% paper wash). The cover slides off in step with the scroll and the photo turns to colour. Reduced motion: no covers. Graphics use the same ink, paper, lines and type, never a new colour.</p>
+  </section>
+</div>
+
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":880,"height":1500}}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

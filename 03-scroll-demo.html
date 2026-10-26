@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scroll demo: covers move as you scroll</title>
+<style>@font-face{font-family:"Archivo";src:url("../assets/fonts/archivo-variable.woff2") format("woff2");font-weight:100 900;font-stretch:62% 125%;font-style:normal;font-display:swap}</style>
+</head>
+<body>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#111}a:hover{color:#000}
+button{font:inherit;cursor:pointer}
+</style>
+
+<div onScroll="{{onScroll}}" style="position: relative; width: 390px; height: 844px; overflow-y: auto; box-sizing: border-box; background: #FAFAF7; color: #111111; font-family: 'Archivo', system-ui, sans-serif">
+  <div style="padding: 40px 20px 420px; display: flex; flex-direction: column; gap: 22px">
+    <h2 style="margin: 0; font-size: 56px; line-height: 0.9; font-weight: 800; font-stretch: 62%">Selected projects</h2>
+    <p style="margin: 0; font-size: 16px; line-height: 1.5">Here are 6 projects that best demonstrate my skills and have helped people learn, communicate and do their best work.</p>
+    <div style="height: 280px"></div>
+
+    <article style="border: 2px solid #111; border-radius: 20px; overflow: hidden; background: #FFFFFF">
+      <div ref="{{setR1}}" style="position: relative; height: 220px; overflow: hidden; border-bottom: 2px solid #111">
+        <img src="../assets/images/euston-presenting.jpg" alt="Harrison presenting to a crowd of construction workers in orange hi-vis at a Skanska site" style="{{c1.img}}">
+        <div aria-hidden="true" style="{{c1.sleeve}}"><img src="../assets/svg/cover-straight.svg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
+      </div>
+      <div style="padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 14px">
+        <p style="margin: 0; font-size: 13px; font-weight: 600">Building communication tools</p>
+        <h3 style="margin: 0; font-size: 40px; line-height: 0.92; font-weight: 800; font-stretch: 62%">Construction site communication app</h3>
+        <p style="margin: 0; font-size: 17px; line-height: 1.45">Workers used it to get ignored problems fixed, like language barriers and missing drinking water. Clients included major contractors Skanska, Multiplex and Willmott Dixon.</p>
+      </div>
+    </article>
+
+    <article style="border: 2px solid #111; border-radius: 20px; overflow: hidden; background: #FFFFFF">
+      <div ref="{{setR2}}" style="position: relative; height: 220px; overflow: hidden; border-bottom: 2px solid #111">
+        <img src="../assets/images/winners-2017.jpg" alt="Sheffield Doc/Fest's 2017 award winners in a group, holding their steel trophies" style="{{c2.img}}">
+        <div aria-hidden="true" style="{{c2.sleeve}}"><img src="../assets/svg/cover-contour.svg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
+      </div>
+      <div style="padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 14px">
+        <p style="margin: 0; font-size: 13px; font-weight: 600">Designing compelling experiences</p>
+        <h3 style="margin: 0; font-size: 40px; line-height: 0.92; font-weight: 800; font-stretch: 62%">Festival awards trophies</h3>
+        <p style="margin: 0; font-size: 17px; line-height: 1.45">Doc/Fest commissioned my trophy design 3 years running. Featured in Screen Daily and It's Nice That.</p>
+      </div>
+    </article>
+  </div>
+</div>
+
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.state = { s: 0 };
+    this.setR1 = (el) => { this.el1 = el; };
+    this.setR2 = (el) => { this.el2 = el; };
+    this.onScroll = (e) => this.setState({ s: e.currentTarget.scrollTop });
+  }
+  componentDidMount() { this.forceUpdate(); }
+  cover(el) {
+    const vh = 844;
+    const top = el ? el.offsetTop : 99999;
+    const raw = (this.state.s + vh - top - 120) / (vh * 0.55);
+    const p = Math.max(0, Math.min(1, raw));
+    return {
+      img: 'width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(' + (1 - p).toFixed(2) + ');',
+      sleeve: 'position: absolute; inset: 0; background: rgba(250,250,247,0.45); border-left: 2px solid #111; transform: translateX(' + (p * 92).toFixed(1) + '%);'
+    };
+  }
+  renderVals() {
+    return { onScroll: this.onScroll, setR1: this.setR1, setR2: this.setR2, c1: this.cover(this.el1), c2: this.cover(this.el2) };
+  }
+}
+</script>
+</body>
+</html>
