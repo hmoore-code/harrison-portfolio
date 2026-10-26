@@ -1,0 +1,19 @@
+---
+interface Props {
+  size?: number;
+  class?: string;
+}
+const { size = 18, class: className } = Astro.props;
+---
+
+<svg class:list={['star', className]} width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
+  <polygon
+    points="77.7,5.3 56.8,24.2 51.3,0 42.9,23 24.6,1.8 30.2,29.3 4,19.9 22.6,40.7 0,46.4 21.6,55 0.2,73.2 27.9,67.5 18.3,93.9 39.3,75.2 44.7,100 53.1,76.2 71.5,97.5 65.8,69.9 92.1,79.3 73.4,58.4 100,53 74.4,44.4 95.9,26 68.3,31.8"
+    fill="currentColor"></polygon>
+</svg>
+
+<style>
+  .star {
+    flex: none;
+  }
+</style>

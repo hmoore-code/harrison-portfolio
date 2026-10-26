@@ -1,0 +1,31 @@
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<style>
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: calc(var(--space-6) + env(safe-area-inset-bottom));
+    z-index: 100;
+    padding: var(--space-3) var(--space-5);
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 15px;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 8px);
+    transition:
+      opacity 0.2s,
+      transform 0.2s;
+  }
+
+  .toast:empty {
+    display: none;
+  }
+
+  .toast.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+</style>

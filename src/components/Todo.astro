@@ -1,0 +1,12 @@
+---
+// A visible gap for anything copy.md still marks as TO DO.
+interface Props {
+  text: string;
+  block?: boolean;
+  class?: string;
+}
+const { text, block = false, class: className } = Astro.props;
+const Tag = block ? 'div' : 'span';
+---
+
+<Tag class:list={['todo', { 'todo--block': block }, className]}>{text}</Tag>

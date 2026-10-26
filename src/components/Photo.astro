@@ -1,0 +1,38 @@
+---
+// A responsive photo from assets/, or a visible placeholder if the file isn't there yet.
+import { Picture } from 'astro:assets';
+import { isTodo, type FileRef, type Todo as TodoValue } from '../lib/content';
+import { findImage } from '../lib/assets';
+import TodoBox from './Todo.astro';
+
+interface Props {
+  image: FileRef | TodoValue;
+  alt: string;
+  sizes?: string;
+  eager?: boolean;
+  class?: string;
+}
+
+const { image, alt, sizes = '(min-width: 760px) 680px, 100vw', eager = false, class: className } = Astro.props;
+const found = isTodo(image) ? undefined : findImage(image);
+const missingText = isTodo(image)
+  ? image.todo
+  : `Image needed: ${image.file}${image.note ? ` (${image.note})` : ''}`;
+---
+
+{
+  found ? (
+    <Picture
+      src={found}
+      alt={alt}
+      formats={['avif', 'webp']}
+      widths={[400, 800, 1200].filter((w) => w <= found.width)}
+      sizes={sizes}
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : 'auto'}
+      class={className}
+    />
+  ) : (
+    <TodoBox text={missingText} block class={['photo-missing', className].filter(Boolean).join(' ')} />
+  )
+}

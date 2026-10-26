@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import fontUrl from '../../assets/fonts/archivo-variable.woff2?url';
+import Toast from '../components/Toast.astro';
 
 interface Props {
   title: string;
@@ -14,13 +15,17 @@ const { title, description } = Astro.props;
 <html lang="en-GB">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
   </head>
   <body>
     <slot />
+    <Toast />
   </body>
 </html>

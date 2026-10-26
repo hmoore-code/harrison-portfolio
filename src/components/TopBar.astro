@@ -1,0 +1,102 @@
+---
+import { topBar, meta } from '../lib/content';
+import Star from './Star.astro';
+
+const [before, after] = topBar.label;
+---
+
+<header class="top-bar">
+  <div class="top-bar__inner">
+    <a class="top-bar__name" href="#top">
+      {before}
+      {after && <Star size={11} />}
+      {after && <span class="top-bar__strong">{after}</span>}
+    </a>
+    <button
+      class="top-bar__share"
+      type="button"
+      data-share
+      data-share-title={meta.pageTitle}
+      data-share-confirmation={topBar.shareConfirmation}
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+        <path
+          d="M8 1.5v9 M4.5 5L8 1.5L11.5 5 M3.5 8v6.5h9V8"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+      {topBar.shareButton}
+    </button>
+  </div>
+</header>
+
+<script>
+  import { showToast } from '../scripts/toast';
+
+  document.querySelectorAll<HTMLButtonElement>('[data-share]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const url = window.location.href.split('#')[0];
+      const title = button.dataset.shareTitle ?? document.title;
+      if (navigator.share) {
+        try {
+          await navigator.share({ title, url });
+          return;
+        } catch (error) {
+          if ((error as DOMException).name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(url);
+        showToast(button.dataset.shareConfirmation ?? '');
+      } catch {
+        window.prompt('', url);
+      }
+    });
+  });
+</script>
+
+<style>
+  .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    height: 48px;
+    background: var(--paper);
+    border-bottom: var(--line);
+  }
+
+  .top-bar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: var(--column);
+    margin: 0 auto;
+    padding: 0 var(--space-2) 0 var(--gutter);
+  }
+
+  .top-bar__name {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 44px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .top-bar__share {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 44px;
+    padding: 0 12px;
+    border: 0;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 700;
+  }
+</style>
