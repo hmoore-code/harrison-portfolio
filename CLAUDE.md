@@ -7,6 +7,8 @@ Full spec: `BUILD-BRIEF.md` (read it before any non-trivial change). This file i
 - Commit and push to GitHub (`origin`, branch `main`) after each completed step, with clear messages.
 - Ask before anything that needs his accounts (Vercel, domains, analytics, etc.).
 - Section 9 items in the brief are his decisions: flag them, don't decide.
+- Live site: https://harrison-portfolio-seven.vercel.app/ (Vercel deploys every push to `main`).
+- To-do list (Claude Doc): https://claude.ai/artifact/VUn1RDR2RumFLXahMJbvby. Read it at the start of each session, tick build steps as they're done, and add new items Harrison needs to act on.
 
 ## Writing rules (anything visitors read)
 - British English, sentence case, no em dashes.
