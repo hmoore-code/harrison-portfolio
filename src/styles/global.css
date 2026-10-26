@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'Archivo';
+  src: url('../../assets/fonts/archivo-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ink: #111111;
+  --paper: #fafaf7;
+  --white: #ffffff;
+  --grey: #4a4a46;
+
+  --line: 2px solid var(--ink);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 14px;
+  --space-4: 18px;
+  --space-5: 22px;
+  --space-6: 28px;
+  --space-7: 40px;
+  --gutter: 20px;
+  --column: 720px;
+
+  --radius-card: 20px;
+  --radius-inner: 16px;
+  --radius-thumb: 10px;
+  --radius-sheet: 24px;
+
+  --size-headline: 58px;
+  --size-popup-title: 72px;
+  --size-section: 56px;
+  --size-card-title: 40px;
+  --size-subheading: 28px;
+}
+
+@media (max-width: 359px) {
+  :root {
+    --size-headline: 48px;
+    --size-popup-title: 58px;
+    --size-section: 46px;
+    --size-card-title: 34px;
+    --size-subheading: 24px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Archivo', system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--ink);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
