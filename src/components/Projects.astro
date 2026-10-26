@@ -1,0 +1,112 @@
+---
+import { filters, projects, projectsIntro } from '../lib/content';
+import ProjectCard from './ProjectCard.astro';
+import Star from './Star.astro';
+
+const buttons = [{ id: 'all', label: projectsIntro.allFilter }, ...filters];
+---
+
+<section class="projects column" id="projects" aria-labelledby="projects-heading">
+  <div class="projects__intro">
+    <h2 id="projects-heading" class="section-heading">{projectsIntro.heading}</h2>
+    <p>{projectsIntro.intro}</p>
+  </div>
+
+  <div class="filters" role="group" aria-label="Filter projects" data-filters>
+    {
+      buttons.map((filter) => (
+        <button class="filter" type="button" data-filter={filter.id} aria-pressed={filter.id === 'all' ? 'true' : 'false'}>
+          <Star size={15} class="filter__star" />
+          <span>{filter.label}</span>
+        </button>
+      ))
+    }
+  </div>
+
+  <div class="projects__list">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+</section>
+
+<script>
+  const group = document.querySelector<HTMLElement>('[data-filters]');
+  const buttons = [...(group?.querySelectorAll<HTMLButtonElement>('button[data-filter]') ?? [])];
+  const cards = [...document.querySelectorAll<HTMLElement>('.projects__list [data-filter]')];
+  const ids = buttons.map((b) => b.dataset.filter);
+
+  function apply(id: string, updateUrl: boolean) {
+    if (!ids.includes(id)) id = 'all';
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === id)));
+    cards.forEach((card) => (card.hidden = id !== 'all' && card.dataset.filter !== id));
+    if (updateUrl) {
+      const url = new URL(window.location.href);
+      if (id === 'all') url.searchParams.delete('filter');
+      else url.searchParams.set('filter', id);
+      history.replaceState(history.state, '', url);
+    }
+    document.dispatchEvent(new Event('covers:refresh'));
+  }
+
+  buttons.forEach((b) => b.addEventListener('click', () => apply(b.dataset.filter ?? 'all', true)));
+  apply(new URLSearchParams(window.location.search).get('filter') ?? 'all', false);
+</script>
+
+<style>
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .projects__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .projects__intro p {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .filter {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    padding: 0 16px;
+    border: var(--line);
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .filter[aria-pressed='true'] {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .filter :global(.filter__star) {
+    display: none;
+  }
+
+  .filter[aria-pressed='true'] :global(.filter__star) {
+    display: block;
+  }
+
+  .projects__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+</style>

@@ -1,0 +1,101 @@
+---
+import { isTodo, type Project } from '../lib/content';
+import { projectsIntro } from '../lib/content';
+import { resolveTarget } from '../lib/links';
+import CoveredImage from './CoveredImage.astro';
+import Todo from './Todo.astro';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const evidence = resolveTarget(project.evidenceLink, project.slug);
+const linkText = isTodo(project.evidenceLinkText) ? project.evidenceLinkText.todo : project.evidenceLinkText;
+const headingId = `card-${project.slug}`;
+---
+
+<article class="card" data-filter={project.filter.id} aria-labelledby={headingId}>
+  <CoveredImage class="card__image" image={project.image} alt={project.imageAlt} cover={project.filter.cover} />
+  <div class="card__body">
+    <p class="label">{project.filter.label}</p>
+    <h3 id={headingId} class="card__title">{project.title}</h3>
+    <p class="card__result">{project.result}</p>
+    <div class="card__actions">
+      <a class="pill pill--solid pill--small" href={`#${project.slug}`} data-open-dialog={project.slug}>
+        {projectsIntro.cardButton}<span class="visually-hidden">: {project.title}</span>
+      </a>
+      {
+        evidence ? (
+          <a
+            class="card__link"
+            href={evidence.href}
+            data-open-dialog={evidence.type === 'popup' ? project.slug : undefined}
+            target={evidence.external ? '_blank' : undefined}
+            rel={evidence.external ? 'noopener' : undefined}
+          >
+            {linkText}
+            {evidence.external && <span class="visually-hidden"> (opens in a new tab)</span>}
+          </a>
+        ) : (
+          <Todo text={`${linkText}: ${isTodo(project.evidenceLink) ? project.evidenceLink.todo : ''}`} />
+        )
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  .card {
+    overflow: hidden;
+    border: var(--line);
+    border-radius: var(--radius-card);
+    background: var(--white);
+  }
+
+  .card[hidden] {
+    display: none;
+  }
+
+  .card :global(.card__image) {
+    height: 220px;
+    border-bottom: var(--line);
+  }
+
+  .card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-4) 20px;
+  }
+
+  .card__title {
+    width: 100%;
+    margin: 0;
+    font-size: var(--size-card-title);
+    font-weight: 800;
+    font-stretch: 62%;
+    line-height: 0.92;
+  }
+
+  .card__result {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.45;
+  }
+
+  .card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .card__link {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+</style>
