@@ -194,3 +194,8 @@ button {
 [id] {
   scroll-margin-top: 64px;
 }
+
+/* Stop the page scrolling behind an open pop-up. */
+html:has(dialog[open]) {
+  overflow: hidden;
+}

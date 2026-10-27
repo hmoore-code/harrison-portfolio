@@ -1,4 +1,5 @@
-// Slides each card's cover right and brings its photo into colour as it scrolls into view.
+// Slides each cover right and brings its photo into colour as it scrolls into view,
+// on the page or inside a pop-up (scroll is listened for on every scrolling element).
 // progress = clamp((scrollY + viewport height - image top - 120) / (viewport height * 0.55), 0, 1)
 
 let started = false;
@@ -23,7 +24,7 @@ export function watchCovers() {
     if (!frame) frame = requestAnimationFrame(update);
   };
 
-  window.addEventListener('scroll', request, { passive: true });
+  document.addEventListener('scroll', request, { passive: true, capture: true });
   window.addEventListener('resize', request, { passive: true });
   document.addEventListener('covers:refresh', request);
   update();

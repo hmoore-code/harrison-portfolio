@@ -9,11 +9,19 @@ interface Props {
   image: FileRef | TodoValue;
   alt: string;
   sizes?: string;
+  widths?: number[];
   eager?: boolean;
   class?: string;
 }
 
-const { image, alt, sizes = '(min-width: 760px) 680px, 100vw', eager = false, class: className } = Astro.props;
+const {
+  image,
+  alt,
+  sizes = '(min-width: 760px) 680px, 100vw',
+  widths = [400, 800, 1200],
+  eager = false,
+  class: className,
+} = Astro.props;
 const found = isTodo(image) ? undefined : findImage(image);
 const missingText = isTodo(image)
   ? image.todo
@@ -26,7 +34,7 @@ const missingText = isTodo(image)
       src={found}
       alt={alt}
       formats={['avif', 'webp']}
-      widths={[400, 800, 1200].filter((w) => w <= found.width)}
+      widths={widths.filter((w) => w <= found.width).concat(widths.every((w) => w > found.width) ? [found.width] : [])}
       sizes={sizes}
       loading={eager ? 'eager' : 'lazy'}
       fetchpriority={eager ? 'high' : 'auto'}

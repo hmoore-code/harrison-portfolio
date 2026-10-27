@@ -1,0 +1,569 @@
+---
+// One project's case study, opened from its card as a sheet (phone) or centred panel (desktop).
+// dialogs.ts handles opening, closing, the URL hash and the back button.
+import { getImage } from 'astro:assets';
+import { isTodo, projectsIntro, type Project } from '../lib/content';
+import { basename } from '../lib/content';
+import { findImage, findVideo } from '../lib/assets';
+import { sortEvidence } from '../lib/evidence';
+import { resolveTarget } from '../lib/links';
+import { inline } from '../lib/inline';
+import CoveredImage from './CoveredImage.astro';
+import EvidenceGallery from './EvidenceGallery.astro';
+import Icon from './Icon.astro';
+import Photo from './Photo.astro';
+import Star from './Star.astro';
+import StarDivider from './StarDivider.astro';
+import Todo from './Todo.astro';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const titleId = `${project.slug}-title`;
+const evidence = sortEvidence(project);
+const facts = [
+  { label: 'Organisation', value: project.organisation },
+  { label: 'Year', value: project.year },
+  { label: 'Role', value: project.role },
+];
+
+// A video's still is the image named "<video name>-poster".
+const videos = await Promise.all(
+  evidence.videos.map(async ({ ref, caption }) => {
+    const still = findImage({ file: basename(ref.file).replace(/\.[a-z0-9]+$/i, '-poster.jpg') });
+    return {
+      caption,
+      src: findVideo(ref),
+      poster: still ? (await getImage({ src: still, width: 1280, format: 'webp' })).src : undefined,
+    };
+  }),
+);
+
+const extras = project.extras.map((extra) => ({
+  ...extra,
+  resolved: extra.link ? resolveTarget(extra.link, project.slug) : null,
+}));
+---
+
+<dialog class="sheet" id={project.slug} aria-labelledby={titleId} data-dialog>
+  <div class="sheet__bar">
+    <p class="label">{project.filter.label}</p>
+    <button class="sheet__close" type="button" data-close-dialog aria-label="Close">
+      <Icon name="close" />
+    </button>
+  </div>
+
+  <div class="sheet__body">
+    <header class="sheet__intro">
+      <h2 id={titleId} class="sheet__title">{project.title}</h2>
+      <p class="sheet__result">{project.result}</p>
+      {
+        project.logo && (
+          <Photo
+            class="sheet__logo"
+            image={project.logo}
+            alt={`${project.organisation.split(',')[0]} logo`}
+            widths={[200, 400]}
+            sizes="120px"
+          />
+        )
+      }
+    </header>
+
+    <dl class="facts">
+      {
+        facts.map((fact) => (
+          <div class="facts__square">
+            <dt>{fact.label}</dt>
+            <dd>{fact.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <CoveredImage class="sheet__lead" image={project.image} alt={project.imageAlt} cover={project.filter.cover} />
+
+    {
+      project.story.map((part) => (
+        <section class="story">
+          <h3 class="subheading">{part.heading}</h3>
+          {part.paragraphs.map((p) => (
+            <p set:html={inline(p)} />
+          ))}
+        </section>
+      ))
+    }
+
+    <section class="shows">
+      <svg class="shows__shape" viewBox="0 0 350 154" preserveAspectRatio="none" aria-hidden="true">
+        <path
+          d="M6 14 L40 6 L90 12 L150 4 L220 10 L290 3 L344 11 L348 60 L342 100 L346 146 L290 150 L220 144 L150 151 L80 146 L30 152 L4 145 L9 90 L3 50 Z"
+          fill="currentColor"
+          stroke="currentColor"
+          stroke-width="6"
+          stroke-linejoin="round"></path>
+        <path
+          d="M60 3 L66 9 M200 150 L210 144 M345 70 L338 74 M4 100 L10 98"
+          stroke="var(--paper)"
+          stroke-width="2"
+          stroke-linecap="round"
+          fill="none"></path>
+      </svg>
+      <h3 class="subheading">What this shows</h3>
+      <p>
+        <span set:html={inline(project.whatThisShows)} />
+        <Star size={14} class="shows__end" />
+      </p>
+    </section>
+
+    <figure class="pull-quote">
+      <blockquote>“{project.pullQuote.quote.replace(/^["“]|["”]$/g, '')}”</blockquote>
+      <figcaption>{project.pullQuote.credit}</figcaption>
+    </figure>
+
+    <StarDivider />
+
+    <section class="evidence" aria-labelledby={`${project.slug}-evidence`}>
+      <h3 id={`${project.slug}-evidence`} class="evidence__heading">Evidence</h3>
+
+      {
+        evidence.gallery.length > 0 && (
+          <EvidenceGallery items={evidence.gallery} cover={project.filter.cover} hint={projectsIntro.galleryHint} />
+        )
+      }
+
+      {
+        videos.map((video) => (
+          <figure class="video">
+            {video.src ? (
+              <video controls playsinline preload="none" poster={video.poster} src={video.src} />
+            ) : (
+              <Todo text={`Video needed: ${video.caption}`} block />
+            )}
+            <figcaption>{video.caption}</figcaption>
+          </figure>
+        ))
+      }
+
+      {
+        evidence.quotes.map((set) => (
+          <div class="quotes">
+            <h4 class="label">{set.label}</h4>
+            {set.quotes.map((q) => (
+              <figure class="quotes__item">
+                <blockquote>“{q.quote}”</blockquote>
+                <figcaption>{q.name}</figcaption>
+              </figure>
+            ))}
+          </div>
+        ))
+      }
+
+      {
+        (evidence.links.length > 0 || evidence.todos.length > 0) && (
+          <ul class="links">
+            {evidence.links.map((link) => (
+              <li>
+                <a
+                  class="link-pill"
+                  href={link.href}
+                  data-open-dialog={link.dialog}
+                  target={link.type === 'popup' ? undefined : '_blank'}
+                  rel={link.type === 'popup' ? undefined : 'noopener'}
+                >
+                  <span>{link.label}</span>
+                  <span class="link-pill__type">
+                    <Icon name={link.type === 'pdf' ? 'pdf' : link.type === 'popup' ? 'arrow' : 'link'} />
+                    {link.type === 'pdf' ? 'PDF' : link.type === 'popup' ? 'Case study' : 'Link'}
+                    {link.type !== 'popup' && <span class="visually-hidden">, opens in a new tab</span>}
+                  </span>
+                </a>
+              </li>
+            ))}
+            {evidence.todos.map((todo) => (
+              <li>
+                <Todo text={`${todo.label}: ${todo.text}`} block />
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </section>
+
+    {
+      extras.length > 0 && (
+        <div class="extras">
+          {extras.map((extra) =>
+            extra.resolved ? (
+              <a
+                class="pill pill--solid"
+                href={extra.resolved.href}
+                target={extra.resolved.external ? '_blank' : undefined}
+                rel={extra.resolved.external ? 'noopener' : undefined}
+              >
+                {extra.button}
+                {extra.resolved.external && <span class="visually-hidden"> (opens in a new tab)</span>}
+              </a>
+            ) : (
+              <Todo text={`${extra.button}: ${extra.text && isTodo(extra.text) ? extra.text.todo : 'TO DO: add a link'}`} block />
+            ),
+          )}
+        </div>
+      )
+    }
+
+    {
+      project.exhibitionList && (
+        <section class="story">
+          <h3 class="subheading">Exhibition list</h3>
+          <p>{project.exhibitionList.intro}</p>
+          <ul class="exhibitions">
+            {project.exhibitionList.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </div>
+</dialog>
+
+<style>
+  .sheet {
+    position: fixed;
+    inset: var(--space-6) 0 0;
+    width: 100%;
+    max-width: var(--column);
+    height: auto;
+    max-height: none;
+    margin: 0 auto;
+    padding: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 0;
+    border-top: var(--line);
+    border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .sheet[open] {
+    animation: sheet-up 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .sheet::backdrop {
+    background: repeating-linear-gradient(135deg, var(--ink) 0 1.5px, var(--paper) 1.5px 7px);
+    opacity: 0.9;
+  }
+
+  @media (min-width: 760px) {
+    .sheet {
+      inset: var(--space-7) 0 0;
+      border: var(--line);
+      border-bottom: 0;
+    }
+
+    .sheet::backdrop {
+      background: rgb(17 17 17 / 60%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes sheet-up {
+    from {
+      transform: translateY(100%);
+    }
+  }
+
+  .sheet__bar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--gutter) var(--space-2);
+    background: var(--paper);
+  }
+
+  .sheet__close {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: var(--line);
+    border-radius: 50%;
+    background: var(--paper);
+  }
+
+  .sheet__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: var(--space-2) var(--gutter) 56px;
+  }
+
+  .sheet__intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .sheet__title {
+    margin: 0;
+    font-size: var(--size-popup-title);
+    font-weight: 800;
+    font-stretch: 62%;
+    line-height: 0.86;
+  }
+
+  .sheet__result {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+
+  .sheet__intro :global(.sheet__logo) {
+    width: auto;
+    height: 48px;
+  }
+
+  /* Organisation, year and role in 3 squares drawn with wavy lines. */
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0;
+    padding: 5px;
+    background:
+      url('../../assets/svg/rule-wavy.svg') top / 100% 10px no-repeat,
+      url('../../assets/svg/rule-wavy.svg') bottom / 100% 10px no-repeat,
+      url('../../assets/svg/wave-v.svg') left / 10px 100% no-repeat,
+      url('../../assets/svg/wave-v.svg') right / 10px 100% no-repeat,
+      url('../../assets/svg/wave-v.svg') 33.6% 0 / 10px 100% no-repeat,
+      url('../../assets/svg/wave-v.svg') 66.4% 0 / 10px 100% no-repeat;
+  }
+
+  .facts__square {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    min-height: 0;
+    aspect-ratio: 1;
+    padding: 10px 14px;
+  }
+
+  /* Square on phones; on wide screens squares would be needlessly tall. */
+  @media (min-width: 760px) {
+    .facts__square {
+      aspect-ratio: auto;
+      min-height: 120px;
+    }
+  }
+
+  .facts dt {
+    color: var(--grey);
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .facts dd {
+    margin: 0;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-stretch: 85%;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .sheet__body :global(.sheet__lead) {
+    height: 236px;
+    border: var(--line);
+    border-radius: var(--radius-inner);
+  }
+
+  .subheading {
+    margin: 0;
+    font-size: var(--size-subheading);
+    font-weight: 800;
+    font-stretch: 62%;
+    line-height: 1;
+  }
+
+  .story {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .story p,
+  .shows p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  /* "What this shows": paper text in a hand-drawn black panel. */
+  .shows {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-6) 26px;
+    color: var(--paper);
+  }
+
+  .shows__shape {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    z-index: 0;
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+    color: var(--ink);
+  }
+
+  .shows > :not(.shows__shape) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .shows :global(.shows__end) {
+    display: inline-block;
+    margin-left: 2px;
+    vertical-align: -1px;
+  }
+
+  .shows :global(a) {
+    color: var(--paper);
+  }
+
+  .pull-quote {
+    margin: 0;
+  }
+
+  .pull-quote blockquote {
+    margin: 0;
+    font-size: var(--size-card-title);
+    font-weight: 800;
+    font-stretch: 62%;
+    line-height: 0.95;
+  }
+
+  .pull-quote figcaption {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .evidence {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .evidence__heading {
+    margin: 0;
+    font-size: 44px;
+    font-weight: 800;
+    font-stretch: 62%;
+    line-height: 0.9;
+  }
+
+  .video {
+    margin: 0;
+    overflow: hidden;
+    border: var(--line);
+    border-radius: var(--radius-inner);
+    background: var(--white);
+  }
+
+  .video video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--ink);
+  }
+
+  .video figcaption {
+    padding: 10px 14px;
+    border-top: var(--line);
+    font-size: 15px;
+  }
+
+  .quotes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .quotes__item {
+    margin: 0;
+    padding: var(--space-4);
+    border: var(--line);
+    border-radius: var(--radius-inner);
+    background: var(--white);
+  }
+
+  .quotes__item blockquote {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  .quotes__item figcaption {
+    margin-top: var(--space-2);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .link-pill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 52px;
+    padding: 10px 16px 10px 20px;
+    border: var(--line);
+    border-radius: 26px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-decoration: none;
+  }
+
+  .link-pill__type {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+  }
+
+  .extras {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .exhibitions {
+    margin: 0;
+    padding-left: 1.2em;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+</style>
