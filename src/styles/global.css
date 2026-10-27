@@ -33,7 +33,8 @@
   --radius-sheet: 24px;
 
   --size-headline: 58px;
-  --size-popup-title: 72px;
+  /* Shrinks on phones so the longest title word ("communication", ~5.3 x font size) fits. */
+  --size-popup-title: min(72px, calc((100vw - 40px) / 5.4));
   --size-section: 56px;
   --size-card-title: 40px;
   --size-subheading: 28px;
@@ -42,7 +43,6 @@
 @media (max-width: 359px) {
   :root {
     --size-headline: 48px;
-    --size-popup-title: 58px;
     --size-section: 46px;
     --size-card-title: 34px;
     --size-subheading: 24px;

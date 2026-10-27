@@ -28,7 +28,7 @@ import WavyRule from './WavyRule.astro';
   <div class="help__share">
     <p>{help.share.leadIn}</p>
     <button
-      class="pill pill--solid"
+      class="pill pill--solid help__button"
       type="button"
       data-share
       data-share-title={meta.pageTitle}
@@ -91,5 +91,9 @@ import WavyRule from './WavyRule.astro';
     font-size: 19px;
     font-weight: 500;
     line-height: 1.4;
+  }
+
+  .help__button {
+    padding: 0 var(--space-3);
   }
 </style>

@@ -267,7 +267,7 @@ const extras = project.extras.map((extra) => ({
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
-    min-height: 0;
+    /* At least square; grows if a long organisation name needs more room. */
     aspect-ratio: 1;
     padding: 10px 14px;
   }

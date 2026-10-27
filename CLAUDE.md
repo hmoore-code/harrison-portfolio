@@ -8,6 +8,7 @@ Full spec: `BUILD-BRIEF.md` (read it before any non-trivial change). This file i
 - Ask before anything that needs his accounts (Vercel, domains, analytics, etc.).
 - Section 9 items in the brief are his decisions: flag them, don't decide.
 - Live site: https://harrison-portfolio-seven.vercel.app/ (Vercel deploys every push to `main`).
+  If a custom domain is added, update `site` in astro.config.mjs so share-card links stay correct.
 - To-do list (Claude Doc): https://claude.ai/artifact/VUn1RDR2RumFLXahMJbvby. Read it at the start of each session, tick build steps as they're done, and add new items Harrison needs to act on.
 
 ## Writing rules (anything visitors read)
