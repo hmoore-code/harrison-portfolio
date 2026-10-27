@@ -1,7 +1,10 @@
 ---
 import '../styles/global.css';
 import fontUrl from '../../assets/fonts/archivo-variable.woff2?url';
+import { getImage } from 'astro:assets';
 import Toast from '../components/Toast.astro';
+import { isTodo, meta } from '../lib/content';
+import { findImage } from '../lib/assets';
 
 interface Props {
   title: string;
@@ -9,6 +12,12 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+
+// Share card: what link previews show in messages and social posts.
+const shareSource = isTodo(meta.shareImage) ? undefined : findImage(meta.shareImage);
+const shareImage = shareSource && (await getImage({ src: shareSource, width: 1200, height: 630, format: 'jpg' }));
+const absolute = (path: string) => new URL(path, Astro.site).href;
+const pageUrl = absolute(Astro.url.pathname);
 ---
 
 <!doctype html>
@@ -19,6 +28,28 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="canonical" href={pageUrl} />
+    <meta name="theme-color" content="#FAFAF7" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:title" content={meta.shareTitle} />
+    <meta property="og:description" content={meta.shareDescription} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={meta.shareTitle} />
+    <meta name="twitter:description" content={meta.shareDescription} />
+    {
+      shareImage && (
+        <>
+          <meta property="og:image" content={absolute(shareImage.src)} />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:image:alt" content={meta.shareImageAlt} />
+          <meta name="twitter:image" content={absolute(shareImage.src)} />
+          <meta name="twitter:image:alt" content={meta.shareImageAlt} />
+        </>
+      )
+    }
     <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin />
     <script is:inline>
       document.documentElement.classList.add('js');
