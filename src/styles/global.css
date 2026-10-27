@@ -199,3 +199,64 @@ button {
 html:has(dialog[open]) {
   overflow: hidden;
 }
+
+/* ---------- shared by pop-ups and sections ---------- */
+
+.subheading {
+  margin: 0;
+  font-size: var(--size-subheading);
+  font-weight: 800;
+  font-stretch: 62%;
+  line-height: 1;
+}
+
+.story {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.story p,
+.shows p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  padding: 10px 16px 10px 20px;
+  border: var(--line);
+  border-radius: 26px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+.link-pill__type {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.extras {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}

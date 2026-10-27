@@ -1,0 +1,78 @@
+---
+// "Try it yourself": opens on top of its project's pop-up; closing returns to the project.
+import type { Project } from '../lib/content';
+import { inline } from '../lib/inline';
+import Photo from './Photo.astro';
+import Sheet from './Sheet.astro';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const tryIt = project.tryItYourself!;
+const id = `${project.slug}-try`;
+---
+
+<Sheet id={id} labelledby={`${id}-title`} label={project.title} parent={project.slug}>
+  <h2 id={`${id}-title`} class="sheet__title">{tryIt.heading}</h2>
+  <div class="try__intro">
+    {tryIt.paragraphs.map((p) => <p set:html={inline(p)} />)}
+  </div>
+  {
+    tryIt.forms.map((form, i) => (
+      <section class="try__form">
+        <h3 class="subheading">{form.heading}</h3>
+        {tryIt.images[i] && (
+          <Photo class="try__slide" image={tryIt.images[i]} alt={`Slide from session 4: ${form.heading}`} />
+        )}
+        {form.paragraphs.map((p) => (
+          <p set:html={inline(p)} />
+        ))}
+        <ul class="try__rules">
+          {form.rules.map((rule) => (
+            <li set:html={inline(rule)} />
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</Sheet>
+
+<style>
+  .try__intro,
+  .try__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .try__intro p,
+  .try__form p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  .try__form :global(.try__slide) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: var(--line);
+    border-radius: var(--radius-inner);
+  }
+
+  .try__rules {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: 0;
+    padding: var(--space-4) var(--space-4) var(--space-4) 2.2em;
+    border: var(--line);
+    border-radius: var(--radius-inner);
+    background: var(--white);
+    font-size: 17px;
+    line-height: 1.45;
+  }
+</style>

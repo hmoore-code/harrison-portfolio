@@ -45,6 +45,7 @@ export interface ExtraLink {
 }
 
 export interface TryItYourself {
+  heading: string;
   button: string;
   images: FileRef[];
   paragraphs: string[];
@@ -373,6 +374,7 @@ export const projects: Project[] = projectNodes.map((node, index) => {
 
   const tryNode = child(node, 'Try it yourself');
   const tryItYourself: TryItYourself | undefined = tryNode && {
+    heading: tryNode.heading,
     button: required(tryNode, 'Button'),
     images: filesIn(optional(tryNode, 'Image') ?? '').map((file) => ({ file })),
     paragraphs: tryNode.paragraphs,
@@ -468,7 +470,9 @@ export const contact = {
 
 const cvNode = section(live, 'CV');
 export const cv = {
+  heading: cvNode.heading,
   body: cvNode.bullets.map((b) => asText(b.raw)).concat(cvNode.paragraphs.map(asText)),
+  downloadButton: optional(cvNode, 'Download button'),
 };
 
 if (errors.length) {

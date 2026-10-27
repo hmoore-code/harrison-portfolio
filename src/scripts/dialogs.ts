@@ -1,6 +1,7 @@
 // Opens pop-ups from [data-open-dialog] links, gives each its own URL hash (#worker-feedback-club),
 // closes them with the close button, Escape, a tap outside or the back button,
 // and puts scroll position and focus back where they were.
+// A pop-up with data-parent (Try it yourself) opens on top of its parent: closing it returns there.
 
 const dialogs = new Map<string, HTMLDialogElement>();
 document.querySelectorAll<HTMLDialogElement>('dialog[data-dialog]').forEach((d) => dialogs.set(d.id, d));
@@ -63,7 +64,9 @@ document.addEventListener('click', (event) => {
   const id = link?.dataset.openDialog;
   if (!id || !dialogs.has(id)) return;
   event.preventDefault();
-  if (openDialog()) history.replaceState({ dialog: id }, '', `#${id}`);
+  const current = openDialog();
+  const isChild = current && dialogs.get(id)!.dataset.parent === current.id;
+  if (current && !isChild) history.replaceState({ dialog: id }, '', `#${id}`);
   else history.pushState({ dialog: id }, '', `#${id}`);
   show(id);
 });
@@ -74,10 +77,13 @@ window.addEventListener('popstate', () => {
   else openDialog()?.close();
 });
 
-// Opened directly from a shared link: put the page underneath, so back closes the pop-up.
+// Opened directly from a shared link: put the page (and any parent pop-up) underneath,
+// so back steps out one level at a time.
 const initial = window.location.hash.slice(1);
 if (dialogs.has(initial)) {
+  const parent = dialogs.get(initial)!.dataset.parent;
   history.replaceState(null, '', pageUrl());
+  if (parent && dialogs.has(parent)) history.pushState({ dialog: parent }, '', `#${parent}`);
   history.pushState({ dialog: initial }, '', `#${initial}`);
   show(initial);
 }

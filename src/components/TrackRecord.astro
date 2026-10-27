@@ -1,0 +1,75 @@
+---
+import { trackRecord } from '../lib/content';
+import WavyRule from './WavyRule.astro';
+---
+
+<section class="record column" aria-labelledby="record-heading">
+  <h2 id="record-heading" class="section-heading">{trackRecord.label}</h2>
+  <ul class="record__list">
+    {
+      trackRecord.figures.map((figure) => (
+        <li class="record__item">
+          <WavyRule />
+          <p class="record__number">{figure.number}</p>
+          <p class="record__label">{figure.label}</p>
+          {figure.link && figure.linkText && (
+            <a class="record__link" href={figure.link} target="_blank" rel="noopener">
+              {figure.linkText}
+              <span class="visually-hidden"> (opens in a new tab)</span>
+            </a>
+          )}
+        </li>
+      ))
+    }
+    <li aria-hidden="true"><WavyRule /></li>
+  </ul>
+</section>
+
+<style>
+  .record {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .record__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .record__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-bottom: var(--space-4);
+  }
+
+  .record__item :global(.wavy-rule) {
+    margin-bottom: var(--space-3);
+  }
+
+  .record__number {
+    margin: 0;
+    font-size: var(--size-headline);
+    font-weight: 800;
+    font-stretch: 62%;
+    line-height: 0.88;
+  }
+
+  .record__label {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .record__link {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+</style>

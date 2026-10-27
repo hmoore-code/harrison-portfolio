@@ -1,0 +1,91 @@
+---
+import { contact, hero, isTodo } from '../lib/content';
+import { inline } from '../lib/inline';
+import Icon from './Icon.astro';
+import Todo from './Todo.astro';
+
+const heading = isTodo(contact.heading) ? null : contact.heading;
+const links = [
+  { label: 'LinkedIn', value: contact.linkedin },
+  { label: 'Substack', value: contact.substack },
+];
+---
+
+<section class="contact column" id="contact" aria-labelledby="contact-heading">
+  {
+    heading ? (
+      <h2 id="contact-heading" class="section-heading">
+        {heading}
+      </h2>
+    ) : (
+      <h2 id="contact-heading">
+        <Todo text={isTodo(contact.heading) ? contact.heading.todo : ''} />
+      </h2>
+    )
+  }
+  {
+    contact.line &&
+      (isTodo(contact.line) ? <Todo text={contact.line.todo} block /> : <p class="contact__line" set:html={inline(contact.line)} />)
+  }
+  <a class="contact__email" href={`mailto:${contact.email}`}>{contact.email}</a>
+  <div class="contact__actions">
+    <a class="pill pill--solid" href={`mailto:${contact.email}`}>{hero.contactButton}</a>
+    <a class="pill pill--outline" href="#cv" data-open-dialog="cv">{contact.cvButton}</a>
+  </div>
+  <ul class="links">
+    {
+      links.map((link) => (
+        <li>
+          {isTodo(link.value) ? (
+            <Todo text={`${link.label}: ${link.value.todo}`} block />
+          ) : (
+            <a class="link-pill" href={link.value} target="_blank" rel="noopener">
+              <span>{link.label}</span>
+              <span class="link-pill__type">
+                <Icon name="link" />
+                Link<span class="visually-hidden">, opens in a new tab</span>
+              </span>
+            </a>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+
+<style>
+  .contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding-bottom: var(--space-7);
+  }
+
+  .contact__line {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .contact__email {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 21px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  .contact__actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .contact__actions .pill {
+    flex: 1;
+    padding: 0 var(--space-3);
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+import { testimonials } from '../lib/content';
+import Star from './Star.astro';
+---
+
+<section class="testimonials column" aria-labelledby="testimonials-heading">
+  <h2 id="testimonials-heading" class="section-heading">{testimonials.heading}</h2>
+  {
+    testimonials.quotes.map((t) => (
+      <figure class="testimonial">
+        <blockquote>
+          “{t.quote}” <Star size={13} class="testimonial__end" />
+        </blockquote>
+        <figcaption>
+          <span class="testimonial__name">{t.name}</span>
+          {t.role && <span class="testimonial__role">{t.role}</span>}
+        </figcaption>
+      </figure>
+    ))
+  }
+</section>
+
+<style>
+  .testimonials {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .testimonial {
+    margin: 0;
+    padding: var(--space-4);
+    border: var(--line);
+    border-radius: var(--radius-card);
+    background: var(--white);
+  }
+
+  .testimonial blockquote {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  .testimonial :global(.testimonial__end) {
+    display: inline-block;
+    vertical-align: -1px;
+  }
+
+  .testimonial figcaption {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: var(--line);
+  }
+
+  .testimonial__name {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .testimonial__role {
+    color: var(--grey);
+    font-size: 13px;
+    font-weight: 600;
+  }
+</style>

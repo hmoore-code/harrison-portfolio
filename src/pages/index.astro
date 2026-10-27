@@ -2,9 +2,17 @@
 import Base from '../layouts/Base.astro';
 import TopBar from '../components/TopBar.astro';
 import Hero from '../components/Hero.astro';
+import TrackRecord from '../components/TrackRecord.astro';
 import StarDivider from '../components/StarDivider.astro';
 import Projects from '../components/Projects.astro';
+import Causes from '../components/Causes.astro';
+import Help from '../components/Help.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 import ProjectDialog from '../components/ProjectDialog.astro';
+import TryDialog from '../components/TryDialog.astro';
+import CvDialog from '../components/CvDialog.astro';
 import { meta, projects } from '../lib/content';
 ---
 
@@ -13,9 +21,22 @@ import { meta, projects } from '../lib/content';
   <main id="top">
     <Hero />
     <StarDivider />
+    <TrackRecord />
+    <StarDivider />
     <Projects />
+    <StarDivider />
+    <Causes />
+    <StarDivider />
+    <Help />
+    <StarDivider />
+    <Testimonials />
+    <StarDivider />
+    <Contact />
   </main>
+  <Footer />
   {projects.map((project) => <ProjectDialog project={project} />)}
+  {projects.map((project) => project.tryItYourself && <TryDialog project={project} />)}
+  <CvDialog />
 </Base>
 
 <script>

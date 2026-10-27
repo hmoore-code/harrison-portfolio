@@ -1,0 +1,35 @@
+---
+// The CV pop-up. Its words come from the CV section of copy.md; a download button
+// appears once assets/pdfs/cv.pdf exists.
+import { cv, hero, isTodo } from '../lib/content';
+import { findPdf } from '../lib/assets';
+import { inline } from '../lib/inline';
+import Icon from './Icon.astro';
+import Sheet from './Sheet.astro';
+import Todo from './Todo.astro';
+
+const pdf = findPdf({ file: 'cv.pdf' });
+---
+
+<Sheet id="cv" labelledby="cv-title" label={hero.name}>
+  <h2 id="cv-title" class="sheet__title">{cv.heading}</h2>
+  {cv.body.map((part) => (isTodo(part) ? <Todo text={part.todo} block /> : <p class="cv__text" set:html={inline(part)} />))}
+  {
+    pdf ? (
+      <a class="pill pill--solid" href={pdf} download>
+        <Icon name="pdf" />
+        {cv.downloadButton ?? <Todo text="TO DO: add 'Download button: ...' to the CV section" />}
+      </a>
+    ) : (
+      <Todo text="TO DO: add your CV as assets/pdfs/cv.pdf for the download button" block />
+    )
+  }
+</Sheet>
+
+<style>
+  .cv__text {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+</style>
