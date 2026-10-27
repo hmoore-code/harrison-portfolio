@@ -2,7 +2,7 @@
 // Missing required fields stop the build with a list of what to fix.
 
 import source from '../../content/copy.md?raw';
-import { parseTree, type MdNode } from './markdown-tree';
+import { parseTree, type Bullet, type MdNode } from './markdown-tree';
 
 export interface Todo {
   todo: string;
@@ -18,6 +18,7 @@ export type Target =
   | { kind: 'url'; href: string }
   | { kind: 'files'; files: FileRef[] }
   | { kind: 'project'; slug: string }
+  | { kind: 'quotes'; quotes: { name: string; quote: string }[] }
   | Todo;
 
 export interface Filter {
@@ -63,6 +64,7 @@ export interface Project {
   evidenceLink: Target;
   image: FileRef | Todo;
   imageAlt: string;
+  logo?: FileRef;
   story: Story[];
   whatThisShows: string;
   evidence: EvidenceItem[];
@@ -136,7 +138,7 @@ function asText(value: string): Text {
   return value;
 }
 
-const FILE_PATTERN = /[\w\-/.*]+\.(?:jpe?g|png|webp|avif|gif|pdf)\b/gi;
+const FILE_PATTERN = /[\w\-/.*]+\.(?:jpe?g|png|webp|avif|gif|pdf|mp4|webm|mov)\b/gi;
 
 function filesIn(text: string): string[] {
   return text.match(FILE_PATTERN) ?? [];
@@ -206,6 +208,21 @@ function asEvidence(raw: string, ctx: TargetContext, fallback: Target): Evidence
     return { label, target };
   }
   return { label: raw, target: fallback };
+}
+
+// A bullet ending in ":" with indented "#### Name" + quote lines under it.
+function asQuotes(bullet: Bullet): EvidenceItem {
+  const quotes: { name: string; quote: string }[] = [];
+  for (const line of bullet.nested ?? []) {
+    const name = line.match(/^#{1,6}\s+(.+)$/);
+    if (name) quotes.push({ name: name[1].trim(), quote: '' });
+    else if (!/^#+\s*$/.test(line) && quotes.length) {
+      const last = quotes[quotes.length - 1];
+      last.quote = `${last.quote} ${line}`.trim();
+    }
+  }
+  for (const q of quotes) q.quote = q.quote.replace(/^["“]|["”]$/g, '');
+  return { label: bullet.raw.replace(/:\s*$/, ''), target: { kind: 'quotes', quotes } };
 }
 
 // ---------- page sections ----------
@@ -323,7 +340,9 @@ export const projects: Project[] = projectNodes.map((node, index) => {
 
   const evidenceNode = child(node, 'Evidence');
   if (!evidenceNode?.bullets.length) errors.push(`${where} is missing "### Evidence"`);
-  const evidence = (evidenceNode?.bullets ?? []).map((b) => asEvidence(b.raw, ctx, evidenceLink));
+  const evidence = (evidenceNode?.bullets ?? []).map((b) =>
+    b.nested?.length ? asQuotes(b) : asEvidence(b.raw, ctx, evidenceLink),
+  );
 
   const quoteNode = child(node, 'Pull quote');
   if (!quoteNode) errors.push(`${where} is missing "### Pull quote"`);
@@ -335,13 +354,19 @@ export const projects: Project[] = projectNodes.map((node, index) => {
     const part = child(node, heading);
     if (!part) return [];
     const link = optional(part, 'Link');
-    const text = optional(part, 'Text');
+    const text = optional(part, 'Text') ? asText(optional(part, 'Text')!) : undefined;
+    // A "Text:" that is just a web address works as the button's link.
+    const textIsLink = typeof text === 'string' && /^https?:\/\/\S+$/.test(text);
     return [
       {
         heading,
         button: required(part, 'Button'),
-        link: link ? (asTarget(link, ctx) ?? { todo: `TO DO: ${link}` }) : undefined,
-        text: text ? asText(text) : undefined,
+        link: link
+          ? (asTarget(link, ctx) ?? { todo: `TO DO: ${link}` })
+          : textIsLink
+            ? { kind: 'url', href: text }
+            : undefined,
+        text: textIsLink ? undefined : text,
       },
     ];
   });
@@ -377,6 +402,7 @@ export const projects: Project[] = projectNodes.map((node, index) => {
     evidenceLink,
     image: asImage(required(node, 'Image')),
     imageAlt: required(node, 'Image alt text'),
+    logo: filesIn(optional(node, 'Logo') ?? '').map((file) => ({ file }))[0],
     story,
     whatThisShows: shows?.paragraphs.join(' ') ?? '',
     evidence,
@@ -398,18 +424,17 @@ export const causes = {
 };
 
 const helpNode = section(live, 'How you can help');
-const forwardingNode = section(helpNode, 'Forwarding');
+const sharingNode = section(helpNode, 'Sharing');
 export const help = {
   heading: required(helpNode, 'Heading'),
   lists: ['Roles', 'Sectors', "People I'd like to meet"].map((heading) => ({
     heading,
     items: section(helpNode, heading).bullets.map((b) => b.raw),
   })),
-  forwarding: {
-    leadIn: required(forwardingNode, 'Lead-in'),
-    message: required(forwardingNode, 'Message'),
-    copyButton: required(forwardingNode, 'Copy button'),
-    copyConfirmation: required(forwardingNode, 'Copy confirmation'),
+  share: {
+    leadIn: required(sharingNode, 'Lead-in'),
+    button: required(sharingNode, 'Share button'),
+    confirmation: required(sharingNode, 'Share confirmation'),
   },
 };
 
@@ -421,18 +446,19 @@ export const testimonials = {
     .map((b): Testimonial => {
       const match = b.value!.match(/^[“"](.*)[”"]\s*[–—-]\s*(.+)$/s);
       if (!match) {
-        errors.push(`Testimonial "${b.label}" should look like “quote” – Name - Role`);
+        errors.push(`Testimonial "${b.label}" should look like “quote” – Name, Role`);
         return { quote: b.value!, name: '', role: '' };
       }
-      const [name, ...role] = match[2].split(/\s+[-–—]\s+/);
-      return { quote: match[1].trim(), name: name.trim(), role: role.join(', ').trim() };
+      // "Name, Role" or "Name - Role": split at the first comma or dash.
+      const [, name, role = ''] = match[2].match(/^(.+?)(?:,\s+|\s+[-–—]\s+)(.+)$/) ?? [, match[2]];
+      return { quote: match[1].trim(), name: name!.trim(), role: role.trim() };
     }),
 };
 
 const contactNode = section(live, 'Contact and footer');
 export const contact = {
   heading: asText(required(contactNode, 'Heading')),
-  line: asText(required(contactNode, 'Contact line')),
+  line: optional(contactNode, 'Contact line') ? asText(optional(contactNode, 'Contact line')!) : undefined,
   email: required(contactNode, 'Email'),
   linkedin: asText(required(contactNode, 'LinkedIn')),
   substack: asText(required(contactNode, 'Substack')),

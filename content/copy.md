@@ -99,6 +99,7 @@ I bring together groups whose interests clash by finding a goal they share, then
 - Same site, same question, different answers (one finding, rebuilt): wfc/chart.png
 - Product screens: site feed, updates, anonymous reports, recognition, analytics and the safety survey: wfc/screen-\*.jpg (6 images)
 - Presenting the first pilot to workers at HS2 Euston, 2020: wfc/euston-presenting.jpg
+- Me on site: harrison-on-site.jpg
 
 ### Pull quote
 
@@ -144,14 +145,26 @@ I design tools that teach through good questions, so people learn a skill just b
 ### Learn more
 
 - Button: Learn more about NVC
-- Text: \[TO DO: a short explanation of Nonviolent Communication\]
+- Text: \[<https://en.wikipedia.org/wiki/Nonviolent_Communication>\]
 
 ### Evidence
 
 - Try Tempr live: https://tempr-taupe.vercel.app/
-- A real Tempr conversation, with permission: \[TO DO: image\]
-- Build history: from form to chat: \[TO DO: URL or image\]
-- Feedback from 3 users: \[TO DO: URL or image\]
+- Feedback from 3 users:
+
+  #### Judy, marketing consultant
+
+  "Tempr asked me some good clarifying questions and made a couple recommendations one of which I used."
+
+  #### Joe, advisory manager, AI experiences and enterprise delivery
+
+  "I definitely would not have texted my friend back if it wasn't for this tool."
+
+  #### Alex, entrepreneur
+
+  "The tool is super helpful when I've got a live problem!! Not even for the final text it gave me but just the process it took me through to realise that I was allowed to ask."
+
+  \### 
 
 ### Pull quote
 
@@ -194,7 +207,7 @@ I treat limits as a design tool, then test them with real learners to find the l
 - Writing Prompts from Harrison (Notion): https://harrisonmoore.notion.site/Writing-Prompts-from-Harrison-LIVE-75e0e11b460c435a9ea8553845744ca2
 - The 6-word life story challenge: \[<https://www.thenewworkday.com/p/the-artistic-superpower-hidden-in-your-subscriber-list>\]
 - Writing like David Sedaris, with footnote: \[<https://www.thenewworkday.com/p/writing-like-david-sedaris>\]
-- Writing Workshop case study: (links to the project above)
+- Writing Workshop case study: (links to the project below)
 
 ### Pull quote
 
@@ -211,7 +224,7 @@ I treat limits as a design tool, then test them with real learners to find the l
 - Result: 37 paying writers, 8 published pieces.
 - Evidence link text: Read my workshop write-up
 - Evidence link: \[<https://www.thenewworkday.com/p/the-questions-every-writer-should-ask>\]
-- Image: \[use the image of everybody in a live session together\]
+- Image: workshop-cohort.png (the cohort in a live session, Zoom names blurred)
 - Image alt text: Zoom screenshot of the Full Cycle Writing Workshop cohort during a live session
 
 ### The problem
@@ -288,8 +301,9 @@ Write an imaginary conversation between 2 voices, both played by you. One might 
 - Role: Designer and producer
 - Result: Doc/Fest commissioned my trophy design 3 years running. Featured in Screen Daily and It's Nice That.
 - Evidence link text: See the design proposal
-- Evidence link: steel-core/design-proposal-2017.pdf (the March 2017 winning proposal, 28 pages)
+- Evidence link: steel-core/design-proposal-2017.pdf (the March 2017 winning proposal, 12 pages)
 - Image: steel-core/winners-2017.jpg (the 2017 winners holding their trophies at Doc/Fest)
+- Logo: docfest-logo.png
 - Image alt text: Sheffield Doc/Fest's 2017 award winners in a group, holding their steel trophies
 
 ### The challenge
@@ -310,10 +324,9 @@ I turn a place and its story into an object people can hold, and manage producti
 
 ### Evidence
 
-- The winning design proposal and renders: steel-core/design-proposal-2017.pdf, plus a gallery (render.jpg, proposal-together.jpg, proposal-in-hand.jpg, proposal-typeface.jpg, proposal-technical-drawing.jpg)
+- The winning design proposal and renders: steel-core/design-proposal-2017.pdf, plus a gallery (render.jpg, proposal-together.jpg, proposal-in-hand.jpg, proposal-typeface.jpg)
 - 2017 winners holding their trophies: steel-core/winners-2017.jpg
 - It's Nice That: 2019 winners: https://www.itsnicethat.com/news/sheffield-doc-fest-2019-winners-announced-film-120619
-- Doc/Fest's 2020 letter, confirming they would have hired me again before Covid cancelled the awards: steel-core/docfest-2020-letter.pdf
 
 ### Pull quote
 
@@ -329,8 +342,8 @@ I turn a place and its story into an object people can hold, and manage producti
 - Role: Artist and producer
 - Result: Made and sold £3,000 of art in 6 weeks to help pay for my masters at the Royal College of Art.
 - Evidence link text: See the opening night
-- Evidence link: \[TO DO: images\]
-- Image: \[TO DO: a cropped opening-night shot\]
+- Evidence link: solo-opening-night.jpg
+- Image: solo-visitors.jpg
 - Image alt text: Opening-night visitors looking at framed drawings marked with red sold dots
 
 ### The problem
@@ -353,10 +366,12 @@ I can fund an idea by making something people want to support, then deliver it o
 
 ### Evidence
 
-- Opening-night photos: sold dots on the drawings: \[TO DO: images\]
-- The mirrors and the film, installed: \[TO DO: images\]
-- The Star's preview, 17 August 2016: \[TO DO: <https://www.thestar.co.uk/news/artist-harrison-looks-at-his-home-city-through-fresh-eyes-455351>\]
-- The crowdfunding campaign page: \[TO DO: <https://www.indiegogo.com/en/projects/harrisonmoore-14912189/once-in-a-lifetime-opportunity-to-study-at-the-rca>\]
+- Opening night: solo-opening-night.jpg, solo-visitors.jpg, solo-harrison.jpg
+- The work: drawings, paintings, casts and mirrors: solo-drawings.jpg, solo-paintings.jpg, solo-casts.jpg, solo-mirrors.jpg
+- The press release: sheffield-press-release.pdf
+- My crowdfunding video: crowdfunding.mp4
+- The Star's preview, 17 August 2016: https://www.thestar.co.uk/news/artist-harrison-looks-at-his-home-city-through-fresh-eyes-455351
+- The crowdfunding campaign page: https://www.indiegogo.com/en/projects/harrisonmoore-14912189/once-in-a-lifetime-opportunity-to-study-at-the-rca
 
 ### Pull quote
 
@@ -417,29 +432,27 @@ I can fund an idea by making something people want to support, then deliver it o
 - People who hire user researchers or run research teams
 - Investors in education and future of work startups
 
-### Forwarding
+### Sharing
 
-- Lead-in: Know someone? Send them this:
-- Message: You should meet Harrison Moore. He's an end-to-end builder who helps people communicate, learn and do their best work, and he's job hunting:
-- Copy button: Copy this message
-- Copy confirmation: Copied
+- Lead-in: Know someone who should see this? Share my portfolio with them, in your own words.
+- Share button: Share my portfolio
+- Share confirmation: Link copied
 
 ## Quotes
 
 - Heading: Testimonials
-- Quote 1: “Harrison absolutely aced the editor “exam” during our training (60/60), and has helped two cohorts of students around a range of technical and psychological blocks. His experience in art school enables him to give a perspective shift to anyone he works with.” – Michael Dean - Editor-in-Chief at Write of Passage
-- Quote 2: “What I found most helpful from a “coaching skills” perspective was your commitment to not answering my questions directly or solving my problems. You are so committed to helping your clients find their own answers. It’s very, very empowering... And Harrison, I have to say it continues to strike me that you should be teaching AI to groups of people for money because you’re very good at this.” – Judy Murdoch - Marketing Consultant
-- Quote 3: “Harrison’s own multifaceted career makes him a Swiss Army knife of a coach. Since leaving full-time employment and navigating my own evolving career and interests, he has seamlessly moved between being my writing coach, business coach, and art coach as needed... What sets him apart is not just his exceptional range of coaching skills, but his genuine professional understanding across fields.” – Yujia Du - Climate Leader
+- Quote 1: “Harrison absolutely aced the editor “exam” during our training (60/60), and has helped two cohorts of students around a range of technical and psychological blocks. His experience in art school enables him to give a perspective shift to anyone he works with.” – Michael, Editor-in-Chief at Write of Passage
+- Quote 2: “What I found most helpful from a “coaching skills” perspective was your commitment to not answering my questions directly or solving my problems. You are so committed to helping your clients find their own answers. It’s very, very empowering... And Harrison, I have to say it continues to strike me that you should be teaching AI to groups of people for money because you’re very good at this.” – Judy, Marketing Consultant
+- Quote 3: “Harrison’s own multifaceted career makes him a Swiss Army knife of a coach. Since leaving full-time employment and navigating my own evolving career and interests, he has seamlessly moved between being my writing coach, business coach, and art coach as needed... What sets him apart is not just his exceptional range of coaching skills, but his genuine professional understanding across fields.” – Yujia, Climate Leader
 
 ## Contact and footer
 
-- Heading: \[TO DO\]
-- Contact line: \[TO DO\]
+- Heading: Contact me
 - Email: harrison@thenewworkday.com
-- LinkedIn: \[TO DO: <https://www.linkedin.com/in/mrharrisonmoore>\]
+- LinkedIn: https://www.linkedin.com/in/mrharrisonmoore
 - Substack: https://www.thenewworkday.com/
 - CV button: View my CV
-- Footer: \[TO DO: name, location, year\]
+- Footer: Made by me using Claude Code
 
 ## CV
 

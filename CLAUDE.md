@@ -40,7 +40,13 @@ Sticky top bar, top of page, track record (3 figures), selected projects (filter
 
 ## Harrison's decisions (override the brief)
 - Project cards have ONE action, "Read the case study". No evidence link on the card (evidence links live in the pop-up).
-- Design proposal PDF: cover the sensitive details (old phone number, RCA email, Doc/Fest commissioner's email) with black boxes before publishing.
+- Design proposal PDF: sensitive details are covered with black boxes and every page flattened to an image (no hidden text). Done; the unredacted original lives only in `originals/`.
+- No pre-written forwarding message. "How you can help" has a share button that shares the portfolio link; people add their own words.
+- Workshop lead image: Zoom name labels blurred, faces left as they are.
+- Doc/Fest logo (`Logo:` field) shows small inside The Steel Core pop-up so it looks official.
+- `originals/` holds full-size and private source files. It is git-ignored: never commit it.
+- Asset files use lowercase-hyphen names. copy.md may name them with a different ending (.jpg vs .png); lookup ignores the ending.
+- When Claude edits content/copy.md directly, add a to-do for Harrison to make the same edit in his Live copy tab, or the next export undoes it.
 
 ## Behaviour essentials
 - Filters: `aria-pressed`, "All" active on load, URL kept in sync (`?filter=`).

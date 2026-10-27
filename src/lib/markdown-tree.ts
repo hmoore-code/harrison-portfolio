@@ -5,6 +5,8 @@ export interface Bullet {
   raw: string;
   label?: string;
   value?: string;
+  // Indented lines under the bullet, e.g. quotes nested under "Feedback from 3 users:".
+  nested?: string[];
 }
 
 export interface MdNode {
@@ -35,6 +37,7 @@ export function parseTree(source: string): MdNode {
   const root: MdNode = { heading: '', level: 0, bullets: [], paragraphs: [], children: [] };
   const stack: MdNode[] = [root];
   let paragraph: string[] = [];
+  let lastBullet: Bullet | undefined;
 
   const current = () => stack[stack.length - 1];
   const flush = () => {
@@ -45,9 +48,11 @@ export function parseTree(source: string): MdNode {
   for (const line of source.split(/\r?\n/)) {
     const heading = line.match(/^(#{1,6})\s+(.*)$/);
     const bullet = line.match(/^\s*[-*+]\s+(.*)$/);
+    const indented = line.match(/^\s{2,}(\S.*)$/);
 
     if (heading) {
       flush();
+      lastBullet = undefined;
       const level = heading[1].length;
       while (current().level >= level) stack.pop();
       const node: MdNode = {
@@ -59,12 +64,17 @@ export function parseTree(source: string): MdNode {
       };
       current().children.push(node);
       stack.push(node);
+    } else if (indented && lastBullet) {
+      flush();
+      (lastBullet.nested ??= []).push(unescapeExport(indented[1]));
     } else if (bullet) {
       flush();
-      current().bullets.push(toBullet(unescapeExport(bullet[1])));
+      lastBullet = toBullet(unescapeExport(bullet[1]));
+      current().bullets.push(lastBullet);
     } else if (line.trim() === '') {
       flush();
     } else {
+      lastBullet = undefined;
       paragraph.push(line.trim());
     }
   }
