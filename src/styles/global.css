@@ -15,13 +15,15 @@
 
   --line: 2px solid var(--ink);
 
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 14px;
-  --space-4: 18px;
-  --space-5: 22px;
-  --space-6: 28px;
-  --space-7: 40px;
+  /* Multiplies every spacing step. 1 = the brief's steps; 1.1 = 10% more room. */
+  --spacing-scale: 1.1;
+  --space-1: calc(4px * var(--spacing-scale));
+  --space-2: calc(8px * var(--spacing-scale));
+  --space-3: calc(14px * var(--spacing-scale));
+  --space-4: calc(18px * var(--spacing-scale));
+  --space-5: calc(22px * var(--spacing-scale));
+  --space-6: calc(28px * var(--spacing-scale));
+  --space-7: calc(40px * var(--spacing-scale));
   --gutter: 20px;
   --column: 720px;
 
