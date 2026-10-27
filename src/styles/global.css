@@ -15,8 +15,8 @@
 
   --line: 2px solid var(--ink);
 
-  /* Multiplies every spacing step. 1 = the brief's steps; 1.2 = 20% more room. */
-  --spacing-scale: 1.2;
+  /* Multiplies every spacing step. 1 = the brief's steps; 1.25 = 25% more room (Harrison's choice). */
+  --spacing-scale: 1.25;
   --space-1: calc(4px * var(--spacing-scale));
   --space-2: calc(8px * var(--spacing-scale));
   --space-3: calc(14px * var(--spacing-scale));
