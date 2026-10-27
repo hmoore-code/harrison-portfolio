@@ -20,6 +20,8 @@ Full spec: `BUILD-BRIEF.md` (read it before any non-trivial change). This file i
 
 ## Sources of truth
 - **Words: `content/copy.md`**, parsed at build time. Never hard-code copy that belongs there.
+  - copy.md is the ONLY source of the words (decided 27 Oct 2026). Harrison edits it directly in VS Code or on github.com; the Google Doc's Live copy tab is retired. Re-read it before any copy work, since he may have changed it.
+  - "Publish my copy changes" = build, commit and push copy.md.
   - `## Section` / `## Project: <name>`, `###` sub-parts, `####` items, `Label: value` short fields, plain paragraphs for prose.
   - Unescape `\[` `\]`. Support `[text](url)` links in prose.
   - `[TO DO]` must render as a visible dashed-outline gap, never hidden.
@@ -46,7 +48,6 @@ Sticky top bar, top of page, track record (3 figures), selected projects (filter
 - Doc/Fest logo (`Logo:` field) shows small inside The Steel Core pop-up so it looks official.
 - `originals/` holds full-size and private source files. It is git-ignored: never commit it.
 - Asset files use lowercase-hyphen names. copy.md may name them with a different ending (.jpg vs .png); lookup ignores the ending.
-- When Claude edits content/copy.md directly, add a to-do for Harrison to make the same edit in his Live copy tab, or the next export undoes it.
 
 ## Behaviour essentials
 - Filters: `aria-pressed`, "All" active on load, URL kept in sync (`?filter=`).

@@ -1,6 +1,6 @@
 # Live copy
 
-This tab holds only the words that go on the site, in page order. The site is built from it, so edit the words here whenever you like. Keep the headings and the labels before each colon: the site uses them to find each piece of text. Anything marked \[TO DO\] still needs writing or choosing, and shows as a gap on the site until then.
+This file holds only the words that go on the site, in page order. It is the one and only version: edit it here and save. The site is built from it, so edit the words here whenever you like. Keep the headings and the labels before each colon: the site uses them to find each piece of text. Anything marked \[TO DO\] still needs writing or choosing, and shows as a gap on the site until then.
 
 ## Page title and share card
 
