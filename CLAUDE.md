@@ -38,6 +38,10 @@ Sticky top bar, top of page, track record (3 figures), selected projects (filter
 - Spacing steps 4, 8, 14, 18, 22, 28, 40. Gutter 20, card padding 18. Desktop: one centred column ~680–720px, never multi-column.
 - Icons: 16px line icons, 1.5px stroke.
 
+## Harrison's decisions (override the brief)
+- Project cards have ONE action, "Read the case study". No evidence link on the card (evidence links live in the pop-up).
+- Design proposal PDF: cover the sensitive details (old phone number, RCA email, Doc/Fest commissioner's email) with black boxes before publishing.
+
 ## Behaviour essentials
 - Filters: `aria-pressed`, "All" active on load, URL kept in sync (`?filter=`).
 - Card covers slide right (0 to 92%) and photo goes greyscale to colour with scroll; formula in brief section 5. Respect reduced motion. Never cover the portrait.

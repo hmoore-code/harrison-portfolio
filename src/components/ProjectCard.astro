@@ -1,17 +1,12 @@
 ---
-import { isTodo, type Project } from '../lib/content';
-import { projectsIntro } from '../lib/content';
-import { resolveTarget } from '../lib/links';
+import { projectsIntro, type Project } from '../lib/content';
 import CoveredImage from './CoveredImage.astro';
-import Todo from './Todo.astro';
 
 interface Props {
   project: Project;
 }
 
 const { project } = Astro.props;
-const evidence = resolveTarget(project.evidenceLink, project.slug);
-const linkText = isTodo(project.evidenceLinkText) ? project.evidenceLinkText.todo : project.evidenceLinkText;
 const headingId = `card-${project.slug}`;
 ---
 
@@ -25,22 +20,6 @@ const headingId = `card-${project.slug}`;
       <a class="pill pill--solid pill--small" href={`#${project.slug}`} data-open-dialog={project.slug}>
         {projectsIntro.cardButton}<span class="visually-hidden">: {project.title}</span>
       </a>
-      {
-        evidence ? (
-          <a
-            class="card__link"
-            href={evidence.href}
-            data-open-dialog={evidence.type === 'popup' ? project.slug : undefined}
-            target={evidence.external ? '_blank' : undefined}
-            rel={evidence.external ? 'noopener' : undefined}
-          >
-            {linkText}
-            {evidence.external && <span class="visually-hidden"> (opens in a new tab)</span>}
-          </a>
-        ) : (
-          <Todo text={`${linkText}: ${isTodo(project.evidenceLink) ? project.evidenceLink.todo : ''}`} />
-        )
-      }
     </div>
   </div>
 </article>
@@ -91,11 +70,4 @@ const headingId = `card-${project.slug}`;
     gap: var(--space-3);
   }
 
-  .card__link {
-    display: flex;
-    align-items: center;
-    min-height: 48px;
-    font-size: 15px;
-    font-weight: 600;
-  }
 </style>
