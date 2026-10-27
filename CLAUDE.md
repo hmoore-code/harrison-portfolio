@@ -35,7 +35,7 @@ Sticky top bar, top of page, track record (3 figures), selected projects (filter
 - Archivo, headings 800 weight at 62% width. Headline 58, pop-up title 72, section heading 56, card title/pull quote 40, sub-heading 28, body 17/1.55, labels 13/600. Shrink headings below 360px.
 - Lines always 2px ink, straight or wavy (use provided SVGs). Star is the only filled mark.
 - Radii: cards/images 20 (16 in pop-ups), thumbnails 10, sheet top 24, pill buttons. Touch targets 44px+, main buttons 52px.
-- Spacing steps 4, 8, 14, 18, 22, 28, 40. Gutter 20, card padding 18. Desktop: one centred column ~680–720px, never multi-column.
+- Spacing steps 4, 8, 14, 18, 22, 28, 40, multiplied by `--spacing-scale: 1.25` (Harrison wanted 25% more room). Use the `--space-*` tokens, never raw px for spacing. Gutter 20, card padding 18. Desktop: one centred column ~680–720px, never multi-column.
 - Icons: 16px line icons, 1.5px stroke.
 
 ## Harrison's decisions (override the brief)
