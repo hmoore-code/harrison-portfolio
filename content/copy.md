@@ -62,127 +62,6 @@ This tab holds only the words that go on the site, in page order. The site is bu
 - Filter 2: Building communication tools
 - Filter 3: Designing compelling experiences
 
-## Project: Full Cycle Writing Workshop
-
-- Filter: Helping people learn
-- Title: 6-week writing workshop
-- Organisation: Creative Thought Partner
-- Year: 2024 to 2025
-- Role: Designer and facilitator
-- Result: 37 paying writers, 8 published pieces.
-- Evidence link text: Read my workshop write-up
-- Evidence link: \[<https://www.thenewworkday.com/p/the-questions-every-writer-should-ask>\]
-- Image: \[use the image of everybody in a live session together\]
-- Image alt text: Zoom screenshot of the Full Cycle Writing Workshop cohort during a live session
-
-### The problem
-
-When the online writing course Write of Passage closed, many alumni (including me!) were devastated to lose the community they wrote with. 37 writers signed up to my writing workshop. They had tonnes of interesting ideas but no repeatable process, and fear of publishing kept many stuck in a state of procrastination.
-
-### What I did
-
-I stepped in and designed and ran a live 6-week course that took writers through 6 distinct stages of a writing project: curating an information diet, research, thesis, style, editing, and finally publishing. To help lower the stakes, I instructed each writer to write their first draft as an email to one person they trusted.
-
-After session 4, many writers said they were now struggling to choose between different drafts, so I adapted the editing session, using powerful questions to identify each piece's main point: Why am I writing this? What do I ultimately believe? Who is this going to be most valuable to?
-
-### What happened
-
-Answering these questions and writing to one trusted person got the majority of writers unstuck. Everyone produced drafts, and at least 8 published. When the course ended, the students asked to keep meeting every Sunday as a writing group, which they offered to co-host.
-
-### What this shows
-
-I design learning experiences that make people feel safe enough to try, then adapt them when learners get stuck.
-
-### Evidence
-
-- My write-up of the workshop
-- Course plan and session slides: \[<https://docs.google.com/presentation/d/1UAypqzHJgM_L9mBrtURuDdxkEzR0KEFty-AUPfUwqMI/edit?usp=sharing>\]
-- The Form Library: \[<https://www.thenewworkday.com/p/the-shape-of-your-ideas-matters>\]
-
-### Pull quote
-
-- Quote: "It really broke a spell for me, that not even \[Write of Passage\] could break."
-- Credit: Ezra D.
-
-### Try it yourself
-
-- Button: Try a writing challenge
-- Image: form-1-letter.jpg, form-2-listicle.jpg, form-3-dialogue.jpg (the original slides from session 4)
-
-In the first half of my workshop, I steered writers towards working out what they wanted to say before worrying about structure or style. But form and substance are always tangled up. The shape you write in changes how you think, and it changes what ends up on the page.
-
-So in session 4, I asked each writer to take the idea they were working on and run it through one of these 3 forms, all taken from a [Form Library](https://www.thenewworkday.com/p/the-shape-of-your-ideas-matters) I built for the course. Try it with an idea of your own. It will probably feel messy. That's fine: the point is to see what a new shape does to your idea.
-
-#### Form 1: A handwritten letter
-
-Write directly to one person. It could be someone you know, or a public figure you admire or disagree with. A personal letter creates intimacy, almost like a confession, so you can show raw thinking without worrying about sounding perfect.
-
-- Handwrite it on a single A4 sheet, and fill no more than 1 page.
-- Start with "Dear..."
-- Tell them what you most want them to understand about your idea.
-- Don't polish it. Let it be honest and a bit raw.
-
-#### Form 2: A listicle
-
-A listicle breaks your idea into separate chunks. It makes for a clear, quick read, and it's a good way to unpack an idea into its most interesting parts.
-
-- Write exactly 7 items: questions, lessons or short stories.
-- Give each one a clear, punchy heading.
-- Keep each item to 1 to 3 sentences.
-- If you're stuck, try "7 questions I'm exploring" or "7 lessons I've learned".
-
-#### Form 3: A made-up dialogue
-
-Write an imaginary conversation between 2 voices, both played by you. One might be wise or supportive, the other full of questions or doubts. They could be 2 friends, family members or colleagues, or 2 strangers you think should meet.
-
-- Start with a thorny question, problem or opportunity.
-- Let the voices go back and forth for 1 to 2 A4 pages.
-- Look for the tensions and ideas that only come out in conversation.
-- Don't force a conclusion. Follow where the conversation goes.
-
-## Project: Clever constraints for writers
-
-- Filter: Helping people learn
-- Title: Self-serve writing prompts
-- Organisation: Creative Thought Partner
-- Year: 2024 to 2025
-- Role: Creator and host
-- Result: 53 pieces published across 4 writing challenges. Biggest insight was that creative constraints can have a "sweet spot."
-- Evidence link text: Try the writing prompts
-- Evidence link: https://harrisonmoore.notion.site/Writing-Prompts-from-Harrison-LIVE-75e0e11b460c435a9ea8553845744ca2
-- Image: notion-prompts.jpg (your screenshot of the Notion prompt library)
-- Image alt text: A grid of colourful writing prompt cards, such as Do nothing and Write for the dustbin
-
-### The problem
-
-If you asked a hundred people what it takes to produce great writing, and enjoy it, I bet that none of them would say "constraints". But people freeze when given total freedom.
-
-### What I did
-
-In developing my own practice, I'd built a library of 29 writing prompts. In 2025, I turned the prompts into a series of challenges. Each one set a different focus and a different limit (for example, from 6 words to 900). I published everyone's responses, and we met on group calls to reflect.
-
-We found that responses fell as the rules stacked up. 30 people published a 6-word story. 14 when it was exactly 49 words. And only 2 for a 900-word essay. I named the pattern the "constraint sweet spot" and published it for other writers to use.
-
-### What happened
-
-People are productive when constraints are tight but not too tight. Across 4 challenges, participants published 53 pieces, collectively drawing 2,677 views. One participant who hadn't written for over a year said the prompts "keep the spark alive". Several prompts also became core exercises in my Writing Workshop.
-
-### What this shows
-
-I treat limits as a design tool, then test them with real learners to find the level that gets people started.
-
-### Evidence
-
-- Writing Prompts from Harrison (Notion): https://harrisonmoore.notion.site/Writing-Prompts-from-Harrison-LIVE-75e0e11b460c435a9ea8553845744ca2
-- The 6-word life story challenge: \[<https://www.thenewworkday.com/p/the-artistic-superpower-hidden-in-your-subscriber-list>\]
-- Writing like David Sedaris, with footnote: \[<https://www.thenewworkday.com/p/writing-like-david-sedaris>\]
-- Writing Workshop case study: (links to the project above)
-
-### Pull quote
-
-- Quote: "Even though I don't know any of you, we made something together."
-- Credit: Writer, prompt challenge participant
-
 ## Project: Worker Feedback Club
 
 - Filter: Building communication tools
@@ -278,6 +157,127 @@ I design tools that teach through good questions, so people learn a skill just b
 
 - Quote: "Not even for the final text it gave me but just the process it took me through to realise that I was allowed to ask."
 - Credit: Tempr user
+
+## Project: Clever constraints for writers
+
+- Filter: Helping people learn
+- Title: Self-serve writing prompts
+- Organisation: Creative Thought Partner
+- Year: 2024 to 2025
+- Role: Creator and host
+- Result: 53 pieces published across 4 writing challenges. Biggest insight was that creative constraints can have a "sweet spot."
+- Evidence link text: Try the writing prompts
+- Evidence link: https://harrisonmoore.notion.site/Writing-Prompts-from-Harrison-LIVE-75e0e11b460c435a9ea8553845744ca2
+- Image: notion-prompts.jpg (your screenshot of the Notion prompt library)
+- Image alt text: A grid of colourful writing prompt cards, such as Do nothing and Write for the dustbin
+
+### The problem
+
+If you asked a hundred people what it takes to produce great writing, and enjoy it, I bet that none of them would say "constraints". But people freeze when given total freedom.
+
+### What I did
+
+In developing my own practice, I'd built a library of 29 writing prompts. In 2025, I turned the prompts into a series of challenges. Each one set a different focus and a different limit (for example, from 6 words to 900). I published everyone's responses, and we met on group calls to reflect.
+
+We found that responses fell as the rules stacked up. 30 people published a 6-word story. 14 when it was exactly 49 words. And only 2 for a 900-word essay. I named the pattern the "constraint sweet spot" and published it for other writers to use.
+
+### What happened
+
+People are productive when constraints are tight but not too tight. Across 4 challenges, participants published 53 pieces, collectively drawing 2,677 views. One participant who hadn't written for over a year said the prompts "keep the spark alive". Several prompts also became core exercises in my Writing Workshop.
+
+### What this shows
+
+I treat limits as a design tool, then test them with real learners to find the level that gets people started.
+
+### Evidence
+
+- Writing Prompts from Harrison (Notion): https://harrisonmoore.notion.site/Writing-Prompts-from-Harrison-LIVE-75e0e11b460c435a9ea8553845744ca2
+- The 6-word life story challenge: \[<https://www.thenewworkday.com/p/the-artistic-superpower-hidden-in-your-subscriber-list>\]
+- Writing like David Sedaris, with footnote: \[<https://www.thenewworkday.com/p/writing-like-david-sedaris>\]
+- Writing Workshop case study: (links to the project above)
+
+### Pull quote
+
+- Quote: "Even though I don't know any of you, we made something together."
+- Credit: Writer, prompt challenge participant
+
+## Project: Full Cycle Writing Workshop
+
+- Filter: Helping people learn
+- Title: 6-week writing workshop
+- Organisation: Creative Thought Partner
+- Year: 2024 to 2025
+- Role: Designer and facilitator
+- Result: 37 paying writers, 8 published pieces.
+- Evidence link text: Read my workshop write-up
+- Evidence link: \[<https://www.thenewworkday.com/p/the-questions-every-writer-should-ask>\]
+- Image: \[use the image of everybody in a live session together\]
+- Image alt text: Zoom screenshot of the Full Cycle Writing Workshop cohort during a live session
+
+### The problem
+
+When the online writing course Write of Passage closed, many alumni (including me!) were devastated to lose the community they wrote with. 37 writers signed up to my writing workshop. They had tonnes of interesting ideas but no repeatable process, and fear of publishing kept many stuck in a state of procrastination.
+
+### What I did
+
+I stepped in and designed and ran a live 6-week course that took writers through 6 distinct stages of a writing project: curating an information diet, research, thesis, style, editing, and finally publishing. To help lower the stakes, I instructed each writer to write their first draft as an email to one person they trusted.
+
+After session 4, many writers said they were now struggling to choose between different drafts, so I adapted the editing session, using powerful questions to identify each piece's main point: Why am I writing this? What do I ultimately believe? Who is this going to be most valuable to?
+
+### What happened
+
+Answering these questions and writing to one trusted person got the majority of writers unstuck. Everyone produced drafts, and at least 8 published. When the course ended, the students asked to keep meeting every Sunday as a writing group, which they offered to co-host.
+
+### What this shows
+
+I design learning experiences that make people feel safe enough to try, then adapt them when learners get stuck.
+
+### Evidence
+
+- My write-up of the workshop
+- Course plan and session slides: \[<https://docs.google.com/presentation/d/1UAypqzHJgM_L9mBrtURuDdxkEzR0KEFty-AUPfUwqMI/edit?usp=sharing>\]
+- The Form Library: \[<https://www.thenewworkday.com/p/the-shape-of-your-ideas-matters>\]
+
+### Pull quote
+
+- Quote: "It really broke a spell for me, that not even \[Write of Passage\] could break."
+- Credit: Ezra D.
+
+### Try it yourself
+
+- Button: Try a writing challenge
+- Image: form-1-letter.jpg, form-2-listicle.jpg, form-3-dialogue.jpg (the original slides from session 4)
+
+In the first half of my workshop, I steered writers towards working out what they wanted to say before worrying about structure or style. But form and substance are always tangled up. The shape you write in changes how you think, and it changes what ends up on the page.
+
+So in session 4, I asked each writer to take the idea they were working on and run it through one of these 3 forms, all taken from a [Form Library](https://www.thenewworkday.com/p/the-shape-of-your-ideas-matters) I built for the course. Try it with an idea of your own. It will probably feel messy. That's fine: the point is to see what a new shape does to your idea.
+
+#### Form 1: A handwritten letter
+
+Write directly to one person. It could be someone you know, or a public figure you admire or disagree with. A personal letter creates intimacy, almost like a confession, so you can show raw thinking without worrying about sounding perfect.
+
+- Handwrite it on a single A4 sheet, and fill no more than 1 page.
+- Start with "Dear..."
+- Tell them what you most want them to understand about your idea.
+- Don't polish it. Let it be honest and a bit raw.
+
+#### Form 2: A listicle
+
+A listicle breaks your idea into separate chunks. It makes for a clear, quick read, and it's a good way to unpack an idea into its most interesting parts.
+
+- Write exactly 7 items: questions, lessons or short stories.
+- Give each one a clear, punchy heading.
+- Keep each item to 1 to 3 sentences.
+- If you're stuck, try "7 questions I'm exploring" or "7 lessons I've learned".
+
+#### Form 3: A made-up dialogue
+
+Write an imaginary conversation between 2 voices, both played by you. One might be wise or supportive, the other full of questions or doubts. They could be 2 friends, family members or colleagues, or 2 strangers you think should meet.
+
+- Start with a thorny question, problem or opportunity.
+- Let the voices go back and forth for 1 to 2 A4 pages.
+- Look for the tensions and ideas that only come out in conversation.
+- Don't force a conclusion. Follow where the conversation goes.
 
 ## Project: The Steel Core
 

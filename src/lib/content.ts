@@ -158,13 +158,18 @@ function asImage(value: string): FileRef | Todo {
 }
 
 // Reads anything a link or evidence line can point at. Returns null for plain words.
-function asTarget(value: string, ctx: { previousSlug?: string; knownFiles: string[] }): Target | null {
+interface TargetContext {
+  knownFiles: string[];
+  // Finds the project an evidence label names, e.g. "Writing Workshop case study".
+  findProject: (label: string) => string | undefined;
+}
+
+function asTarget(value: string, ctx: TargetContext): Target | null {
   const text = asText(value);
   if (isTodo(text)) return text;
   if (/^https?:\/\//.test(text)) return { kind: 'url', href: text.split(/\s/)[0] };
-  if (/^\(links to the project above\)/i.test(text)) {
-    return ctx.previousSlug ? { kind: 'project', slug: ctx.previousSlug } : { todo: 'TO DO: which project to link to' };
-  }
+  // "(links to the project above)": which project is worked out from the label in asEvidence.
+  if (/^\(links to .*project.*\)/i.test(text)) return { kind: 'project', slug: '' };
   const files = filesIn(text);
   if (!files.length) return null;
   const note = noteIn(text);
@@ -181,7 +186,7 @@ function asTarget(value: string, ctx: { previousSlug?: string; knownFiles: strin
 export const basename = (file: string) => file.split('/').pop() ?? file;
 
 // "Label: target", splitting at the last colon that leaves a real target on the right.
-function asEvidence(raw: string, ctx: Parameters<typeof asTarget>[1], fallback: Target): EvidenceItem {
+function asEvidence(raw: string, ctx: TargetContext, fallback: Target): EvidenceItem {
   // Only split at colons outside [brackets], so "[TO DO: https://...]" stays whole.
   const splits: number[] = [];
   let depth = 0;
@@ -192,7 +197,13 @@ function asEvidence(raw: string, ctx: Parameters<typeof asTarget>[1], fallback: 
   }
   for (const at of splits) {
     const target = asTarget(raw.slice(at).replace(/^:\s+/, ''), ctx);
-    if (target) return { label: raw.slice(0, at).trim(), target };
+    if (!target) continue;
+    const label = raw.slice(0, at).trim();
+    if ('kind' in target && target.kind === 'project' && !target.slug) {
+      const slug = ctx.findProject(label);
+      return { label, target: slug ? { kind: 'project', slug } : { todo: `TO DO: which project "${label}" links to` } };
+    }
+    return { label, target };
   }
   return { label: raw, target: fallback };
 }
@@ -268,9 +279,23 @@ export const projectsIntro = {
 };
 
 const projectNodes = live.children.filter((c) => /^Project:/i.test(c.heading));
+const projectNames = projectNodes.map((node) => node.heading.replace(/^Project:\s*/i, ''));
+
+// The other project sharing the most words (4+ letters) with the label.
+function findProjectByName(label: string, ownSlug: string): string | undefined {
+  const words = (text: string) => text.toLowerCase().match(/[a-z]{4,}/g) ?? [];
+  const labelWords = new Set(words(label));
+  let best: { slug: string; score: number } | undefined;
+  for (const name of projectNames) {
+    const slug = slugify(name);
+    const score = words(name).filter((w) => labelWords.has(w)).length;
+    if (slug !== ownSlug && score > 0 && (!best || score > best.score)) best = { slug, score };
+  }
+  return best?.slug;
+}
 
 export const projects: Project[] = projectNodes.map((node, index) => {
-  const name = node.heading.replace(/^Project:\s*/i, '');
+  const name = projectNames[index];
   const slug = slugify(name);
   const where = `Project "${name}"`;
 
@@ -282,7 +307,7 @@ export const projects: Project[] = projectNodes.map((node, index) => {
     .concat(node.children.flatMap((c) => c.bullets))
     .flatMap((b) => filesIn(b.raw))
     .filter((file) => !file.includes('*'));
-  const ctx = { previousSlug: index > 0 ? slugify(projectNodes[index - 1].heading.replace(/^Project:\s*/i, '')) : undefined, knownFiles };
+  const ctx: TargetContext = { knownFiles, findProject: (label) => findProjectByName(label, slug) };
 
   const evidenceLinkValue = required(node, 'Evidence link');
   const evidenceLink: Target = asTarget(evidenceLinkValue, ctx) ?? { todo: `TO DO: ${evidenceLinkValue}` };
