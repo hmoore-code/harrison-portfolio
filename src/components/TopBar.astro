@@ -1,28 +1,31 @@
 ---
-import { topBar, meta } from '../lib/content';
+import { hero, topBar, meta } from '../lib/content';
 import Icon from './Icon.astro';
 import Star from './Star.astro';
-
-const [before, after] = topBar.label;
 ---
 
 <header class="top-bar">
   <div class="top-bar__inner">
     <a class="top-bar__name" href="#top">
-      {before}
-      {after && <Star size={11} />}
-      {after && <span class="top-bar__strong">{after}</span>}
+      <Star size={11} />
+      {topBar.label}
     </a>
-    <button
-      class="top-bar__share"
-      type="button"
-      data-share
-      data-share-title={meta.pageTitle}
-      data-share-confirmation={topBar.shareConfirmation}
-    >
-      <Icon name="share" />
-      {topBar.shareButton}
-    </button>
+    <div class="top-bar__actions">
+      <a class="top-bar__action" href={`mailto:${hero.email}`}>
+        <Icon name="mail" />
+        {topBar.emailButton}
+      </a>
+      <button
+        class="top-bar__action"
+        type="button"
+        data-share
+        data-share-title={meta.pageTitle}
+        data-share-confirmation={topBar.shareConfirmation}
+      >
+        <Icon name="share" />
+        {topBar.shareButton}
+      </button>
+    </div>
   </div>
 </header>
 
@@ -78,10 +81,23 @@ const [before, after] = topBar.label;
     min-height: 44px;
     font-size: 13px;
     font-weight: 600;
+    line-height: 1.2;
     text-decoration: none;
   }
 
-  .top-bar__share {
+  /* The star and the icons keep their size; on very small phones the name wraps instead. */
+  .top-bar__name :global(svg),
+  .top-bar__action :global(svg) {
+    flex: none;
+  }
+
+  .top-bar__actions {
+    display: flex;
+    flex: none;
+  }
+
+
+  .top-bar__action {
     display: flex;
     align-items: center;
     gap: 7px;
@@ -91,5 +107,19 @@ const [before, after] = topBar.label;
     background: transparent;
     font-size: 14px;
     font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* Very small phones: tighter buttons so the name keeps to 2 lines at most. */
+  @media (max-width: 359px) {
+    .top-bar__inner {
+      padding-left: 16px;
+    }
+
+    .top-bar__action {
+      gap: 5px;
+      padding: 0 7px;
+    }
   }
 </style>

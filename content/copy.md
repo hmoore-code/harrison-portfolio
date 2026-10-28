@@ -15,14 +15,15 @@ This tab holds only the words that go on the site, in page order. The site is bu
 - Label: Harrison Moore's Portfolio
 - Share button: Share
 - Share confirmation: Link copied
+- Email button: Email
 
 ## Top of page
 
 - Name: Harrison Moore
-- Headline: I'm Harrison, I'm looking for a team working on the future of education
-- Subtitle: My strengths are **writing**, **programme design**, **user research** and **partnerships**. I care most about *craftsmanship* and *helping people build a great relationship with learning*.
+- Headline: Hey, I'm Harrison, I'm looking for a team working on the future of education
+- Subtitle: My strengths are **writing**, **creative production**, **user research**, and **partnerships**. My big thing is *craftsmanship* and *helping people build a great relationship with learning*.
 - Main button: Share this site
-- Email button: Email me
+- Email button: Get in touch
 - CV link: View my CV
 - Contact email: harrison@thenewworkday.com
 
@@ -441,7 +442,7 @@ I can fund an idea by making something people want to support, then deliver it o
 - Email: harrison@thenewworkday.com
 - LinkedIn: https://www.linkedin.com/in/mrharrisonmoore
 - Substack: https://www.thenewworkday.com/
-- Email button: Email me
+- Email button: Get in touch
 - Footer: Made by me using Claude Code
 
 ## CV

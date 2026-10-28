@@ -34,7 +34,7 @@ Pop-ups: one per project, "Try it yourself" (Full Cycle Writing Workshop), and t
 Sections 3 and 5 to 8 have no mock-up yet. Build them from the spec: same type scale, 2px ink lines, wavy rules as separators, pill buttons, and the star as a small section divider.
 
 ## 5. Components and behaviour
-**Sticky top bar** (design/01): 48px tall, paper background, 2px ink bottom rule. Left: "Portfolio", the star (11px), "Harrison Moore" (13px, 600). Right: a plain "Share" button with a share icon, no outline, at least 44px tall. Share calls `navigator.share` with the page title and URL; where that is unavailable, copy the URL and show a short "Link copied" message.
+**Sticky top bar** (design/01): 48px tall, paper background, 2px ink bottom rule. Left: the star (11px), then the Label from `## Top bar` in copy.md (13px, 600). Right, side by side: an "Email" link with a small envelope icon (Email button, mailto the Contact email), then a "Share" button with a share icon. Both plain, no outline, 14px, 700, at least 44px tall. Share calls `navigator.share` with the page title and URL; where that is unavailable, copy the URL and show a short "Link copied" message. Everything fits on one line at 390px; below 360px the buttons tighten and the label may wrap to 2 lines, but the icons never shrink.
 
 **Top of page** ("Top B"): all words from `## Top of page` in copy.md (Name, Headline, Subtitle, Main button, Email button, CV link, Contact email, then `### Share this site with` with a lead-in paragraph and a bulleted list, and `### Closing line` with one paragraph). Phone first: 390px wide, 20px side gutter, 18px gap between items, in this order:
 - Portrait (portrait-shed.jpg): full width, 200px tall, object-fit cover, object-position 50% 28%, 2px ink border, radius 20, no cover.
@@ -42,10 +42,10 @@ Sections 3 and 5 to 8 have no mock-up yet. Build them from the spec: same type s
 - Subtitle: 17px, 500, line height 1.45. Markdown `**bold**` renders as `<strong>` (weight 800) and `*italics*` as `<em>`.
 - Share box: wavy lines on all 4 sides (rule-wavy.svg top and bottom at 10px high, wave-v.svg left and right at 10px wide), 5px outer padding, inner padding 18px 18px 20px, 12px gap. Lead-in at 22px, 800, width 62%, line height 1; then the bulleted list at 16px, line height 1.4, 8px gap.
 - Closing line: 16px, line height 1.5.
-- Buttons stacked with a 10px gap: Main button, a black pill (52px, share icon, 17px, 700) using the same share function as the top bar; Email button, a 2px outline pill (52px, envelope icon) linking to the contact email; CV link, a centred underlined link (15px, 600, at least 44px tall) that opens the CV pop-up.
+- Buttons stacked with a 10px gap: Main button, a black pill (52px, share icon, 17px, 700) using the same share function as the top bar; Email button ("Get in touch"), a 2px outline pill (52px, envelope icon) linking to the contact email; CV link, a centred underlined link (15px, 600, at least 44px tall) that opens the CV pop-up.
 Then a centred star divider before "Selected projects". The sticky top bar stays as described above. The same 3 buttons appear again after "People I'd like to meet", before the testimonials.
 
-**Contact**: the heading, then one black "Email me" pill (Email button under `## Contact and footer`, mailto the Email field), then 2 round 48px icon links (2px ink circles) to LinkedIn and Substack, opening in a new tab. No email address shown and no CV button here.
+**Contact**: the heading, then one black "Get in touch" pill (Email button under `## Contact and footer`, mailto the Email field), then 2 round 48px icon links (2px ink circles) to LinkedIn and Substack, opening in a new tab. No email address shown and no CV button here.
 
 **Interface words**: every word a visitor reads, including button labels, headings and confirmations, comes from copy.md. If a component needs a word that copy.md doesn't have yet, flag it to Harrison and add a field rather than writing the word into the code.
 

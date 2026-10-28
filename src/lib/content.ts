@@ -259,10 +259,9 @@ export const meta = {
 
 const topBarNode = section(live, 'Top bar');
 export const topBar = {
-  label: required(topBarNode, 'Label')
-    .split('·')
-    .map((part) => part.trim()),
+  label: required(topBarNode, 'Label'),
   shareButton: required(topBarNode, 'Share button'),
+  emailButton: required(topBarNode, 'Email button'),
   shareConfirmation: required(topBarNode, 'Share confirmation'),
 };
 
