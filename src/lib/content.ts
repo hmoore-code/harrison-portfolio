@@ -312,6 +312,7 @@ export const projectsIntro = {
   cardButton: required(projectsNode, 'Card button'),
   galleryHint: required(projectsNode, 'Evidence gallery hint'),
   allFilter: required(filtersNode, 'All'),
+  filterLabel: required(projectsNode, 'Filter label'),
 };
 
 const projectNodes = live.children.filter((c) => /^Project:/i.test(c.heading));

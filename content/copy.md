@@ -45,6 +45,7 @@ Below are selected projects that showcase my skills and experience 👇
 - Intro: I design experiences, tools, and cultural artefacts that help people learn, communicate and do their best work.
 - Card button: Learn more
 - Evidence gallery hint: Tap an image to view it
+- Filter label: Filter by
 
 ### Filters
 

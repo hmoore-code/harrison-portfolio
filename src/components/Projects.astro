@@ -1,9 +1,14 @@
 ---
 import { filters, projects, projectsIntro } from '../lib/content';
+import FilterIcon from './FilterIcon.astro';
 import ProjectCard from './ProjectCard.astro';
 import Star from './Star.astro';
 
-const buttons = [{ id: 'all', label: projectsIntro.allFilter }, ...filters];
+// Each chip shows how many projects in copy.md sit under that filter.
+const buttons = [{ id: 'all', label: projectsIntro.allFilter }, ...filters].map((filter) => ({
+  ...filter,
+  count: filter.id === 'all' ? projects.length : projects.filter((p) => p.filter.id === filter.id).length,
+}));
 ---
 
 <section class="projects column" id="projects" aria-labelledby="projects-heading">
@@ -12,15 +17,19 @@ const buttons = [{ id: 'all', label: projectsIntro.allFilter }, ...filters];
     <p>{projectsIntro.intro}</p>
   </div>
 
-  <div class="filters" role="group" aria-label="Filter projects" data-filters>
-    {
-      buttons.map((filter) => (
-        <button class="filter" type="button" data-filter={filter.id} aria-pressed={filter.id === 'all' ? 'true' : 'false'}>
-          <Star size={15} class="filter__star" />
-          <span>{filter.label}</span>
-        </button>
-      ))
-    }
+  <div class="filters-wrap">
+    <p class="filters__label" id="filters-label">{projectsIntro.filterLabel}</p>
+    <div class="filters" role="group" aria-labelledby="filters-label" data-filters>
+      {
+        buttons.map((filter) => (
+          <button class="filter" type="button" data-filter={filter.id} aria-pressed={filter.id === 'all' ? 'true' : 'false'}>
+            {filter.id === 'all' ? <Star size={16} class="filter__star" /> : <FilterIcon filterId={filter.id} />}
+            <span>{filter.label}</span>{' '}
+            <span class="filter__count">{filter.count}</span>
+          </button>
+        ))
+      }
+    </div>
   </div>
 
   <div class="projects__list">
@@ -71,23 +80,49 @@ const buttons = [{ id: 'all', label: projectsIntro.allFilter }, ...filters];
     line-height: 1.45;
   }
 
-  .filters {
+  .filters-wrap {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: var(--space-2);
   }
 
+  .filters__label {
+    margin: 0;
+    color: var(--grey);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Square-cornered chips, so they read as filters rather than buttons. */
   .filter {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 8px;
     min-height: 44px;
-    padding: 0 16px;
+    padding: 0 12px;
     border: var(--line);
-    border-radius: 999px;
-    background: var(--paper);
+    border-radius: 8px;
+    background: var(--white);
     color: var(--ink);
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: left;
+  }
+
+  .filter :global(.filter-icon) {
+    height: 18px;
+  }
+
+  .filter__count {
+    color: var(--grey);
+    font-size: 12px;
     font-weight: 600;
   }
 
@@ -96,12 +131,12 @@ const buttons = [{ id: 'all', label: projectsIntro.allFilter }, ...filters];
     color: var(--paper);
   }
 
-  .filter :global(.filter__star) {
-    display: none;
+  .filter[aria-pressed='true'] :global(.filter-icon) {
+    filter: invert(1);
   }
 
-  .filter[aria-pressed='true'] :global(.filter__star) {
-    display: block;
+  .filter[aria-pressed='true'] .filter__count {
+    color: rgb(250 250 247 / 75%);
   }
 
   .projects__list {
