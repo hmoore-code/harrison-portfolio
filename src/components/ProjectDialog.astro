@@ -2,7 +2,7 @@
 // One project's case study, opened from its card as a sheet (phone) or centred panel (desktop).
 // dialogs.ts handles opening, closing, the URL hash and the back button.
 import { getImage } from 'astro:assets';
-import { imageIn, isTodo, projectsIntro, type Project } from '../lib/content';
+import { hero, imageIn, isTodo, projectsIntro, topBar, type Project } from '../lib/content';
 import { basename } from '../lib/content';
 import { findImage, findVideo } from '../lib/assets';
 import { sortEvidence } from '../lib/evidence';
@@ -109,6 +109,23 @@ const extras = project.extras.map((extra) => ({
         </ul>
       )
     }
+    <div class="skills-box__actions">
+      <button
+        class="pill pill--solid"
+        type="button"
+        data-share
+        data-share-hash={`#${project.slug}`}
+        data-share-title={project.title}
+        data-share-confirmation={topBar.shareConfirmation}
+      >
+        <Icon name="share" />
+        {projectsIntro.shareProjectButton}
+      </button>
+      <a class="pill pill--outline" href={`mailto:${hero.email}`}>
+        <Icon name="mail" />
+        {projectsIntro.getInTouchButton}
+      </a>
+    </div>
   </section>
 
   <section class="evidence" aria-labelledby={`${project.slug}-evidence`}>
@@ -329,6 +346,20 @@ const extras = project.extras.map((extra) => ({
     height: 12px;
     margin-top: calc((1.55em - 12px) / 2);
     background: url('../../assets/svg/star.svg') center / contain no-repeat;
+  }
+
+  /* Share this project and Get in touch, stacked; 18px above them in all (the box's gap plus this margin). */
+  .skills-box__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: calc(18px - var(--space-2));
+  }
+
+  .skills-box__actions .pill {
+    min-height: 52px;
+    font-size: 17px;
+    font-weight: 700;
   }
 
   /* A picture inside the case study text: square, cropped to fill. */

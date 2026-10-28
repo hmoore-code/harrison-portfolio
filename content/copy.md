@@ -45,6 +45,8 @@ Below are selected projects that showcase my skills and experience. Thanks for y
 - Intro: I design experiences, tools, and cultural artefacts that help people learn, communicate and do their best work.
 - Evidence gallery hint: Tap an image to view it
 - Filter label: Filter by
+- Share project button: Share this project
+- Get in touch button: Get in touch
 
 ### Filters
 
@@ -93,7 +95,7 @@ The new framing won everyone over. Skanska, Multiplex and Willmott Dixon signed 
 
 ### The skills I could bring to your team 🫵
 
-I can bring together groups whose interests don't necessarily align, find goals they share, and design ways to make collaboration easier. I can point these same skills at a learning setting in a variety of ways, like:
+I can convene groups whose interests don't necessarily align, find goals they share, and design ways to make collaboration easier. I can point these same skills at a learning setting in a variety of ways, like:
 
 - Giving learners a voice
 - Designing learning for people who don't sit at desks

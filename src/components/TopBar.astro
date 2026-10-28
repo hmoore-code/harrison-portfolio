@@ -34,7 +34,8 @@ import Star from './Star.astro';
 
   document.querySelectorAll<HTMLButtonElement>('[data-share]').forEach((button) => {
     button.addEventListener('click', async () => {
-      const url = window.location.href.split('#')[0];
+      // A project's share button adds its pop-up's #link, so the link opens straight to it.
+      const url = window.location.href.split('#')[0] + (button.dataset.shareHash ?? '');
       const title = button.dataset.shareTitle ?? document.title;
       if (navigator.share) {
         try {

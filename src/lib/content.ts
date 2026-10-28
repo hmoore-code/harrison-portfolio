@@ -322,6 +322,8 @@ export const projectsIntro = {
   galleryHint: required(projectsNode, 'Evidence gallery hint'),
   allFilter: required(filtersNode, 'All'),
   filterLabel: required(projectsNode, 'Filter label'),
+  shareProjectButton: required(projectsNode, 'Share project button'),
+  getInTouchButton: required(projectsNode, 'Get in touch button'),
 };
 
 const projectNodes = live.children.filter((c) => /^Project:/i.test(c.heading));
