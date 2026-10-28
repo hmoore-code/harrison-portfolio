@@ -31,7 +31,9 @@ A single-page portfolio that helps Harrison Moore find his next role in learning
 Sections follow the order of copy.md.
 Pop-ups: one per project, "Try it yourself" (Full Cycle Writing Workshop), and the CV (with a download option, written last).
 
-Sections 3 and 5 to 8 have no mock-up yet. Build them from the spec: same type scale, 2px ink lines, wavy rules as separators, pill buttons, and the star as a small section divider.
+Sections 3 and 5 to 8 have no mock-up yet. Build them from the spec: same type scale, 2px ink lines, wavy rules as separators, pill buttons, and a star divider between sections.
+
+**Star divider**: wherever the page or a pop-up has a divider, it is 3 stars in a row (18px each), evenly spaced and centred. Each star is its own element carrying its position (`--star-index` 0, 1, 2) so they can be animated separately later. All dividers come from one component (`StarDivider`).
 
 ## 5. Components and behaviour
 **Sticky top bar** (design/01): 48px tall, paper background, 2px ink bottom rule. Left: the star (11px), then the Label from `## Top bar` in copy.md (13px, 600). Right, side by side: an "Email" link with a small envelope icon (Email button, mailto the Contact email), then a "Share" button with a share icon. Both plain, no outline, 14px, 700, at least 44px tall. Share calls `navigator.share` with the page title and URL; where that is unavailable, copy the URL and show a short "Link copied" message. Everything fits on one line at 390px; below 360px the buttons tighten and the label may wrap to 2 lines, but the icons never shrink.

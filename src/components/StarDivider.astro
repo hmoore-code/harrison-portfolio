@@ -1,13 +1,18 @@
 ---
+// 3 stars in a row. Each star is its own element with its position in --star-index,
+// ready for animating them one by one later.
 import Star from './Star.astro';
 ---
 
-<div class="divider" aria-hidden="true"><Star size={18} /></div>
+<div class="divider" aria-hidden="true">
+  {[0, 1, 2].map((i) => <Star size={18} class="divider__star" style={`--star-index: ${i}`} />)}
+</div>
 
 <style>
   .divider {
     display: flex;
     justify-content: center;
+    gap: var(--space-3);
     padding: var(--space-4) 0;
   }
 </style>
