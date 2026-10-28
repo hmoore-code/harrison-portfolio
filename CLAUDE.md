@@ -20,18 +20,22 @@ Full spec: `BUILD-BRIEF.md` (read it before any non-trivial change). This file i
 - Archivo variable font self-hosted (`assets/fonts/archivo-variable.woff2` or `@fontsource-variable/archivo`). Never load Google Fonts.
 
 ## Sources of truth
-- **Words: `content/copy.md`**, parsed at build time. Never hard-code copy that belongs there.
-  - copy.md is the ONLY source of the words (decided 27 Oct 2026). Harrison edits it directly in VS Code or on github.com; the Google Doc's Live copy tab is retired. Re-read it before any copy work, since he may have changed it.
+- **Words: `content/copy.md`**, parsed at build time. It is the single source of every word visitors read: never hard-code visitor-facing words (buttons, headings, confirmations included). If a word is missing, flag it and add a field.
+  - Harrison edits copy.md directly in VS Code (he may also paste in a fresh export of his Live copy). Re-read it before any copy work, since he may have changed it.
+  - A fresh export can bring back things he already decided against (dropped files, TO DO wrappers on confirmed links, missing image references). Restore those decisions in copy.md, keep his wording, and tell him what you restored.
   - "Publish my copy changes" = build, commit and push copy.md.
   - `## Section` / `## Project: <name>`, `###` sub-parts, `####` items, `Label: value` short fields, plain paragraphs for prose.
-  - Unescape `\[` `\]`. Support `[text](url)` links in prose.
+  - Unescape `\[` `\]`. Support `[text](url)` links, `**bold**` (strong, 800) and `*italics*` in prose.
   - `[TO DO]` must render as a visible dashed-outline gap, never hidden.
   - Parse into typed data (sections, 6 projects, filters); fail the build loudly on missing required fields.
 - **Look: `design/*.html`** (390px phone mock-ups). Reference only: rebuild as clean Astro components, no inline styles, ignore `{{...}}`.
 - **Assets: `assets/`** (`images/`, `svg/`, `graphics/`, `fonts/`). Missing assets get visible placeholders.
 
 ## Page order
-Sticky top bar, top of page, track record (3 figures), selected projects (filters + 6 cards), what I want to work on, how you can help (copy-message button), testimonials, contact and footer. Pop-ups: one per project, "Try it yourself", CV (last).
+Follows copy.md: sticky top bar, top of page ("Top B"), selected projects (filters + 6 cards in copy.md order), track record (3 figures), what I want to work on (with people I'd like to meet), testimonials, contact and footer. Pop-ups: one per project, "Try it yourself", CV (last).
+
+## Top of page ("Top B")
+Fields under `## Top of page`: Name, Headline, Subtitle, Main button, Second button, CV link, Contact email, plus `### Share this site with` (lead-in paragraph + bullets) and `### Closing line` (paragraph). Order: portrait (200px, 50% 28%, 2px border, radius 20, no cover), h1 headline (40/800/62%/0.92), subtitle (17/500/1.45, bold 800, italics), wavy-bordered share box (lead-in 22/800/62%/1, list 16/1.4), closing line (16/1.5), stacked buttons (10px gap): black share pill, outline "View projects" pill that smooth-scrolls to "Selected projects", centred underlined CV link. 20px gutter, 18px gaps; these are Harrison's exact px values, not scaled `--space-*` steps.
 
 ## Design tokens
 - Colours only: ink #111111, paper #FAFAF7, white #FFFFFF, grey #4A4A46 (small labels only).
@@ -42,9 +46,9 @@ Sticky top bar, top of page, track record (3 figures), selected projects (filter
 - Icons: 16px line icons, 1.5px stroke.
 
 ## Harrison's decisions (override the brief)
-- Project cards have ONE action, "Read the case study". No evidence link on the card (evidence links live in the pop-up).
+- Project cards have ONE action: the "Card button" from copy.md, which opens the case study. No evidence link on the card (evidence links live in the pop-up).
 - Design proposal PDF: sensitive details are covered with black boxes and every page flattened to an image (no hidden text). Done; the unredacted original lives only in `originals/`.
-- No pre-written forwarding message. "How you can help" has a share button that shares the portfolio link; people add their own words.
+- No pre-written forwarding message. The top of page's main button shares the portfolio link; people add their own words.
 - Workshop lead image: Zoom name labels blurred, faces left as they are.
 - Doc/Fest logo (`Logo:` field) shows small inside The Steel Core pop-up so it looks official.
 - `originals/` holds full-size and private source files. It is git-ignored: never commit it.

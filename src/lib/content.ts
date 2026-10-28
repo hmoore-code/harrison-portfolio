@@ -68,11 +68,12 @@ export interface Project {
   logo?: FileRef;
   story: Story[];
   whatThisShows: string;
+  headings: { whatThisShows: string; evidence: string };
   evidence: EvidenceItem[];
   pullQuote: { quote: string; credit: string };
   extras: ExtraLink[];
   tryItYourself?: TryItYourself;
-  exhibitionList?: { intro: string; items: string[] };
+  exhibitionList?: { heading: string; intro: string; items: string[] };
 }
 
 export interface Testimonial {
@@ -121,6 +122,17 @@ function required(node: MdNode, label: string): string {
     return '';
   }
   return value;
+}
+
+// The prose under a heading, e.g. "### Closing line".
+function prose(node: MdNode): string {
+  if (!node.paragraphs.length) errors.push(`"${node.heading}" is missing its text`);
+  return node.paragraphs.join(' ');
+}
+
+function list(node: MdNode): string[] {
+  if (!node.bullets.length) errors.push(`"${node.heading}" is missing its bulleted list`);
+  return node.bullets.map((b) => b.raw);
 }
 
 function unlabelled(node: MdNode, knownLabels: string[] = []): string[] {
@@ -211,6 +223,11 @@ function asEvidence(raw: string, ctx: TargetContext, fallback: Target): Evidence
   return { label: raw, target: fallback };
 }
 
+// Quotes under "#### Name" headings, each followed by the quote.
+function quotesFrom(nodes: MdNode[]) {
+  return nodes.map((n) => ({ name: n.heading, quote: n.paragraphs.join(' ').replace(/^["“]|["”]$/g, '') }));
+}
+
 // A bullet ending in ":" with indented "#### Name" + quote lines under it.
 function asQuotes(bullet: Bullet): EvidenceItem {
   const quotes: { name: string; quote: string }[] = [];
@@ -250,22 +267,24 @@ export const topBar = {
 };
 
 const heroNode = section(live, 'Top of page');
+const shareWithNode = section(heroNode, 'Share this site with');
 export const hero = {
   name: required(heroNode, 'Name'),
   headline: required(heroNode, 'Headline'),
-  roles: required(heroNode, 'Roles')
-    .split('·')
-    .map((role) => role.trim()),
-  pitch: required(heroNode, 'Pitch'),
-  purposeLine: required(heroNode, 'Purpose line'),
-  contactButton: required(heroNode, 'Contact button'),
+  // May hold **bold** and *italics*: render with inline().
+  subtitle: required(heroNode, 'Subtitle'),
+  mainButton: required(heroNode, 'Main button'),
+  secondButton: required(heroNode, 'Second button'),
+  cvLink: required(heroNode, 'CV link'),
   email: required(heroNode, 'Contact email'),
-  cvButton: required(heroNode, 'CV button'),
+  shareWith: { leadIn: prose(shareWithNode), people: list(shareWithNode) },
+  closingLine: prose(section(heroNode, 'Closing line')),
 };
 
 const recordNode = section(live, 'Track record');
 export const trackRecord = {
   label: required(recordNode, 'Label'),
+  intro: optional(recordNode, 'Intro'),
   figures: recordNode.children
     .filter((c) => /^Figure/i.test(c.heading))
     .map((figure) => ({
@@ -344,6 +363,11 @@ export const projects: Project[] = projectNodes.map((node, index) => {
   const evidence = (evidenceNode?.bullets ?? []).map((b) =>
     b.nested?.length ? asQuotes(b) : asEvidence(b.raw, ctx, evidenceLink),
   );
+  // "Feedback from 3 users:" followed by "#### Name" headings, each with its quote.
+  if (evidenceNode?.children.length) {
+    const label = evidenceNode.paragraphs.at(-1)?.replace(/:\s*$/, '') ?? '';
+    evidence.push({ label, target: { kind: 'quotes', quotes: quotesFrom(evidenceNode.children) } });
+  }
 
   const quoteNode = child(node, 'Pull quote');
   if (!quoteNode) errors.push(`${where} is missing "### Pull quote"`);
@@ -387,6 +411,7 @@ export const projects: Project[] = projectNodes.map((node, index) => {
 
   const exhibitionNode = child(node, 'Exhibition list');
   const exhibitionList = exhibitionNode && {
+    heading: exhibitionNode.heading,
     intro: optional(exhibitionNode, 'Intro') ?? '',
     items: unlabelled(exhibitionNode, ['Intro']),
   };
@@ -407,6 +432,7 @@ export const projects: Project[] = projectNodes.map((node, index) => {
     logo: filesIn(optional(node, 'Logo') ?? '').map((file) => ({ file }))[0],
     story,
     whatThisShows: shows?.paragraphs.join(' ') ?? '',
+    headings: { whatThisShows: shows?.heading ?? '', evidence: evidenceNode?.heading ?? '' },
     evidence,
     pullQuote,
     extras,
@@ -418,26 +444,13 @@ if (projects.length !== 6) errors.push(`Expected 6 projects, found ${projects.le
 
 const causesNode = section(live, 'What I want to work on');
 const causeLabels = ['Heading', 'Intro', 'Closing ask'];
+const peopleNode = child(causesNode, "People I'd like to meet");
 export const causes = {
   heading: required(causesNode, 'Heading'),
   intro: required(causesNode, 'Intro'),
   items: unlabelled(causesNode, causeLabels),
   closingAsk: required(causesNode, 'Closing ask'),
-};
-
-const helpNode = section(live, 'How you can help');
-const sharingNode = section(helpNode, 'Sharing');
-export const help = {
-  heading: required(helpNode, 'Heading'),
-  lists: ['Roles', 'Sectors', "People I'd like to meet"].map((heading) => ({
-    heading,
-    items: section(helpNode, heading).bullets.map((b) => b.raw),
-  })),
-  share: {
-    leadIn: required(sharingNode, 'Lead-in'),
-    button: required(sharingNode, 'Share button'),
-    confirmation: required(sharingNode, 'Share confirmation'),
-  },
+  people: peopleNode && { heading: peopleNode.heading, items: list(peopleNode) },
 };
 
 const quotesNode = section(live, 'Quotes');

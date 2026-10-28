@@ -1,5 +1,5 @@
 ---
-import { contact, hero, isTodo } from '../lib/content';
+import { contact, isTodo } from '../lib/content';
 import { inline } from '../lib/inline';
 import Icon from './Icon.astro';
 import Todo from './Todo.astro';
@@ -29,7 +29,6 @@ const links = [
   }
   <a class="contact__email" href={`mailto:${contact.email}`}>{contact.email}</a>
   <div class="contact__actions">
-    <a class="pill pill--solid" href={`mailto:${contact.email}`}>{hero.contactButton}</a>
     <a class="pill pill--outline" href="#cv" data-open-dialog="cv">{contact.cvButton}</a>
   </div>
   <ul class="links">

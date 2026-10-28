@@ -1,7 +1,10 @@
 ---
-import { hero, meta } from '../lib/content';
+// Top of page ("Top B"). Sizes here are Harrison's exact design values, so they are
+// plain px rather than the scaled --space-* steps.
+import { hero, meta, topBar } from '../lib/content';
+import { inline } from '../lib/inline';
+import Icon from './Icon.astro';
 import Photo from './Photo.astro';
-import WavyRule from './WavyRule.astro';
 ---
 
 <section class="hero column" aria-labelledby="headline">
@@ -12,31 +15,60 @@ import WavyRule from './WavyRule.astro';
     eager
   />
   <h1 id="headline" class="hero__headline">{hero.headline}</h1>
-  <ul class="hero__roles">
-    {
-      hero.roles.map((role) => (
-        <li>
-          <WavyRule />
-          <span class="hero__role">{role}</span>
-        </li>
-      ))
-    }
-    <li aria-hidden="true"><WavyRule /></li>
-  </ul>
-  <p class="hero__pitch">{hero.pitch}</p>
-  <div class="hero__actions">
-    <a class="pill pill--solid" href={`mailto:${hero.email}`}>{hero.contactButton}</a>
-    <a class="pill pill--outline" href="#cv" data-open-dialog="cv">{hero.cvButton}</a>
+  <p class="hero__subtitle" set:html={inline(hero.subtitle)} />
+
+  <div class="hero__share-with">
+    <div class="hero__share-inner">
+      <p class="hero__lead-in">{hero.shareWith.leadIn}</p>
+      <ul class="hero__people">
+        {hero.shareWith.people.map((person) => <li>{person}</li>)}
+      </ul>
+    </div>
   </div>
-  <a class="hero__help" href="#help">{hero.purposeLine}</a>
+
+  <p class="hero__closing">{hero.closingLine}</p>
+
+  <div class="hero__actions">
+    <button
+      class="pill pill--solid"
+      type="button"
+      data-share
+      data-share-title={meta.pageTitle}
+      data-share-confirmation={topBar.shareConfirmation}
+    >
+      <Icon name="share" />
+      {hero.mainButton}
+    </button>
+    <a class="pill pill--outline" href="#projects" data-scroll-to="projects-heading">
+      <Icon name="down" />
+      {hero.secondButton}
+    </a>
+    <a class="hero__cv" href="#cv" data-open-dialog="cv">{hero.cvLink}</a>
+  </div>
 </section>
+
+<script>
+  // "View projects": glide down to the projects heading (jump if reduced motion is on)
+  // and move keyboard focus there.
+  document.querySelectorAll<HTMLAnchorElement>('[data-scroll-to]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const target = document.getElementById(link.dataset.scrollTo ?? '');
+      if (!target) return;
+      event.preventDefault();
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    });
+  });
+</script>
 
 <style>
   .hero {
     display: flex;
     flex-direction: column;
-    gap: var(--space-3);
-    padding-top: var(--space-3);
+    gap: 18px;
+    padding-top: 18px;
   }
 
   .hero :global(.hero__portrait) {
@@ -50,45 +82,76 @@ import WavyRule from './WavyRule.astro';
 
   .hero__headline {
     margin: 0;
-    font-size: var(--size-headline);
+    font-size: 40px;
     font-weight: 800;
     font-stretch: 62%;
-    line-height: 0.88;
+    line-height: 0.92;
   }
 
-  .hero__roles {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .hero__role {
-    display: block;
-    padding: var(--space-2) 0;
-    font-size: 19px;
-    font-weight: 700;
-    font-stretch: 85%;
-    line-height: 1.3;
-  }
-
-  .hero__pitch {
+  .hero__subtitle {
     margin: 0;
     font-size: 17px;
     font-weight: 500;
     line-height: 1.45;
   }
 
+  .hero__subtitle :global(strong) {
+    font-weight: 800;
+  }
+
+  /* A box drawn with wavy lines on all 4 sides. */
+  .hero__share-with {
+    padding: 5px;
+    background:
+      url('../../assets/svg/rule-wavy.svg') top / 100% 10px no-repeat,
+      url('../../assets/svg/rule-wavy.svg') bottom / 100% 10px no-repeat,
+      url('../../assets/svg/wave-v.svg') left / 10px 100% no-repeat,
+      url('../../assets/svg/wave-v.svg') right / 10px 100% no-repeat;
+  }
+
+  .hero__share-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px 18px 20px;
+  }
+
+  .hero__lead-in {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    font-stretch: 62%;
+    line-height: 1;
+  }
+
+  .hero__people {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding-left: 1.2em;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .hero__closing {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
   .hero__actions {
     display: flex;
-    gap: calc(10px * var(--spacing-scale));
+    flex-direction: column;
+    gap: 10px;
   }
 
   .hero__actions .pill {
-    flex: 1;
-    padding: 0 var(--space-3);
+    min-height: 52px;
+    font-size: 17px;
+    font-weight: 700;
   }
 
-  .hero__help {
+  .hero__cv {
     align-self: center;
     display: flex;
     align-items: center;

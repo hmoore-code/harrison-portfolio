@@ -1,59 +1,49 @@
 # Live copy
 
-This file holds only the words that go on the site, in page order. It is the one and only version: edit it here and save. The site is built from it, so edit the words here whenever you like. Keep the headings and the labels before each colon: the site uses them to find each piece of text. Anything marked \[TO DO\] still needs writing or choosing, and shows as a gap on the site until then.
+This tab holds only the words that go on the site, in page order. The site is built from it, so edit the words here whenever you like. Keep the headings and the labels before each colon: the site uses them to find each piece of text. Anything marked \[TO DO\] still needs writing or choosing, and shows as a gap on the site until then.
 
 ## Page title and share card
 
 - Page title: Harrison Moore: selected projects on learning and collaboration
-- Share card title: Harrison Moore is looking for his next role
-- Share card description: I make learning experiences, collaboration tools, and cultural artefacts. See 6 projects and how you can help.
+- Share card title: Harrison is looking for a team working on the future of education
+- Share card description: I build learning experiences, collaboration tools and cultural artefacts that help people connect, learn and do their best work. See my projects and how you can help.
 - Share image: share-card.jpg (your portrait by the shed, cropped to 1200 by 630)
 - Share image alt text: Harrison Moore smiling, in a blue shirt, in front of a garden shed
 
 ## Top bar
 
-- Label: Portfolio · Harrison Moore
+- Label: Harrison Moore's Portfolio
 - Share button: Share
 - Share confirmation: Link copied
 
 ## Top of page
 
 - Name: Harrison Moore
-- Headline: Harrison Moore is looking for his next role
-- Roles: Learning and programme design · User research and partnerships
-- Pitch: I build learning experiences, collaboration tools and cultural artefacts that help people communicate, learn and do their best work.
-- Purpose line: Know someone hiring? Here's how to help.
-- Contact button: Email me
+- Headline: I'm Harrison, I'm looking for a team working on the future of education
+- Subtitle: My strengths are **writing**, **programme design**, **user research** and **partnerships**. I care most about *craftsmanship* and *helping people build a great relationship with learning*.
+- Main button: Share this site
+- Second button: View projects
+- CV link: View my CV
 - Contact email: harrison@thenewworkday.com
-- CV button: View my CV
 
-## Track record
+### Share this site with
 
-- Label: My work in numbers
+To help me find a team, you could share this site with:
 
-### Figure 1
+- Heads of learning, community or programme teams
+- Founders building learning or future of education products
+- People who run research teams at think tanks and innovation hubs
 
-- Number: 500+
-- Label: professionals mentored and coached at Write of Passage 2024 to 2026
+### Closing line
 
-### Figure 2
-
-- Number: 43%
-- Label: sales conversion rate, helping bring in $1m, Write of Passage, 2024
-
-### Figure 3
-
-- Number: 4+ years
-- Label: publishing Creative Thought Partner, my regular Substack on psychology and creativity, 1,000+ subscribers
-- Link text: Read my newsletter
-- Link: https://www.thenewworkday.com/
+Below are selected projects that showcase my skills and experience 👇
 
 ## Projects
 
 - Heading: Selected projects
-- Intro: Here are 6 projects that best demonstrate my skills and have helped people learn, communicate and do their best work.
-- Card button: Read the case study
-- Evidence gallery hint: Tap a picture to lift its cover.
+- Intro: I design experiences, collaboration tools, and cultural artefacts that help people learn, communicate and do their best work.
+- Card button: Learn more
+- Evidence gallery hint: Tap an image to view it
 
 ### Filters
 
@@ -75,7 +65,7 @@ This file holds only the words that go on the site, in page order. It is the one
 - Image: wfc/euston-presenting.jpg (me presenting the first pilot to workers and staff at HS2 Euston, 2020)
 - Image alt text: Harrison presenting to a crowd of construction workers in orange hi-vis at a Skanska site
 
-### The problem
+### The challenge
 
 Large construction sites hold hundreds of workers from dozens of firms. Most stay quiet about unsafe or unfair conditions, afraid of being blacklisted. Major contractors pay for this silence in expensive rework, up to £33m a year, whilst workers pay in low productivity and poor mental health. Male construction workers in England are three times more likely than average to die by suicide.
 
@@ -124,7 +114,7 @@ I bring together groups whose interests clash by finding a goal they share, then
 - Image: tempr-home.jpg (your screenshot of the Tempr welcome screen on a phone)
 - Image alt text: Tempr on a phone, with the welcome message "Tell me about an issue you're facing"
 
-### The problem
+### The challenge
 
 When we're angry or hurt, our words can push people away and threaten relationships at work and at home. Often, we don't realise that beneath our anger is a request for an unmet need.
 
@@ -150,21 +140,20 @@ I design tools that teach through good questions, so people learn a skill just b
 ### Evidence
 
 - Try Tempr live: https://tempr-taupe.vercel.app/
-- Feedback from 3 users:
 
-  #### Judy, marketing consultant
+Feedback from 3 users:
 
-  "Tempr asked me some good clarifying questions and made a couple recommendations one of which I used."
+#### Judy, marketing consultant
 
-  #### Joe, advisory manager, AI experiences and enterprise delivery
+"Tempr asked me some good clarifying questions and made a couple recommendations one of which I used."
 
-  "I definitely would not have texted my friend back if it wasn't for this tool."
+#### Joe, advisory manager, AI experiences and enterprise delivery
 
-  #### Alex, entrepreneur
+"I definitely would not have texted my friend back if it wasn't for this tool."
 
-  "The tool is super helpful when I've got a live problem!! Not even for the final text it gave me but just the process it took me through to realise that I was allowed to ask."
+#### Alex, entrepreneur
 
-  \### 
+"The tool is super helpful when I've got a live problem!! Not even for the final text it gave me but just the process it took me through to realise that I was allowed to ask."
 
 ### Pull quote
 
@@ -174,7 +163,7 @@ I design tools that teach through good questions, so people learn a skill just b
 ## Project: Clever constraints for writers
 
 - Filter: Helping people learn
-- Title: Self-serve writing prompts
+- Title: Writer's prompt library
 - Organisation: Creative Thought Partner
 - Year: 2024 to 2025
 - Role: Creator and host
@@ -184,7 +173,7 @@ I design tools that teach through good questions, so people learn a skill just b
 - Image: notion-prompts.jpg (your screenshot of the Notion prompt library)
 - Image alt text: A grid of colourful writing prompt cards, such as Do nothing and Write for the dustbin
 
-### The problem
+### The challenge
 
 If you asked a hundred people what it takes to produce great writing, and enjoy it, I bet that none of them would say "constraints". But people freeze when given total freedom.
 
@@ -227,7 +216,7 @@ I treat limits as a design tool, then test them with real learners to find the l
 - Image: workshop-cohort.png (the cohort in a live session, Zoom names blurred)
 - Image alt text: Zoom screenshot of the Full Cycle Writing Workshop cohort during a live session
 
-### The problem
+### The challenge
 
 When the online writing course Write of Passage closed, many alumni (including me!) were devastated to lose the community they wrote with. 37 writers signed up to my writing workshop. They had tonnes of interesting ideas but no repeatable process, and fear of publishing kept many stuck in a state of procrastination.
 
@@ -346,7 +335,7 @@ I turn a place and its story into an object people can hold, and manage producti
 - Image: solo-visitors.jpg
 - Image alt text: Opening-night visitors looking at framed drawings marked with red sold dots
 
-### The problem
+### The challenge
 
 All artists hope their work will sell one day. In 2016, I needed mine to sell within weeks. I had a coveted place on a master's at the Royal College of Art, starting that September, but no way to pay for it as masters funding is limited.
 
@@ -402,41 +391,42 @@ I can fund an idea by making something people want to support, then deliver it o
 - Sister Cities, International Museum of Tianfu Square, Chengdu, China, 2012
 - F, Blake College, London, 2012
 
+## Track record
+
+- Label: Beyond these projects
+- Intro: Some of my biggest impact came from day-to-day roles.
+
+### Figure 1
+
+- Number: 500+
+- Label: As a mentor at Write of Passage: professionals I mentored and coached, 2024 to 2026
+
+### Figure 2
+
+- Number: 43%
+- Label: As a mentor at Write of Passage: my sales conversion rate, helping bring in $1m, 2024
+
+### Figure 3
+
+- Number: 4+ years
+- Label: As a writer: publishing Creative Thought Partner, my regular Substack on psychology and creativity, 1,000+ subscribers
+- Link text: Read my newsletter
+- Link: https://www.thenewworkday.com/
+
 ## What I want to work on
 
 - Heading: What I want to work on now
-- Intro: These are the 3 causes I care about most.
-- Lifelong learning and access to it.
-- Reclaiming and protecting attention.
-- Connecting people with meaningful work.
-- Closing ask: If you're a team solving problems in any of these areas, or you know someone who is, let's talk, or forward this website to them.
-
-## How you can help
-
-- Heading: How you can help
-
-### Roles
-
-- Learning, programme and content design
-- User research and partnerships
-- Coaching and facilitation
-
-### Sectors
-
-- The future of learning and work
+- Intro: Causes I care about most are:
+- Lifelong learning and access to it
+- Reclaiming and protecting attention
+- Connecting people with meaningful work
+- Closing ask: If you're a team solving problems in any of these areas, let's talk! If you know someone who is, you can forward this website to them (thanks!)
 
 ### People I'd like to meet
 
-- Heads of learning, training or programme teams
-- Founders building learning or future of work products
-- People who hire user researchers or run research teams
-- Investors in education and future of work startups
-
-### Sharing
-
-- Lead-in: Know someone who should see this? Share my portfolio with them, in your own words.
-- Share button: Share my portfolio
-- Share confirmation: Link copied
+- Heads of learning, community or programme teams
+- Founders building learning or future of education products
+- People who run research teams at think tanks and innovation hubs
 
 ## Quotes
 

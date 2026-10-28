@@ -4,7 +4,10 @@ import WavyRule from './WavyRule.astro';
 ---
 
 <section class="record column" aria-labelledby="record-heading">
-  <h2 id="record-heading" class="section-heading">{trackRecord.label}</h2>
+  <div class="record__intro">
+    <h2 id="record-heading" class="section-heading">{trackRecord.label}</h2>
+    {trackRecord.intro && <p>{trackRecord.intro}</p>}
+  </div>
   <ul class="record__list">
     {
       trackRecord.figures.map((figure) => (
@@ -30,6 +33,19 @@ import WavyRule from './WavyRule.astro';
     display: flex;
     flex-direction: column;
     gap: var(--space-5);
+  }
+
+  .record__intro {
+    display: flex;
+    flex-direction: column;
+    gap: calc(10px * var(--spacing-scale));
+  }
+
+  .record__intro p {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.45;
   }
 
   .record__list {

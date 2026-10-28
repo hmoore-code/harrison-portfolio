@@ -11,7 +11,7 @@ A single-page portfolio that helps Harrison Moore find his next role in learning
 - Self-host the Archivo variable font (use the `@fontsource-variable/archivo` package, the width axis version, or the file in `assets/fonts/`). Do not load Google Fonts at runtime.
 
 ## 3. Sources of truth
-1. **Words: `content/copy.md`.** An export of the "Live copy" tab of Harrison's Site copy doc. The site must read this file at build time so copy changes never need code changes. Format:
+1. **Words: `content/copy.md`, the single source of every word visitors read.** Harrison edits it directly; there is no other copy to keep in step. The site reads this file at build time so copy changes never need code changes. Never hard-code visitor-facing words in components. Format:
    - `## Section` and `## Project: <name>` headings; `###` sub-parts (The problem or The challenge, What I did, What happened, What this shows, Evidence, Pull quote, Try it yourself, Further reading, Learn more, Exhibition list); `####` items inside a sub-part (the 3 forms in Try it yourself).
    - `Label: value` lines for short fields (Title, Organisation, Year, Role, Result, Filter, Image, Image alt text, Evidence link text, Evidence link, Button, Link, Quote, Credit and so on). Plain paragraphs for prose.
    - The export escapes square brackets as `\[` and `\]`: unescape them. Markdown links `[text](url)` may appear inside prose.
@@ -22,13 +22,13 @@ A single-page portfolio that helps Harrison Moore find his next role in learning
 
 ## 4. Page order
 1. Sticky top bar.
-2. Top of page.
-3. Track record ("My work in numbers", 3 figures).
-4. Selected projects: heading, intro, filter row, 6 project cards. Each card opens its pop-up.
-5. What I want to work on (3 causes and the closing ask).
-6. How you can help: roles, sectors, people I'd like to meet, and the forwarding message with a "Copy this message" button.
-7. Testimonials (3 quotes).
-8. Contact and footer, with "View my CV".
+2. Top of page ("Top B", see section 5).
+3. Selected projects: heading, intro, filter row, 6 project cards in copy.md order. Each card opens its pop-up.
+4. Track record (label, intro, 3 figures).
+5. What I want to work on (3 causes, the closing ask, people I'd like to meet).
+6. Testimonials (3 quotes).
+7. Contact and footer, with "View my CV".
+Sections follow the order of copy.md.
 Pop-ups: one per project, "Try it yourself" (Full Cycle Writing Workshop), and the CV (with a download option, written last).
 
 Sections 3 and 5 to 8 have no mock-up yet. Build them from the spec: same type scale, 2px ink lines, wavy rules as separators, pill buttons, and the star as a small section divider.
@@ -36,7 +36,16 @@ Sections 3 and 5 to 8 have no mock-up yet. Build them from the spec: same type s
 ## 5. Components and behaviour
 **Sticky top bar** (design/01): 48px tall, paper background, 2px ink bottom rule. Left: "Portfolio", the star (11px), "Harrison Moore" (13px, 600). Right: a plain "Share" button with a share icon, no outline, at least 44px tall. Share calls `navigator.share` with the page title and URL; where that is unavailable, copy the URL and show a short "Link copied" message.
 
-**Top of page** (design/01): portrait (portrait-shed.jpg, 200px tall, cropped to 50% 28%, no cover); headline "Harrison Moore is looking for his next role"; the 2 roles as lines with a wavy rule above, between and below (rule-wavy.svg); the pitch; "Email me" (black pill, mailto link) and "View my CV" (outline pill) side by side; "Know someone hiring? Here's how to help." linking to How you can help. Then a centred star divider before "Selected projects". Note: some of these words are not yet in copy.md (see section 9).
+**Top of page** ("Top B"): all words from `## Top of page` in copy.md (Name, Headline, Subtitle, Main button, Second button, CV link, Contact email, then `### Share this site with` with a lead-in paragraph and a bulleted list, and `### Closing line` with one paragraph). Phone first: 390px wide, 20px side gutter, 18px gap between items, in this order:
+- Portrait (portrait-shed.jpg): full width, 200px tall, object-fit cover, object-position 50% 28%, 2px ink border, radius 20, no cover.
+- Headline as the h1: 40px, 800, width 62%, line height 0.92.
+- Subtitle: 17px, 500, line height 1.45. Markdown `**bold**` renders as `<strong>` (weight 800) and `*italics*` as `<em>`.
+- Share box: wavy lines on all 4 sides (rule-wavy.svg top and bottom at 10px high, wave-v.svg left and right at 10px wide), 5px outer padding, inner padding 18px 18px 20px, 12px gap. Lead-in at 22px, 800, width 62%, line height 1; then the bulleted list at 16px, line height 1.4, 8px gap.
+- Closing line: 16px, line height 1.5.
+- Buttons stacked with a 10px gap: Main button, a black pill (52px, share icon, 17px, 700) using the same share function as the top bar; Second button, a 2px outline pill (52px, down arrow icon) that smooth-scrolls to the "Selected projects" heading (instant with reduced motion); CV link, a centred underlined link (15px, 600, at least 44px tall) that opens the CV pop-up.
+Then a centred star divider before "Selected projects". The sticky top bar stays as described above.
+
+**Interface words**: every word a visitor reads, including button labels, headings and confirmations, comes from copy.md. If a component needs a word that copy.md doesn't have yet, flag it to Harrison and add a field rather than writing the word into the code.
 
 **Filter row** (design/02, design/05): 4 pill buttons (All, Helping people learn, Building communication tools, Designing compelling experiences), wrapping onto 2 lines on a phone. Inactive: paper fill, 2px ink border. Active: solid ink fill, paper text, the star (15px, paper colour) before the label. Use `aria-pressed`. "All" is active on load. Filtering shows or hides cards without reloading; keep the URL in sync (for example `?filter=learning`).
 
@@ -50,8 +59,6 @@ Sections 3 and 5 to 8 have no mock-up yet. Build them from the spec: same type s
 **Evidence gallery** (design/04): a large frame (radius 16, 2px ink, 260px image area, caption strip below) and a row of 4 square thumbnails (radius 10). Unselected thumbnails are greyscale under the project's cover pattern; tapping one lifts its cover, puts it in colour and shows it in the large frame. Line above: "Tap a picture to lift its cover." Use real buttons with labels. More than 4 images: let the row wrap.
 
 **Evidence links** (design/04): full-width outline pills, label on the left, and on the right a small icon plus a type word: a document icon and "PDF" for PDFs, an arrow-out-of-a-box icon and "Link" for web links. PDFs are hosted on the site and open in a new tab.
-
-**How you can help**: the forwarding message sits in a card with a "Copy this message" pill that copies the message plus the site URL, then confirms "Copied".
 
 **Share card**: set Open Graph and Twitter tags from copy.md (Page title, Share card title, Share card description, Share image, Share image alt text). Use the star as the favicon (black on paper).
 
@@ -100,7 +107,7 @@ Optimise all images (responsive sizes, WebP or AVIF with JPEG fallback, width an
 - Check on a real phone (around 390px wide) at every step, as well as narrow (320px) and desktop.
 
 ## 9. Before publishing (flag to Harrison, don't decide)
-- Add these to Live copy so they come from copy.md: "Portfolio · Harrison Moore" (top bar), "Share", the headline "Harrison Moore is looking for his next role" (currently the share card title), "Know someone hiring? Here's how to help." (replaces the purpose line), "Read the case study", "Tap a picture to lift its cover", "Copied" and "Link copied".
+- Any interface words still written into the code rather than copy.md (see "Interface words" in section 5).
 - The design proposal PDF shows Harrison's old phone number and RCA email on every page, and the Doc/Fest commissioner's email on page 1. Strip or cover these, or show selected pages as images.
 - Remaining `[TO DO]` gaps in copy.md (for example the Tempr NVC text and evidence, the Solo show images, the contact heading and footer, the CV).
 
