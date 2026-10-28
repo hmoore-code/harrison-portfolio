@@ -324,6 +324,8 @@ export const projectsIntro = {
   filterLabel: required(projectsNode, 'Filter label'),
   shareProjectButton: required(projectsNode, 'Share project button'),
   getInTouchButton: required(projectsNode, 'Get in touch button'),
+  // Read out after a card's title link, so screen readers say where it goes.
+  cardTitleHint: required(projectsNode, 'Card title hint'),
 };
 
 const projectNodes = live.children.filter((c) => /^Project:/i.test(c.heading));

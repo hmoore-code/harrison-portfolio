@@ -1,5 +1,5 @@
 ---
-import type { Project } from '../lib/content';
+import { projectsIntro, type Project } from '../lib/content';
 import CoveredImage from './CoveredImage.astro';
 import FilterIcon from './FilterIcon.astro';
 
@@ -20,7 +20,11 @@ const headingId = `card-${project.slug}`;
       <FilterIcon filterId={project.filter.id} />
       {project.filter.label}
     </p>
-    <h3 id={headingId} class="card__title">{project.title}</h3>
+    <h3 class="card__title">
+      <a class="card__title-link" href={`#${project.slug}`} data-open-dialog={project.slug}>
+        <span id={headingId}>{project.title}</span><span class="visually-hidden">, {projectsIntro.cardTitleHint}</span>
+      </a>
+    </h3>
     <p class="card__result">{project.result}</p>
     <p class="card__skills">
       <span class="gem" style={`--gem-delay: ${(index * 0.7).toFixed(1)}s`} aria-hidden="true">
@@ -73,6 +77,18 @@ const headingId = `card-${project.slug}`;
     font-weight: 800;
     font-stretch: 62%;
     line-height: 0.92;
+  }
+
+  /* The title opens the pop-up like the button, but keeps its look: underline on hover only. */
+  .card__title-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @media (hover: hover) {
+    .card__title-link:hover {
+      text-decoration: underline;
+    }
   }
 
   .card__result {

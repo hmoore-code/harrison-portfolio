@@ -47,6 +47,7 @@ Below are selected projects that showcase my skills and experience. Thanks for y
 - Filter label: Filter by
 - Share project button: Share this project
 - Get in touch button: Get in touch
+- Card title hint: case study
 
 ### Filters
 
