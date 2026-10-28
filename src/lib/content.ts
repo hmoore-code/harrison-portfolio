@@ -274,7 +274,7 @@ export const hero = {
   // May hold **bold** and *italics*: render with inline().
   subtitle: required(heroNode, 'Subtitle'),
   mainButton: required(heroNode, 'Main button'),
-  secondButton: required(heroNode, 'Second button'),
+  emailButton: required(heroNode, 'Email button'),
   cvLink: required(heroNode, 'CV link'),
   email: required(heroNode, 'Contact email'),
   shareWith: { leadIn: prose(shareWithNode), people: list(shareWithNode) },
@@ -477,7 +477,7 @@ export const contact = {
   email: required(contactNode, 'Email'),
   linkedin: asText(required(contactNode, 'LinkedIn')),
   substack: asText(required(contactNode, 'Substack')),
-  cvButton: required(contactNode, 'CV button'),
+  emailButton: required(contactNode, 'Email button'),
   footer: asText(required(contactNode, 'Footer')),
 };
 

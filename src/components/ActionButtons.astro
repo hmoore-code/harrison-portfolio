@@ -1,0 +1,53 @@
+---
+// Share this site, Email me and View my CV, stacked. Used at the top of the page
+// and again after "People I'd like to meet". Words come from "## Top of page".
+import { hero, meta, topBar } from '../lib/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div class:list={['actions', className]}>
+  <button
+    class="pill pill--solid"
+    type="button"
+    data-share
+    data-share-title={meta.pageTitle}
+    data-share-confirmation={topBar.shareConfirmation}
+  >
+    <Icon name="share" />
+    {hero.mainButton}
+  </button>
+  <a class="pill pill--outline" href={`mailto:${hero.email}`}>
+    <Icon name="mail" />
+    {hero.emailButton}
+  </a>
+  <a class="actions__cv" href="#cv" data-open-dialog="cv">{hero.cvLink}</a>
+</div>
+
+<style>
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .actions .pill {
+    min-height: 52px;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .actions__cv {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+  }
+</style>

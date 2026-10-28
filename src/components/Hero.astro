@@ -1,9 +1,9 @@
 ---
 // Top of page ("Top B"). Sizes here are Harrison's exact design values, so they are
 // plain px rather than the scaled --space-* steps.
-import { hero, meta, topBar } from '../lib/content';
+import { hero, meta } from '../lib/content';
 import { inline } from '../lib/inline';
-import Icon from './Icon.astro';
+import ActionButtons from './ActionButtons.astro';
 import Photo from './Photo.astro';
 ---
 
@@ -28,40 +28,8 @@ import Photo from './Photo.astro';
 
   <p class="hero__closing">{hero.closingLine}</p>
 
-  <div class="hero__actions">
-    <button
-      class="pill pill--solid"
-      type="button"
-      data-share
-      data-share-title={meta.pageTitle}
-      data-share-confirmation={topBar.shareConfirmation}
-    >
-      <Icon name="share" />
-      {hero.mainButton}
-    </button>
-    <a class="pill pill--outline" href="#projects" data-scroll-to="projects-heading">
-      <Icon name="down" />
-      {hero.secondButton}
-    </a>
-    <a class="hero__cv" href="#cv" data-open-dialog="cv">{hero.cvLink}</a>
-  </div>
+  <ActionButtons />
 </section>
-
-<script>
-  // "View projects": glide down to the projects heading (jump if reduced motion is on)
-  // and move keyboard focus there.
-  document.querySelectorAll<HTMLAnchorElement>('[data-scroll-to]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      const target = document.getElementById(link.dataset.scrollTo ?? '');
-      if (!target) return;
-      event.preventDefault();
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-      target.setAttribute('tabindex', '-1');
-      target.focus({ preventScroll: true });
-    });
-  });
-</script>
 
 <style>
   .hero {
@@ -137,27 +105,5 @@ import Photo from './Photo.astro';
     margin: 0;
     font-size: 16px;
     line-height: 1.5;
-  }
-
-  .hero__actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .hero__actions .pill {
-    min-height: 52px;
-    font-size: 17px;
-    font-weight: 700;
-  }
-
-  .hero__cv {
-    align-self: center;
-    display: flex;
-    align-items: center;
-    min-height: 44px;
-    font-size: 15px;
-    font-weight: 600;
-    text-align: center;
   }
 </style>

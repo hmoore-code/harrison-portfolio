@@ -5,9 +5,18 @@ import Icon from './Icon.astro';
 import Todo from './Todo.astro';
 
 const heading = isTodo(contact.heading) ? null : contact.heading;
+// Small brand marks drawn on a 20px grid, shown inside 2px ink circles.
 const links = [
-  { label: 'LinkedIn', value: contact.linkedin },
-  { label: 'Substack', value: contact.substack },
+  {
+    label: 'LinkedIn',
+    value: contact.linkedin,
+    mark: 'M3.5 8h3v9h-3z M5 2.75a1.75 1.75 0 1 1 0 3.5a1.75 1.75 0 0 1 0-3.5z M8.5 8h2.9v1.3c.5-.9 1.6-1.6 3.1-1.6c2.6 0 3.5 1.6 3.5 4.2V17h-3v-4.6c0-1.2-.3-2-1.4-2c-1.2 0-1.6.9-1.6 2.1V17h-3z',
+  },
+  {
+    label: 'Substack',
+    value: contact.substack,
+    mark: 'M4 3h12v2H4z M4 6.5h12v2H4z M4 10h12v8l-6-3.4L4 18z',
+  },
 ];
 ---
 
@@ -27,23 +36,22 @@ const links = [
     contact.line &&
       (isTodo(contact.line) ? <Todo text={contact.line.todo} block /> : <p class="contact__line" set:html={inline(contact.line)} />)
   }
-  <a class="contact__email" href={`mailto:${contact.email}`}>{contact.email}</a>
-  <div class="contact__actions">
-    <a class="pill pill--outline" href="#cv" data-open-dialog="cv">{contact.cvButton}</a>
-  </div>
-  <ul class="links">
+  <a class="pill pill--solid contact__email" href={`mailto:${contact.email}`}>
+    <Icon name="mail" />
+    {contact.emailButton}
+  </a>
+  <ul class="contact__socials">
     {
       links.map((link) => (
         <li>
           {isTodo(link.value) ? (
-            <Todo text={`${link.label}: ${link.value.todo}`} block />
+            <Todo text={`${link.label}: ${link.value.todo}`} />
           ) : (
-            <a class="link-pill" href={link.value} target="_blank" rel="noopener">
-              <span>{link.label}</span>
-              <span class="link-pill__type">
-                <Icon name="link" />
-                Link<span class="visually-hidden">, opens in a new tab</span>
-              </span>
+            <a class="contact__social" href={link.value} target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                <path d={link.mark} fill="currentColor" />
+              </svg>
+              <span class="visually-hidden">{link.label} (opens in a new tab)</span>
             </a>
           )}
         </li>
@@ -68,23 +76,23 @@ const links = [
     line-height: 1.4;
   }
 
-  .contact__email {
-    align-self: flex-start;
+  .contact__socials {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .contact__social {
     display: flex;
     align-items: center;
-    min-height: 44px;
-    font-size: 21px;
-    font-weight: 700;
-    overflow-wrap: anywhere;
-  }
-
-  .contact__actions {
-    display: flex;
-    gap: 10px;
-  }
-
-  .contact__actions .pill {
-    flex: 1;
-    padding: 0 var(--space-3);
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: var(--line);
+    border-radius: 50%;
+    color: var(--ink);
   }
 </style>

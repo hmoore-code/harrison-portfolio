@@ -22,7 +22,7 @@ This tab holds only the words that go on the site, in page order. The site is bu
 - Headline: I'm Harrison, I'm looking for a team working on the future of education
 - Subtitle: My strengths are **writing**, **programme design**, **user research** and **partnerships**. I care most about *craftsmanship* and *helping people build a great relationship with learning*.
 - Main button: Share this site
-- Second button: View projects
+- Email button: Email me
 - CV link: View my CV
 - Contact email: harrison@thenewworkday.com
 
@@ -441,7 +441,7 @@ I can fund an idea by making something people want to support, then deliver it o
 - Email: harrison@thenewworkday.com
 - LinkedIn: https://www.linkedin.com/in/mrharrisonmoore
 - Substack: https://www.thenewworkday.com/
-- CV button: View my CV
+- Email button: Email me
 - Footer: Made by me using Claude Code
 
 ## CV

@@ -32,10 +32,10 @@ Full spec: `BUILD-BRIEF.md` (read it before any non-trivial change). This file i
 - **Assets: `assets/`** (`images/`, `svg/`, `graphics/`, `fonts/`). Missing assets get visible placeholders.
 
 ## Page order
-Follows copy.md: sticky top bar, top of page ("Top B"), selected projects (filters + 6 cards in copy.md order), track record (3 figures), what I want to work on (with people I'd like to meet), testimonials, contact and footer. Pop-ups: one per project, "Try it yourself", CV (last).
+Follows copy.md: sticky top bar, top of page ("Top B"), selected projects (filters + 6 cards in copy.md order), track record (3 figures), what I want to work on (with people I'd like to meet, then the 3 buttons again), testimonials, contact (one "Email me" pill, then round LinkedIn and Substack icons; no email address shown, no CV button) and footer. Pop-ups: one per project, "Try it yourself", CV (last).
 
 ## Top of page ("Top B")
-Fields under `## Top of page`: Name, Headline, Subtitle, Main button, Second button, CV link, Contact email, plus `### Share this site with` (lead-in paragraph + bullets) and `### Closing line` (paragraph). Order: portrait (200px, 50% 28%, 2px border, radius 20, no cover), h1 headline (40/800/62%/0.92), subtitle (17/500/1.45, bold 800, italics), wavy-bordered share box (lead-in 22/800/62%/1, list 16/1.4), closing line (16/1.5), stacked buttons (10px gap): black share pill, outline "View projects" pill that smooth-scrolls to "Selected projects", centred underlined CV link. 20px gutter, 18px gaps; these are Harrison's exact px values, not scaled `--space-*` steps.
+Fields under `## Top of page`: Name, Headline, Subtitle, Main button, Email button, CV link, Contact email, plus `### Share this site with` (lead-in paragraph + bullets) and `### Closing line` (paragraph). Order: portrait (200px, 50% 28%, 2px border, radius 20, no cover), h1 headline (40/800/62%/0.92), subtitle (17/500/1.45, bold 800, italics), wavy-bordered share box (lead-in 22/800/62%/1, list 16/1.4), closing line (16/1.5), stacked buttons (`ActionButtons`, 10px gap): black share pill, outline "Email me" pill (mailto), centred underlined CV link. The same 3 buttons repeat after "People I'd like to meet", before the testimonials. 20px gutter, 18px gaps; these are Harrison's exact px values, not scaled `--space-*` steps.
 
 ## Design tokens
 - Colours only: ink #111111, paper #FAFAF7, white #FFFFFF, grey #4A4A46 (small labels only).

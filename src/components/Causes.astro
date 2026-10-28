@@ -1,5 +1,6 @@
 ---
 import { causes } from '../lib/content';
+import ActionButtons from './ActionButtons.astro';
 import WavyRule from './WavyRule.astro';
 ---
 
@@ -41,6 +42,7 @@ import WavyRule from './WavyRule.astro';
       </div>
     )
   }
+  <ActionButtons class="causes__actions" />
 </section>
 
 <style>
@@ -96,6 +98,10 @@ import WavyRule from './WavyRule.astro';
     font-weight: 700;
     font-stretch: 85%;
     line-height: 1.3;
+  }
+
+  .causes :global(.causes__actions) {
+    margin-top: var(--space-3);
   }
 
   .causes__number {

@@ -25,7 +25,7 @@ A single-page portfolio that helps Harrison Moore find his next role in learning
 2. Top of page ("Top B", see section 5).
 3. Selected projects: heading, intro, filter row, 6 project cards in copy.md order. Each card opens its pop-up.
 4. Track record (label, intro, 3 figures).
-5. What I want to work on (3 causes, the closing ask, people I'd like to meet).
+5. What I want to work on (3 causes, the closing ask, people I'd like to meet), then the top of page's 3 buttons again.
 6. Testimonials (3 quotes).
 7. Contact and footer, with "View my CV".
 Sections follow the order of copy.md.
@@ -36,14 +36,16 @@ Sections 3 and 5 to 8 have no mock-up yet. Build them from the spec: same type s
 ## 5. Components and behaviour
 **Sticky top bar** (design/01): 48px tall, paper background, 2px ink bottom rule. Left: "Portfolio", the star (11px), "Harrison Moore" (13px, 600). Right: a plain "Share" button with a share icon, no outline, at least 44px tall. Share calls `navigator.share` with the page title and URL; where that is unavailable, copy the URL and show a short "Link copied" message.
 
-**Top of page** ("Top B"): all words from `## Top of page` in copy.md (Name, Headline, Subtitle, Main button, Second button, CV link, Contact email, then `### Share this site with` with a lead-in paragraph and a bulleted list, and `### Closing line` with one paragraph). Phone first: 390px wide, 20px side gutter, 18px gap between items, in this order:
+**Top of page** ("Top B"): all words from `## Top of page` in copy.md (Name, Headline, Subtitle, Main button, Email button, CV link, Contact email, then `### Share this site with` with a lead-in paragraph and a bulleted list, and `### Closing line` with one paragraph). Phone first: 390px wide, 20px side gutter, 18px gap between items, in this order:
 - Portrait (portrait-shed.jpg): full width, 200px tall, object-fit cover, object-position 50% 28%, 2px ink border, radius 20, no cover.
 - Headline as the h1: 40px, 800, width 62%, line height 0.92.
 - Subtitle: 17px, 500, line height 1.45. Markdown `**bold**` renders as `<strong>` (weight 800) and `*italics*` as `<em>`.
 - Share box: wavy lines on all 4 sides (rule-wavy.svg top and bottom at 10px high, wave-v.svg left and right at 10px wide), 5px outer padding, inner padding 18px 18px 20px, 12px gap. Lead-in at 22px, 800, width 62%, line height 1; then the bulleted list at 16px, line height 1.4, 8px gap.
 - Closing line: 16px, line height 1.5.
-- Buttons stacked with a 10px gap: Main button, a black pill (52px, share icon, 17px, 700) using the same share function as the top bar; Second button, a 2px outline pill (52px, down arrow icon) that smooth-scrolls to the "Selected projects" heading (instant with reduced motion); CV link, a centred underlined link (15px, 600, at least 44px tall) that opens the CV pop-up.
-Then a centred star divider before "Selected projects". The sticky top bar stays as described above.
+- Buttons stacked with a 10px gap: Main button, a black pill (52px, share icon, 17px, 700) using the same share function as the top bar; Email button, a 2px outline pill (52px, envelope icon) linking to the contact email; CV link, a centred underlined link (15px, 600, at least 44px tall) that opens the CV pop-up.
+Then a centred star divider before "Selected projects". The sticky top bar stays as described above. The same 3 buttons appear again after "People I'd like to meet", before the testimonials.
+
+**Contact**: the heading, then one black "Email me" pill (Email button under `## Contact and footer`, mailto the Email field), then 2 round 48px icon links (2px ink circles) to LinkedIn and Substack, opening in a new tab. No email address shown and no CV button here.
 
 **Interface words**: every word a visitor reads, including button labels, headings and confirmations, comes from copy.md. If a component needs a word that copy.md doesn't have yet, flag it to Harrison and add a field rather than writing the word into the code.
 
