@@ -8,7 +8,6 @@ import { findImage, findVideo } from '../lib/assets';
 import { sortEvidence } from '../lib/evidence';
 import { resolveTarget } from '../lib/links';
 import { inline } from '../lib/inline';
-import CoveredImage from './CoveredImage.astro';
 import EvidenceGallery from './EvidenceGallery.astro';
 import Icon from './Icon.astro';
 import Photo from './Photo.astro';
@@ -76,7 +75,7 @@ const extras = project.extras.map((extra) => ({
     }
   </dl>
 
-  <CoveredImage class="sheet__lead" image={project.image} alt={project.imageAlt} cover={project.filter.cover} />
+  <Photo class="sheet__lead" image={project.image} alt={project.imageAlt} sizes="(min-width: 760px) 680px, 100vw" />
 
   {
     project.story.map((part) => (
@@ -295,8 +294,11 @@ const extras = project.extras.map((extra) => ({
     overflow-wrap: anywhere;
   }
 
+  /* Lead photo: full colour, no cover (covers are only on cards and evidence thumbnails). */
   :global(.sheet__lead) {
+    width: 100%;
     height: 236px;
+    object-fit: cover;
     border: var(--line);
     border-radius: var(--radius-inner);
   }
