@@ -20,8 +20,8 @@ This tab holds only the words that go on the site, in page order. The site is bu
 ## Top of page
 
 - Name: Harrison Moore
-- Headline: Hey, I'm Harrison, I'm looking for a team working on the future of education
-- Subtitle: My strengths are **writing**, **creative production**, **user research**, and **partnerships**. My big thing is *craftsmanship* and *helping people build a great relationship with learning*.
+- Headline: Hey, I'm Harrison, I'm looking to join a team working on the future of education
+- Subtitle: My strengths are **writing**, **creative production**, **user research**, and **partnerships**. I value *craftsmanship* and *autonomy*, and I love helping people build a great relationship with learning.
 - Main button: Share this site
 - Email button: Get in touch
 - CV link: View my CV
@@ -37,7 +37,7 @@ To help me find a team, you could share this site with:
 
 ### Closing line
 
-Below are selected projects that showcase my skills and experience 👇
+Below are selected projects that showcase my skills and experience. Thanks for your help!
 
 ## Projects
 
@@ -72,11 +72,13 @@ Below are selected projects that showcase my skills and experience 👇
 
 ### The challenge
 
-Big construction sites hold hundreds of workers from dozens of firms. Most stay quiet about unsafe or unfair conditions, afraid of being blacklisted. Major contractors pay for this silence in expensive rework (up to £33m a year) whilst workers pay in poor mental health. Eg, Male construction workers in England are three times more likely than average to die by suicide.
+Big construction sites hold hundreds of workers from dozens of firms. Most stay quiet about unsafe or unfair conditions, afraid of being blacklisted. Major contractors pay for this silence in expensive rework (up to £33m a year) whilst workers pay in poor mental health. Eg, male construction labourers in England are 3 times more likely than average to die by suicide. [(source)](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/suicidebyoccupation/england2011to2015)
 
 ### What I built
 
 I'd spent years as an electrician on sites like these, so I knew this silence first hand. In 2017, during my masters, I started Worker Feedback Club to give workers a safe way to speak up. My idea for a Slack-style feedback tool won a future of work competition launched by Tom Watson, then Labour's deputy leader. It also made me the first artist given a place in the Royal College of Art's business incubator.
+
+![Harrison on a construction site](harrison-on-site.jpg)
 
 My biggest lesson was about positioning. I originally pitched the platform as a way to "protect worker welfare", but contractors got defensive, and workers felt infantilised. So I reframed it as a "communication problem" that was costing everybody, and this gave both sides a goal they shared. The app became a tool for all. Managers posted updates. Workers reported problems. And anybody could thank a colleague for doing great work.
 

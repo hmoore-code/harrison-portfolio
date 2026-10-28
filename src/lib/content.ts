@@ -37,6 +37,12 @@ export interface Story {
   paragraphs: string[];
 }
 
+// A paragraph that is only a Markdown image, "![alt text](file.jpg)", shows as a picture.
+export function imageIn(paragraph: string): { image: FileRef; alt: string } | undefined {
+  const match = paragraph.match(/^!\[([^\]]*)\]\(([^)\s]+)\)$/);
+  return match ? { image: { file: match[2] }, alt: match[1] } : undefined;
+}
+
 export interface ExtraLink {
   heading: string;
   button: string;

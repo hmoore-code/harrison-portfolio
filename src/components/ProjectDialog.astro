@@ -2,7 +2,7 @@
 // One project's case study, opened from its card as a sheet (phone) or centred panel (desktop).
 // dialogs.ts handles opening, closing, the URL hash and the back button.
 import { getImage } from 'astro:assets';
-import { isTodo, projectsIntro, type Project } from '../lib/content';
+import { imageIn, isTodo, projectsIntro, type Project } from '../lib/content';
 import { basename } from '../lib/content';
 import { findImage, findVideo } from '../lib/assets';
 import { sortEvidence } from '../lib/evidence';
@@ -78,9 +78,14 @@ const extras = project.extras.map((extra) => ({
     project.story.map((part) => (
       <section class="story">
         <h3 class="subheading">{part.heading}</h3>
-        {part.paragraphs.map((p) => (
-          <p set:html={inline(p)} />
-        ))}
+        {part.paragraphs.map((p) => {
+          const picture = imageIn(p);
+          return picture ? (
+            <Photo class="story__image" image={picture.image} alt={picture.alt} sizes="(min-width: 760px) 640px, 100vw" />
+          ) : (
+            <p set:html={inline(p)} />
+          );
+        })}
       </section>
     ))
   }
@@ -305,6 +310,16 @@ const extras = project.extras.map((extra) => ({
     display: grid;
     gap: var(--space-1);
     padding-left: 1.2em;
+  }
+
+  /* A picture inside the case study text: square, cropped to fill. */
+  .story :global(.story__image) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: var(--line);
+    border-radius: var(--radius-inner);
   }
 
   .pull-quote {
