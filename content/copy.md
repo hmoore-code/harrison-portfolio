@@ -72,28 +72,28 @@ Below are selected projects that showcase my skills and experience. Thanks for y
 
 ### The challenge
 
-Big construction sites hold hundreds of workers from dozens of firms. Most stay quiet about unsafe or unfair conditions, afraid of being blacklisted. Major contractors pay for this silence in expensive rework (up to £33m a year) whilst workers pay in poor mental health. Eg, male construction labourers in England are 3 times more likely than average to die by suicide. [(source)](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/suicidebyoccupation/england2011to2015)
+Big construction sites hold hundreds of workers from dozens of firms. Most stay quiet about unsafe or unfair conditions, afraid of being blacklisted. Major contractors pay for this silence in expensive rework (**up to £33m a year**) whilst workers pay in poor mental health. Eg, male construction labourers in England are 3 times more likely than average to die by suicide. [(source)](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/suicidebyoccupation/england2011to2015)
 
 ### What I built
 
-I'd spent years as an electrician on sites like these, so I knew this silence first hand. In 2017, during my masters, I started Worker Feedback Club to give workers a safe way to speak up. My idea for a Slack-style feedback tool won a future of work competition launched by Tom Watson, then Labour's deputy leader. It also made me the first artist given a place in the Royal College of Art's business incubator.
+I'd spent years as an electrician on sites like these, so I knew this silence first hand. In 2017, during my masters, I started Worker Feedback Club to give workers a safe way to speak up. My idea for a **Slack-style feedback tool** won a future of work competition launched by Tom Watson, then Labour's deputy leader. It also made me the first artist given a place in the Royal College of Art's business incubator.
 
 ![Harrison on a construction site](harrison-on-site.jpg)
 
-My biggest lesson was about positioning. I originally pitched the platform as a way to "protect worker welfare", but contractors got defensive, and workers felt infantilised. So I reframed it as a "communication problem" that was costing everybody, and this gave both sides a goal they shared. The app became a tool for all. Managers posted updates. Workers reported problems. And anybody could thank a colleague for doing great work.
+My biggest lesson was about **positioning**. I originally pitched the platform as a way to "protect worker welfare", but contractors got defensive, and workers felt infantilised. So I reframed it as a "communication problem" that was costing everybody, and this gave both sides a goal they shared. The app became a tool for all. Managers posted updates. Workers reported problems. And anybody could thank a colleague for doing great work.
 
 ### The impact
 
-The new framing won everyone over. Skanska, Multiplex and Willmott Dixon signed paid contracts. On Willmott Dixon sites, about half the workforce adopted the app, checking it on average 12 times a week. Shared documents saved site teams around 2 hours a week. And workers were finally heard on important issues. At Tesco Woolwich, supervisors used private reports to replenish drinking water and eyewash after earlier requests were ignored.
+The new framing won everyone over. Skanska, Multiplex and Willmott Dixon signed paid contracts. On Willmott Dixon sites, about **half the workforce adopted the app**, checking it on average **12 times a week**. Shared documents saved site teams around **2 hours a week**. And workers were finally heard on important issues. At Tesco Woolwich, supervisors used private reports to replenish drinking water and eyewash after earlier requests were ignored.
 
 ### Pull quote
 
 - Quote: "It is absolutely crucial that we start to communicate both ways... I've not seen anything like this on the market."
 - Credit: Director of health, safety, quality and environment, Bouygues
 
-### The skills I could bring to your team
+### The skills I could bring to your team 🫵
 
-I bring together groups whose interests don't necessarily align, find goals they share, and design ways to make collaboration easier. I want to point these skills at a learning setting in the following ways:
+I can bring together groups whose interests don't necessarily align, find goals they share, and design ways to make collaboration easier. I can point these same skills at a learning setting in a variety of ways, like:
 
 - Giving learners a voice
 - Designing learning for people who don't sit at desks

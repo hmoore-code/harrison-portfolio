@@ -18,6 +18,7 @@ Full spec: `BUILD-BRIEF.md` (read it before any non-trivial change). This file i
 - Astro, static output, no client-side framework. Small plain JS only (filters, pop-ups, scroll covers, share, copy).
 - Hosted on Vercel Hobby, deploys on every push.
 - Archivo variable font self-hosted (`assets/fonts/archivo-variable.woff2` or `@fontsource-variable/archivo`). Never load Google Fonts.
+- Quotes and testimonials: Instrument Serif italic 400 (`@fontsource/instrument-serif`, `--font-quote`).
 
 ## Sources of truth
 - **Words: `content/copy.md`**, parsed at build time. It is the single source of every word visitors read: never hard-code visitor-facing words (buttons, headings, confirmations included). If a word is missing, flag it and add a field.
