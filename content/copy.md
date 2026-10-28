@@ -20,8 +20,8 @@ This tab holds only the words that go on the site, in page order. The site is bu
 ## Top of page
 
 - Name: Harrison Moore
-- Headline: Hey, I'm Harrison, I'm looking to join a team working on the future of education
-- Subtitle: My strengths are **writing**, **creative production**, **user research**, and **partnerships**. I value *craftsmanship* and *autonomy*, and I love helping people build a great relationship with learning.
+- Headline: Hey, I'm Harrison, I'm looking to join a team working on the ==future of education==
+- Subtitle: My strengths are **writing**, **creative production**, **user research**, and **partnerships**. I value *craftsmanship* and *autonomy*, and I want to help people build a great relationship with learning.
 - Main button: Share this site
 - Email button: Get in touch
 - CV link: View my CV
