@@ -1,0 +1,30 @@
+---
+// The icon for a filter, shown before its label on project cards and in project pop-ups
+// (not on the filter buttons). Empty alt: the label beside it says what it is.
+// Width and height are each file's own proportions, so the space is held before it loads.
+import iconLearn from '../../assets/svg/icon-learn.svg?url';
+import iconTalk from '../../assets/svg/icon-talk.svg?url';
+import iconExperience from '../../assets/svg/icon-experience-logo-star.svg?url';
+
+interface Props {
+  filterId: string;
+}
+
+const icons: Record<string, { src: string; width: number; height: number }> = {
+  learning: { src: iconLearn, width: 623, height: 625 },
+  tools: { src: iconTalk, width: 684, height: 572 },
+  experiences: { src: iconExperience, width: 796, height: 483 },
+};
+const icon = icons[Astro.props.filterId];
+---
+
+{icon && <img class="filter-icon" src={icon.src} width={icon.width} height={icon.height} alt="" />}
+
+<style>
+  /* 20px tall, width follows each icon's own shape. */
+  .filter-icon {
+    flex: none;
+    width: auto;
+    height: 20px;
+  }
+</style>

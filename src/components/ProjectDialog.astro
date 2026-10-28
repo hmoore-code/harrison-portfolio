@@ -48,7 +48,7 @@ const extras = project.extras.map((extra) => ({
 }));
 ---
 
-<Sheet id={project.slug} labelledby={titleId} label={project.filter.label}>
+<Sheet id={project.slug} labelledby={titleId} label={project.filter.label} filterId={project.filter.id}>
   <header class="sheet__intro">
     <h2 id={titleId} class="sheet__title">{project.title}</h2>
     <p class="sheet__result">{project.result}</p>

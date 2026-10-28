@@ -1,21 +1,27 @@
 ---
 // The pop-up shell: a sheet sliding up on phones, a centred panel on wider screens.
 // dialogs.ts opens and closes it. `parent` names the pop-up it opens from, so closing returns there.
+import FilterIcon from './FilterIcon.astro';
 import Icon from './Icon.astro';
 
 interface Props {
   id: string;
   labelledby: string;
   label: string;
+  // A project pop-up passes its filter so the label gets the filter's icon.
+  filterId?: string;
   parent?: string;
 }
 
-const { id, labelledby, label, parent } = Astro.props;
+const { id, labelledby, label, filterId, parent } = Astro.props;
 ---
 
 <dialog class="sheet" id={id} aria-labelledby={labelledby} data-dialog data-parent={parent}>
   <div class="sheet__bar">
-    <p class="label">{label}</p>
+    <p class="label sheet__label">
+      {filterId && <FilterIcon filterId={filterId} />}
+      {label}
+    </p>
     <button class="sheet__close" type="button" data-close-dialog aria-label="Close">
       <Icon name="close" />
     </button>
@@ -26,6 +32,12 @@ const { id, labelledby, label, parent } = Astro.props;
 </dialog>
 
 <style>
+  .sheet__label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   .sheet {
     position: fixed;
     inset: var(--space-6) 0 0;
