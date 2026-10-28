@@ -67,24 +67,37 @@ Below are selected projects that showcase my skills and experience 👇
 - Evidence link: opens the product screens gallery (wfc/screen-site-feed.jpg, screen-updates.jpg, screen-anonymous-report.jpg, screen-recognition.jpg, screen-analytics.jpg, screen-survey-question.jpg)
 - Image: wfc/euston-presenting.jpg (me presenting the first pilot to workers and staff at HS2 Euston, 2020)
 - Image alt text: Harrison presenting to a crowd of construction workers in orange hi-vis at a Skanska site
+- Pop-up image: wfc/screen-survey-question.png
+- Pop-up image alt text: A hand holding a phone showing the Worker Feedback Club survey question "I feel safe being on this site", with answers from 1, disagree strongly, to 5, agree strongly
 
 ### The challenge
 
-Large construction sites hold hundreds of workers from dozens of firms. Most stay quiet about unsafe or unfair conditions, afraid of being blacklisted. Major contractors pay for this silence in expensive rework, up to £33m a year, whilst workers pay in low productivity and poor mental health. Male construction workers in England are three times more likely than average to die by suicide.
+Big construction sites hold hundreds of workers from dozens of firms. Most stay quiet about unsafe or unfair conditions, afraid of being blacklisted. Major contractors pay for this silence in expensive rework (up to £33m a year) whilst workers pay in poor mental health. Eg, Male construction workers in England are three times more likely than average to die by suicide.
 
-### What I did
+### What I built
 
-I'd spent years as an electrician on sites like these, so I knew this silence first hand. In 2017, during my master's at the Royal College of Art, I started Worker Feedback Club to give workers a safe way to speak up. My idea for a Slack-style communication tool won a future of work competition launched by Tom Watson, then Labour's deputy leader. It also made me the first artist given a place in the RCA's business incubator.
+I'd spent years as an electrician on sites like these, so I knew this silence first hand. In 2017, during my masters, I started Worker Feedback Club to give workers a safe way to speak up. My idea for a Slack-style feedback tool won a future of work competition launched by Tom Watson, then Labour's deputy leader. It also made me the first artist given a place in the Royal College of Art's business incubator.
 
-My biggest lesson was about framing. I originally pitched the app as a way to "protect workers' welfare", but contractors got defensive, and workers felt infantilised. So I reframed it as a communication problem that was costing everybody on site, and this gave both sides a goal they shared. The app became a tool for everyone. Managers posted updates and documents. Workers reported problems privately. And anybody could thank a colleague for great work.
+My biggest lesson was about positioning. I originally pitched the platform as a way to "protect worker welfare", but contractors got defensive, and workers felt infantilised. So I reframed it as a "communication problem" that was costing everybody, and this gave both sides a goal they shared. The app became a tool for all. Managers posted updates. Workers reported problems. And anybody could thank a colleague for doing great work.
 
-### What happened
+### The impact
 
 The new framing won everyone over. Skanska, Multiplex and Willmott Dixon signed paid contracts. On Willmott Dixon sites, about half the workforce adopted the app, checking it on average 12 times a week. Shared documents saved site teams around 2 hours a week. And workers were finally heard on important issues. At Tesco Woolwich, supervisors used private reports to replenish drinking water and eyewash after earlier requests were ignored.
 
-### What this shows
+### Pull quote
 
-I bring together groups whose interests clash by finding a goal they share, then build the tool that makes it real.
+- Quote: "It is absolutely crucial that we start to communicate both ways... I've not seen anything like this on the market."
+- Credit: Director of health, safety, quality and environment, Bouygues
+
+### The skills I could bring to your team
+
+I bring together groups whose interests don't necessarily align, find goals they share, and design ways to make collaboration easier. I want to point these skills at a learning setting in the following ways:
+
+- Giving learners a voice
+- Designing learning for people who don't sit at desks
+- Turning research into change
+- Retraining workers for the age of AI
+- Helping learners adopt new learning tools
 
 ### Evidence
 
@@ -93,11 +106,6 @@ I bring together groups whose interests clash by finding a goal they share, then
 - Product screens: site feed, updates, anonymous reports, recognition, analytics and the safety survey: wfc/screen-\*.jpg (6 images)
 - Presenting the first pilot to workers at HS2 Euston, 2020: wfc/euston-presenting.jpg
 - Me on site: harrison-on-site.jpg
-
-### Pull quote
-
-- Quote: "It is absolutely crucial that we start to communicate both ways... I've not seen anything like this on the market."
-- Credit: Director of health, safety, quality and environment, Bouygues
 
 ### Further reading
 
@@ -118,6 +126,8 @@ I bring together groups whose interests clash by finding a goal they share, then
 - Evidence link: https://tempr-taupe.vercel.app/
 - Image: tempr-home.jpg (your screenshot of the Tempr welcome screen on a phone)
 - Image alt text: Tempr on a phone, with the welcome message "Tell me about an issue you're facing"
+- Pop-up image: tempr-home.jpg
+- Pop-up image alt text: Tempr on a phone, with the welcome message "Tell me about an issue you're facing"
 
 ### The challenge
 
@@ -133,7 +143,7 @@ My first version gave users multiple-choice questions, but it couldn't ask for t
 
 It turned out that questions mattered more than the answer. People valued being walked through their own situation, from the feeling to the need to the request to the resolution. One user rekindled a friendship he was going to let drift, saying he "definitely would not have done it" without using Tempr.
 
-### What this shows
+### The skills I could bring to your team
 
 I design tools that teach through good questions, so people learn a skill just by using them.
 
@@ -179,6 +189,8 @@ Feedback from 3 users:
 - Evidence link: https://harrisonmoore.notion.site/Writing-Prompts-from-Harrison-LIVE-75e0e11b460c435a9ea8553845744ca2
 - Image: notion-prompts.jpg (your screenshot of the Notion prompt library)
 - Image alt text: A grid of colourful writing prompt cards, such as Do nothing and Write for the dustbin
+- Pop-up image: notion-prompts.jpg
+- Pop-up image alt text: A grid of colourful writing prompt cards, such as Do nothing and Write for the dustbin
 
 ### The challenge
 
@@ -194,7 +206,7 @@ We found that responses fell as the rules stacked up. 30 people published a 6-wo
 
 People are productive when constraints are tight but not too tight. Across 4 challenges, participants published 53 pieces, collectively drawing 2,677 views. One participant who hadn't written for over a year said the prompts "keep the spark alive". Several prompts also became core exercises in my Writing Workshop.
 
-### What this shows
+### The skills I could bring to your team
 
 I treat limits as a design tool, then test them with real learners to find the level that gets people started.
 
@@ -224,6 +236,8 @@ I treat limits as a design tool, then test them with real learners to find the l
 - Evidence link: \[<https://www.thenewworkday.com/p/the-questions-every-writer-should-ask>\]
 - Image: workshop-cohort.png (the cohort in a live session, Zoom names blurred)
 - Image alt text: Zoom screenshot of the Full Cycle Writing Workshop cohort during a live session
+- Pop-up image: workshop-cohort.png
+- Pop-up image alt text: Zoom screenshot of the Full Cycle Writing Workshop cohort during a live session
 
 ### The challenge
 
@@ -239,7 +253,7 @@ After session 4, many writers said they were now struggling to choose between di
 
 Answering these questions and writing to one trusted person got the majority of writers unstuck. Everyone produced drafts, and at least 8 published. When the course ended, the students asked to keep meeting every Sunday as a writing group, which they offered to co-host.
 
-### What this shows
+### The skills I could bring to your team
 
 I design learning experiences that make people feel safe enough to try, then adapt them when learners get stuck.
 
@@ -305,6 +319,8 @@ Write an imaginary conversation between 2 voices, both played by you. One might 
 - Image: steel-core/winners-2017.jpg (the 2017 winners holding their trophies at Doc/Fest)
 - Logo: docfest-logo.png
 - Image alt text: Sheffield Doc/Fest's 2017 award winners in a group, holding their steel trophies
+- Pop-up image: steel-core/winners-2017.jpg
+- Pop-up image alt text: Sheffield Doc/Fest's 2017 award winners in a group, holding their steel trophies
 
 ### The challenge
 
@@ -318,7 +334,7 @@ My winning design, called the Steel Core, was a solid bar of Sheffield stainless
 
 It's Nice That reported the Grand Jury winner leaving "with the coveted Grand Jury award stuffed into his jacket pocket", which was indeed nice, as I'd designed the trophies to be easily carried. Doc/Fest contracted me to make trophies 3 years running, 33 awards in total, before Covid cancelled the awards ceremonies.
 
-### What this shows
+### The skills I could bring to your team
 
 I turn a place and its story into an object people can hold, and manage production from concept to delivery.
 
@@ -347,6 +363,8 @@ I turn a place and its story into an object people can hold, and manage producti
 - Evidence link: solo-opening-night.jpg
 - Image: solo-visitors.jpg
 - Image alt text: Opening-night visitors looking at framed drawings marked with red sold dots
+- Pop-up image: solo-visitors.jpg
+- Pop-up image alt text: Opening-night visitors looking at framed drawings marked with red sold dots
 
 ### The challenge
 
@@ -362,7 +380,7 @@ Because the show had to sell, I made many pieces in batches, like the city's fac
 
 The pricing strategy paid off. In 6 weeks I made 63 works. 30 people came to the opening night, and the show sold about £3,000 of work. The crowdfunding campaign raised £1,800 more. Together, that money helped pay for my master's.
 
-### What this shows
+### The skills I could bring to your team
 
 I can fund an idea by making something people want to support, then deliver it on a tight timeline and budget.
 

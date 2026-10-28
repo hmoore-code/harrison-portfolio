@@ -67,10 +67,12 @@ export interface Project {
   evidenceLink: Target;
   image: FileRef | Todo;
   imageAlt: string;
+  popupImage: FileRef | Todo;
+  popupImageAlt: string;
   logo?: FileRef;
   story: Story[];
-  whatThisShows: string;
-  headings: { whatThisShows: string; evidence: string };
+  skillsBox: { heading: string; paragraphs: string[]; bullets: string[] };
+  headings: { evidence: string };
   evidence: EvidenceItem[];
   pullQuote: { quote: string; credit: string };
   extras: ExtraLink[];
@@ -350,14 +352,17 @@ export const projects: Project[] = projectNodes.map((node, index) => {
   const evidenceLinkValue = required(node, 'Evidence link');
   const evidenceLink: Target = asTarget(evidenceLinkValue, ctx) ?? { todo: `TO DO: ${evidenceLinkValue}` };
 
-  const story = [/^The (problem|challenge)$/i, /^What I did$/i, /^What happened$/i].map((heading) => {
-    const part = child(node, heading);
-    if (!part || !part.paragraphs.length) errors.push(`${where} is missing "### ${heading.source.replace(/[\^$\/i]/g, '')}"`);
-    return { heading: part?.heading ?? '', paragraphs: part?.paragraphs ?? [] };
-  });
+  // The case study is every "###" part that isn't one of the named parts below, in copy.md order,
+  // so each project can use its own headings ("What I did" or "What I built", and so on).
+  const namedParts = /^(The skills I could bring|Evidence|Pull quote|Further reading|Learn more|Try it yourself|Exhibition list)/i;
+  const story = node.children
+    .filter((part) => !namedParts.test(part.heading) && part.paragraphs.length)
+    .map((part) => ({ heading: part.heading, paragraphs: part.paragraphs }));
+  if (!story.length) errors.push(`${where} is missing its case study ("### The challenge" and so on)`);
 
-  const shows = child(node, 'What this shows');
-  if (!shows?.paragraphs.length) errors.push(`${where} is missing "### What this shows"`);
+  const skillsNode = child(node, /^The skills I could bring/i);
+  if (!skillsNode || !(skillsNode.paragraphs.length || skillsNode.bullets.length))
+    errors.push(`${where} is missing "### The skills I could bring to your team"`);
 
   const evidenceNode = child(node, 'Evidence');
   if (!evidenceNode?.bullets.length) errors.push(`${where} is missing "### Evidence"`);
@@ -432,10 +437,17 @@ export const projects: Project[] = projectNodes.map((node, index) => {
     evidenceLink,
     image: asImage(required(node, 'Image')),
     imageAlt: required(node, 'Image alt text'),
+    // Falls back to the card image until a pop-up image is chosen.
+    popupImage: asImage(optional(node, 'Pop-up image') ?? required(node, 'Image')),
+    popupImageAlt: optional(node, 'Pop-up image alt text') ?? required(node, 'Image alt text'),
     logo: filesIn(optional(node, 'Logo') ?? '').map((file) => ({ file }))[0],
     story,
-    whatThisShows: shows?.paragraphs.join(' ') ?? '',
-    headings: { whatThisShows: shows?.heading ?? '', evidence: evidenceNode?.heading ?? '' },
+    skillsBox: {
+      heading: skillsNode?.heading ?? '',
+      paragraphs: skillsNode?.paragraphs ?? [],
+      bullets: (skillsNode?.bullets ?? []).map((b) => b.raw),
+    },
+    headings: { evidence: evidenceNode?.heading ?? '' },
     evidence,
     pullQuote,
     extras,

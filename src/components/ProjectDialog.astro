@@ -12,8 +12,6 @@ import EvidenceGallery from './EvidenceGallery.astro';
 import Icon from './Icon.astro';
 import Photo from './Photo.astro';
 import Sheet from './Sheet.astro';
-import Star from './Star.astro';
-import StarDivider from './StarDivider.astro';
 import Todo from './Todo.astro';
 
 interface Props {
@@ -50,7 +48,6 @@ const extras = project.extras.map((extra) => ({
 <Sheet id={project.slug} labelledby={titleId} label={project.filter.label} filterId={project.filter.id}>
   <header class="sheet__intro">
     <h2 id={titleId} class="sheet__title">{project.title}</h2>
-    <p class="sheet__result">{project.result}</p>
     {
       project.logo && (
         <Photo
@@ -75,7 +72,7 @@ const extras = project.extras.map((extra) => ({
     }
   </dl>
 
-  <Photo class="sheet__lead" image={project.image} alt={project.imageAlt} sizes="(min-width: 760px) 680px, 100vw" />
+  <Photo class="sheet__lead" image={project.popupImage} alt={project.popupImageAlt} sizes="(min-width: 760px) 680px, 100vw" />
 
   {
     project.story.map((part) => (
@@ -88,34 +85,24 @@ const extras = project.extras.map((extra) => ({
     ))
   }
 
-  <section class="shows">
-    <svg class="shows__shape" viewBox="0 0 350 154" preserveAspectRatio="none" aria-hidden="true">
-      <path
-        d="M6 14 L40 6 L90 12 L150 4 L220 10 L290 3 L344 11 L348 60 L342 100 L346 146 L290 150 L220 144 L150 151 L80 146 L30 152 L4 145 L9 90 L3 50 Z"
-        fill="currentColor"
-        stroke="currentColor"
-        stroke-width="6"
-        stroke-linejoin="round"></path>
-      <path
-        d="M60 3 L66 9 M200 150 L210 144 M345 70 L338 74 M4 100 L10 98"
-        stroke="var(--paper)"
-        stroke-width="2"
-        stroke-linecap="round"
-        fill="none"></path>
-    </svg>
-    <h3 class="subheading">{project.headings.whatThisShows}</h3>
-    <p>
-      <span set:html={inline(project.whatThisShows)} />
-      <Star size={14} class="shows__end" />
-    </p>
-  </section>
-
   <figure class="pull-quote">
     <blockquote>“{project.pullQuote.quote.replace(/^["“]|["”]$/g, '')}”</blockquote>
     <figcaption>{project.pullQuote.credit}</figcaption>
   </figure>
 
-  <StarDivider />
+  <section class="skills-box">
+    <h3 class="subheading">{project.skillsBox.heading}</h3>
+    {project.skillsBox.paragraphs.map((p) => <p set:html={inline(p)} />)}
+    {
+      project.skillsBox.bullets.length > 0 && (
+        <ul>
+          {project.skillsBox.bullets.map((item) => (
+            <li set:html={inline(item)} />
+          ))}
+        </ul>
+      )
+    }
+  </section>
 
   <section class="evidence" aria-labelledby={`${project.slug}-evidence`}>
     <h3 id={`${project.slug}-evidence`} class="evidence__heading">{project.headings.evidence}</h3>
@@ -227,19 +214,10 @@ const extras = project.extras.map((extra) => ({
 </Sheet>
 
 <style>
-
-
   .sheet__intro {
     display: flex;
     flex-direction: column;
     gap: var(--space-5);
-  }
-
-  .sheet__result {
-    margin: 0;
-    font-size: 21px;
-    font-weight: 500;
-    line-height: 1.35;
   }
 
   .sheet__intro :global(.sheet__logo) {
@@ -303,39 +281,30 @@ const extras = project.extras.map((extra) => ({
     border-radius: var(--radius-inner);
   }
 
-  /* "What this shows": paper text in a hand-drawn black panel. */
-  .shows {
-    position: relative;
+  /* "The skills I could bring to your team": a box drawn with wavy lines, like the facts squares. */
+  .skills-box {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
-    padding: var(--space-6) 26px;
-    color: var(--paper);
+    padding: calc(5px + var(--space-5)) calc(5px + var(--space-5));
+    background:
+      url('../../assets/svg/rule-wavy.svg') top / 100% 10px no-repeat,
+      url('../../assets/svg/rule-wavy.svg') bottom / 100% 10px no-repeat,
+      url('../../assets/svg/wave-v.svg') left / 10px 100% no-repeat,
+      url('../../assets/svg/wave-v.svg') right / 10px 100% no-repeat;
   }
 
-  .shows__shape {
-    position: absolute;
-    top: -6px;
-    left: -6px;
-    z-index: 0;
-    width: calc(100% + 12px);
-    height: calc(100% + 12px);
-    color: var(--ink);
+  .skills-box p,
+  .skills-box ul {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.55;
   }
 
-  .shows > :not(.shows__shape) {
-    position: relative;
-    z-index: 1;
-  }
-
-  .shows :global(.shows__end) {
-    display: inline-block;
-    margin-left: 2px;
-    vertical-align: -1px;
-  }
-
-  .shows :global(a) {
-    color: var(--paper);
+  .skills-box ul {
+    display: grid;
+    gap: var(--space-1);
+    padding-left: 1.2em;
   }
 
   .pull-quote {
@@ -422,11 +391,5 @@ const extras = project.extras.map((extra) => ({
     padding-left: 1.2em;
     font-size: 15px;
     line-height: 1.5;
-  }
-
-  .shows p {
-    margin: 0;
-    font-size: 17px;
-    line-height: 1.55;
   }
 </style>
