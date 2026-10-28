@@ -1,6 +1,9 @@
 ---
 import { projectsIntro, type Project } from '../lib/content';
 import CoveredImage from './CoveredImage.astro';
+import iconLearn from '../../assets/svg/icon-learn.svg?url';
+import iconTalk from '../../assets/svg/icon-talk.svg?url';
+import iconExperience from '../../assets/svg/icon-experience-logo-star.svg?url';
 
 interface Props {
   project: Project;
@@ -8,12 +11,23 @@ interface Props {
 
 const { project } = Astro.props;
 const headingId = `card-${project.slug}`;
+// One icon per filter, shown before the filter label on the card (not on the filter buttons).
+// Width and height are each file's own proportions, so the space is held before it loads.
+const icons: Record<string, { src: string; width: number; height: number }> = {
+  learning: { src: iconLearn, width: 630, height: 630 },
+  tools: { src: iconTalk, width: 700, height: 590 },
+  experiences: { src: iconExperience, width: 820, height: 490 },
+};
+const icon = icons[project.filter.id];
 ---
 
 <article class="card" data-filter={project.filter.id} aria-labelledby={headingId}>
   <CoveredImage class="card__image" image={project.image} alt={project.imageAlt} cover={project.filter.cover} />
   <div class="card__body">
-    <p class="label">{project.filter.label}</p>
+    <p class="label card__label">
+      <img class="card__icon" src={icon.src} width={icon.width} height={icon.height} alt="" />
+      {project.filter.label}
+    </p>
     <h3 id={headingId} class="card__title">{project.title}</h3>
     <p class="card__result">{project.result}</p>
     <div class="card__actions">
@@ -46,6 +60,19 @@ const headingId = `card-${project.slug}`;
     flex-direction: column;
     gap: var(--space-3);
     padding: var(--space-4) var(--space-4) calc(20px * var(--spacing-scale));
+  }
+
+  .card__label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* 20px tall, width follows each icon's own shape. */
+  .card__icon {
+    flex: none;
+    width: auto;
+    height: 20px;
   }
 
   .card__title {
