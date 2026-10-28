@@ -15,7 +15,7 @@ This tab holds only the words that go on the site, in page order. The site is bu
 - Label: Harrison Moore's Portfolio
 - Share button: Share
 - Share confirmation: Link copied
-- Email button: Email
+- Email button: Email me
 
 ## Top of page
 

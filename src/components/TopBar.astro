@@ -1,13 +1,11 @@
 ---
 import { hero, topBar, meta } from '../lib/content';
 import Icon from './Icon.astro';
-import Star from './Star.astro';
 ---
 
 <header class="top-bar">
   <div class="top-bar__inner">
     <a class="top-bar__name" href="#top">
-      <Star size={11} />
       {topBar.label}
     </a>
     <div class="top-bar__actions">
@@ -78,7 +76,6 @@ import Star from './Star.astro';
   .top-bar__name {
     display: flex;
     align-items: center;
-    gap: 7px;
     min-height: 44px;
     font-size: 13px;
     font-weight: 600;
@@ -86,8 +83,7 @@ import Star from './Star.astro';
     text-decoration: none;
   }
 
-  /* The star and the icons keep their size; on very small phones the name wraps instead. */
-  .top-bar__name :global(svg),
+  /* The icons keep their size; on very small phones the name wraps instead. */
   .top-bar__action :global(svg) {
     flex: none;
   }
