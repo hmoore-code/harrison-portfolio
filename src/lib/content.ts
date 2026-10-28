@@ -61,6 +61,8 @@ export interface Project {
   year: string;
   role: string;
   result: string;
+  skills: string;
+  cardButton: string;
   evidenceLinkText: Text;
   evidenceLink: Target;
   image: FileRef | Todo;
@@ -309,7 +311,6 @@ export const filters: Filter[] = FILTER_IDS.map((id, i) => ({
 export const projectsIntro = {
   heading: required(projectsNode, 'Heading'),
   intro: required(projectsNode, 'Intro'),
-  cardButton: required(projectsNode, 'Card button'),
   galleryHint: required(projectsNode, 'Evidence gallery hint'),
   allFilter: required(filtersNode, 'All'),
   filterLabel: required(projectsNode, 'Filter label'),
@@ -425,6 +426,8 @@ export const projects: Project[] = projectNodes.map((node, index) => {
     year: required(node, 'Year'),
     role: required(node, 'Role'),
     result: required(node, 'Result'),
+    skills: required(node, 'Skills'),
+    cardButton: required(node, 'Card button'),
     evidenceLinkText: asText(required(node, 'Evidence link text')),
     evidenceLink,
     image: asImage(required(node, 'Image')),

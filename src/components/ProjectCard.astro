@@ -1,13 +1,15 @@
 ---
-import { projectsIntro, type Project } from '../lib/content';
+import type { Project } from '../lib/content';
 import CoveredImage from './CoveredImage.astro';
 import FilterIcon from './FilterIcon.astro';
 
 interface Props {
   project: Project;
+  // Position in the list, used to start each card's diamond glint at a different moment.
+  index: number;
 }
 
-const { project } = Astro.props;
+const { project, index } = Astro.props;
 const headingId = `card-${project.slug}`;
 ---
 
@@ -20,9 +22,15 @@ const headingId = `card-${project.slug}`;
     </p>
     <h3 id={headingId} class="card__title">{project.title}</h3>
     <p class="card__result">{project.result}</p>
+    <p class="card__skills">
+      <span class="gem" style={`--gem-delay: ${(index * 0.7).toFixed(1)}s`} aria-hidden="true">
+        <span class="gem__emoji">💎</span>
+      </span>
+      {project.skills}
+    </p>
     <div class="card__actions">
       <a class="pill pill--solid pill--small" href={`#${project.slug}`} data-open-dialog={project.slug}>
-        {projectsIntro.cardButton}<span class="visually-hidden">: {project.title}</span>
+        {project.cardButton}<span class="visually-hidden">: {project.title}</span>
       </a>
     </div>
   </div>
@@ -71,6 +79,106 @@ const headingId = `card-${project.slug}`;
     margin: 0;
     font-size: 17px;
     line-height: 1.45;
+  }
+
+  .card__skills {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* The diamond glints every 4 seconds: a diagonal shine sweeps across it, it grows a touch,
+     and a small sparkle appears and fades. The glint takes the first 0.6s (15%) of each cycle. */
+  .gem {
+    position: relative;
+    flex: none;
+    display: inline-block;
+    animation: gem-pop 4s ease-out var(--gem-delay, 0s) infinite;
+  }
+
+  .gem__emoji {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+
+  .gem__emoji::before {
+    content: '';
+    position: absolute;
+    inset: -20% auto -20% -60%;
+    z-index: 1;
+    width: 50%;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 95%) 50%, transparent);
+    transform: translateX(0) skewX(-20deg);
+    animation: gem-shine 4s ease-in-out var(--gem-delay, 0s) infinite;
+  }
+
+  .gem::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    right: -4px;
+    width: 7px;
+    height: 7px;
+    background: var(--ink);
+    clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+    opacity: 0;
+    transform: scale(0);
+    animation: gem-sparkle 4s ease-out var(--gem-delay, 0s) infinite;
+  }
+
+  @keyframes gem-pop {
+    0%,
+    15%,
+    100% {
+      transform: scale(1);
+    }
+    6% {
+      transform: scale(1.12);
+    }
+  }
+
+  @keyframes gem-shine {
+    0% {
+      transform: translateX(0) skewX(-20deg);
+    }
+    12%,
+    100% {
+      transform: translateX(400%) skewX(-20deg);
+    }
+  }
+
+  @keyframes gem-sparkle {
+    0%,
+    3% {
+      opacity: 0;
+      transform: scale(0) rotate(0deg);
+    }
+    8% {
+      opacity: 1;
+      transform: scale(1) rotate(45deg);
+    }
+    15%,
+    100% {
+      opacity: 0;
+      transform: scale(0.4) rotate(90deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gem,
+    .gem__emoji::before,
+    .gem::after {
+      animation: none;
+    }
+
+    .gem__emoji::before {
+      display: none;
+    }
   }
 
   .card__actions {

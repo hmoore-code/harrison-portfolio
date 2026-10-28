@@ -33,7 +33,7 @@ const buttons = [{ id: 'all', label: projectsIntro.allFilter }, ...filters].map(
   </div>
 
   <div class="projects__list">
-    {projects.map((project) => <ProjectCard project={project} />)}
+    {projects.map((project, index) => <ProjectCard project={project} index={index} />)}
   </div>
 </section>
 

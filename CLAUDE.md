@@ -46,7 +46,7 @@ Fields under `## Top of page`: Name, Headline, Subtitle, Main button, Email butt
 - Icons: 16px line icons, 1.5px stroke.
 
 ## Harrison's decisions (override the brief)
-- Project cards have ONE action: the "Card button" from copy.md, which opens the case study. No evidence link on the card (evidence links live in the pop-up).
+- Project cards have ONE action: each project's own "Card button" from copy.md, which opens its pop-up. Cards also show a 💎 skills line from the per-project "Skills" field. No evidence link on the card (evidence links live in the pop-up).
 - Design proposal PDF: sensitive details are covered with black boxes and every page flattened to an image (no hidden text). Done; the unredacted original lives only in `originals/`.
 - No pre-written forwarding message. The top of page's main button shares the portfolio link; people add their own words.
 - Workshop lead image: Zoom name labels blurred, faces left as they are.

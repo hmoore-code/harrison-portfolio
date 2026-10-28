@@ -43,7 +43,6 @@ Below are selected projects that showcase my skills and experience 👇
 
 - Heading: Selected projects
 - Intro: I design experiences, tools, and cultural artefacts that help people learn, communicate and do their best work.
-- Card button: Learn more
 - Evidence gallery hint: Tap an image to view it
 - Filter label: Filter by
 
@@ -57,11 +56,13 @@ Below are selected projects that showcase my skills and experience 👇
 ## Project: Worker Feedback Club
 
 - Filter: Building communication tools
-- Title: Construction site communication app
+- Title: Construction site feedback platform
 - Organisation: Worker Feedback Club, with Willmott Dixon, Multiplex and Skanska
 - Year: 2017 to 2022
 - Role: Founder and CEO
-- Result: Workers used it to get ignored problems fixed, like language barriers and missing drinking water. Clients included major contractors Skanska, Multiplex and Willmott Dixon.
+- Result: I founded a startup that built a way for frontline tradespeople to tell their bosses what was going wrong, and get it fixed. Clients included major contractors Skanska, Multiplex, and Willmott Dixon.
+- Skills: User research, Customer education, Partnerships
+- Card button: Learn more
 - Evidence link text: See the product screens
 - Evidence link: opens the product screens gallery (wfc/screen-site-feed.jpg, screen-updates.jpg, screen-anonymous-report.jpg, screen-recognition.jpg, screen-analytics.jpg, screen-survey-question.jpg)
 - Image: wfc/euston-presenting.jpg (me presenting the first pilot to workers and staff at HS2 Euston, 2020)
@@ -110,7 +111,9 @@ I bring together groups whose interests clash by finding a goal they share, then
 - Organisation: Creative Thought Partner
 - Year: 2026
 - Role: Designer and builder
-- Result: Designed and launched a live AI app in just 6 days. It helped users realise they were "allowed to ask".
+- Result: An AI-built chatbot that turns your angry words into calm requests using Marshall Rosenberg's Nonviolent Communication. People have used it to improve business relationships and friendships.
+- Skills: Applied AI, Prompt engineering, Learning experience design
+- Card button: Try Tempr
 - Evidence link text: Try Tempr live
 - Evidence link: https://tempr-taupe.vercel.app/
 - Image: tempr-home.jpg (your screenshot of the Tempr welcome screen on a phone)
@@ -169,7 +172,9 @@ Feedback from 3 users:
 - Organisation: Creative Thought Partner
 - Year: 2024 to 2025
 - Role: Creator and host
-- Result: 53 pieces published across 4 writing challenges. Biggest insight was that creative constraints can have a "sweet spot."
+- Result: A growing bank of creative, self-serve writing prompts for nonfiction writers, each with a mini-lesson, plus monthly challenges for my newsletter readers. Participants published over 50 pieces of writing.
+- Skills: Learning experience design, Community engagement, Writing
+- Card button: Try a prompt
 - Evidence link text: Try the writing prompts
 - Evidence link: https://harrisonmoore.notion.site/Writing-Prompts-from-Harrison-LIVE-75e0e11b460c435a9ea8553845744ca2
 - Image: notion-prompts.jpg (your screenshot of the Notion prompt library)
@@ -208,11 +213,13 @@ I treat limits as a design tool, then test them with real learners to find the l
 ## Project: Full Cycle Writing Workshop
 
 - Filter: Helping people learn
-- Title: 6-week writing workshop
+- Title: Cohort-based writing workshop
 - Organisation: Creative Thought Partner
 - Year: 2024 to 2025
 - Role: Designer and facilitator
-- Result: 37 paying writers, 8 published pieces.
+- Result: A 6-week live online course for 30 working professionals across 5 time zones, taking them from idea to published piece. 8 writers published new work, and the group continued meeting after it ended.
+- Skills: Curriculum design, Community building, Coaching and facilitation
+- Card button: Learn more
 - Evidence link text: Read my workshop write-up
 - Evidence link: \[<https://www.thenewworkday.com/p/the-questions-every-writer-should-ask>\]
 - Image: workshop-cohort.png (the cohort in a live session, Zoom names blurred)
@@ -286,11 +293,13 @@ Write an imaginary conversation between 2 voices, both played by you. One might 
 ## Project: The Steel Core
 
 - Filter: Designing compelling experiences
-- Title: Festival awards trophies
+- Title: DocFest awards trophies
 - Organisation: Sheffield Doc/Fest, UK's leading documentary film festival
 - Year: 2017 to 2019
 - Role: Designer and producer
-- Result: Doc/Fest commissioned my trophy design 3 years running. Featured in Screen Daily and It's Nice That.
+- Result: The "Oscars" of the UK's biggest documentary film festival. I designed and produced trophies for award winners, three years running. My designs were featured in Screen Daily and It's Nice That.
+- Skills: Creative production, Project management, Partnerships
+- Card button: See the trophies
 - Evidence link text: See the design proposal
 - Evidence link: steel-core/design-proposal-2017.pdf (the March 2017 winning proposal, 12 pages)
 - Image: steel-core/winners-2017.jpg (the 2017 winners holding their trophies at Doc/Fest)
@@ -327,11 +336,13 @@ I turn a place and its story into an object people can hold, and manage producti
 ## Project: Solo show
 
 - Filter: Designing compelling experiences
-- Title: Crowdfunding campaign to fund my masters
+- Title: Crowdfunded exhibition to fund my masters
 - Organisation: Gallery 35, Sheffield, backed by 4 local businesses
 - Year: 2016
 - Role: Artist and producer
-- Result: Made and sold £3,000 of art in 6 weeks to help pay for my masters at the Royal College of Art.
+- Result: I made and sold £3,000 of art in 6 weeks, and launched a successful Indiegogo campaign raising a further £1,800, to pay for my master's at the Royal College of Art. I've since exhibited in 20 international exhibitions.
+- Skills: Field research, Community engagement, Creative production
+- Card button: See the show
 - Evidence link text: See the opening night
 - Evidence link: solo-opening-night.jpg
 - Image: solo-visitors.jpg
