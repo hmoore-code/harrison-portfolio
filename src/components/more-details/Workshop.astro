@@ -7,6 +7,7 @@ import { optional, type MdNode, type Project } from '../../lib/content';
 import { projectsIntro } from '../../lib/content';
 import { inline } from '../../lib/inline';
 import Icon from '../Icon.astro';
+import WavyRule from '../WavyRule.astro';
 
 interface Props {
   project: Project;
@@ -57,11 +58,19 @@ const first = Math.min(2, libraryForms.length - 1);
 {library.paragraphs.map((p) => <p class="workshop__text" set:html={inline(p)} />)}
 
 <div class="library" data-library>
-  <div class="library__card" aria-live="polite" data-library-card data-current={first}>
-    <Fragment set:html={libraryCard(libraryForms[first])} />
+  <div class="library__card">
+    <div class="library__form" aria-live="polite" data-library-card data-current={first}>
+      <Fragment set:html={libraryCard(libraryForms[first])} />
+    </div>
+    <WavyRule />
+    <button class="library__button" type="button" data-library-next>
+      {field(library, 'Button')}
+      <svg width="24" height="24" viewBox="0 0 16 16" aria-hidden="true">
+        <path d="M3 8 H13 M9 4 L13 8 L9 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
   </div>
   {libraryForms.map((form) => <template data-library-form set:html={libraryCard(form)} />)}
-  <button class="pill pill--solid library__button" type="button" data-library-next>{field(library, 'Button')}</button>
 </div>
 
 <a class="pill pill--solid workshop__writeup" href={field(details, 'Writeup link')} target="_blank" rel="noopener">
@@ -105,17 +114,11 @@ const first = Math.min(2, libraryForms.length - 1);
     line-height: 1.55;
   }
 
-  .library {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-
+  /* The card: the form on top, then a wavy line and the yellow "Generate a new form" strip. */
   .library__card {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    padding: 22px 20px;
+    overflow: hidden;
     border: var(--line);
     border-radius: var(--radius-inner);
     background: var(--white);
@@ -124,11 +127,17 @@ const first = Math.min(2, libraryForms.length - 1);
     overflow-wrap: break-word;
   }
 
+  .library__form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 22px 20px 20px;
+  }
+
   .library__card :global(.library__name) {
     margin: 0;
     font-family: var(--font-quote);
     font-size: 44px;
-    font-style: italic;
     font-weight: 400;
     line-height: 1;
   }
@@ -176,7 +185,27 @@ const first = Math.min(2, libraryForms.length - 1);
   }
 
   .library__button {
-    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 60px;
+    padding: 0 20px;
+    border: 0;
+    background: #eef57a;
+    color: var(--ink);
+    font-size: 17px;
+    font-weight: 800;
+    text-align: left;
+  }
+
+  .library__button svg {
+    flex: none;
+  }
+
+  /* Inside the card's rounded corners, so the focus outline sits just inside the strip. */
+  .library__button:focus-visible {
+    outline-offset: -4px;
   }
 
   .workshop__writeup {

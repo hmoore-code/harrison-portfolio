@@ -387,7 +387,7 @@ A letter, a listicle and a dialogue are just the start!
 
 - Benefits label: Benefits
 - Example label: Example
-- Button: Generate a new form
+- Button: ✨ Generate a new form
 
 ##### 📝 Personal Letter
 
