@@ -51,7 +51,7 @@ Fields under `## Top of page`: Name, Headline, Subtitle, Main button, Email butt
 - Design proposal PDF: sensitive details are covered with black boxes and every page flattened to an image (no hidden text). Done; the unredacted original lives only in `originals/`.
 - No pre-written forwarding message. The top of page's main button shares the portfolio link; people add their own words.
 - Workshop lead image: Zoom name labels blurred, faces left as they are.
-- Doc/Fest logo (`Logo:` field) shows small inside The Steel Core pop-up so it looks official.
+- DocFest logo (`Logo:` field, docfest-logo.svg) shows in The Steel Core pop-up's Organisation square in place of the name (screen readers still hear the name), so it looks official.
 - `originals/` holds full-size and private source files. It is git-ignored: never commit it.
 - Asset files use lowercase-hyphen names. copy.md may name them with a different ending (.jpg vs .png); lookup ignores the ending.
 

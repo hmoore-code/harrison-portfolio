@@ -616,7 +616,7 @@ Explores personal uncertainty, transformation, and existential questioning in a 
 
 - Filter: Designing compelling experiences
 - Title: DocFest awards trophies
-- Organisation: Sheffield Doc/Fest, UK's leading documentary film festival
+- Organisation: Sheffield DocFest, UK's leading documentary film festival
 - Year: 2017 to 2019
 - Role: Designer and producer
 - Result: The "Oscars" of the UK's biggest documentary film festival. I designed and produced trophies for award winners, three years running. My designs were featured in Screen Daily and It's Nice That.
@@ -624,37 +624,48 @@ Explores personal uncertainty, transformation, and existential questioning in a 
 - Card button: See the trophies
 - Evidence link text: See the design proposal
 - Evidence link: steel-core/design-proposal-2017.pdf (the March 2017 winning proposal, 12 pages)
-- Image: steel-core/winners-2017.jpg (the 2017 winners holding their trophies at Doc/Fest)
-- Logo: docfest-logo.png
-- Image alt text: Sheffield Doc/Fest's 2017 award winners in a group, holding their steel trophies
-- Pop-up image: steel-core/winners-2017.jpg
-- Pop-up image alt text: Sheffield Doc/Fest's 2017 award winners in a group, holding their steel trophies
+- Image: steel-core/winners-2017.jpg (the 2017 winners holding their trophies at DocFest)
+- Logo: docfest-logo.svg
+- Image alt text: Sheffield DocFest's 2017 award winners in a group, holding their steel trophies
+- Pop-up image: proposal-together.png
+- Pop-up image alt text: The ends of 9 Steel Core trophies, each engraved with the DocFest logo
 
 ### The challenge
 
-Sheffield Doc/Fest is the UK's leading documentary film festival. For its awards, it wanted a trophy good enough to earn a nickname, like the Oscar. And it had to send filmmakers from all over the world home with a piece of Sheffield, a city built on steel.
+Sheffield DocFest is the UK's biggest documentary film festival. For its awards ceremony, it wanted a trophy good enough to earn a nickname, like the Oscar. And it had to send filmmakers from all over the world home with a piece of Sheffield, a city built on steel.
+
+![A DocFest audience watching a film in a dark cinema](audience.jpg){16:9}
 
 ### What I did
 
-My winning design, called the Steel Core, was a solid bar of Sheffield stainless steel, shaped like a relay baton for one generation to pass on to the next. I wanted it to be emblematic of the whole city, so I had a local steelworks cut the bars, I finished each of them by hand, and a Sheffield engraver added winners' names in a typeface from Stephenson & Blake, the city's foundry that was once the world's largest maker of metal type.
+My winning design, called the Steel Core, was a solid bar of Sheffield stainless steel, shaped like a relay baton for one generation to pass on to the next. I wanted it to be emblematic of the whole city, so I had a local steelworks cut the bars. I finished them by hand, and a Sheffield engraver added winners' names in a typeface from Stephenson & Blake, the city's foundry and once the world's largest maker of metal type.
 
-### What happened
+![A Steel Core trophy stamped MADE IN SHEFFIELD ENGLAND](render.png)
 
-It's Nice That reported the Grand Jury winner leaving "with the coveted Grand Jury award stuffed into his jacket pocket", which was indeed nice, as I'd designed the trophies to be easily carried. Doc/Fest contracted me to make trophies 3 years running, 33 awards in total, before Covid cancelled the awards ceremonies.
+### The impact
+
+Creative media company It's Nice That reported the Grand Jury winner left "with the coveted award stuffed into his jacket pocket," which was indeed nice, as I had designed the trophies to be easily carried. DocFest contracted me to produce trophies 3 years running, 33 awards in total, before the COVID-19 pandemic cancelled the awards ceremonies.
+
+![Sheffield DocFest's 2017 award winners in a group, holding their steel trophies](winners-2017.jpg){16:9}
 
 ### The skills I could bring to your team 🫵
-I turn a place and its story into an object people can hold, and manage production from concept to delivery.
+
+I can manage diverse stakeholders, deliver end-to-end on a budget and a deadline, and help organisations close the gap between their values and what people experience. I want to do this with a team in the future of learning space, working on things like:
+
+- Turning an institution's values into compelling experiences
+- Bringing educators, industries and communities together around learning
+- Designing learning rituals people remember
+- Teaching through making, and making achievement something you can hold
+- Telling stories about what learning makes possible
 
 ### More details about this project
 
-- The winning design proposal and renders: steel-core/design-proposal-2017.pdf, plus a gallery (render.jpg, proposal-together.jpg, proposal-in-hand.jpg, proposal-typeface.jpg)
-- 2017 winners holding their trophies: steel-core/winners-2017.jpg
-- It's Nice That: 2019 winners: https://www.itsnicethat.com/news/sheffield-doc-fest-2019-winners-announced-film-120619
+- Read my winning design proposal: design-proposal-2017.pdf
 
 ### Pull quote
 
 - Quote: "Congratulations for making the most beautiful, fitting awards we've had at the festival to date."
-- Credit: Events producer, Sheffield Doc/Fest
+- Credit: Events producer, Sheffield DocFest
 
 ## Project: Solo show
 

@@ -181,7 +181,7 @@ function asText(value: string): Text {
   return value;
 }
 
-const FILE_PATTERN = /[\w\-/.*]+\.(?:jpe?g|png|webp|avif|gif|pdf|mp4|webm|mov)\b/gi;
+const FILE_PATTERN = /[\w\-/.*]+\.(?:jpe?g|png|webp|avif|gif|svg|pdf|mp4|webm|mov)\b/gi;
 
 function filesIn(text: string): string[] {
   return text.match(FILE_PATTERN) ?? [];

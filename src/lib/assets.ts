@@ -8,6 +8,7 @@ import { basename, type FileRef } from './content';
 const images = import.meta.glob<{ default: ImageMetadata }>('/assets/{images,graphics}/*.{jpg,jpeg,png,webp,avif}', {
   eager: true,
 });
+const svgs = import.meta.glob<string>('/assets/images/*.svg', { eager: true, query: '?url', import: 'default' });
 const pdfs = import.meta.glob<string>('/assets/pdfs/*.pdf', { eager: true, query: '?url', import: 'default' });
 const videos = import.meta.glob<string>('/assets/videos/*.{mp4,webm}', { eager: true, query: '?url', import: 'default' });
 
@@ -29,6 +30,7 @@ function lookup<T>(table: Record<string, T>, file: string): T | undefined {
 }
 
 export const findImage = (ref: FileRef) => lookup(images, ref.file)?.default;
+export const findSvg = (ref: FileRef) => lookup(svgs, ref.file);
 export const findPdf = (ref: FileRef) => lookup(pdfs, ref.file);
 export const findVideo = (ref: FileRef) => lookup(videos, ref.file);
 export const isPdf = (ref: FileRef) => /\.pdf$/i.test(ref.file);

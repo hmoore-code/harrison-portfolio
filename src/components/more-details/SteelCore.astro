@@ -1,0 +1,38 @@
+---
+// "More details about this project" for the DocFest trophies (design/16-trophies-popup.html):
+// each line in copy.md ("Read my winning design proposal: design-proposal-2017.pdf") is a black pill
+// that opens the PDF in a new tab.
+import { projectsIntro, type Project } from '../../lib/content';
+import { findPdf } from '../../lib/assets';
+import Icon from '../Icon.astro';
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+
+const links = project.moreDetails.bullets.map((b) => {
+  const href = b.value && findPdf({ file: b.value });
+  if (!b.label || !href)
+    throw new Error(`copy.md: "${project.name}", "More details about this project" line "${b.raw}" should be "Button text: file.pdf" with the PDF in assets/pdfs`);
+  return { text: b.label, href };
+});
+if (!links.length) throw new Error(`copy.md: "${project.name}", "More details about this project" has no links`);
+---
+
+{
+  links.map((link) => (
+    <a class="pill pill--solid steel-core__link" href={link.href} target="_blank" rel="noopener">
+      {link.text}
+      <Icon name="external" />
+      <span class="visually-hidden"> ({projectsIntro.newTabHint})</span>
+    </a>
+  ))
+}
+
+<style>
+  .steel-core__link {
+    gap: 10px;
+    padding: 0 16px;
+  }
+</style>

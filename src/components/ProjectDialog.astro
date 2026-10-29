@@ -4,7 +4,7 @@
 import { getImage } from 'astro:assets';
 import { graphicIn, hero, imageIn, isTodo, projectsIntro, topBar, type Project } from '../lib/content';
 import { basename } from '../lib/content';
-import { findImage, findVideo } from '../lib/assets';
+import { findImage, findSvg, findVideo } from '../lib/assets';
 import { sortEvidence } from '../lib/evidence';
 import { resolveTarget } from '../lib/links';
 import { inline } from '../lib/inline';
@@ -13,6 +13,7 @@ import WorkerFeedbackClubDetails from './more-details/WorkerFeedbackClub.astro';
 import TemprDetails from './more-details/Tempr.astro';
 import WritersPromptsDetails from './more-details/WritersPrompts.astro';
 import WorkshopDetails from './more-details/Workshop.astro';
+import SteelCoreDetails from './more-details/SteelCore.astro';
 import NvcGraphic from './graphics/NvcGraphic.astro';
 import SixWordStories from './graphics/SixWordStories.astro';
 import Icon from './Icon.astro';
@@ -32,6 +33,7 @@ const MoreDetails = {
   tempr: TemprDetails,
   'clever-constraints-for-writers': WritersPromptsDetails,
   'full-cycle-writing-workshop': WorkshopDetails,
+  'the-steel-core': SteelCoreDetails,
 }[project.slug];
 // Graphics built in code, placed in the case study with "[NVC graphic goes here]".
 const graphics = { 'nvc graphic': NvcGraphic, '6-word stories': SixWordStories };
@@ -43,7 +45,11 @@ function graphicFor(name: string, parts: { heading: string }[]) {
   return { Graphic, words };
 }
 // These pop-up images are wide, so they show at 16:9 instead of the usual 236px crop.
-const wideLead = ['tempr', 'clever-constraints-for-writers', 'full-cycle-writing-workshop'].includes(project.slug);
+const wideLead = ['tempr', 'clever-constraints-for-writers', 'full-cycle-writing-workshop', 'the-steel-core'].includes(
+  project.slug,
+);
+// A project's logo (Logo field) shows in the Organisation square instead of the name; screen readers still hear the name.
+const logoSvg = project.logo && findSvg(project.logo);
 const titleId = `${project.slug}-title`;
 const evidence = sortEvidence(project);
 const facts = [
@@ -79,25 +85,25 @@ const extras = project.extras.map((extra) => ({
 >
   <header class="sheet__intro">
     <h2 id={titleId} class="sheet__title">{project.title}</h2>
-    {
-      project.logo && (
-        <Photo
-          class="sheet__logo"
-          image={project.logo}
-          alt={`${project.organisation.split(',')[0]} logo`}
-          widths={[200, 400]}
-          sizes="120px"
-        />
-      )
-    }
   </header>
 
   <dl class="facts">
     {
-      facts.map((fact) => (
+      facts.map((fact, i) => (
         <div class="facts__square">
           <dt>{fact.label}</dt>
-          <dd>{fact.value}</dd>
+          {i === 0 && project.logo ? (
+            <dd class="facts__logo">
+              {logoSvg ? (
+                <img src={logoSvg} alt="" />
+              ) : (
+                <Photo image={project.logo} alt="" widths={[200, 400]} sizes="88px" />
+              )}
+              <span class="visually-hidden">{fact.value}</span>
+            </dd>
+          ) : (
+            <dd>{fact.value}</dd>
+          )}
         </div>
       ))
     }
@@ -319,10 +325,6 @@ const extras = project.extras.map((extra) => ({
     gap: var(--space-5);
   }
 
-  .sheet__intro :global(.sheet__logo) {
-    width: auto;
-    height: 48px;
-  }
 
   /* Organisation, year and role in 3 squares drawn with wavy lines. */
   .facts {
@@ -360,6 +362,22 @@ const extras = project.extras.map((extra) => ({
     color: var(--grey);
     font-size: 11px;
     font-weight: 500;
+  }
+
+  /* The logo, centred in the rest of the square, at most 88px either way. */
+  .facts .facts__logo {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .facts__logo :global(img) {
+    width: 100%;
+    max-width: 88px;
+    height: auto;
+    max-height: 88px;
+    object-fit: contain;
   }
 
   .facts dd {

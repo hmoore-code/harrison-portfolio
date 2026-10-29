@@ -113,6 +113,13 @@ Rules for every project pop-up:
 - "✨ Generate a new form" is the bottom strip of the card, the whole strip being the button: full width, #EEF57A, at least 60px tall, 20px padding, 17px 800 ink, words on the left and a 24px ink right arrow on the right. It swaps in a random form, never the same twice in a row. Only the form above it is a polite live region, so screen readers read the new form.
 - "Read my post-workshop writeup (10 mins)": black pill with the new-tab icon.
 
+**DocFest awards trophies** (The Steel Core; design/16-trophies-popup.html; `more-details/SteelCore.astro`). Always "DocFest", never "Doc/Fest".
+
+- Pop-up image proposal-together.png at 16:9 (cropped). The card keeps winners-2017.jpg.
+- The DocFest logo (Logo field, docfest-logo.svg) fills the Organisation square in place of the name: centred in the space under the label, at most 88px wide or tall. The name stays for screen readers. Any project with a Logo shows it this way; there is no logo under the title any more.
+- Case study pictures: audience.jpg at 16:9 after The challenge, render.png square after What I did, winners-2017.jpg at 16:9 after The impact.
+- More details: no gallery or link pills. Each line ("Read my winning design proposal: design-proposal-2017.pdf") is a black pill, like the workshop's writeup button, opening the PDF in a new tab.
+
 ## 6. Design spec
 - **Colour**: ink #111111 (text, lines, buttons); paper #FAFAF7 (page); white #FFFFFF (cards); grey #4A4A46 (small labels only). No other colours. Photos bring the colour.
 - **Type: Archivo** (variable: width 62 to 125, weight 100 to 900).
@@ -137,7 +144,7 @@ Rules for every project pop-up:
 
 ## 7. Assets
 Provided in `assets/`:
-- images: portrait-shed.jpg, euston-presenting.jpg (Worker Feedback Club lead), winners-2017.jpg (The Steel Core lead), render.jpg, proposal-together.jpg, proposal-typeface.jpg.
+- images: portrait-shed.jpg, euston-presenting.jpg (Worker Feedback Club lead), winners-2017.jpg (The Steel Core card), proposal-together.png (its pop-up image), audience.jpg, render.png, docfest-logo.svg.
 - svg: cover-straight.svg, cover-wavy.svg, cover-contour.svg, rule-wavy.svg, wave-v.svg, star.svg.
 - graphics: wfc-chart.png and wfc-anatomy.png (Worker Feedback Club evidence, 2x). Their HTML sources are design/10 and design/11. Rebuilding them as inline HTML/SVG is fine if it keeps them sharp and accessible.
 - fonts: archivo-variable.woff2.
