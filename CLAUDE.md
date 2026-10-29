@@ -55,6 +55,9 @@ Fields under `## Top of page`: Name, Headline, Subtitle, Main button, Email butt
 - `originals/` holds full-size and private source files. It is git-ignored: never commit it.
 - Asset files use lowercase-hyphen names. copy.md may name them with a different ending (.jpg vs .png); lookup ignores the ending.
 
+## More details about this project
+Every project pop-up ends with "More details about this project" (replaces Evidence). Each project's section is designed on its own: its own component in `src/components/more-details/`, its own words in copy.md under that project. Never copy one project's section into another or build a shared content template. Shared building blocks only: 28px subheadings, 16px body, `WavyRule`, tabs (`scripts/tabs.ts`), `ExternalLink`. Colour only inside data graphics. Full rules in the brief.
+
 ## Behaviour essentials
 - Filters: `aria-pressed`, "All" active on load, URL kept in sync (`?filter=`).
 - Card covers slide right (0 to 92%) and photo goes greyscale to colour with scroll; formula in brief section 5. Respect reduced motion. Never cover the portrait.

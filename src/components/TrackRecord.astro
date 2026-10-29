@@ -1,5 +1,5 @@
 ---
-import { trackRecord } from '../lib/content';
+import { projectsIntro, trackRecord } from '../lib/content';
 import WavyRule from './WavyRule.astro';
 ---
 
@@ -18,7 +18,7 @@ import WavyRule from './WavyRule.astro';
           {figure.link && figure.linkText && (
             <a class="record__link" href={figure.link} target="_blank" rel="noopener">
               {figure.linkText}
-              <span class="visually-hidden"> (opens in a new tab)</span>
+              <span class="visually-hidden"> ({projectsIntro.newTabHint})</span>
             </a>
           )}
         </li>

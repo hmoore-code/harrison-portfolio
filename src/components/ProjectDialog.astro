@@ -9,6 +9,7 @@ import { sortEvidence } from '../lib/evidence';
 import { resolveTarget } from '../lib/links';
 import { inline } from '../lib/inline';
 import EvidenceGallery from './EvidenceGallery.astro';
+import WorkerFeedbackClubDetails from './more-details/WorkerFeedbackClub.astro';
 import Icon from './Icon.astro';
 import Photo from './Photo.astro';
 import Sheet from './Sheet.astro';
@@ -19,6 +20,9 @@ interface Props {
 }
 
 const { project } = Astro.props;
+// Projects whose "More details about this project" has been designed on its own. The others still
+// show their pictures, quotes and links from copy.md.
+const MoreDetails = { 'worker-feedback-club': WorkerFeedbackClubDetails }[project.slug];
 const titleId = `${project.slug}-title`;
 const evidence = sortEvidence(project);
 const facts = [
@@ -130,7 +134,9 @@ const extras = project.extras.map((extra) => ({
   </section>
 
   <section class="evidence" aria-labelledby={`${project.slug}-evidence`}>
-    <h3 id={`${project.slug}-evidence`} class="evidence__heading">{project.headings.evidence}</h3>
+    <h3 id={`${project.slug}-evidence`} class="evidence__heading">{project.headings.moreDetails}</h3>
+
+    {MoreDetails && <MoreDetails project={project} />}
 
     {
       evidence.gallery.length > 0 && (
@@ -181,7 +187,7 @@ const extras = project.extras.map((extra) => ({
                 <span class="link-pill__type">
                   <Icon name={link.type === 'pdf' ? 'pdf' : link.type === 'popup' ? 'arrow' : 'link'} />
                   {link.type === 'pdf' ? 'PDF' : link.type === 'popup' ? 'Case study' : 'Link'}
-                  {link.type !== 'popup' && <span class="visually-hidden">, opens in a new tab</span>}
+                  {link.type !== 'popup' && <span class="visually-hidden">, {projectsIntro.newTabHint}</span>}
                 </span>
               </a>
             </li>
@@ -213,7 +219,7 @@ const extras = project.extras.map((extra) => ({
               rel={extra.resolved.external ? 'noopener' : undefined}
             >
               {extra.button}
-              {extra.resolved.external && <span class="visually-hidden"> (opens in a new tab)</span>}
+              {extra.resolved.external && <span class="visually-hidden"> ({projectsIntro.newTabHint})</span>}
             </a>
           ) : (
             <Todo text={`${extra.button}: ${extra.text && isTodo(extra.text) ? extra.text.todo : 'TO DO: add a link'}`} block />
@@ -397,18 +403,19 @@ const extras = project.extras.map((extra) => ({
     font-weight: 600;
   }
 
+  /* "More details about this project". Sizes follow design/12 exactly. */
   .evidence {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: 18px;
   }
 
   .evidence__heading {
     margin: 0;
-    font-size: 44px;
+    font-size: 36px;
     font-weight: 800;
     font-stretch: 62%;
-    line-height: 0.9;
+    line-height: 0.95;
   }
 
   .video {

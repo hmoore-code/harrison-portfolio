@@ -1,0 +1,421 @@
+---
+// "More details about this project" for Worker Feedback Club (design/12-wfc-more-details.html).
+// Each project's section is designed on its own, so this reads its own words from copy.md:
+// the 1st "####" is the engagement part (its "#####" parts are the 2 tabs, the method's "######"
+// parts are the 5 steps), the 2nd "####" is the reflections. Sizes are the design's exact px values.
+import { child, optional, type MdNode, type Project } from '../../lib/content';
+import { inline } from '../../lib/inline';
+import ExternalLink from '../ExternalLink.astro';
+import Star from '../Star.astro';
+import WavyRule from '../WavyRule.astro';
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+
+function need<T>(value: T | undefined, what: string): T {
+  if (!value || (Array.isArray(value) && !value.length))
+    throw new Error(`copy.md: "${project.name}", "More details about this project" is missing ${what}`);
+  return value;
+}
+const field = (node: MdNode, label: string) => need(optional(node, label), `"${label}: ..." under "${node.heading}"`);
+
+const [engagement, reflections] = need(project.moreDetails.children, 'its "####" parts');
+need(reflections, 'a second "####" part (the reflections)');
+const [method, findings] = need(engagement.children, '"##### Our method" and "##### What we found"');
+need(findings, '"##### What we found"');
+const steps = need(method.children, 'the 5 steps ("###### Visit site" and so on)');
+
+// Which of the 5 scores each rating graphic fills in, e.g. "4, 5".
+const scores = (label: string) => field(findings, label).split(',').map((n) => Number(n.trim()));
+const ratings = [
+  { tone: 'public', name: 'Face to face' },
+  { tone: 'private', name: 'App' },
+].map(({ tone, name }) => ({
+  tone,
+  label: field(findings, `${name} label`),
+  chosen: scores(`${name} scores chosen`),
+  figure: field(findings, `${name} figure`),
+  result: field(findings, `${name} result`),
+  description: field(findings, `${name} description`),
+}));
+
+const id = project.slug;
+const tabs = [
+  { key: 'method', label: field(engagement, 'Method tab') },
+  { key: 'findings', label: field(engagement, 'Findings tab') },
+];
+const essayLink = field(reflections, 'Link');
+---
+
+<h4 class="wfc__subheading wfc__subheading--first">{engagement.heading}</h4>
+{engagement.paragraphs.map((p) => <p class="wfc__text" set:html={inline(p)} />)}
+
+<div class="tabs" role="tablist" aria-label={field(engagement, 'Tabs label')}>
+  {
+    tabs.map((tab, i) => (
+      <button
+        class="tab"
+        type="button"
+        role="tab"
+        id={`${id}-tab-${tab.key}`}
+        aria-controls={`${id}-panel-${tab.key}`}
+        aria-selected={i === 0 ? 'true' : 'false'}
+        tabindex={i === 0 ? 0 : -1}
+      >
+        <Star size={15} />
+        {tab.label}
+      </button>
+    ))
+  }
+</div>
+
+<div class="wfc__panel" role="tabpanel" id={`${id}-panel-method`} aria-labelledby={`${id}-tab-method`} tabindex="0">
+  <ol class="steps" role="list">
+    {
+      steps.map((step, i) => (
+        <li class="step">
+          <span class="step__number" aria-hidden="true">
+            {i + 1}
+          </span>
+          <div class="step__body">
+            <h5 class="step__title">{step.heading}</h5>
+            {step.bullets.length > 0 && (
+              <ul class="ways" role="list">
+                {step.bullets.map((way, n) => (
+                  <li class="way">
+                    {n === 0 && (
+                      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="6.5" cy="8" r="3" />
+                          <path d="M1.5 20 C1.5 15 4 13 6.5 13 C9 13 11.5 15 11.5 20" />
+                          <circle cx="17.5" cy="8" r="3" />
+                          <path d="M12.5 20 C12.5 15 15 13 17.5 13 C20 13 22.5 15 22.5 20" />
+                        </g>
+                      </svg>
+                    )}
+                    {n === 1 && (
+                      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="3" y="2" width="18" height="20" rx="3" />
+                          <path d="M10 9 L15 12 L10 15 Z" fill="currentColor" />
+                        </g>
+                      </svg>
+                    )}
+                    {n === 2 && (
+                      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="6" y="1.5" width="12" height="21" rx="2.5" />
+                          <path d="M9 9 H15 L14 13 H10 Z" fill="currentColor" />
+                          <path d="M8.5 9 H15.5" />
+                          <circle cx="10" cy="16" r="1.4" />
+                          <circle cx="14" cy="16" r="1.4" />
+                        </g>
+                      </svg>
+                    )}
+                    <span set:html={inline(way.raw)} />
+                  </li>
+                ))}
+              </ul>
+            )}
+            {step.paragraphs.map((p) => (
+              <p class="step__text" set:html={inline(p)} />
+            ))}
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="wfc__next wfc__next--method">
+    <h5 class="wfc__subheading">{field(method, 'Next heading')}</h5>
+    <p class="wfc__text" set:html={inline(field(method, 'Next text'))} />
+  </div>
+
+  <button class="pill pill--solid wfc__button" type="button" data-show-tab={`${id}-tab-findings`}>
+    {field(method, 'Button')}
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+      <path d="M3 8 H13 M9 4 L13 8 L9 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </button>
+</div>
+
+<div
+  class="wfc__panel"
+  role="tabpanel"
+  id={`${id}-panel-findings`}
+  aria-labelledby={`${id}-tab-findings`}
+  tabindex="0"
+  hidden
+>
+  <h5 class="wfc__subheading wfc__subheading--tight">{field(findings, 'Heading')}</h5>
+  <p class="wfc__text" set:html={inline(field(findings, 'Intro'))} />
+  <p class="wfc__scale">{field(findings, 'Scale note')}</p>
+
+  {
+    ratings.map((rating) => (
+      <figure class:list={['rating', `rating--${rating.tone}`]} role="img" aria-label={rating.description}>
+        <figcaption class="rating__label">{rating.label}</figcaption>
+        <div class="rating__scale" aria-hidden="true">
+          {[1, 2, 3, 4, 5].map((n) => (
+            <span class:list={['rating__score', { 'rating__score--chosen': rating.chosen.includes(n) }]}>{n}</span>
+          ))}
+        </div>
+        <p class="rating__result">
+          <span class="rating__figure">{rating.figure}</span>
+          <span>{rating.result}</span>
+        </p>
+      </figure>
+    ))
+  }
+
+  <WavyRule />
+  <div class="wfc__next wfc__next--findings">
+    <h5 class="wfc__subheading">{field(findings, 'Next heading')}</h5>
+    <p class="wfc__text wfc__text--large" set:html={inline(field(findings, 'Next text'))} />
+  </div>
+
+  <button class="pill pill--outline wfc__button wfc__button--back" type="button" data-show-tab={`${id}-tab-method`}>
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+      <path d="M13 8 H3 M7 4 L3 8 L7 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    {field(findings, 'Button')}
+  </button>
+</div>
+
+<WavyRule class="wfc__rule" />
+<h4 class="wfc__subheading wfc__subheading--tight">{reflections.heading}</h4>
+{reflections.paragraphs.map((p) => <p class="wfc__text" set:html={inline(p)} />)}
+<ExternalLink href={essayLink}>{field(reflections, 'Link text')}</ExternalLink>
+
+<script>
+  import '../../scripts/tabs';
+</script>
+
+<style>
+  .wfc__subheading {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    font-stretch: 62%;
+  }
+
+  .wfc__subheading--first {
+    margin-top: 6px;
+    line-height: 1;
+  }
+
+  .wfc__subheading--tight {
+    line-height: 1;
+  }
+
+  .wfc__text {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .wfc__text--large {
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  .wfc__panel {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* The tab that isn't chosen. Needed here because the rule above would otherwise show it. */
+  .wfc__panel[hidden] {
+    display: none;
+  }
+
+  /* The 5 steps, joined by short wavy lines. */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    column-gap: 14px;
+    padding: 16px;
+    border: var(--line);
+    border-radius: 20px;
+    background: var(--white);
+  }
+
+  .step + .step::before {
+    content: '';
+    position: absolute;
+    top: -32px;
+    left: 35px;
+    width: 10px;
+    height: 30px;
+    background: url('../../../assets/svg/wave-v.svg') 0 0 / 10px 30px no-repeat;
+  }
+
+  .step__number {
+    font-size: 52px;
+    font-weight: 800;
+    font-stretch: 62%;
+    line-height: 0.85;
+  }
+
+  .step__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .step__title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 800;
+    font-stretch: 62%;
+    line-height: 1.1;
+  }
+
+  .step__text {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .ways {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .way {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .way svg {
+    flex: none;
+  }
+
+  .wfc__next {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wfc__next--method {
+    gap: 10px;
+    padding-top: 4px;
+  }
+
+  .wfc__next--findings {
+    gap: 6px;
+  }
+
+  .wfc__button {
+    gap: 10px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .wfc__button--back {
+    background: var(--white);
+  }
+
+  .wfc__scale {
+    margin: 0;
+    color: var(--grey);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* Rating graphics: the only colour in the section, green for public answers, red for private. */
+  .rating {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 18px;
+    border: 2px solid var(--rating);
+    border-radius: 20px;
+    background: var(--white);
+  }
+
+  .rating--public {
+    --rating: #1e5631;
+  }
+
+  .rating--private {
+    --rating: #8b1e1e;
+  }
+
+  .rating__label {
+    color: var(--rating);
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .rating__scale {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .rating__score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    border: var(--line);
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .rating__score--chosen {
+    border-color: var(--rating);
+    background: var(--rating);
+    color: var(--paper);
+  }
+
+  .rating__result {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.35;
+  }
+
+  .rating__figure {
+    color: var(--rating);
+    font-size: 44px;
+    font-weight: 800;
+    font-stretch: 62%;
+    line-height: 1;
+  }
+
+  /* The wavy line inside the findings sits 4px further down than the panel's gap. */
+  .wfc__panel :global(.wavy-rule) {
+    margin-top: 4px;
+  }
+
+  :global(.wfc__rule) {
+    margin-top: 10px;
+  }
+</style>

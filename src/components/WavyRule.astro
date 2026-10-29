@@ -1,4 +1,11 @@
-<div class="wavy-rule" aria-hidden="true"></div>
+---
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div class:list={['wavy-rule', className]} aria-hidden="true"></div>
 
 <style>
   .wavy-rule {

@@ -48,6 +48,7 @@ Below are selected projects that showcase my skills and experience. Thanks for y
 - Share project button: Share this project
 - Get in touch button: Get in touch
 - Card title hint: case study
+- New tab hint: opens in a new tab
 - Skills box closing line: If you're in a team working on one of these problems, or you know someone who is, please get in touch or share this project with them. Thanks!
 
 ### Filters
@@ -105,17 +106,70 @@ I can convene groups whose interests don't necessarily align, find goals they sh
 - Retraining workers for the age of AI
 - Helping learners adopt new learning tools
 
-### Evidence
+### More details about this project
 
-- Anatomy of a Deep Dive (how I ran the research): wfc/anatomy.png
-- Same site, same question, different answers (one finding, rebuilt): wfc/chart.png
-- Product screens: site feed, updates, anonymous reports, recognition, analytics and the safety survey: wfc/screen-\*.jpg (6 images)
-- Presenting the first pilot to workers at HS2 Euston, 2020: wfc/euston-presenting.jpg
-- Me on site: harrison-on-site.jpg
+#### The anatomy of our platform's engagement
 
-### Further reading
+Between 2017 and 2022, we ran Worker Feedback Club on 13 construction sites, including major projects like HS2, gathering feedback from hard-to-reach workers in three different ways.
 
-- Button: Read my write-up about why my business didn't succeed
+- Tabs label: Research
+- Method tab: Our method
+- Findings tab: What we found
+
+##### Our method
+
+- Next heading: What happened next
+- Next text: Many of our recommendations (eg, **icons on signs for workers with little English**, **a translated glossary of common site words**, and **easier-to-read minutes from worker meetings**) were adopted by Willmott Dixon, whilst Multiplex audited all of its dry-lining subcontractors to **improve productivity and safety**.
+- Button: See what we found
+
+###### Visit site
+
+Contractors invited us because of low productivity and costly rework. They wanted to understand the problem through workers' eyes.
+
+###### Collect feedback 3 ways
+
+- Face-to-face
+- Video interviews on iPads
+- Our anonymous web app
+
+Questions were translated into every language needed, so all workers could contribute.
+
+###### Analyse feedback
+
+Site rankings, on aspects ranging from safety to cleanliness to respectfulness, were created using scores and comments.
+
+###### Produce impact report
+
+Written reports backed by data were produced for each site.
+
+###### Make recommendations
+
+Long-term goals and "quick wins" were put forward to make sites safer, more organised, and more cooperative for all.
+
+##### What we found
+
+- Heading: Our anonymous app found problems that had been hidden
+- Intro: We asked workers to agree or disagree with the statement, **"I feel safe being on this site."** The feedback was markedly different depending on whether it was public or private.
+- Scale note: Rated from 1 (disagree strongly) to 5 (agree strongly). Tier 1 contractor, London site, 2021.
+- Face to face label: Face to face interviews
+- Face to face scores chosen: 4, 5
+- Face to face figure: 100%
+- Face to face result: answered 4 or 5
+- Face to face description: Face to face interviews: everyone answered 4 or 5
+- App label: Anonymous app
+- App scores chosen: 1
+- App figure: 36%
+- App result: answered 1, the lowest score
+- App description: Anonymous app: 36% answered 1
+- Next heading: What happened next
+- Next text: Insights like these led us to build features that let workers report problems anonymously, in any language, directly to site managers, and continue the conversation until problems were resolved.
+- Button: Our method
+
+#### Business success and failure: my reflections
+
+I wrote an essay one year after closing Worker Feedback Club, reflecting on what I did well and what I did wrong.
+
+- Link text: Read my essay
 - Link: https://www.thenewworkday.com/p/the-founders-dilemma
 
 ## Project: Tempr
@@ -158,7 +212,7 @@ I design tools that teach through good questions, so people learn a skill just b
 - Button: Learn more about NVC
 - Text: \[<https://en.wikipedia.org/wiki/Nonviolent_Communication>\]
 
-### Evidence
+### More details about this project
 
 - Try Tempr live: https://tempr-taupe.vercel.app/
 
@@ -216,7 +270,7 @@ People are productive when constraints are tight but not too tight. Across 4 cha
 
 I treat limits as a design tool, then test them with real learners to find the level that gets people started.
 
-### Evidence
+### More details about this project
 
 - Writing Prompts from Harrison (Notion): https://harrisonmoore.notion.site/Writing-Prompts-from-Harrison-LIVE-75e0e11b460c435a9ea8553845744ca2
 - The 6-word life story challenge: \[<https://www.thenewworkday.com/p/the-artistic-superpower-hidden-in-your-subscriber-list>\]
@@ -263,7 +317,7 @@ Answering these questions and writing to one trusted person got the majority of 
 
 I design learning experiences that make people feel safe enough to try, then adapt them when learners get stuck.
 
-### Evidence
+### More details about this project
 
 - My write-up of the workshop
 - Course plan and session slides: \[<https://docs.google.com/presentation/d/1UAypqzHJgM_L9mBrtURuDdxkEzR0KEFty-AUPfUwqMI/edit?usp=sharing>\]
@@ -344,7 +398,7 @@ It's Nice That reported the Grand Jury winner leaving "with the coveted Grand Ju
 
 I turn a place and its story into an object people can hold, and manage production from concept to delivery.
 
-### Evidence
+### More details about this project
 
 - The winning design proposal and renders: steel-core/design-proposal-2017.pdf, plus a gallery (render.jpg, proposal-together.jpg, proposal-in-hand.jpg, proposal-typeface.jpg)
 - 2017 winners holding their trophies: steel-core/winners-2017.jpg
@@ -390,7 +444,7 @@ The pricing strategy paid off. In 6 weeks I made 63 works. 30 people came to the
 
 I can fund an idea by making something people want to support, then deliver it on a tight timeline and budget.
 
-### Evidence
+### More details about this project
 
 - Opening night: solo-opening-night.jpg, solo-visitors.jpg, solo-harrison.jpg
 - The work: drawings, paintings, casts and mirrors: solo-drawings.jpg, solo-paintings.jpg, solo-casts.jpg, solo-mirrors.jpg

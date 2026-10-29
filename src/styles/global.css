@@ -94,6 +94,49 @@ button {
   outline-offset: 3px;
 }
 
+/* Tabs: equal-width square-cornered buttons, like the filter chips. The chosen tab is solid ink
+   with the star before its label. scripts/tabs.ts makes them work. */
+.tabs {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: 8px;
+  /* Room for the pop-up's sticky bar when a button scrolls back up to the tabs. */
+  scroll-margin-top: 96px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 8px;
+  border: var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.tab[aria-selected='true'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.tab .star {
+  display: none;
+}
+
+.tab[aria-selected='true'] .star {
+  display: block;
+}
+
+[role='tabpanel'][hidden] {
+  display: none;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

@@ -1,0 +1,37 @@
+---
+// A link to Harrison's writing elsewhere: underlined, bold, with the new-tab icon. Opens in a new tab,
+// and screen readers hear the New tab hint from copy.md.
+import { projectsIntro } from '../lib/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  href: string;
+  class?: string;
+}
+const { href, class: className } = Astro.props;
+---
+
+<a class:list={['external-link', className]} href={href} target="_blank" rel="noopener">
+  <slot />
+  <Icon name="external" />
+  <span class="visually-hidden"> ({projectsIntro.newTabHint})</span>
+</a>
+
+<style>
+  .external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    min-height: 44px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  .external-link :global(svg) {
+    flex: none;
+  }
+</style>

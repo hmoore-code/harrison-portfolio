@@ -4,6 +4,8 @@
 import source from '../../content/copy.md?raw';
 import { parseTree, type Bullet, type MdNode } from './markdown-tree';
 
+export type { MdNode };
+
 export interface Todo {
   todo: string;
 }
@@ -78,7 +80,10 @@ export interface Project {
   logo?: FileRef;
   story: Story[];
   skillsBox: { heading: string; paragraphs: string[]; bullets: string[] };
-  headings: { evidence: string };
+  headings: { moreDetails: string };
+  // The project's "### More details about this project" as written, for a project whose
+  // section has its own component (each project's section is designed on its own).
+  moreDetails: MdNode;
   evidence: EvidenceItem[];
   pullQuote: { quote: string; credit: string };
   extras: ExtraLink[];
@@ -106,7 +111,7 @@ const slugify = (text: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 
-function child(node: MdNode, heading: string | RegExp): MdNode | undefined {
+export function child(node: MdNode, heading: string | RegExp): MdNode | undefined {
   return node.children.find((c) =>
     typeof heading === 'string' ? c.heading.toLowerCase() === heading.toLowerCase() : heading.test(c.heading),
   );
@@ -121,7 +126,7 @@ function section(node: MdNode, heading: string): MdNode {
   return found;
 }
 
-function optional(node: MdNode, label: string): string | undefined {
+export function optional(node: MdNode, label: string): string | undefined {
   return node.bullets.find((b) => b.label?.toLowerCase() === label.toLowerCase())?.value;
 }
 
@@ -326,6 +331,8 @@ export const projectsIntro = {
   getInTouchButton: required(projectsNode, 'Get in touch button'),
   // Read out after a card's title link, so screen readers say where it goes.
   cardTitleHint: required(projectsNode, 'Card title hint'),
+  // Read out after links that open in a new tab.
+  newTabHint: required(projectsNode, 'New tab hint'),
   skillsBoxClosingLine: required(projectsNode, 'Skills box closing line'),
 };
 
@@ -365,7 +372,7 @@ export const projects: Project[] = projectNodes.map((node, index) => {
 
   // The case study is every "###" part that isn't one of the named parts below, in copy.md order,
   // so each project can use its own headings ("What I did" or "What I built", and so on).
-  const namedParts = /^(The skills I could bring|Evidence|Pull quote|Further reading|Learn more|Try it yourself|Exhibition list)/i;
+  const namedParts = /^(The skills I could bring|More details about this project|Pull quote|Further reading|Learn more|Try it yourself|Exhibition list)/i;
   const story = node.children
     .filter((part) => !namedParts.test(part.heading) && part.paragraphs.length)
     .map((part) => ({ heading: part.heading, paragraphs: part.paragraphs }));
@@ -375,13 +382,14 @@ export const projects: Project[] = projectNodes.map((node, index) => {
   if (!skillsNode || !(skillsNode.paragraphs.length || skillsNode.bullets.length))
     errors.push(`${where} is missing "### The skills I could bring to your team"`);
 
-  const evidenceNode = child(node, 'Evidence');
-  if (!evidenceNode?.bullets.length) errors.push(`${where} is missing "### Evidence"`);
+  const evidenceNode = child(node, 'More details about this project');
+  if (!evidenceNode || !(evidenceNode.bullets.length || evidenceNode.children.length))
+    errors.push(`${where} is missing "### More details about this project"`);
   const evidence = (evidenceNode?.bullets ?? []).map((b) =>
     b.nested?.length ? asQuotes(b) : asEvidence(b.raw, ctx, evidenceLink),
   );
   // "Feedback from 3 users:" followed by "#### Name" headings, each with its quote.
-  if (evidenceNode?.children.length) {
+  if (evidenceNode?.children.length && evidenceNode.paragraphs.length) {
     const label = evidenceNode.paragraphs.at(-1)?.replace(/:\s*$/, '') ?? '';
     evidence.push({ label, target: { kind: 'quotes', quotes: quotesFrom(evidenceNode.children) } });
   }
@@ -458,7 +466,8 @@ export const projects: Project[] = projectNodes.map((node, index) => {
       paragraphs: skillsNode?.paragraphs ?? [],
       bullets: (skillsNode?.bullets ?? []).map((b) => b.raw),
     },
-    headings: { evidence: evidenceNode?.heading ?? '' },
+    headings: { moreDetails: evidenceNode?.heading ?? '' },
+    moreDetails: evidenceNode ?? { heading: '', level: 0, bullets: [], paragraphs: [], children: [] },
     evidence,
     pullQuote,
     extras,

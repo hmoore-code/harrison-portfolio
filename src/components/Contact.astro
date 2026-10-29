@@ -1,5 +1,5 @@
 ---
-import { contact, isTodo } from '../lib/content';
+import { contact, isTodo, projectsIntro } from '../lib/content';
 import { inline } from '../lib/inline';
 import Icon from './Icon.astro';
 import Todo from './Todo.astro';
@@ -51,7 +51,7 @@ const links = [
               <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
                 <path d={link.mark} fill="currentColor" />
               </svg>
-              <span class="visually-hidden">{link.label} (opens in a new tab)</span>
+              <span class="visually-hidden">{link.label} ({projectsIntro.newTabHint})</span>
             </a>
           )}
         </li>
