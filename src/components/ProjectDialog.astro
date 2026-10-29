@@ -109,6 +109,7 @@ const extras = project.extras.map((extra) => ({
         </ul>
       )
     }
+    <p class="skills-box__closing" set:html={inline(projectsIntro.skillsBoxClosingLine)} />
     <div class="skills-box__actions">
       <button
         class="pill pill--solid"
@@ -346,6 +347,11 @@ const extras = project.extras.map((extra) => ({
     height: 12px;
     margin-top: calc((1.55em - 12px) / 2);
     background: url('../../assets/svg/star.svg') center / contain no-repeat;
+  }
+
+  /* 14px above in all (the box's gap plus this margin). */
+  .skills-box .skills-box__closing {
+    margin-top: calc(14px - var(--space-2));
   }
 
   /* Share this project and Get in touch, stacked; 18px above them in all (the box's gap plus this margin). */

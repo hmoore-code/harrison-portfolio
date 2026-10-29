@@ -326,6 +326,7 @@ export const projectsIntro = {
   getInTouchButton: required(projectsNode, 'Get in touch button'),
   // Read out after a card's title link, so screen readers say where it goes.
   cardTitleHint: required(projectsNode, 'Card title hint'),
+  skillsBoxClosingLine: required(projectsNode, 'Skills box closing line'),
 };
 
 const projectNodes = live.children.filter((c) => /^Project:/i.test(c.heading));

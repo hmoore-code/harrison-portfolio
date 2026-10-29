@@ -21,7 +21,7 @@ This tab holds only the words that go on the site, in page order. The site is bu
 
 - Name: Harrison Moore
 - Headline: Hey, I'm Harrison, I'm looking to join a team working on the future of education
-- Subtitle: My strengths are **writing**, **creative production**, **user research**, and **partnerships**. I value *craftsmanship* and *autonomy*, and I want to help people build a great relationship with learning.
+- Subtitle: My strengths are **writing**, **creative production**, **user research**, **coaching**, and **partnerships**. I value *craftsmanship* and *autonomy*, and I want to help people build a great relationship with learning.
 - Main button: Share this site
 - Email button: Get in touch
 - CV link: View my CV
@@ -48,6 +48,7 @@ Below are selected projects that showcase my skills and experience. Thanks for y
 - Share project button: Share this project
 - Get in touch button: Get in touch
 - Card title hint: case study
+- Skills box closing line: If you're in a team working on one of these problems, or you know someone who is, please get in touch or share this project with them. Thanks!
 
 ### Filters
 
