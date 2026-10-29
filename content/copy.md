@@ -777,7 +777,7 @@ I can develop creative solutions by researching in the field, design for partici
 - LinkedIn: https://www.linkedin.com/in/mrharrisonmoore
 - Substack: https://www.thenewworkday.com/
 - Email button: Get in touch
-- Footer: Made by me using Claude Code
+- Footer: 🎨 I built this website myself—from concept to copywriting to coding in Claude. If you need a website, I'd be happy to [chat](mailto:harrison@thenewworkday.com).
 
 ## CV
 

@@ -3,6 +3,7 @@
 // dialogs.ts opens and closes it. `parent` names the pop-up it opens from, so closing returns there.
 import FilterIcon from './FilterIcon.astro';
 import Icon from './Icon.astro';
+import SiteCredit from './SiteCredit.astro';
 
 interface Props {
   id: string;
@@ -31,6 +32,9 @@ const { id, labelledby, label, filterId, parent, cover } = Astro.props;
   <div class="sheet__body">
     <slot />
   </div>
+  <footer class="sheet__footer">
+    <SiteCredit />
+  </footer>
 </dialog>
 
 <style>
@@ -125,6 +129,11 @@ const { id, labelledby, label, filterId, parent, cover } = Astro.props;
     border: var(--line);
     border-radius: 50%;
     background: var(--paper);
+  }
+
+  .sheet__footer {
+    padding: var(--space-5) var(--gutter) var(--space-6);
+    border-top: var(--line);
   }
 
   .sheet__body {

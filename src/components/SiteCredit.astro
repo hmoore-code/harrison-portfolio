@@ -1,0 +1,20 @@
+---
+// The footer line about how the site was made, from "Footer" under "## Contact and footer".
+// Shown at the foot of the page and of every pop-up: small but legible, centred.
+import { contact, isTodo } from '../lib/content';
+import { inline } from '../lib/inline';
+import Todo from './Todo.astro';
+---
+
+{isTodo(contact.footer) ? <Todo text={contact.footer.todo} /> : <p class="site-credit" set:html={inline(contact.footer)} />}
+
+<style>
+  .site-credit {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.45;
+    text-align: center;
+    text-wrap: balance;
+  }
+</style>
