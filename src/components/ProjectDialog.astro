@@ -4,7 +4,7 @@
 import { getImage } from 'astro:assets';
 import { graphicIn, hero, imageIn, isTodo, projectsIntro, topBar, type Project } from '../lib/content';
 import { basename } from '../lib/content';
-import { findImage, findSvg, findVideo } from '../lib/assets';
+import { findImage, findSvg, findVideo, isVideo } from '../lib/assets';
 import { sortEvidence } from '../lib/evidence';
 import { resolveTarget } from '../lib/links';
 import { inline } from '../lib/inline';
@@ -14,6 +14,7 @@ import TemprDetails from './more-details/Tempr.astro';
 import WritersPromptsDetails from './more-details/WritersPrompts.astro';
 import WorkshopDetails from './more-details/Workshop.astro';
 import SteelCoreDetails from './more-details/SteelCore.astro';
+import SoloShowDetails from './more-details/SoloShow.astro';
 import NvcGraphic from './graphics/NvcGraphic.astro';
 import SixWordStories from './graphics/SixWordStories.astro';
 import Icon from './Icon.astro';
@@ -34,6 +35,7 @@ const MoreDetails = {
   'clever-constraints-for-writers': WritersPromptsDetails,
   'full-cycle-writing-workshop': WorkshopDetails,
   'the-steel-core': SteelCoreDetails,
+  'solo-show': SoloShowDetails,
 }[project.slug];
 // Graphics built in code, placed in the case study with "[NVC graphic goes here]".
 const graphics = { 'nvc graphic': NvcGraphic, '6-word stories': SixWordStories };
@@ -45,9 +47,13 @@ function graphicFor(name: string, parts: { heading: string }[]) {
   return { Graphic, words };
 }
 // These pop-up images are wide, so they show at 16:9 instead of the usual 236px crop.
-const wideLead = ['tempr', 'clever-constraints-for-writers', 'full-cycle-writing-workshop', 'the-steel-core'].includes(
-  project.slug,
-);
+const wideLead = [
+  'tempr',
+  'clever-constraints-for-writers',
+  'full-cycle-writing-workshop',
+  'the-steel-core',
+  'solo-show',
+].includes(project.slug);
 // A project's logo (Logo field) shows in the Organisation square instead of the name; screen readers still hear the name.
 const logoSvg = project.logo && findSvg(project.logo);
 const titleId = `${project.slug}-title`;
@@ -59,15 +65,24 @@ const facts = [
 ];
 
 // A video's still is the image named "<video name>-poster".
-const videos = await Promise.all(
-  evidence.videos.map(async ({ ref, caption }) => {
-    const still = findImage({ file: basename(ref.file).replace(/\.[a-z0-9]+$/i, '-poster.jpg') });
-    return {
-      caption,
-      src: findVideo(ref),
-      poster: still ? (await getImage({ src: still, width: 1280, format: 'webp' })).src : undefined,
-    };
-  }),
+async function videoFor(ref: { file: string }, caption: string) {
+  const still = findImage({ file: basename(ref.file).replace(/\.[a-z0-9]+$/i, '-poster.jpg') });
+  return {
+    caption,
+    src: findVideo(ref),
+    poster: still ? (await getImage({ src: still, width: 1280, format: 'webp' })).src : undefined,
+  };
+}
+const videos = await Promise.all(evidence.videos.map(({ ref, caption }) => videoFor(ref, caption)));
+// A video in the case study, written like a picture: ![](film.mp4 "Caption").
+const storyVideos = new Map(
+  await Promise.all(
+    project.story
+      .flatMap((part) => part.blocks)
+      .flatMap((block) => ('paragraph' in block ? [imageIn(block.paragraph)] : []))
+      .filter((picture) => picture && isVideo(picture.image))
+      .map(async (picture) => [picture!.image.file, await videoFor(picture!.image, picture!.caption ?? '')] as const),
+  ),
 );
 
 const extras = project.extras.map((extra) => ({
@@ -131,6 +146,18 @@ const extras = project.extras.map((extra) => ({
             return <Graphic node={words} />;
           }
           const picture = imageIn(p);
+          const video = picture && storyVideos.get(picture.image.file);
+          if (video)
+            return (
+              <figure class="video story__video">
+                {video.src ? (
+                  <video controls playsinline preload="none" poster={video.poster} src={video.src} />
+                ) : (
+                  <Todo text={`Video needed: ${picture.image.file}`} block />
+                )}
+                <figcaption>{video.caption}</figcaption>
+              </figure>
+            );
           if (picture?.caption)
             return (
               <figure class="story__figure">
@@ -485,7 +512,12 @@ const extras = project.extras.map((extra) => ({
   /* A whole picture in its own shape, not cropped, with no border. */
   .story :global(.story__image.story__image--whole) {
     aspect-ratio: auto;
+    margin: 8px 0;
     border: 0;
+  }
+
+  .story__video {
+    margin: 8px 0;
   }
 
   .story__list {

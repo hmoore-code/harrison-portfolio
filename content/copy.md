@@ -670,7 +670,7 @@ I can manage diverse stakeholders, deliver end-to-end on a budget and a deadline
 ## Project: Solo show
 
 - Filter: Designing compelling experiences
-- Title: Crowdfunded exhibition to fund my masters
+- Title: Crowdfunding my education
 - Organisation: Gallery 35, Sheffield, backed by 4 local businesses
 - Year: 2016
 - Role: Artist and producer
@@ -681,63 +681,50 @@ I can manage diverse stakeholders, deliver end-to-end on a budget and a deadline
 - Evidence link: solo-opening-night.jpg
 - Image: solo-visitors.jpg
 - Image alt text: Opening-night visitors looking at framed drawings marked with red sold dots
-- Pop-up image: solo-visitors.jpg
-- Pop-up image alt text: Opening-night visitors looking at framed drawings marked with red sold dots
+- Pop-up image: filming.png
+- Pop-up image alt text: Harrison looking down into a video camera with a microphone on top, filming against a blue sky
 
 ### The challenge
 
-All artists hope their work will sell one day. In 2016, I needed mine to sell within weeks. I had a coveted place on a master's at the Royal College of Art, starting that September, but no way to pay for it as masters funding is limited.
+All artists hope their work will sell one day. In 2016, I needed mine to sell within weeks. I had been offered a coveted place on a master's at the Royal College of Art London, starting that September, but I had no way to pay for it, as student loans for master's are limited.
+
+![](crowdfunding.mp4 "My crowdfunding video (3 mins)")
 
 ### What I did
 
-So I went home to Sheffield and gave myself 6 weeks to make and sell a solo show, alongside a crowdfunding campaign. I stopped strangers in the street, asked them about Sheffield's past, present and future, and turned their answers into original artworks.
+I went home to Sheffield and gave myself 6 weeks to make and sell out a solo show, alongside a crowdfunding campaign on Indiegogo. I was into socially engaged art, so I recruited strangers in the streets, asking them about Sheffield's past, present, and future, and turning their responses into original artworks.
 
-Because the show had to sell, I made many pieces in batches, like the city's factories, with prices starting at £20, so anyone could take one home. I ran everything myself, from research to hanging the show, with backing from 4 local businesses.
+![A Sheffield road sign reading Sheffield You Were History, beside 4 faces of Sheffielders from the film](sheffielders.png){whole}
 
-### What happened
+Because the show simply *had* to sell out, I made many pieces in batches, reminiscent of the city's factories, with a range of prices starting at £20 so everybody could take something home. I organised everything myself, from research to production to hanging the show, with backing from 4 local businesses.
 
-The pricing strategy paid off. In 6 weeks I made 63 works. 30 people came to the opening night, and the show sold about £3,000 of work. The crowdfunding campaign raised £1,800 more. Together, that money helped pay for my master's.
+![4 views of the show: word mirrors, bright portraits, a row of framed drawings and small casts of Sheffield's outline](artworks.png)
+
+### The impact
+
+The pricing strategy and engagement with the Sheffield community paid off. In 6 weeks, I made 63 artworks. 30 people came to the opening night, and the show sold £3,000 of work. The Indiegogo campaign raised £1,800 more, and together that money helped me accept the offer from the Royal College of Art, which totally changed my life! :)
+
+![Close-up of a mirror cut with words Sheffielders chose, like nostalgia, global and aspiring](mirror.png)
 
 ### The skills I could bring to your team 🫵
-I can fund an idea by making something people want to support, then deliver it on a tight timeline and budget.
+
+I can develop creative solutions by researching in the field, design for participation, and connect ideas from different worlds. I'd love to be directing these skills towards problems and solutions in the future of education, like:
+
+- Helping people develop critical thinking and creative skills
+- Making learning multimodal and multisensory
+- Championing learners' own stories of growth
+- Designing events that draw educators, businesses and learners together
+- Finding ways to make creative work pay
 
 ### More details about this project
 
-- Opening night: solo-opening-night.jpg, solo-visitors.jpg, solo-harrison.jpg
-- The work: drawings, paintings, casts and mirrors: solo-drawings.jpg, solo-paintings.jpg, solo-casts.jpg, solo-mirrors.jpg
-- The press release: sheffield-press-release.pdf
-- My crowdfunding video: crowdfunding.mp4
-- The Star's preview, 17 August 2016: https://www.thestar.co.uk/news/artist-harrison-looks-at-his-home-city-through-fresh-eyes-455351
-- The crowdfunding campaign page: https://www.indiegogo.com/en/projects/harrisonmoore-14912189/once-in-a-lifetime-opportunity-to-study-at-the-rca
+- Read the exhibition press release: sheffield-press-release.pdf
+- Read The Star's coverage: https://www.thestar.co.uk/news/artist-harrison-looks-at-his-home-city-through-fresh-eyes-455351
 
 ### Pull quote
 
 - Quote: "The exhibition of drawings and other objects seeks to imagine Sheffield through fresh artistic perspectives."
 - Credit: The Star, Sheffield's daily paper
-
-### Exhibition list
-
-- Intro: 20 exhibitions in 6 cities across 5 countries, 2012 to 2018.
-- RCA degree show, Royal College of Art, London, 2018
-- White Noise, Royal College of Art, London, 2017
-- Inclusion to Partnership, The Gallery for Social Art, Jerusalem, 2017
-- What's That Thing?, Hockney Gallery, Royal College of Art, London, 2017
-- WIP, Royal College of Art, London, 2017
-- Shared Insight, Central Saint Martins, London, 2016
-- Sheffield: You Were History, Gallery 35, Sheffield, 2016 (solo)
-- New York, New York, BYGDA 2.0, Stokkøya, Norway, 2016
-- Act Ø, By Other Means Gallery, London, 2016
-- All Exclusive, The Old Police Station, London, 2016
-- Do Disturb, Palais de Tokyo, Paris, 2016
-- Show 1, Central Saint Martins, London, 2016
-- Shared Insight, Kentish Town Health Centre, London, 2016
-- HIX Awards, Cock & Bull Gallery, London, 2014
-- Silhouette in Six, Black Maria, Kings Cross, London, 2013
-- In Between States, Mile End Art Pavilion, London, 2013
-- The Art of Letter Writing, CSMSU, London, 2013 (solo)
-- MMXIII, Mile End Art Pavilion, London, 2013
-- Sister Cities, International Museum of Tianfu Square, Chengdu, China, 2012
-- F, Blake College, London, 2012
 
 ## Track record
 
