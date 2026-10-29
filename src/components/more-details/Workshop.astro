@@ -1,14 +1,12 @@
 ---
 // "More details about this project" for the writing workshop (design/15-workshop-popup.html).
-// Its words come from copy.md: Writeup button and Writeup link on the section itself; the 1st "####"
-// is the 3 forms to try (each "#####" is a tab: Title, a paragraph and its rules); the 2nd "####" is
+// Its words come from copy.md: Writeup button and Writeup link on the section itself; the "####" is
 // the library of forms (each "#####" is a form: a description, Benefits, and an optional Example with
 // its Example link). Sizes and colours are the design's exact values.
 import { optional, type MdNode, type Project } from '../../lib/content';
 import { projectsIntro } from '../../lib/content';
 import { inline } from '../../lib/inline';
 import Icon from '../Icon.astro';
-import WavyRule from '../WavyRule.astro';
 
 interface Props {
   project: Project;
@@ -23,16 +21,7 @@ function need<T>(value: T | undefined, what: string): T {
 const field = (node: MdNode, label: string) => need(optional(node, label), `"${label}: ..." under "${node.heading}"`);
 
 const details = project.moreDetails;
-const [tryForms, library] = need(details.children, 'its "####" parts');
-need(library, 'a second "####" part (the library of forms)');
-
-const forms = need(tryForms.children, 'the 3 forms ("##### Letter" and so on)').map((form) => ({
-  tab: form.heading,
-  title: field(form, 'Title'),
-  text: need(form.paragraphs[0], `a paragraph under "${form.heading}"`),
-  rules: form.bullets.filter((b) => b.label?.toLowerCase() !== 'title').map((b) => b.raw),
-}));
-if (forms.length !== 3) throw new Error(`copy.md: "${project.name}" should have 3 forms to try, found ${forms.length}`);
+const [library] = need(details.children, 'its "####" part (the library of forms)');
 
 const libraryForms = need(library.children, 'the library of forms').map((form) => {
   const example = optional(form, 'Example');
@@ -61,78 +50,7 @@ const libraryCard = (form: LibraryForm) =>
   ].join('');
 // The design starts on the 3rd form.
 const first = Math.min(2, libraryForms.length - 1);
-
-const id = project.slug;
 ---
-
-<h4 class="workshop__subheading">{tryForms.heading}</h4>
-<div class="forms">
-  <div class="forms__tiles" role="tablist" aria-label={field(tryForms, 'Tabs label')}>
-    {
-      forms.map((form, i) => (
-        <button
-          class="forms__tile"
-          type="button"
-          role="tab"
-          id={`${id}-form-tab-${i}`}
-          aria-controls={`${id}-form-panel-${i}`}
-          aria-selected={i === 0 ? 'true' : 'false'}
-          tabindex={i === 0 ? 0 : -1}
-        >
-          {i === 0 && (
-            <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
-              <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
-                <rect x="2.5" y="5" width="19" height="14" rx="1.5" />
-                <path d="M2.5 6.5 L12 13 L21.5 6.5" />
-              </g>
-            </svg>
-          )}
-          {i === 1 && (
-            <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
-              <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                <path d="M9 6h12M9 12h12M9 18h12" />
-                <circle cx="4" cy="6" r="1.3" fill="currentColor" />
-                <circle cx="4" cy="12" r="1.3" fill="currentColor" />
-                <circle cx="4" cy="18" r="1.3" fill="currentColor" />
-              </g>
-            </svg>
-          )}
-          {i === 2 && (
-            <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
-              <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
-                <path d="M2.5 4h11v7h-6l-3 3v-3h-2z" />
-                <path d="M21.5 10h-5.5v7h5l2.5 2.5V10z" transform="translate(-1 0)" />
-              </g>
-            </svg>
-          )}
-          <span>{form.tab}</span>
-        </button>
-      ))
-    }
-  </div>
-  {
-    forms.map((form, i) => (
-      <div
-        class="forms__panel"
-        role="tabpanel"
-        id={`${id}-form-panel-${i}`}
-        aria-labelledby={`${id}-form-tab-${i}`}
-        tabindex="0"
-        hidden={i !== 0}
-      >
-        <h5 class="forms__title">{form.title}</h5>
-        <p class="forms__text" set:html={inline(form.text)} />
-        <ul class="forms__rules" role="list">
-          {form.rules.map((rule) => (
-            <li set:html={inline(rule)} />
-          ))}
-        </ul>
-      </div>
-    ))
-  }
-</div>
-
-<WavyRule class="workshop__rule" />
 
 <h4 class="workshop__subheading" set:html={inline(library.heading)} />
 {library.paragraphs.map((p) => <p class="workshop__text" set:html={inline(p)} />)}
@@ -152,8 +70,6 @@ const id = project.slug;
 </a>
 
 <script>
-  import '../../scripts/tabs';
-
   // "Generate a new form": a different random form each time, never the same one twice in a row.
   document.querySelectorAll<HTMLElement>('[data-library]').forEach((library) => {
     const card = library.querySelector<HTMLElement>('[data-library-card]')!;
@@ -186,91 +102,6 @@ const id = project.slug;
     margin: 0;
     font-size: 17px;
     line-height: 1.55;
-  }
-
-  .forms {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .forms__tiles {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-
-  /* On wide screens the tiles stay the size they are on a phone. */
-  @media (min-width: 760px) {
-    .forms__tiles {
-      max-width: 360px;
-    }
-  }
-
-  .forms__tile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    aspect-ratio: 1;
-    border: var(--line);
-    border-radius: 4px;
-    background: var(--white);
-    color: var(--ink);
-    font-size: 15px;
-    font-weight: 700;
-  }
-
-  .forms__tile[aria-selected='true'] {
-    background: #eef57a;
-    box-shadow: 4px 4px 0 var(--ink);
-  }
-
-  .forms__panel {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-top: 18px;
-    border-top: var(--line);
-  }
-
-  .forms__panel[hidden] {
-    display: none;
-  }
-
-  .forms__title {
-    margin: 0;
-    font-family: var(--font-quote);
-    font-size: 38px;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1;
-  }
-
-  .forms__text {
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.55;
-  }
-
-  .forms__rules {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .forms__rules li {
-    padding: 10px 0;
-    border-bottom: 1px dashed #8a8a84;
-    font-size: 16px;
-    line-height: 1.45;
-  }
-
-  .workshop__rule {
-    margin: 12px 0;
   }
 
   .library {

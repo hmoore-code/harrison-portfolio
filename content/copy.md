@@ -381,43 +381,6 @@ I can take skills people find overwhelming and break them into manageable parts,
 - Writeup button: Read my post-workshop writeup (10 mins)
 - Writeup link: https://www.thenewworkday.com/p/the-questions-every-writer-should-ask
 
-#### Try these forms with your own ideas
-
-- Tabs label: Forms
-
-##### Letter
-
-- Title: A handwritten letter
-
-Write directly to one person. It could be someone you know, or a public figure you admire or disagree with. A personal letter creates intimacy, almost like a confession, so you can show raw thinking without worrying about sounding perfect.
-
-- Handwrite it on a single A4 sheet, and fill no more than 1 page.
-- Start with “Dear...”
-- Tell them what you most want them to understand about your idea.
-- Don’t polish it. Let it be honest and raw.
-
-##### Listicle
-
-- Title: A listicle
-
-A listicle breaks your idea into distinct chunks or sub-ideas. It makes for a clear, quick read, and it’s a good way to unpack an idea into its most interesting parts.
-
-- Write exactly 7 items: questions, lessons or short stories.
-- Give each one a clear, punchy heading.
-- Keep each item to 1 to 3 sentences.
-- If you’re stuck, try “7 questions I’m exploring” or “7 lessons I’ve learned”.
-
-##### Dialogue
-
-- Title: A made-up dialogue
-
-Write an imaginary conversation between 2 voices, both played by you. One might be wise or supportive, the other full of questions or doubts. They could be friends, family members or colleagues, or 2 strangers you think should meet.
-
-- Start with a thorny question, problem or opportunity.
-- Let the voices go back and forth for 1 to 2 A4 pages.
-- Look for the tensions and ideas that only come out in conversation.
-- Don’t force a conclusion. Follow where the conversation goes.
-
 #### Try a whole *library* of forms
 
 A letter, a listicle and a dialogue are just the start!
