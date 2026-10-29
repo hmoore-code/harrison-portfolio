@@ -41,7 +41,8 @@ const externalIcon =
   '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 2 H14 V7 M14 2 L7.5 8.5 M12 10 V13 A1 1 0 0 1 11 14 H3 A1 1 0 0 1 2 13 V5 A1 1 0 0 1 3 4 H6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const libraryCard = (form: LibraryForm) =>
   [
-    `<p class="library__name">${inline(form.name)}</p>`,
+    // Names joined by slashes ("Presentation/Video") may wrap after the slash.
+    `<p class="library__name">${inline(form.name).replace(/\//g, '/<wbr>')}</p>`,
     `<p class="library__description">${inline(form.description)}</p>`,
     `<div class="library__part"><p class="library__label">${inline(benefitsLabel)}</p><p class="library__value">${inline(form.benefits)}</p></div>`,
     form.example
@@ -119,6 +120,8 @@ const first = Math.min(2, libraryForms.length - 1);
     border-radius: var(--radius-inner);
     background: var(--white);
     box-shadow: 6px 6px 0 var(--ink);
+    /* A word too long for the screen wraps rather than pushing the pop-up wider. */
+    overflow-wrap: break-word;
   }
 
   .library__card :global(.library__name) {

@@ -148,7 +148,15 @@ const extras = project.extras.map((extra) => ({
   }
 
   <figure class="pull-quote">
-    <blockquote>“{project.pullQuote.quote.replace(/^["“]|["”]$/g, '')}”</blockquote>
+    <blockquote>
+      “{
+        // Words joined by slashes ("teacher/coach/enthusiast") may wrap after each slash.
+        project.pullQuote.quote
+          .replace(/^["“]|["”]$/g, '')
+          .split('/')
+          .map((part, i) => (i ? [<>/<wbr /></>, part] : part))
+      }”
+    </blockquote>
     <figcaption>{project.pullQuote.credit}</figcaption>
   </figure>
 
@@ -488,6 +496,8 @@ const extras = project.extras.map((extra) => ({
 
   .pull-quote blockquote {
     margin: 0;
+    /* A word too long for the screen wraps rather than pushing the pop-up wider. */
+    overflow-wrap: break-word;
     font-family: var(--font-quote);
     font-size: var(--size-card-title);
     font-style: italic;
