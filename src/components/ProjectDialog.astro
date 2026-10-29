@@ -464,9 +464,10 @@ const extras = project.extras.map((extra) => ({
     margin: 8px 0;
   }
 
-  /* A whole picture in its own shape, not cropped. */
+  /* A whole picture in its own shape, not cropped, with no border. */
   .story :global(.story__image.story__image--whole) {
     aspect-ratio: auto;
+    border: 0;
   }
 
   .story__list {
