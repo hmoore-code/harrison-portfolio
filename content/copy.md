@@ -339,72 +339,313 @@ I can lower barriers, design fun ways into creative and intellectual practice, a
 - Evidence link: \[<https://www.thenewworkday.com/p/the-questions-every-writer-should-ask>\]
 - Image: workshop-cohort.png (the cohort in a live session, Zoom names blurred)
 - Image alt text: Zoom screenshot of the Full Cycle Writing Workshop cohort during a live session
-- Pop-up image: workshop-cohort.png
-- Pop-up image alt text: Zoom screenshot of the Full Cycle Writing Workshop cohort during a live session
+- Pop-up image: full-cycle-writing.png
+- Pop-up image alt text: The Full Cycle Writing wheel, with 6 stages: info diet, ideation, the what, the how, polishing and publishing
 
 ### The challenge
 
-When the online writing course Write of Passage closed, many alumni (including me!) were devastated to lose the community they wrote with. 37 writers signed up to my writing workshop. They had tonnes of interesting ideas but no repeatable process, and fear of publishing kept many stuck in a state of procrastination.
+When the renowned online writing school Write of Passage closed, many alumni (including me!) were devastated to lose the community they wrote with. 37 writers, looking for a new home, signed up to my writing workshop. They had fascinating ideas but no repeatable process, and fear of publishing kept many stuck in procrastination.
 
 ### What I did
 
-I stepped in and designed and ran a live 6-week course that took writers through 6 distinct stages of a writing project: curating an information diet, research, thesis, style, editing, and finally publishing. To help lower the stakes, I instructed each writer to write their first draft as an email to one person they trusted.
+I designed and ran a live 6-week course that took writers through 6 distinct stages of a writing project: curating an information diet, research, thesis, style, editing, and publishing. To help lower the stakes, I instructed writers to write their first drafts as emails to one person they trusted.
 
-After session 4, many writers said they were now struggling to choose between different drafts, so I adapted the editing session, using powerful questions to identify each piece's main point: Why am I writing this? What do I ultimately believe? Who is this going to be most valuable to?
+![An email to Aunt Sarah that begins: I know this might seem strange, but I have been exploring the topic of X](aunt-sarah.png){16:9}
 
-### What happened
+Many writers said they were struggling to choose between multiple ideas, so I adapted the sessions, incorporating powerful questions to help them pin down their main point:
 
-Answering these questions and writing to one trusted person got the majority of writers unstuck. Everyone produced drafts, and at least 8 published. When the course ended, the students asked to keep meeting every Sunday as a writing group, which they offered to co-host.
+- Why am I writing this?
+- What do I ultimately believe about it?
+- What do I want the reader to think, feel, or do differently?
+
+Normally in life, function determines form. But with writing, you can invert that logic and experiment with letting form determine function. This was the writers' favourite session: putting their ideas through one of 3 forms: a personal letter, a listicle, or a fictitious two-way dialogue.
+
+![Slide: Change the form, change the thinking. Write a letter, write a list, write an imaginary dialogue](dialogue.png){16:9}
+
+### The impact
+
+Expressing their ideas by email, questioning their motivations, and experimenting with forms got the majority of writers unstuck. Everybody produced drafts. At least 8 people published new work. And when the workshop ended, they asked to keep meeting every Sunday as a writing group, which they offered to co-host.
 
 ### The skills I could bring to your team 🫵
-I design learning experiences that make people feel safe enough to try, then adapt them when learners get stuck.
+
+I can take skills people find overwhelming and break them into manageable parts, facilitate live learning environments, and change course quickly when students need it. I'd love to use these abilities to help more people learn and grow. For instance:
+
+- Giving people permission to be bad at something
+- Enhancing courses based on learner feedback
+- Turning expert know-how into tools anyone can use
+- Developing constraints and prompts to get people unstuck
+- Running pilots, scaling courses and building communities
 
 ### More details about this project
 
-- My write-up of the workshop
-- Course plan and session slides: \[<https://docs.google.com/presentation/d/1UAypqzHJgM_L9mBrtURuDdxkEzR0KEFty-AUPfUwqMI/edit?usp=sharing>\]
-- The Form Library: \[<https://www.thenewworkday.com/p/the-shape-of-your-ideas-matters>\]
+- Writeup button: Read my post-workshop writeup (10 mins)
+- Writeup link: https://www.thenewworkday.com/p/the-questions-every-writer-should-ask
 
-### Pull quote
+#### Try these forms with your own ideas
 
-- Quote: "It really broke a spell for me, that not even \[Write of Passage\] could break."
-- Credit: Ezra D.
+- Tabs label: Forms
 
-### Try it yourself
+##### Letter
 
-- Button: Try a writing challenge
-- Image: form-1-letter.jpg, form-2-listicle.jpg, form-3-dialogue.jpg (the original slides from session 4)
-
-In the first half of my workshop, I steered writers towards working out what they wanted to say before worrying about structure or style. But form and substance are always tangled up. The shape you write in changes how you think, and it changes what ends up on the page.
-
-So in session 4, I asked each writer to take the idea they were working on and run it through one of these 3 forms, all taken from a [Form Library](https://www.thenewworkday.com/p/the-shape-of-your-ideas-matters) I built for the course. Try it with an idea of your own. It will probably feel messy. That's fine: the point is to see what a new shape does to your idea.
-
-#### Form 1: A handwritten letter
+- Title: A handwritten letter
 
 Write directly to one person. It could be someone you know, or a public figure you admire or disagree with. A personal letter creates intimacy, almost like a confession, so you can show raw thinking without worrying about sounding perfect.
 
 - Handwrite it on a single A4 sheet, and fill no more than 1 page.
-- Start with "Dear..."
+- Start with “Dear...”
 - Tell them what you most want them to understand about your idea.
-- Don't polish it. Let it be honest and a bit raw.
+- Don’t polish it. Let it be honest and raw.
 
-#### Form 2: A listicle
+##### Listicle
 
-A listicle breaks your idea into separate chunks. It makes for a clear, quick read, and it's a good way to unpack an idea into its most interesting parts.
+- Title: A listicle
+
+A listicle breaks your idea into distinct chunks or sub-ideas. It makes for a clear, quick read, and it’s a good way to unpack an idea into its most interesting parts.
 
 - Write exactly 7 items: questions, lessons or short stories.
 - Give each one a clear, punchy heading.
 - Keep each item to 1 to 3 sentences.
-- If you're stuck, try "7 questions I'm exploring" or "7 lessons I've learned".
+- If you’re stuck, try “7 questions I’m exploring” or “7 lessons I’ve learned”.
 
-#### Form 3: A made-up dialogue
+##### Dialogue
 
-Write an imaginary conversation between 2 voices, both played by you. One might be wise or supportive, the other full of questions or doubts. They could be 2 friends, family members or colleagues, or 2 strangers you think should meet.
+- Title: A made-up dialogue
+
+Write an imaginary conversation between 2 voices, both played by you. One might be wise or supportive, the other full of questions or doubts. They could be friends, family members or colleagues, or 2 strangers you think should meet.
 
 - Start with a thorny question, problem or opportunity.
 - Let the voices go back and forth for 1 to 2 A4 pages.
 - Look for the tensions and ideas that only come out in conversation.
-- Don't force a conclusion. Follow where the conversation goes.
+- Don’t force a conclusion. Follow where the conversation goes.
+
+#### Try a whole *library* of forms
+
+A letter, a listicle and a dialogue are just the start!
+
+- Benefits label: Benefits
+- Example label: Example
+- Button: Generate a new form
+
+##### 📝 Personal Letter
+
+Write directly to a specific individual, using a personal, confessional tone.
+
+- Benefits: Good for building a sense of intimacy; easy to show vulnerability and raw thinking.
+- Example: Rainer Maria Rilke's 'Letters to a Young Poet'
+- Example link: https://www.poetryintranslation.com/PITBR/German/RilkeLetters.php
+
+##### 🔢 Listicle (or Roundup)
+
+Break down insights or ideas into a numbered or bulleted list.
+
+- Benefits: Great for clarity and easy skimming; watch out for oversimplification.
+- Example: This very post is a listicle! But here's Mari Andrew's: '100 things I know'
+- Example link: https://mariandrew.substack.com/p/100-things-i-know
+
+##### 🗣️ 2-Way Dialogue
+
+Play both sides of a conversation between characters and allow the ideas to unfurl.
+
+- Benefits: Communicates ideas in a relatable way through the voices of real (or imagined) people.
+- Example: My piece 'Why Coffee is Nuts'
+- Example link: https://www.thenewworkday.com/p/coffee-is-bad
+
+##### 📧 Email Chain
+
+Simulate or use an actual back-and-forth email exchange with another person.
+
+- Benefits: Encourages concise writing; each exchange can add a fresh angle or clarifying point.
+- Example: Elle Griffin's 'Letters to an Anarchist'
+- Example link: https://www.elysian.press/p/the-letters-to-an-anarchist-post
+
+##### 🎙️ Interview
+
+Present content as a Q&A with a real or imagined interviewee.
+
+- Benefits: Lets you probe questions systematically, revealing different facets of a topic.
+- Example: Noah Smith's 'Interview with Patrick Collison, co-founder and CEO of Stripe'
+- Example link: https://www.noahpinion.blog/p/interview-patrick-collison-co-founder
+
+##### 📖 Story-Led
+
+Use a narrative arc or anecdote to introduce and drive your main point.
+
+- Benefits: Engaging approach that ties personal or historical stories to bigger themes.
+- Example: Matthew Teague's 'The Friend: Love Is Not a Big Enough Word'
+- Example link: https://www.esquire.com/lifestyle/a34905/matthew-teague-wife-cancer-essay/
+
+##### 💡 Insight-Led
+
+Organise around key realisations or epiphanies; each section spotlights one main insight.
+
+- Benefits: Good for reflective pieces; helps readers follow the logic of discovery.
+- Example: Wes Kao's 'Start right before you get eaten by the bear'
+- Example link: https://newsletter.weskao.com/p/start-right-before-you-get-eaten-by-the-bear
+
+##### 🗒️ 3-Paragraph Essay
+
+Classic intro-body-conclusion, forcing you to be succinct.
+
+- Benefits: Useful for getting straight to the point; can be expanded later.
+- Example: Sarah Moss's 'Generation Gap'
+- Example link: https://granta.com/generation-gap-sarah-moss/
+
+##### 📽️ Presentation/Video
+
+Write as if scripting slides or a voice-over, potentially for a recorded video.
+
+- Benefits: Encourages strong, memorable “hooks” and minimal text with key bullet points.
+- Example: Sir Ken Robinson's 'Changing Education Paradigms'—the text and the talk
+- Example link: https://www.ted.com/talks/sir_ken_robinson_changing_education_paradigms?subtitle=en
+
+##### 🎧 Audio Recording
+
+Script or transcript for a podcast or voice memo, possibly including stage directions.
+
+- Benefits: Great for capturing conversational tone; can highlight authenticity and spontaneity.
+- Example: Megan Nolan's 'On Resolutions'
+- Example link: https://www.bbc.co.uk/programmes/m00268xs
+
+##### 🖼️ Comic Strip
+
+Use panels and speech bubbles to convey your narrative or main idea, typically mixing minimal text with drawn visuals.
+
+- Benefits: Great for boiling down complex ideas into approachable vignettes.
+- Example: Grant Snider's 'The Nature of Ambition'
+- Example link: https://incidentalcomics.substack.com/p/the-nature-of-ambition
+
+##### 📜 Memoir Chapter
+
+Write as if part of a personal life story; include recollections, reflections.
+
+- Benefits: Strong emotional resonance; good for personal or introspective topics.
+- Example: Charlie Bleecker's 'When Girls Grow Up'
+- Example link: https://charliebleecker.substack.com/p/transparent-tuesdays-4e2
+
+##### 📣 Manifesto
+
+State a bold stance or call to action, emphasising core principles or beliefs.
+
+- Benefits: Highly persuasive format; best for stirring moral or social impetus.
+- Example: Seth Godin's 'We Are All Artists Now'
+- Example link: https://www.porchlightbooks.com/blog/changethis/2012/we-are-all-artists-now
+
+##### 📷 Photo Essay
+
+Sequence images with captions or short reflections to tell a visual story.
+
+- Benefits: Speaks directly to readers visually; text can be minimal but should add essential insights.
+- Example: Bieke Depoorter's 'As it May Be'
+- Example link: https://biekedepoorter.com/works%2Fas-it-may-be/overlay/works/as-it-may-be/images
+
+##### 🎭 Satire Piece
+
+Use irony, exaggeration, or ridicule to criticise or highlight an issue, often masking deeper commentary behind humour.
+
+- Benefits: Engaging, memorable, but requires strong sense of comedic pacing.
+- Example: Colin Nissan's 'It's Decorative Gourd Season, Motherfuckers'
+- Example link: https://www.mcsweeneys.net/articles/its-decorative-gourd-season-motherfuckers
+
+##### 🌸 Poem
+
+You may be a poet who didn't know it.
+
+- Benefits: Good for brevity and strong imagery; might not suit every topic, but can spark creative approach.
+- Example: Scott Alexander's 'Verses On Five People Being Killed By A Falling Package Of Foreign Aid'
+- Example link: https://www.astralcodexten.com/p/verses-on-five-people-being-killed
+
+##### 🏷️ Journal Entries
+
+Dated or time-stamped reflections, capturing immediate impressions, day-to-day thoughts, or real-time reactions as events unfold.
+
+- Benefits: Emphasises creativity, personal reflection, and interweaving of various media.
+- Example: Ted Gioia's 'I Share Private Journal Entries'
+- Example link: https://www.honest-broker.com/p/i-share-private-journal-entries
+
+##### 🍃 Vignettes
+
+Collection of mini-scenes or snapshots, each exploring a facet of the topic.
+
+- Benefits: Good for multi-layered topics that benefit from glimpses rather than one long arc.
+- Example: Visakan Veerasamy's '7 mini-essays in a trenchcoat'
+- Example link: https://visakanv.substack.com/p/7-mini-essays-in-a-trenchcoat
+
+##### ❓ FAQ
+
+Present content as a list of common questions with concise answers.
+
+- Benefits: Straightforward structure for clarifying complex or technical issues.
+
+##### 📊 Diagrammatic Piece
+
+Use diagrams, flowcharts, or mind maps annotated with clarifying text.
+
+- Benefits: Helps simplify complex relationships; requires good design sense.
+- Example: Carlos Greaves' 'Are You Allowed To Criticize Simone Biles?: A Decision Tree'
+- Example link: https://shadesofgreaves.substack.com/p/are-you-allowed-to-criticize-simone
+
+##### 📓 Zine
+
+Handcrafted, DIY booklet style with images, cut-outs, personal notes.
+
+- Benefits: Encourages collage, personal voice, and creative formatting.
+
+##### 🧩 Puzzle/Quiz
+
+Make the content interactive, with a “Which type are you?” angle.
+
+- Benefits: Entertainment factor can increase sharing; good for lighter or more playful topics.
+
+##### 🌊 Stream of Consciousness
+
+Free-form, unfiltered flow capturing raw thoughts and mental leaps (try using the Most Dangerous Writing App).
+
+- Benefits: Might be hard to read if too long; effective for capturing emotion or spontaneity.
+
+##### 👄 Oral History
+
+Spoken accounts, preserving personal experiences and collective memory in a structured narrative.
+
+- Benefits: Hones interviewing, storytelling, and empathy skills while preserving untold perspectives.
+- Example: GQ's 'Martin Scorsese's Goodfellas: A Complete Oral History'
+- Example link: https://www.gq.com/story/goodfellas-making-of-behind-the-scenes-interview-scorsese-deniro
+
+##### 📰 Job Ad
+
+Mimics traditional employment listings while humorously exaggerating workplace culture.
+
+- Benefits: Sharpens comedic timing and develops skills in voice, irony, and persuasive writing.
+- Example: Charlie Bleecker's 'Transparent Tuesdays Issue 251'
+- Example link: https://charliebleecker.substack.com/p/transparent-tuesdays-34c
+
+##### 📝 Open Letter
+
+Personal yet public address blending directness, reflection, and rhetorical flair.
+
+- Benefits: Develops voice and emotional honesty while allowing experimentation with intimacy.
+- Example: Sasha Chapin's 'An open letter to 56 people I know'
+- Example link: https://substack.com/@sashachapin/p-156620552
+
+##### 🎤 Monologue
+
+Single-character speech that reveals emotions, desires, or conflicts, often directed at another character.
+
+- Benefits: Strengthens voice, deepens character exploration, and sharpens dramatic tension.
+- Example: Chris Chibnal's 'KISS ME LIKE YOU MEAN IT'
+- Example link: https://docs.google.com/document/d/1jXb7PF3hql0vz077RgJ0NBChqCSmAsnESQFdnBxwJtU/edit?usp=sharing
+
+##### 🌀 Restless Confessional
+
+Explores personal uncertainty, transformation, and existential questioning in a raw, episodic narrative.
+
+- Benefits: Good for introspection, voice, and emotional honesty while embracing storytelling.
+- Example: Vinay Hiremath's 'I am rich and have no idea what to do with my life'
+- Example link: https://vinay.sh/i-am-rich-and-have-no-idea-what-to-do-with-my-life/
+
+### Pull quote
+
+- Quote: "Appreciate how much you experiment with the process, and encourage writers to follow their energy & curiosity, and to try new things. It was fun running into totally unexpected things like a 'research gym.' Really appreciate your mix of seriousness and playfulness as a writing teacher/coach/enthusiast."
+- Credit: Jennifer, poet
 
 ## Project: The Steel Core
 

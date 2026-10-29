@@ -2,9 +2,9 @@
 // Missing required fields stop the build with a list of what to fix.
 
 import source from '../../content/copy.md?raw';
-import { parseTree, type Bullet, type MdNode } from './markdown-tree';
+import { parseTree, type Block, type Bullet, type MdNode } from './markdown-tree';
 
-export type { MdNode };
+export type { Block, MdNode };
 
 export interface Todo {
   todo: string;
@@ -36,16 +36,20 @@ export interface EvidenceItem {
 
 export interface Story {
   heading: string;
-  paragraphs: string[];
+  // Paragraphs and bullet lists in copy.md order.
+  blocks: Block[];
   // "####" parts under the heading, e.g. the words for a graphic placed with "[NVC graphic goes here]".
   parts: MdNode[];
 }
 
 // A paragraph that is only a Markdown image, "![alt text](file.jpg)", shows as a picture.
 // An optional caption in quotes, ![alt text](file.jpg "Caption"), shows under it.
-export function imageIn(paragraph: string): { image: FileRef; alt: string; caption?: string } | undefined {
-  const match = paragraph.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]+)")?\)$/);
-  return match ? { image: { file: match[2] }, alt: match[1], caption: match[3] } : undefined;
+// "{16:9}" straight after, ![alt text](file.png){16:9}, shows it whole at 16:9 instead of square.
+export function imageIn(
+  paragraph: string,
+): { image: FileRef; alt: string; caption?: string; wide: boolean } | undefined {
+  const match = paragraph.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]+)")?\)(\{16:9\})?$/);
+  return match ? { image: { file: match[2] }, alt: match[1], caption: match[3], wide: !!match[4] } : undefined;
 }
 
 // A paragraph that is only "[NVC graphic goes here]" shows the graphic whose words are under "#### NVC graphic".
@@ -129,7 +133,7 @@ function section(node: MdNode, heading: string): MdNode {
   const found = child(node, heading);
   if (!found) {
     errors.push(`Missing section "${heading}"`);
-    return { heading, level: 0, bullets: [], paragraphs: [], children: [] };
+    return { heading, level: 0, bullets: [], paragraphs: [], blocks: [], children: [] };
   }
   return found;
 }
@@ -383,7 +387,7 @@ export const projects: Project[] = projectNodes.map((node, index) => {
   const namedParts = /^(The skills I could bring|More details about this project|Pull quote|Further reading|Learn more|Try it yourself|Exhibition list)/i;
   const story = node.children
     .filter((part) => !namedParts.test(part.heading) && part.paragraphs.length)
-    .map((part) => ({ heading: part.heading, paragraphs: part.paragraphs, parts: part.children }));
+    .map((part) => ({ heading: part.heading, blocks: part.blocks, parts: part.children }));
   if (!story.length) errors.push(`${where} is missing its case study ("### The challenge" and so on)`);
 
   const skillsNode = child(node, /^The skills I could bring/i);
@@ -475,7 +479,7 @@ export const projects: Project[] = projectNodes.map((node, index) => {
       bullets: (skillsNode?.bullets ?? []).map((b) => b.raw),
     },
     headings: { moreDetails: evidenceNode?.heading ?? '' },
-    moreDetails: evidenceNode ?? { heading: '', level: 0, bullets: [], paragraphs: [], children: [] },
+    moreDetails: evidenceNode ?? { heading: '', level: 0, bullets: [], paragraphs: [], blocks: [], children: [] },
     evidence,
     pullQuote,
     extras,

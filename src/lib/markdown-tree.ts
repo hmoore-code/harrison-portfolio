@@ -9,11 +9,15 @@ export interface Bullet {
   nested?: string[];
 }
 
+// Paragraphs and bullet lists in the order they were written, for prose that mixes the two.
+export type Block = { paragraph: string } | { list: string[] };
+
 export interface MdNode {
   heading: string;
   level: number;
   bullets: Bullet[];
   paragraphs: string[];
+  blocks: Block[];
   children: MdNode[];
 }
 
@@ -34,14 +38,18 @@ function toBullet(raw: string): Bullet {
 }
 
 export function parseTree(source: string): MdNode {
-  const root: MdNode = { heading: '', level: 0, bullets: [], paragraphs: [], children: [] };
+  const root: MdNode = { heading: '', level: 0, bullets: [], paragraphs: [], blocks: [], children: [] };
   const stack: MdNode[] = [root];
   let paragraph: string[] = [];
   let lastBullet: Bullet | undefined;
 
   const current = () => stack[stack.length - 1];
   const flush = () => {
-    if (paragraph.length) current().paragraphs.push(unescapeExport(paragraph.join(' ')));
+    if (paragraph.length) {
+      const text = unescapeExport(paragraph.join(' '));
+      current().paragraphs.push(text);
+      current().blocks.push({ paragraph: text });
+    }
     paragraph = [];
   };
 
@@ -60,6 +68,7 @@ export function parseTree(source: string): MdNode {
         level,
         bullets: [],
         paragraphs: [],
+        blocks: [],
         children: [],
       };
       current().children.push(node);
@@ -71,6 +80,9 @@ export function parseTree(source: string): MdNode {
       flush();
       lastBullet = toBullet(unescapeExport(bullet[1]));
       current().bullets.push(lastBullet);
+      const last = current().blocks.at(-1);
+      if (last && 'list' in last) last.list.push(lastBullet.raw);
+      else current().blocks.push({ list: [lastBullet.raw] });
     } else if (line.trim() === '') {
       flush();
     } else {

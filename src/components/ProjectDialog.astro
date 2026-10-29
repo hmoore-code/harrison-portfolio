@@ -12,6 +12,7 @@ import EvidenceGallery from './EvidenceGallery.astro';
 import WorkerFeedbackClubDetails from './more-details/WorkerFeedbackClub.astro';
 import TemprDetails from './more-details/Tempr.astro';
 import WritersPromptsDetails from './more-details/WritersPrompts.astro';
+import WorkshopDetails from './more-details/Workshop.astro';
 import NvcGraphic from './graphics/NvcGraphic.astro';
 import SixWordStories from './graphics/SixWordStories.astro';
 import Icon from './Icon.astro';
@@ -30,6 +31,7 @@ const MoreDetails = {
   'worker-feedback-club': WorkerFeedbackClubDetails,
   tempr: TemprDetails,
   'clever-constraints-for-writers': WritersPromptsDetails,
+  'full-cycle-writing-workshop': WorkshopDetails,
 }[project.slug];
 // Graphics built in code, placed in the case study with "[NVC graphic goes here]".
 const graphics = { 'nvc graphic': NvcGraphic, '6-word stories': SixWordStories };
@@ -41,7 +43,7 @@ function graphicFor(name: string, parts: { heading: string }[]) {
   return { Graphic, words };
 }
 // These pop-up images are wide, so they show at 16:9 instead of the usual 236px crop.
-const wideLead = ['tempr', 'clever-constraints-for-writers'].includes(project.slug);
+const wideLead = ['tempr', 'clever-constraints-for-writers', 'full-cycle-writing-workshop'].includes(project.slug);
 const titleId = `${project.slug}-title`;
 const evidence = sortEvidence(project);
 const facts = [
@@ -107,7 +109,16 @@ const extras = project.extras.map((extra) => ({
     project.story.map((part) => (
       <section class="story">
         <h3 class="subheading">{part.heading}</h3>
-        {part.paragraphs.map((p) => {
+        {part.blocks.map((block) => {
+          if ('list' in block)
+            return (
+              <ul class="story__list">
+                {block.list.map((item) => (
+                  <li set:html={inline(item)} />
+                ))}
+              </ul>
+            );
+          const p = block.paragraph;
           const graphic = graphicIn(p);
           if (graphic) {
             const { Graphic, words } = graphicFor(graphic, part.parts);
@@ -122,7 +133,12 @@ const extras = project.extras.map((extra) => ({
               </figure>
             );
           return picture ? (
-            <Photo class="story__image" image={picture.image} alt={picture.alt} sizes="(min-width: 760px) 640px, 100vw" />
+            <Photo
+              class:list={['story__image', picture.wide && 'story__image--wide']}
+              image={picture.image}
+              alt={picture.alt}
+              sizes="(min-width: 760px) 640px, 100vw"
+            />
           ) : (
             <p set:html={inline(p)} />
           );
@@ -430,6 +446,22 @@ const extras = project.extras.map((extra) => ({
   }
 
   /* A picture with a caption: shown whole, not cropped, caption below in small grey. */
+  /* A whole 16:9 picture, not cropped to a square. */
+  .story :global(.story__image.story__image--wide) {
+    aspect-ratio: 16 / 9;
+    margin: 8px 0;
+  }
+
+  .story__list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    padding-left: 22px;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
   .story__figure {
     display: flex;
     flex-direction: column;
