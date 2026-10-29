@@ -44,12 +44,15 @@ export interface Story {
 
 // A paragraph that is only a Markdown image, "![alt text](file.jpg)", shows as a picture.
 // An optional caption in quotes, ![alt text](file.jpg "Caption"), shows under it.
-// "{16:9}" straight after, ![alt text](file.png){16:9}, shows it whole at 16:9 instead of square.
+// "{16:9}" straight after, ![alt text](file.png){16:9}, shows it whole at 16:9 instead of square;
+// "{whole}" shows it whole in its own shape.
 export function imageIn(
   paragraph: string,
-): { image: FileRef; alt: string; caption?: string; wide: boolean } | undefined {
-  const match = paragraph.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]+)")?\)(\{16:9\})?$/);
-  return match ? { image: { file: match[2] }, alt: match[1], caption: match[3], wide: !!match[4] } : undefined;
+): { image: FileRef; alt: string; caption?: string; shape?: '16:9' | 'whole' } | undefined {
+  const match = paragraph.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]+)")?\)(?:\{(16:9|whole)\})?$/);
+  return match
+    ? { image: { file: match[2] }, alt: match[1], caption: match[3], shape: match[4] as '16:9' | 'whole' | undefined }
+    : undefined;
 }
 
 // A paragraph that is only "[NVC graphic goes here]" shows the graphic whose words are under "#### NVC graphic".

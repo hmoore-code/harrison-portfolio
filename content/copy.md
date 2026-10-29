@@ -87,6 +87,8 @@ I'd spent years as an electrician on sites like these, so I knew this silence fi
 
 My biggest lesson was about **positioning**. I originally pitched the platform as a way to "protect worker welfare", but contractors got defensive, and workers felt infantilised. So I reframed it as a "communication problem" that was costing everybody, and this gave both sides a goal they shared. The app became a tool for all. Managers posted updates. Workers reported problems. And anybody could thank a colleague for doing great work.
 
+![The Worker Feedback Club app on a phone, showing the Miner's Road site feed, with buttons to recognise great work or flag an issue, and workers giving each other credit for safety and quality](screen-site-feed.png){whole}
+
 ### The impact
 
 The new framing won everyone over. Skanska, Multiplex and Willmott Dixon signed paid contracts. On Willmott Dixon sites, about **half the workforce adopted the app**, checking it on average **12 times a week**. Shared documents saved site teams around **2 hours a week**. And workers were finally heard on important issues. At Tesco Woolwich, supervisors used private reports to replenish drinking water and eyewash after earlier requests were ignored.
@@ -344,27 +346,27 @@ I can lower barriers, design fun ways into creative and intellectual practice, a
 
 ### The challenge
 
-When the renowned online writing school Write of Passage closed, many alumni (including me!) were devastated to lose the community they wrote with. 37 writers, looking for a new home, signed up to my writing workshop. They had fascinating ideas but no repeatable process, and fear of publishing kept many stuck in procrastination.
+When the renowned online writing school **Write of Passage** closed, many alumni (including me!) were devastated to lose the community they wrote with. **37 writers**, looking for a new home, signed up to my writing workshop. They had fascinating ideas but no repeatable process, and fear of publishing kept many stuck in procrastination.
 
 ### What I did
 
-I designed and ran a live 6-week course that took writers through 6 distinct stages of a writing project: curating an information diet, research, thesis, style, editing, and publishing. To help lower the stakes, I instructed writers to write their first drafts as emails to one person they trusted.
+I designed and ran a live 6-week course that took writers through **6 distinct stages** of a writing project: **curating an information diet**, **research**, **thesis**, **style**, **editing**, and **publishing**. To help lower the stakes, I instructed writers to write their first drafts as emails to one person they trusted.
 
 ![An email to Aunt Sarah that begins: I know this might seem strange, but I have been exploring the topic of X](aunt-sarah.png){16:9}
 
-Many writers said they were struggling to choose between multiple ideas, so I adapted the sessions, incorporating powerful questions to help them pin down their main point:
+Many writers said they were struggling to choose between multiple ideas, so I adapted the sessions, incorporating **powerful questions** to help them pin down their main point:
 
 - Why am I writing this?
 - What do I ultimately believe about it?
 - What do I want the reader to think, feel, or do differently?
 
-Normally in life, function determines form. But with writing, you can invert that logic and experiment with letting form determine function. This was the writers' favourite session: putting their ideas through one of 3 forms: a personal letter, a listicle, or a fictitious two-way dialogue.
+Normally in life, function determines form. But with writing, you can invert that logic and **experiment with letting form determine function**. This was the writers' favourite session: putting their ideas through one of 3 forms: a personal letter, a listicle, or a fictitious two-way dialogue.
 
 ![Slide: Change the form, change the thinking. Write a letter, write a list, write an imaginary dialogue](dialogue.png){16:9}
 
 ### The impact
 
-Expressing their ideas by email, questioning their motivations, and experimenting with forms got the majority of writers unstuck. Everybody produced drafts. At least 8 people published new work. And when the workshop ended, they asked to keep meeting every Sunday as a writing group, which they offered to co-host.
+Expressing their ideas by email, questioning their motivations, and experimenting with forms got the majority of writers unstuck. Everybody produced drafts. At least **8 writers published new work**. And when the workshop ended, they asked to keep meeting every Sunday as a writing group, which they offered to co-host.
 
 ### The skills I could bring to your team 🫵
 
@@ -383,7 +385,7 @@ I can take skills people find overwhelming and break them into manageable parts,
 
 #### Try a whole *library* of forms
 
-A letter, a listicle and a dialogue are just the start!
+A letter, a listicle and a dialogue are just the start! Tap to generate new writing forms.
 
 - Benefits label: Benefits
 - Example label: Example
