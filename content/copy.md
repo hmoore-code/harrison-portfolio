@@ -209,7 +209,7 @@ My first version gave users multiple-choice questions, but it couldn't ask for t
 - Line 3: because I need… [need]
 - Line 4: Would you be willing to… [request]?
 
-### What happened
+### The impact
 
 Users valued Tempr's questions more than its answers. People found it useful to be walked through their own situation: from the feelings to the need to the request and to the resolution. **One user rekindled a friendship** he was going to let drift, saying he "definitely would not have done it without using Tempr."
 
