@@ -1,0 +1,84 @@
+---
+// The swipe strip of 6-word life stories inside the prompt library's "What I did"
+// (design/14-prompts-popup.html). Words come from "#### 6-word stories" in copy.md: a List label
+// for screen readers, a Card number pattern ("{number} of {total}"), then 1 story per line.
+// The 2 colours are this graphic's own.
+import { optional, type MdNode } from '../../lib/content';
+
+interface Props {
+  node: MdNode;
+}
+const { node } = Astro.props;
+
+function field(label: string) {
+  const value = optional(node, label);
+  if (!value) throw new Error(`copy.md: "${node.heading}" is missing "${label}: ..."`);
+  return value;
+}
+
+const listLabel = field('List label');
+const cardNumber = field('Card number');
+// Every line that isn't one of the 2 fields is a story (some stories have a colon in them).
+const stories = node.bullets
+  .filter((b) => !['list label', 'card number'].includes(b.label?.toLowerCase() ?? ''))
+  .map((b) => b.raw);
+if (!stories.length) throw new Error(`copy.md: "${node.heading}" has no stories`);
+const numbered = (n: number) =>
+  cardNumber.replace('{number}', String(n)).replace('{total}', String(stories.length));
+---
+
+<ul class="stories" role="list" aria-label={listLabel} tabindex="0">
+  {
+    stories.map((story, i) => (
+      <li class="stories__card">
+        <p class="stories__text">“{story}”</p>
+        <p class="stories__number">{numbered(i + 1)}</p>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  /* Runs edge to edge of the pop-up; each card snaps to the text's left edge, the next one peeking in. */
+  .stories {
+    display: flex;
+    gap: 12px;
+    margin: 8px calc(-1 * var(--gutter));
+    padding: 0 var(--gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 var(--gutter);
+    list-style: none;
+  }
+
+  .stories__card {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    /* 328px, or less on small screens so the next card still peeks in. */
+    width: min(328px, calc(100% - 22px));
+    min-height: 240px;
+    padding: 22px;
+    border-radius: var(--radius-inner);
+    background: #ddfff7;
+    color: #71a9f7;
+    scroll-snap-align: start;
+  }
+
+  .stories__text {
+    margin: 0;
+    font-family: var(--font-quote);
+    font-size: 34px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .stories__number {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+  }
+</style>

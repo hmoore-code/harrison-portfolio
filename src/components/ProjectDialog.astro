@@ -11,7 +11,9 @@ import { inline } from '../lib/inline';
 import EvidenceGallery from './EvidenceGallery.astro';
 import WorkerFeedbackClubDetails from './more-details/WorkerFeedbackClub.astro';
 import TemprDetails from './more-details/Tempr.astro';
+import WritersPromptsDetails from './more-details/WritersPrompts.astro';
 import NvcGraphic from './graphics/NvcGraphic.astro';
+import SixWordStories from './graphics/SixWordStories.astro';
 import Icon from './Icon.astro';
 import Photo from './Photo.astro';
 import Sheet from './Sheet.astro';
@@ -24,9 +26,13 @@ interface Props {
 const { project } = Astro.props;
 // Projects whose "More details about this project" has been designed on its own. The others still
 // show their pictures, quotes and links from copy.md.
-const MoreDetails = { 'worker-feedback-club': WorkerFeedbackClubDetails, tempr: TemprDetails }[project.slug];
+const MoreDetails = {
+  'worker-feedback-club': WorkerFeedbackClubDetails,
+  tempr: TemprDetails,
+  'clever-constraints-for-writers': WritersPromptsDetails,
+}[project.slug];
 // Graphics built in code, placed in the case study with "[NVC graphic goes here]".
-const graphics = { 'nvc graphic': NvcGraphic };
+const graphics = { 'nvc graphic': NvcGraphic, '6-word stories': SixWordStories };
 function graphicFor(name: string, parts: { heading: string }[]) {
   const Graphic = graphics[name.toLowerCase() as keyof typeof graphics];
   const words = parts.find((part) => part.heading.toLowerCase() === name.toLowerCase());
@@ -34,8 +40,8 @@ function graphicFor(name: string, parts: { heading: string }[]) {
     throw new Error(`copy.md: "${project.name}" has "[${name} goes here]" but no "#### ${name}" under that heading, or no such graphic`);
   return { Graphic, words };
 }
-// Tempr's pop-up image is a wide photo, so it shows whole at 16:9 instead of the usual 236px crop.
-const wideLead = project.slug === 'tempr';
+// These pop-up images are wide, so they show at 16:9 instead of the usual 236px crop.
+const wideLead = ['tempr', 'clever-constraints-for-writers'].includes(project.slug);
 const titleId = `${project.slug}-title`;
 const evidence = sortEvidence(project);
 const facts = [
@@ -62,7 +68,13 @@ const extras = project.extras.map((extra) => ({
 }));
 ---
 
-<Sheet id={project.slug} labelledby={titleId} label={project.filter.label} filterId={project.filter.id}>
+<Sheet
+  id={project.slug}
+  labelledby={titleId}
+  label={project.filter.label}
+  filterId={project.filter.id}
+  cover={project.filter.cover}
+>
   <header class="sheet__intro">
     <h2 id={titleId} class="sheet__title">{project.title}</h2>
     {
@@ -102,6 +114,13 @@ const extras = project.extras.map((extra) => ({
             return <Graphic node={words} />;
           }
           const picture = imageIn(p);
+          if (picture?.caption)
+            return (
+              <figure class="story__figure">
+                <Photo image={picture.image} alt={picture.alt} sizes="(min-width: 760px) 640px, 100vw" />
+                <figcaption>{picture.caption}</figcaption>
+              </figure>
+            );
           return picture ? (
             <Photo class="story__image" image={picture.image} alt={picture.alt} sizes="(min-width: 760px) 640px, 100vw" />
           ) : (
@@ -408,6 +427,27 @@ const extras = project.extras.map((extra) => ({
     object-fit: cover;
     border: var(--line);
     border-radius: var(--radius-inner);
+  }
+
+  /* A picture with a caption: shown whole, not cropped, caption below in small grey. */
+  .story__figure {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 8px 0;
+  }
+
+  .story__figure :global(img) {
+    width: 100%;
+    height: auto;
+    border: var(--line);
+    border-radius: var(--radius-inner);
+  }
+
+  .story__figure figcaption {
+    color: var(--grey);
+    font-size: 12px;
+    line-height: 1.4;
   }
 
   .pull-quote {

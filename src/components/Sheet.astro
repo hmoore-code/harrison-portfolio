@@ -11,12 +11,14 @@ interface Props {
   // A project pop-up passes its filter so the label gets the filter's icon.
   filterId?: string;
   parent?: string;
+  // A project pop-up's backdrop on phones uses its filter's cover pattern, like its card.
+  cover?: 'wavy' | 'straight' | 'contour';
 }
 
-const { id, labelledby, label, filterId, parent } = Astro.props;
+const { id, labelledby, label, filterId, parent, cover } = Astro.props;
 ---
 
-<dialog class="sheet" id={id} aria-labelledby={labelledby} data-dialog data-parent={parent}>
+<dialog class="sheet" id={id} aria-labelledby={labelledby} data-dialog data-parent={parent} data-cover={cover}>
   <div class="sheet__bar">
     <p class="label sheet__label">
       {filterId && <FilterIcon filterId={filterId} />}
@@ -65,6 +67,22 @@ const { id, labelledby, label, filterId, parent } = Astro.props;
     opacity: 0.9;
   }
 
+  .sheet[data-cover]::backdrop {
+    background: var(--paper) center top / 100% auto repeat-y;
+  }
+
+  .sheet[data-cover='wavy']::backdrop {
+    background-image: url('../../assets/svg/cover-wavy.svg');
+  }
+
+  .sheet[data-cover='straight']::backdrop {
+    background-image: url('../../assets/svg/cover-straight.svg');
+  }
+
+  .sheet[data-cover='contour']::backdrop {
+    background-image: url('../../assets/svg/cover-contour.svg');
+  }
+
   @media (min-width: 760px) {
     .sheet {
       inset: var(--space-7) 0 0;
@@ -72,7 +90,8 @@ const { id, labelledby, label, filterId, parent } = Astro.props;
       border-bottom: 0;
     }
 
-    .sheet::backdrop {
+    .sheet::backdrop,
+    .sheet[data-cover]::backdrop {
       background: rgb(17 17 17 / 60%);
       opacity: 1;
     }

@@ -247,37 +247,83 @@ I can turn expert methods into something a beginner can use, design for people t
 - Evidence link: https://harrisonmoore.notion.site/Writing-Prompts-from-Harrison-LIVE-75e0e11b460c435a9ea8553845744ca2
 - Image: notion-prompts.jpg (your screenshot of the Notion prompt library)
 - Image alt text: A grid of colourful writing prompt cards, such as Do nothing and Write for the dustbin
-- Pop-up image: notion-prompts.jpg
-- Pop-up image alt text: A grid of colourful writing prompt cards, such as Do nothing and Write for the dustbin
+- Pop-up image: prompt.png
+- Pop-up image alt text: A prompt card that reads Write your 6-word life story
 
 ### The challenge
 
-If you asked a hundred people what it takes to produce great writing, and enjoy it, I bet that none of them would say "constraints". But people freeze when given total freedom.
+If you asked 100 people in the street what it takes to make creative work, most would say talent, hard work, passion and originality. **Nobody would say "constraints."** But many of the best practitioners, from poets to product designers, know the **crucial role** that limitations can play. As a writer, I enjoy exploring what constraints make possible.
 
 ### What I did
 
-In developing my own practice, I'd built a library of 29 writing prompts. In 2025, I turned the prompts into a series of challenges. Each one set a different focus and a different limit (for example, from 6 words to 900). I published everyone's responses, and we met on group calls to reflect.
+In developing my own practice, I'd built a bank of writing prompts, things like **"Describe how something works"** and **"Write your 6-word life story."** In 2025, I turned the prompts into a series of public challenges. Subscribers to my newsletter took part, I published their responses, and we met on group calls to share insights about our creative process.
 
-We found that responses fell as the rules stacked up. 30 people published a 6-word story. 14 when it was exactly 49 words. And only 2 for a 900-word essay. I named the pattern the "constraint sweet spot" and published it for other writers to use.
+30 people submitted their 6-word life stories:
 
-### What happened
+[6-word stories goes here]
 
-People are productive when constraints are tight but not too tight. Across 4 challenges, participants published 53 pieces, collectively drawing 2,677 views. One participant who hadn't written for over a year said the prompts "keep the spark alive". Several prompts also became core exercises in my Writing Workshop.
+One-to-many prompts like this are an amazing way to get a glimpse of people's **unique stories and unique personalities**, as well as their **shared humanity**. My wife Corina, who's an artist and designer, turned our stories into a digital artwork using the metaphor of a tapestry.
+
+![A hand-drawn quilt of 6-word life stories, such as Shouldn't be here, showed up anyway](tapestry.jpg "Corina's artwork, incorporating everybody's mini memoir.")
+
+#### 6-word stories
+
+- List label: 30 six-word life stories, swipe to read
+- Card number: {number} of {total}
+
+- Dad examines life 4 purpose fun.
+- Rootless living via countries & domains.
+- Staggering Safely Beyond Broke but Amazing.
+- Roller Coaster Ride in a Tornado.
+- Fiercely independent woman who defied expectations.
+- I live a brutally beautiful life.
+- Germany unhappiness trap England fresh start.
+- Buried in fear. Joke's on me!
+- Lost in awe so many times
+- BIG BABY TURNED SASQUATCH BECOMES CLOWN.
+- He can play the bagpipes. Elsewhere.
+- Longing to be taken care of.
+- Dream house becomes dollhouse; life persists.
+- Verbal Hemophilia. Why can't I clot?
+- Fantasy, procrastination, complacency. Now, finally, action.
+- (Not) The end. To be continued.
+- Dreamed, struggled, grew, awakened, love endured.
+- Overachieving robot discovering powerful human connections.
+- The rain returns the African heart.
+- Windsurfing, writing, helping people: that's me.
+- Council estate dreamer discovering life's magic.
+- Creator land of corn and steel.
+- A relentless pursuit of the Truth.
+- Not a robot since age 52.
+- She grew across latitudes, longing nothing.
+- Inner palace peeps through a keyhole.
+- followed two passions, finding the next.
+- Found, lost, mended—wild peace endured.
+- Lake of monsters in fur coats.
+- Shouldn't be here, showed up anyway.
+
+### The impact
+
+Constraints are arguably the sharpest tool a creative has because of their accessibility. Anybody, regardless of their skills or resources, can leverage the power of constraints. Across 4 challenges, participants published **53 pieces**, collectively drawing **2,500+** views. Several prompts also became core exercises in my [writing workshop](#full-cycle-writing-workshop).
 
 ### The skills I could bring to your team 🫵
-I treat limits as a design tool, then test them with real learners to find the level that gets people started.
+
+I can lower barriers, design fun ways into creative and intellectual practice, and help people feel they belong to something. This is what I want to be doing with an organisation in the education space. For example, working on:
+
+- Making it safe to take creative risks
+- Building community and engagement
+- Growing a learning product through participation
+- Turning practice into rituals
+- Developing alumni networks
 
 ### More details about this project
 
-- Writing Prompts from Harrison (Notion): https://harrisonmoore.notion.site/Writing-Prompts-from-Harrison-LIVE-75e0e11b460c435a9ea8553845744ca2
-- The 6-word life story challenge: \[<https://www.thenewworkday.com/p/the-artistic-superpower-hidden-in-your-subscriber-list>\]
-- Writing like David Sedaris, with footnote: \[<https://www.thenewworkday.com/p/writing-like-david-sedaris>\]
-- Writing Workshop case study: (links to the project below)
+- View all writing prompts: https://harrisonmoore.notion.site/Writing-Prompts-from-Harrison-LIVE-75e0e11b460c435a9ea8553845744ca2
 
 ### Pull quote
 
-- Quote: "Even though I don't know any of you, we made something together."
-- Credit: Writer, prompt challenge participant
+- Quote: "This project caught my interest because I really enjoy the challenge of a tight prompt. There's something powerful about precision and economy of words – it lets us lay things bare."
+- Credit: Jess, writer
 
 ## Project: Full Cycle Writing Workshop
 

@@ -42,9 +42,10 @@ export interface Story {
 }
 
 // A paragraph that is only a Markdown image, "![alt text](file.jpg)", shows as a picture.
-export function imageIn(paragraph: string): { image: FileRef; alt: string } | undefined {
-  const match = paragraph.match(/^!\[([^\]]*)\]\(([^)\s]+)\)$/);
-  return match ? { image: { file: match[2] }, alt: match[1] } : undefined;
+// An optional caption in quotes, ![alt text](file.jpg "Caption"), shows under it.
+export function imageIn(paragraph: string): { image: FileRef; alt: string; caption?: string } | undefined {
+  const match = paragraph.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]+)")?\)$/);
+  return match ? { image: { file: match[2] }, alt: match[1], caption: match[3] } : undefined;
 }
 
 // A paragraph that is only "[NVC graphic goes here]" shows the graphic whose words are under "#### NVC graphic".
