@@ -191,15 +191,15 @@ I wrote an essay one year after closing Worker Feedback Club, reflecting on what
 
 ### The challenge
 
-When we're angry or hurt, our words can push people away and impact our relationships at work and at home. We often don't realise that beneath our anger is a request for an unmet need.
+When we're angry or hurt, our words can push people away and impact our relationships at work and at home. We often don't realise that **beneath our anger is a request for an unmet need**.
 
 ### What I did
 
-Psychologist Marshall B. Rosenberg's Nonviolent Communication framework helps people identify their needs and ask for them collaboratively. I was learning NVC myself in tandem with learning to build with AI, so in June 2026, I embedded NVC into a web app that's accessible to anybody with an internet connection.
+Psychologist Marshall B. Rosenberg's **Nonviolent Communication** framework helps people identify their needs and ask for them collaboratively. I was learning NVC myself in tandem with learning to build with AI, so in June 2026, I embedded NVC into a web app that's accessible to anybody with an internet connection.
 
 [NVC graphic goes here]
 
-My first version gave users multiple-choice questions, but it couldn't ask for the nuances or the facts behind the feelings. So I rebuilt it as a chatbot. Tempr can now explore what happened, ask what you want, and offer you two nonviolent ways to ask for what you need.
+My first version gave users multiple-choice questions, but it couldn't ask for the nuances or the facts behind the feelings. So I rebuilt it as a chatbot. Tempr can now **explore what happened**, **ask what you want**, and **offer you two nonviolent ways to ask for what you need**.
 
 #### NVC graphic
 
@@ -211,7 +211,7 @@ My first version gave users multiple-choice questions, but it couldn't ask for t
 
 ### What happened
 
-Users valued Tempr's questions more than its answers. People found it useful to be walked through their own situation: from the feelings to the need to the request and to the resolution. One user rekindled a friendship he was going to let drift, saying he "definitely would not have done it without using Tempr."
+Users valued Tempr's questions more than its answers. People found it useful to be walked through their own situation: from the feelings to the need to the request and to the resolution. **One user rekindled a friendship** he was going to let drift, saying he "definitely would not have done it without using Tempr."
 
 ### The skills I could bring to your team 🫵
 
