@@ -1,0 +1,28 @@
+---
+// "More details about this project" for Tempr (design/13-tempr-popup.html): each line in copy.md
+// ("Try Tempr: https://...") is a link that opens in a new tab, with a wavy line between them.
+import type { Project } from '../../lib/content';
+import ExternalLink from '../ExternalLink.astro';
+import WavyRule from '../WavyRule.astro';
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+
+const links = project.moreDetails.bullets.map((b) => {
+  if (!b.label || !/^https?:\/\//.test(b.value ?? ''))
+    throw new Error(`copy.md: "${project.name}", "More details about this project" line "${b.raw}" should be "Link text: https://..."`);
+  return { text: b.label, href: b.value! };
+});
+if (!links.length) throw new Error(`copy.md: "${project.name}", "More details about this project" has no links`);
+---
+
+{
+  links.map((link, i) => (
+    <>
+      {i > 0 && <WavyRule />}
+      <ExternalLink href={link.href}>{link.text}</ExternalLink>
+    </>
+  ))
+}

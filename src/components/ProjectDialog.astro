@@ -2,7 +2,7 @@
 // One project's case study, opened from its card as a sheet (phone) or centred panel (desktop).
 // dialogs.ts handles opening, closing, the URL hash and the back button.
 import { getImage } from 'astro:assets';
-import { hero, imageIn, isTodo, projectsIntro, topBar, type Project } from '../lib/content';
+import { graphicIn, hero, imageIn, isTodo, projectsIntro, topBar, type Project } from '../lib/content';
 import { basename } from '../lib/content';
 import { findImage, findVideo } from '../lib/assets';
 import { sortEvidence } from '../lib/evidence';
@@ -10,6 +10,8 @@ import { resolveTarget } from '../lib/links';
 import { inline } from '../lib/inline';
 import EvidenceGallery from './EvidenceGallery.astro';
 import WorkerFeedbackClubDetails from './more-details/WorkerFeedbackClub.astro';
+import TemprDetails from './more-details/Tempr.astro';
+import NvcGraphic from './graphics/NvcGraphic.astro';
 import Icon from './Icon.astro';
 import Photo from './Photo.astro';
 import Sheet from './Sheet.astro';
@@ -22,7 +24,18 @@ interface Props {
 const { project } = Astro.props;
 // Projects whose "More details about this project" has been designed on its own. The others still
 // show their pictures, quotes and links from copy.md.
-const MoreDetails = { 'worker-feedback-club': WorkerFeedbackClubDetails }[project.slug];
+const MoreDetails = { 'worker-feedback-club': WorkerFeedbackClubDetails, tempr: TemprDetails }[project.slug];
+// Graphics built in code, placed in the case study with "[NVC graphic goes here]".
+const graphics = { 'nvc graphic': NvcGraphic };
+function graphicFor(name: string, parts: { heading: string }[]) {
+  const Graphic = graphics[name.toLowerCase() as keyof typeof graphics];
+  const words = parts.find((part) => part.heading.toLowerCase() === name.toLowerCase());
+  if (!Graphic || !words)
+    throw new Error(`copy.md: "${project.name}" has "[${name} goes here]" but no "#### ${name}" under that heading, or no such graphic`);
+  return { Graphic, words };
+}
+// Tempr's pop-up image is a wide photo, so it shows whole at 16:9 instead of the usual 236px crop.
+const wideLead = project.slug === 'tempr';
 const titleId = `${project.slug}-title`;
 const evidence = sortEvidence(project);
 const facts = [
@@ -76,13 +89,18 @@ const extras = project.extras.map((extra) => ({
     }
   </dl>
 
-  <Photo class="sheet__lead" image={project.popupImage} alt={project.popupImageAlt} sizes="(min-width: 760px) 680px, 100vw" />
+  <Photo class:list={['sheet__lead', wideLead && 'sheet__lead--wide']} image={project.popupImage} alt={project.popupImageAlt} sizes="(min-width: 760px) 680px, 100vw" />
 
   {
     project.story.map((part) => (
       <section class="story">
         <h3 class="subheading">{part.heading}</h3>
         {part.paragraphs.map((p) => {
+          const graphic = graphicIn(p);
+          if (graphic) {
+            const { Graphic, words } = graphicFor(graphic, part.parts);
+            return <Graphic node={words} />;
+          }
           const picture = imageIn(p);
           return picture ? (
             <Photo class="story__image" image={picture.image} alt={picture.alt} sizes="(min-width: 760px) 640px, 100vw" />
@@ -139,12 +157,13 @@ const extras = project.extras.map((extra) => ({
     {MoreDetails && <MoreDetails project={project} />}
 
     {
-      evidence.gallery.length > 0 && (
+      !MoreDetails && evidence.gallery.length > 0 && (
         <EvidenceGallery items={evidence.gallery} cover={project.filter.cover} hint={projectsIntro.galleryHint} />
       )
     }
 
     {
+      !MoreDetails &&
       videos.map((video) => (
         <figure class="video">
           {video.src ? (
@@ -158,6 +177,7 @@ const extras = project.extras.map((extra) => ({
     }
 
     {
+      !MoreDetails &&
       evidence.quotes.map((set) => (
         <div class="quotes">
           <h4 class="label">{set.label}</h4>
@@ -172,6 +192,7 @@ const extras = project.extras.map((extra) => ({
     }
 
     {
+      !MoreDetails &&
       (evidence.links.length > 0 || evidence.todos.length > 0) && (
         <ul class="links">
           {evidence.links.map((link) => (
@@ -310,6 +331,11 @@ const extras = project.extras.map((extra) => ({
     object-fit: cover;
     border: var(--line);
     border-radius: var(--radius-inner);
+  }
+
+  :global(.sheet__lead.sheet__lead--wide) {
+    height: auto;
+    aspect-ratio: 16 / 9;
   }
 
   /* "The skills I could bring to your team": a box drawn with wavy lines, like the facts squares. */

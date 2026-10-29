@@ -37,12 +37,19 @@ export interface EvidenceItem {
 export interface Story {
   heading: string;
   paragraphs: string[];
+  // "####" parts under the heading, e.g. the words for a graphic placed with "[NVC graphic goes here]".
+  parts: MdNode[];
 }
 
 // A paragraph that is only a Markdown image, "![alt text](file.jpg)", shows as a picture.
 export function imageIn(paragraph: string): { image: FileRef; alt: string } | undefined {
   const match = paragraph.match(/^!\[([^\]]*)\]\(([^)\s]+)\)$/);
   return match ? { image: { file: match[2] }, alt: match[1] } : undefined;
+}
+
+// A paragraph that is only "[NVC graphic goes here]" shows the graphic whose words are under "#### NVC graphic".
+export function graphicIn(paragraph: string): string | undefined {
+  return paragraph.match(/^\[(.+) goes here\]$/i)?.[1];
 }
 
 export interface ExtraLink {
@@ -375,7 +382,7 @@ export const projects: Project[] = projectNodes.map((node, index) => {
   const namedParts = /^(The skills I could bring|More details about this project|Pull quote|Further reading|Learn more|Try it yourself|Exhibition list)/i;
   const story = node.children
     .filter((part) => !namedParts.test(part.heading) && part.paragraphs.length)
-    .map((part) => ({ heading: part.heading, paragraphs: part.paragraphs }));
+    .map((part) => ({ heading: part.heading, paragraphs: part.paragraphs, parts: part.children }));
   if (!story.length) errors.push(`${where} is missing its case study ("### The challenge" and so on)`);
 
   const skillsNode = child(node, /^The skills I could bring/i);

@@ -110,7 +110,7 @@ I can convene groups whose interests don't necessarily align, find goals they sh
 
 #### The anatomy of our platform's engagement
 
-Between 2017 and 2022, we ran Worker Feedback Club on 13 construction sites, including major projects like HS2, gathering feedback from hard-to-reach workers in three different ways.
+Between 2017 and 2022, we ran Worker Feedback Club on 13 construction sites, including major projects like **HS2**, gathering feedback from hard-to-reach workers in three different ways.
 
 - Tabs label: Research
 - Method tab: Our method
@@ -162,14 +162,14 @@ Long-term goals and "quick wins" were put forward to make sites safer, more orga
 - App result: answered 1, the lowest score
 - App description: Anonymous app: 36% answered 1
 - Next heading: What happened next
-- Next text: Insights like these led us to build features that let workers report problems anonymously, in any language, directly to site managers, and continue the conversation until problems were resolved.
+- Next text: Insights like these led us to build features that **let workers report problems anonymously**, in any language, directly to site managers, and continue the conversation until problems were resolved.
 - Button: Our method
 
 #### Business success and failure: my reflections
 
-I wrote an essay one year after closing Worker Feedback Club, reflecting on what I did well and what I did wrong.
+I wrote an essay one year after closing Worker Feedback Club, reflecting on what I did right and what I did wrong as a founder - and how I'd approach it differently next time.
 
-- Link text: Read my essay
+- Link text: Read my essay (15 mins)
 - Link: https://www.thenewworkday.com/p/the-founders-dilemma
 
 ## Project: Tempr
@@ -186,54 +186,52 @@ I wrote an essay one year after closing Worker Feedback Club, reflecting on what
 - Evidence link: https://tempr-taupe.vercel.app/
 - Image: tempr-home.jpg (your screenshot of the Tempr welcome screen on a phone)
 - Image alt text: Tempr on a phone, with the welcome message "Tell me about an issue you're facing"
-- Pop-up image: tempr-home.jpg
-- Pop-up image alt text: Tempr on a phone, with the welcome message "Tell me about an issue you're facing"
+- Pop-up image: tempr-on-phone.png
+- Pop-up image alt text: Tempr open on a phone, lying on a table beside 2 glasses of iced drink
 
 ### The challenge
 
-When we're angry or hurt, our words can push people away and threaten relationships at work and at home. Often, we don't realise that beneath our anger is a request for an unmet need.
+When we're angry or hurt, our words can push people away and impact our relationships at work and at home. We often don't realise that beneath our anger is a request for an unmet need.
 
 ### What I did
 
-Marshall B. Rosenberg's Nonviolent Communication (NVC) helps people find that need and ask for it clearly. I was learning this framework myself in tandem with learning to build with AI, so in June 2026 I built NVC into a tool accessible to anybody with an internet connection.
+Psychologist Marshall B. Rosenberg's Nonviolent Communication framework helps people identify their needs and ask for them collaboratively. I was learning NVC myself in tandem with learning to build with AI, so in June 2026, I embedded NVC into a web app that's accessible to anybody with an internet connection.
 
-My first version gave users multiple-choice questions, but it couldn't ask for the facts behind the feelings. I rebuilt it as a chatbot, and Tempr could then ask what you wanted, dig for what happened, and offer two nonviolent ways to say it.
+[NVC graphic goes here]
+
+My first version gave users multiple-choice questions, but it couldn't ask for the nuances or the facts behind the feelings. So I rebuilt it as a chatbot. Tempr can now explore what happened, ask what you want, and offer you two nonviolent ways to ask for what you need.
+
+#### NVC graphic
+
+- Title: 4-part NVC framework
+- Line 1: When I see… [evidence]
+- Line 2: I feel… [emotions]
+- Line 3: because I need… [need]
+- Line 4: Would you be willing to… [request]?
 
 ### What happened
 
-It turned out that questions mattered more than the answer. People valued being walked through their own situation, from the feeling to the need to the request to the resolution. One user rekindled a friendship he was going to let drift, saying he "definitely would not have done it" without using Tempr.
+Users valued Tempr's questions more than its answers. People found it useful to be walked through their own situation: from the feelings to the need to the request and to the resolution. One user rekindled a friendship he was going to let drift, saying he "definitely would not have done it without using Tempr."
 
-### The skills I could bring to your team
+### The skills I could bring to your team 🫵
 
-I design tools that teach through good questions, so people learn a skill just by using them.
+I can turn expert methods into something a beginner can use, design for people to *learn by doing*, and write instructions that make an AI behave well. I can use these skills equally well in learning and education settings. For example, in:
 
-### Learn more
-
-- Button: Learn more about NVC
-- Text: \[<https://en.wikipedia.org/wiki/Nonviolent_Communication>\]
+- Helping learners ask for what they need
+- Turning expert methods into guided practice
+- Teaching emotional literacy
+- Rapidly prototyping learning tools
+- Improving the style and tone of learning products
 
 ### More details about this project
 
-- Try Tempr live: https://tempr-taupe.vercel.app/
-
-Feedback from 3 users:
-
-#### Judy, marketing consultant
-
-"Tempr asked me some good clarifying questions and made a couple recommendations one of which I used."
-
-#### Joe, advisory manager, AI experiences and enterprise delivery
-
-"I definitely would not have texted my friend back if it wasn't for this tool."
-
-#### Alex, entrepreneur
-
-"The tool is super helpful when I've got a live problem!! Not even for the final text it gave me but just the process it took me through to realise that I was allowed to ask."
+- Try Tempr: https://tempr-taupe.vercel.app/
+- Read more about NVC on Wikipedia: https://en.wikipedia.org/wiki/Nonviolent_Communication
 
 ### Pull quote
 
-- Quote: "Not even for the final text it gave me but just the process it took me through to realise that I was allowed to ask."
-- Credit: Tempr user
+- Quote: "I definitely would not have texted my friend back if it wasn't for this tool."
+- Credit: Joe, consultant
 
 ## Project: Clever constraints for writers
 
@@ -266,8 +264,7 @@ We found that responses fell as the rules stacked up. 30 people published a 6-wo
 
 People are productive when constraints are tight but not too tight. Across 4 challenges, participants published 53 pieces, collectively drawing 2,677 views. One participant who hadn't written for over a year said the prompts "keep the spark alive". Several prompts also became core exercises in my Writing Workshop.
 
-### The skills I could bring to your team
-
+### The skills I could bring to your team 🫵
 I treat limits as a design tool, then test them with real learners to find the level that gets people started.
 
 ### More details about this project
@@ -313,8 +310,7 @@ After session 4, many writers said they were now struggling to choose between di
 
 Answering these questions and writing to one trusted person got the majority of writers unstuck. Everyone produced drafts, and at least 8 published. When the course ended, the students asked to keep meeting every Sunday as a writing group, which they offered to co-host.
 
-### The skills I could bring to your team
-
+### The skills I could bring to your team 🫵
 I design learning experiences that make people feel safe enough to try, then adapt them when learners get stuck.
 
 ### More details about this project
@@ -394,8 +390,7 @@ My winning design, called the Steel Core, was a solid bar of Sheffield stainless
 
 It's Nice That reported the Grand Jury winner leaving "with the coveted Grand Jury award stuffed into his jacket pocket", which was indeed nice, as I'd designed the trophies to be easily carried. Doc/Fest contracted me to make trophies 3 years running, 33 awards in total, before Covid cancelled the awards ceremonies.
 
-### The skills I could bring to your team
-
+### The skills I could bring to your team 🫵
 I turn a place and its story into an object people can hold, and manage production from concept to delivery.
 
 ### More details about this project
@@ -440,8 +435,7 @@ Because the show had to sell, I made many pieces in batches, like the city's fac
 
 The pricing strategy paid off. In 6 weeks I made 63 works. 30 people came to the opening night, and the show sold about £3,000 of work. The crowdfunding campaign raised £1,800 more. Together, that money helped pay for my master's.
 
-### The skills I could bring to your team
-
+### The skills I could bring to your team 🫵
 I can fund an idea by making something people want to support, then deliver it on a tight timeline and budget.
 
 ### More details about this project

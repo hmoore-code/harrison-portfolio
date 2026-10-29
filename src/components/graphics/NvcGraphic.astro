@@ -1,0 +1,101 @@
+---
+// The 4-part NVC framework card inside Tempr's "What I did" (design/13-tempr-popup.html).
+// Its words come from "#### NVC graphic" in copy.md: a Title and Line 1 to Line 4, where the part
+// in [square brackets] is the blank to fill in. Tempr's own colours, as this is a graphic.
+import { optional, type MdNode } from '../../lib/content';
+
+interface Props {
+  node: MdNode;
+}
+const { node } = Astro.props;
+
+function field(label: string) {
+  const value = optional(node, label);
+  if (!value) throw new Error(`copy.md: "${node.heading}" is missing "${label}: ..."`);
+  return value;
+}
+
+const title = field('Title');
+const lines = [1, 2, 3, 4].map((n) => {
+  const text = field(`Line ${n}`);
+  const match = text.match(/^(.*?)\s*\[([^\]]+)\]\s*(.*)$/);
+  if (!match) throw new Error(`copy.md: "${node.heading}", "Line ${n}" needs a [blank] in square brackets`);
+  return { text, lead: match[1], blank: `[${match[2]}]`, after: match[3] };
+});
+const label = `${title}: ${lines.map((line) => line.text).join(' ')}`;
+---
+
+<figure class="nvc" role="img" aria-label={label}>
+  <p class="nvc__title" aria-hidden="true">{title}</p>
+  <div class="nvc__card" aria-hidden="true">
+    {
+      lines.map((line) => (
+        <p class="nvc__line">
+          <span>{line.lead}</span>
+          <span class="nvc__blank">{line.blank}</span>
+          <span class="nvc__dots" />
+          {line.after && <span>{line.after}</span>}
+        </p>
+      ))
+    }
+  </div>
+</figure>
+
+<style>
+  .nvc {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 8px 0;
+    padding: 18px 16px 16px;
+    border: var(--line);
+    border-radius: var(--radius-inner);
+    background: #f0e8db;
+    font-family: var(--font-quote);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .nvc__title {
+    margin: 0;
+    padding-left: 6px;
+    color: #5e6340;
+    font-size: 26px;
+    line-height: 1;
+  }
+
+  .nvc__card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 18px 14px;
+    border: 1px solid #cfcdb9;
+    border-radius: 18px;
+    background: #e2e0d0;
+  }
+
+  .nvc__line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px 8px;
+    margin: 0;
+    color: #2f3324;
+    font-size: 19px;
+    line-height: 1.15;
+  }
+
+  .nvc__line span {
+    white-space: nowrap;
+  }
+
+  .nvc__blank {
+    color: #5e6340;
+  }
+
+  .nvc__dots {
+    flex: 1;
+    border-bottom: 2px dotted #b8a99b;
+    transform: translateY(-4px);
+  }
+</style>
