@@ -1,13 +1,20 @@
 ---
-// The end of the page, on white below the yellow band: Back to top, then the footer line.
-import { contact } from '../lib/content';
+// The end of the page, on white below the yellow band: the 6 project stars and "Check out my
+// projects", then Back to top, then the footer line.
+import { contact, projectsIntro } from '../lib/content';
 import Icon from './Icon.astro';
+import ProjectStars from './ProjectStars.astro';
 import SiteCredit from './SiteCredit.astro';
 ---
 
 <div class="page-end">
   <div class="column page-end__top">
-    <a class="pill pill--outline" href="#top">
+    <ProjectStars />
+    <a class="pill pill--outline page-end__projects" href="#projects">
+      {projectsIntro.checkOutProjectsButton}
+      <Icon name="arrow" />
+    </a>
+    <a class="pill pill--outline page-end__back" href="#top">
       <Icon name="up" />
       {contact.backToTop}
     </a>
@@ -28,12 +35,17 @@ import SiteCredit from './SiteCredit.astro';
   .page-end__top {
     display: flex;
     flex-direction: column;
+    gap: 22px;
     padding-top: 40px;
   }
 
   .page-end__top .pill {
     gap: 10px;
     min-height: 52px;
+  }
+
+  .page-end__back {
+    margin-top: calc(32px - 22px);
   }
 
   .footer {
