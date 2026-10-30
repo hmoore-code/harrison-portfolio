@@ -2,21 +2,16 @@
 // One project's case study, opened from its card as a sheet (phone) or centred panel (desktop).
 // dialogs.ts handles opening, closing, the URL hash and the back button.
 import { getImage } from 'astro:assets';
-import { graphicIn, hero, imageIn, isTodo, projectsIntro, topBar, type Project } from '../lib/content';
+import { buttonIn, graphicIn, hero, imageIn, isTodo, projectsIntro, topBar, type Project } from '../lib/content';
 import { basename } from '../lib/content';
-import { findImage, findSvg, findVideo, isVideo } from '../lib/assets';
-import { sortEvidence } from '../lib/evidence';
+import { findImage, findPdf, findSvg, findVideo, isVideo } from '../lib/assets';
 import { resolveTarget } from '../lib/links';
 import { inline } from '../lib/inline';
-import EvidenceGallery from './EvidenceGallery.astro';
-import WorkerFeedbackClubDetails from './more-details/WorkerFeedbackClub.astro';
-import TemprDetails from './more-details/Tempr.astro';
-import WritersPromptsDetails from './more-details/WritersPrompts.astro';
-import WorkshopDetails from './more-details/Workshop.astro';
-import SteelCoreDetails from './more-details/SteelCore.astro';
-import SoloShowDetails from './more-details/SoloShow.astro';
+import FormLibrary from './graphics/FormLibrary.astro';
 import NvcGraphic from './graphics/NvcGraphic.astro';
 import SixWordStories from './graphics/SixWordStories.astro';
+import WfcEngagement from './graphics/WfcEngagement.astro';
+import WfcReflections from './graphics/WfcReflections.astro';
 import Icon from './Icon.astro';
 import NextProject from './NextProject.astro';
 import Photo from './Photo.astro';
@@ -28,21 +23,19 @@ interface Props {
 }
 
 const { project } = Astro.props;
-// Projects whose "More details about this project" has been designed on its own. The others still
-// show their pictures, quotes and links from copy.md.
-const MoreDetails = {
-  'worker-feedback-club': WorkerFeedbackClubDetails,
-  tempr: TemprDetails,
-  'clever-constraints-for-writers': WritersPromptsDetails,
-  'full-cycle-writing-workshop': WorkshopDetails,
-  'the-steel-core': SteelCoreDetails,
-  'solo-show': SoloShowDetails,
-}[project.slug];
-// Graphics built in code, placed in the case study with "[NVC graphic goes here]".
-const graphics = { 'nvc graphic': NvcGraphic, '6-word stories': SixWordStories };
+// Graphics built in code, placed in the case study with "[NVC graphic goes here]". Their words are
+// the "####" of the same name under that heading (matched ignoring case and *italics*).
+const graphics = {
+  'nvc graphic': NvcGraphic,
+  '6-word stories': SixWordStories,
+  "the anatomy of our platform's engagement": WfcEngagement,
+  'business success and failure: my reflections': WfcReflections,
+  'try a whole library of forms': FormLibrary,
+};
+const graphicKey = (text: string) => text.replace(/\*/g, '').toLowerCase().trim();
 function graphicFor(name: string, parts: { heading: string }[]) {
-  const Graphic = graphics[name.toLowerCase() as keyof typeof graphics];
-  const words = parts.find((part) => part.heading.toLowerCase() === name.toLowerCase());
+  const Graphic = graphics[graphicKey(name) as keyof typeof graphics];
+  const words = parts.find((part) => graphicKey(part.heading) === graphicKey(name));
   if (!Graphic || !words)
     throw new Error(`copy.md: "${project.name}" has "[${name} goes here]" but no "#### ${name}" under that heading, or no such graphic`);
   return { Graphic, words };
@@ -60,7 +53,6 @@ const logoSvg = project.logo && findSvg(project.logo);
 // The 🫵 at the end of "The skills I could bring to your team 🫵" jabs every 4 seconds.
 const [, skillsHeading, pointing] = project.skillsBox.heading.match(/^(.*?)\s*(🫵\S*)?$/u) ?? [, project.skillsBox.heading];
 const titleId = `${project.slug}-title`;
-const evidence = sortEvidence(project);
 const facts = [
   { label: 'Organisation', value: project.organisation },
   { label: 'Year', value: project.year },
@@ -76,7 +68,6 @@ async function videoFor(ref: { file: string }, caption: string) {
     poster: still ? (await getImage({ src: still, width: 1280, format: 'webp' })).src : undefined,
   };
 }
-const videos = await Promise.all(evidence.videos.map(({ ref, caption }) => videoFor(ref, caption)));
 // A video in the case study, written like a picture: ![](film.mp4 "Caption").
 const storyVideos = new Map(
   await Promise.all(
@@ -143,10 +134,22 @@ const extras = project.extras.map((extra) => ({
               </ul>
             );
           const p = block.paragraph;
+          const button = buttonIn(p);
+          if (button) {
+            const href = /^https?:\/\//.test(button.href) ? button.href : findPdf({ file: button.href });
+            if (!href) throw new Error(`copy.md: "${project.name}" has a button to "${button.href}", which isn't in assets/pdfs`);
+            return (
+              <a class="pill pill--outline story__button" href={href} target="_blank" rel="noopener">
+                {button.text}
+                <Icon name="external" />
+                <span class="visually-hidden"> ({projectsIntro.newTabHint})</span>
+              </a>
+            );
+          }
           const graphic = graphicIn(p);
           if (graphic) {
             const { Graphic, words } = graphicFor(graphic, part.parts);
-            return <Graphic node={words} />;
+            return <Graphic node={words} project={project} />;
           }
           const picture = imageIn(p);
           const video = picture && storyVideos.get(picture.image.file);
@@ -240,77 +243,6 @@ const extras = project.extras.map((extra) => ({
 
   <NextProject project={project} />
 
-  <section class="evidence" aria-labelledby={`${project.slug}-evidence`}>
-    <h3 id={`${project.slug}-evidence`} class="evidence__heading">{project.headings.moreDetails}</h3>
-
-    {MoreDetails && <MoreDetails project={project} />}
-
-    {
-      !MoreDetails && evidence.gallery.length > 0 && (
-        <EvidenceGallery items={evidence.gallery} cover={project.filter.cover} hint={projectsIntro.galleryHint} />
-      )
-    }
-
-    {
-      !MoreDetails &&
-      videos.map((video) => (
-        <figure class="video">
-          {video.src ? (
-            <video controls playsinline preload="none" poster={video.poster} src={video.src} />
-          ) : (
-            <Todo text={`Video needed: ${video.caption}`} block />
-          )}
-          <figcaption>{video.caption}</figcaption>
-        </figure>
-      ))
-    }
-
-    {
-      !MoreDetails &&
-      evidence.quotes.map((set) => (
-        <div class="quotes">
-          <h4 class="label">{set.label}</h4>
-          {set.quotes.map((q) => (
-            <figure class="quotes__item">
-              <blockquote>“{q.quote}”</blockquote>
-              <figcaption>{q.name}</figcaption>
-            </figure>
-          ))}
-        </div>
-      ))
-    }
-
-    {
-      !MoreDetails &&
-      (evidence.links.length > 0 || evidence.todos.length > 0) && (
-        <ul class="links">
-          {evidence.links.map((link) => (
-            <li>
-              <a
-                class="link-pill"
-                href={link.href}
-                data-open-dialog={link.dialog}
-                target={link.type === 'popup' ? undefined : '_blank'}
-                rel={link.type === 'popup' ? undefined : 'noopener'}
-              >
-                <span>{link.label}</span>
-                <span class="link-pill__type">
-                  <Icon name={link.type === 'pdf' ? 'pdf' : link.type === 'popup' ? 'arrow' : 'link'} />
-                  {link.type === 'pdf' ? 'PDF' : link.type === 'popup' ? 'Case study' : 'Link'}
-                  {link.type !== 'popup' && <span class="visually-hidden">, {projectsIntro.newTabHint}</span>}
-                </span>
-              </a>
-            </li>
-          ))}
-          {evidence.todos.map((todo) => (
-            <li>
-              <Todo text={`${todo.label}: ${todo.text}`} block />
-            </li>
-          ))}
-        </ul>
-      )
-    }
-  </section>
 
   {
     (extras.length > 0 || project.tryItYourself) && (
@@ -425,7 +357,7 @@ const extras = project.extras.map((extra) => ({
     overflow-wrap: anywhere;
   }
 
-  /* Lead photo: full colour, no cover (covers are only on cards and evidence thumbnails). */
+  /* Lead photo: full colour, no cover (covers are only on cards). */
   :global(.sheet__lead) {
     width: 100%;
     height: 236px;
@@ -612,19 +544,11 @@ const extras = project.extras.map((extra) => ({
     font-weight: 600;
   }
 
-  /* "More details about this project". Sizes follow design/12 exactly. */
-  .evidence {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .evidence__heading {
-    margin: 0;
-    font-size: 36px;
-    font-weight: 800;
-    font-stretch: 62%;
-    line-height: 0.95;
+  /* A button in the case study ("[Try Tempr now](https://...){button}"): an outline pill. */
+  .story__button {
+    gap: 10px;
+    margin: 7px 0;
+    padding: 0 16px;
   }
 
   .video {
@@ -646,35 +570,6 @@ const extras = project.extras.map((extra) => ({
     padding: 10px 14px;
     border-top: var(--line);
     font-size: 15px;
-  }
-
-  .quotes {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .quotes__item {
-    margin: 0;
-    padding: var(--space-4);
-    border: var(--line);
-    border-radius: var(--radius-inner);
-    background: var(--white);
-  }
-
-  .quotes__item blockquote {
-    margin: 0;
-    font-family: var(--font-quote);
-    font-size: 21px;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.35;
-  }
-
-  .quotes__item figcaption {
-    margin-top: var(--space-2);
-    font-size: 13px;
-    font-weight: 600;
   }
 
   .exhibitions {

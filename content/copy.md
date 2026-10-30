@@ -98,22 +98,9 @@ My biggest lesson was about **positioning**. I originally pitched the platform a
 
 The new framing won everyone over. Skanska, Multiplex and Willmott Dixon signed paid contracts. On Willmott Dixon sites, about **half the workforce adopted the app**, checking it on average **12 times a week**. Shared documents saved site teams around **2 hours a week**. And workers were finally heard on important issues. At Tesco Woolwich, supervisors used private reports to replenish drinking water and eyewash after earlier requests were ignored.
 
-### Pull quote
+[The anatomy of our platform's engagement goes here]
 
-- Quote: "It is absolutely crucial that we start to communicate both ways... I've not seen anything like this on the market."
-- Credit: Director of health, safety, quality and environment, Bouygues
-
-### The skills I could bring to your team 🫵
-
-I can convene groups whose interests don't necessarily align, find goals they share, and design ways to make collaboration easier. I can point these same skills at a learning setting in a variety of ways, like:
-
-- Giving learners a voice
-- Designing learning for people who don't sit at desks
-- Turning research into change
-- Retraining workers for the age of AI
-- Helping learners adopt new learning tools
-
-### More details about this project
+[Business success and failure: my reflections goes here]
 
 #### The anatomy of our platform's engagement
 
@@ -179,6 +166,21 @@ I wrote an essay one year after closing Worker Feedback Club, reflecting on what
 - Link text: Read my essay (15 mins)
 - Link: https://www.thenewworkday.com/p/the-founders-dilemma
 
+### Pull quote
+
+- Quote: "It is absolutely crucial that we start to communicate both ways... I've not seen anything like this on the market."
+- Credit: Director of health, safety, quality and environment, Bouygues
+
+### The skills I could bring to your team 🫵
+
+I can convene groups whose interests don't necessarily align, find goals they share, and design ways to make collaboration easier. I can point these same skills at a learning setting in a variety of ways, like:
+
+- Giving learners a voice
+- Designing learning for people who don't sit at desks
+- Turning research into change
+- Retraining workers for the age of AI
+- Helping learners adopt new learning tools
+
 ## Project: Tempr
 
 - Filter: Building communication tools
@@ -209,6 +211,8 @@ Psychologist Marshall B. Rosenberg's **Nonviolent Communication** framework help
 
 My first version gave users multiple-choice questions, but it couldn't ask for the nuances or the facts behind the feelings. So I rebuilt it as a chatbot. Tempr can now **explore what happened**, **ask what you want**, and **offer you two nonviolent ways to ask for what you need**.
 
+[Try Tempr now](https://tempr-taupe.vercel.app/){button}
+
 #### NVC graphic
 
 - Title: 4-part NVC framework
@@ -230,11 +234,6 @@ I can turn expert methods into something a beginner can use, design for people t
 - Teaching emotional literacy
 - Rapidly prototyping learning tools
 - Improving the style and tone of learning products
-
-### More details about this project
-
-- Try Tempr: https://tempr-taupe.vercel.app/
-- Read more about NVC on Wikipedia: https://en.wikipedia.org/wiki/Nonviolent_Communication
 
 ### Pull quote
 
@@ -265,7 +264,11 @@ If you asked 100 people in the street what it takes to make creative work, most 
 
 ### What I did
 
-In developing my own practice, I'd built a bank of writing prompts, things like **"Describe how something works"** and **"Write your 6-word life story."** In 2025, I turned the prompts into a series of public challenges. Subscribers to my newsletter took part, I published their responses, and we met on group calls to share insights about our creative process.
+In developing my own practice, I'd built a bank of writing prompts, things like **"Describe how something works"** and **"Write your 6-word life story."**
+
+[See all the prompts](https://harrisonmoore.notion.site/Writing-Prompts-from-Harrison-LIVE-75e0e11b460c435a9ea8553845744ca2){button}
+
+In 2025, I turned the prompts into a series of public challenges. Subscribers to my newsletter took part, I published their responses, and we met on group calls to share insights about our creative process.
 
 30 people submitted their 6-word life stories:
 
@@ -325,10 +328,6 @@ I can lower barriers, design fun ways into creative and intellectual practice, a
 - Turning practice into rituals
 - Developing alumni networks
 
-### More details about this project
-
-- View all writing prompts: https://harrisonmoore.notion.site/Writing-Prompts-from-Harrison-LIVE-75e0e11b460c435a9ea8553845744ca2
-
 ### Pull quote
 
 - Quote: "This project caught my interest because I really enjoy the challenge of a tight prompt. There's something powerful about precision and economy of words – it lets us lay things bare."
@@ -376,20 +375,7 @@ Normally in life, function determines form. But with writing, you can invert tha
 
 Expressing their ideas by email, questioning their motivations, and experimenting with forms got the majority of writers unstuck. Everybody produced drafts. At least **8 writers published new work**. And when the workshop ended, they asked to keep meeting every Sunday as a writing group, which they offered to co-host.
 
-### The skills I could bring to your team 🫵
-
-I can take skills people find overwhelming and break them into manageable parts, facilitate live learning environments, and change course quickly when students need it. I'd love to use these abilities to help more people learn and grow. For instance:
-
-- Giving people permission to be bad at something
-- Enhancing courses based on learner feedback
-- Turning expert know-how into tools anyone can use
-- Developing constraints and prompts to get people unstuck
-- Running pilots, scaling courses and building communities
-
-### More details about this project
-
-- Writeup button: Read my post-workshop writeup (10 mins)
-- Writeup link: https://www.thenewworkday.com/p/the-questions-every-writer-should-ask
+[Try a whole library of forms goes here]
 
 #### Try a whole *library* of forms
 
@@ -615,6 +601,16 @@ Explores personal uncertainty, transformation, and existential questioning in a 
 - Example: Vinay Hiremath's 'I am rich and have no idea what to do with my life'
 - Example link: https://vinay.sh/i-am-rich-and-have-no-idea-what-to-do-with-my-life/
 
+### The skills I could bring to your team 🫵
+
+I can take skills people find overwhelming and break them into manageable parts, facilitate live learning environments, and change course quickly when students need it. I'd love to use these abilities to help more people learn and grow. For instance:
+
+- Giving people permission to be bad at something
+- Enhancing courses based on learner feedback
+- Turning expert know-how into tools anyone can use
+- Developing constraints and prompts to get people unstuck
+- Running pilots, scaling courses and building communities
+
 ### Pull quote
 
 - Quote: "Appreciate how much you experiment with the process, and encourage writers to follow their energy & curiosity, and to try new things. It was fun running into totally unexpected things like a 'research gym.' Really appreciate your mix of seriousness and playfulness as a writing teacher/coach/enthusiast."
@@ -649,6 +645,8 @@ Sheffield DocFest is the UK's biggest documentary film festival. For its awards 
 
 My winning design, called the Steel Core, was a solid bar of Sheffield stainless steel, shaped like a relay baton for one generation to pass on to the next. I wanted it to be emblematic of the whole city, so I had a local steelworks cut the bars. I finished them by hand, and a Sheffield engraver added winners' names in a typeface from Stephenson & Blake, the city's foundry and once the world's largest maker of metal type.
 
+[Read my winning design proposal](design-proposal-2017.pdf){button}
+
 ![A Steel Core trophy stamped MADE IN SHEFFIELD ENGLAND](render.png)
 
 ### The impact
@@ -666,10 +664,6 @@ I can manage diverse stakeholders, deliver end-to-end on a budget and a deadline
 - Designing learning rituals people remember
 - Teaching through making, and making achievement something you can hold
 - Telling stories about what learning makes possible
-
-### More details about this project
-
-- Read my winning design proposal: design-proposal-2017.pdf
 
 ### Pull quote
 
@@ -725,11 +719,6 @@ I can develop creative solutions by researching in the field, design for partici
 - Championing learners' own stories of growth
 - Designing events that draw educators, businesses and learners together
 - Finding ways to make creative work pay
-
-### More details about this project
-
-- Read the exhibition press release: sheffield-press-release.pdf
-- Read The Star's coverage: https://www.thestar.co.uk/news/artist-harrison-looks-at-his-home-city-through-fresh-eyes-455351
 
 ### Pull quote
 

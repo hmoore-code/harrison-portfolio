@@ -1,28 +1,26 @@
 ---
-// "More details about this project" for Worker Feedback Club (design/12-wfc-more-details.html).
-// Each project's section is designed on its own, so this reads its own words from copy.md:
-// the 1st "####" is the engagement part (its "#####" parts are the 2 tabs, the method's "######"
-// parts are the 5 steps), the 2nd "####" is the reflections. Sizes are the design's exact px values.
-import { child, optional, type MdNode, type Project } from '../../lib/content';
+// "The anatomy of our platform's engagement", the Worker Feedback Club research graphic at the end
+// of The impact (design/12-wfc-more-details.html), placed with "[... goes here]" like other graphics.
+// Its words are the "####" of the same name: its "#####" parts are the 2 tabs, the method's "######"
+// parts are the 5 steps. Sizes are the design's exact px values.
+import { optional, type MdNode, type Project } from '../../lib/content';
 import { inline } from '../../lib/inline';
-import ExternalLink from '../ExternalLink.astro';
 import Star from '../Star.astro';
 import WavyRule from '../WavyRule.astro';
 
 interface Props {
+  node: MdNode;
   project: Project;
 }
-const { project } = Astro.props;
+const { node: engagement, project } = Astro.props;
 
 function need<T>(value: T | undefined, what: string): T {
   if (!value || (Array.isArray(value) && !value.length))
-    throw new Error(`copy.md: "${project.name}", "More details about this project" is missing ${what}`);
+    throw new Error(`copy.md: "${project.name}", "${engagement.heading}" is missing ${what}`);
   return value;
 }
 const field = (node: MdNode, label: string) => need(optional(node, label), `"${label}: ..." under "${node.heading}"`);
 
-const [engagement, reflections] = need(project.moreDetails.children, 'its "####" parts');
-need(reflections, 'a second "####" part (the reflections)');
 const [method, findings] = need(engagement.children, '"##### Our method" and "##### What we found"');
 need(findings, '"##### What we found"');
 const steps = need(method.children, 'the 5 steps ("###### Visit site" and so on)');
@@ -46,10 +44,10 @@ const tabs = [
   { key: 'method', label: field(engagement, 'Method tab') },
   { key: 'findings', label: field(engagement, 'Findings tab') },
 ];
-const essayLink = field(reflections, 'Link');
 ---
 
-<h4 class="wfc__subheading wfc__subheading--first">{engagement.heading}</h4>
+<div class="wfc">
+<h4 class="wfc__subheading">{engagement.heading}</h4>
 {engagement.paragraphs.map((p) => <p class="wfc__text" set:html={inline(p)} />)}
 
 <div class="tabs" role="tablist" aria-label={field(engagement, 'Tabs label')}>
@@ -183,30 +181,26 @@ const essayLink = field(reflections, 'Link');
     {field(findings, 'Button')}
   </button>
 </div>
-
-<WavyRule class="wfc__rule" />
-<h4 class="wfc__subheading wfc__subheading--tight">{reflections.heading}</h4>
-{reflections.paragraphs.map((p) => <p class="wfc__text" set:html={inline(p)} />)}
-<ExternalLink href={essayLink}>{field(reflections, 'Link text')}</ExternalLink>
+</div>
 
 <script>
   import '../../scripts/tabs';
 </script>
 
 <style>
+  /* Inside the case study, but spaced like its own section, 10px clear of the paragraph above. */
+  .wfc {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 10px;
+  }
+
   .wfc__subheading {
     margin: 0;
     font-size: 28px;
     font-weight: 800;
     font-stretch: 62%;
-  }
-
-  .wfc__subheading--first {
-    margin-top: 6px;
-    line-height: 1;
-  }
-
-  .wfc__subheading--tight {
     line-height: 1;
   }
 
@@ -411,7 +405,4 @@ const essayLink = field(reflections, 'Link');
     margin-top: 4px;
   }
 
-  :global(.wfc__rule) {
-    margin-top: 10px;
-  }
 </style>

@@ -20,18 +20,12 @@ export type Target =
   | { kind: 'url'; href: string }
   | { kind: 'files'; files: FileRef[] }
   | { kind: 'project'; slug: string }
-  | { kind: 'quotes'; quotes: { name: string; quote: string }[] }
   | Todo;
 
 export interface Filter {
   id: string;
   label: string;
   cover: 'wavy' | 'straight' | 'contour';
-}
-
-export interface EvidenceItem {
-  label: string;
-  target: Target;
 }
 
 export interface Story {
@@ -58,6 +52,13 @@ export function imageIn(
 // A paragraph that is only "[NVC graphic goes here]" shows the graphic whose words are under "#### NVC graphic".
 export function graphicIn(paragraph: string): string | undefined {
   return paragraph.match(/^\[(.+) goes here\]$/i)?.[1];
+}
+
+// A paragraph that is only "[Button text](link){button}" shows an outline pill opening the link (a web
+// address or a PDF in assets/pdfs) in a new tab.
+export function buttonIn(paragraph: string): { text: string; href: string } | undefined {
+  const match = paragraph.match(/^\[([^\]]+)\]\(([^)\s]+)\)\{button\}$/);
+  return match ? { text: match[1], href: match[2] } : undefined;
 }
 
 export interface ExtraLink {
@@ -96,11 +97,6 @@ export interface Project {
   logo?: FileRef;
   story: Story[];
   skillsBox: { heading: string; paragraphs: string[]; bullets: string[] };
-  headings: { moreDetails: string };
-  // The project's "### More details about this project" as written, for a project whose
-  // section has its own component (each project's section is designed on its own).
-  moreDetails: MdNode;
-  evidence: EvidenceItem[];
   pullQuote: { quote: string; credit: string };
   extras: ExtraLink[];
   tryItYourself?: TryItYourself;
@@ -231,49 +227,6 @@ function asTarget(value: string, ctx: TargetContext): Target | null {
 
 export const basename = (file: string) => file.split('/').pop() ?? file;
 
-// "Label: target", splitting at the last colon that leaves a real target on the right.
-function asEvidence(raw: string, ctx: TargetContext, fallback: Target): EvidenceItem {
-  // Only split at colons outside [brackets], so "[TO DO: https://...]" stays whole.
-  const splits: number[] = [];
-  let depth = 0;
-  for (let i = 0; i < raw.length; i++) {
-    if (raw[i] === '[') depth++;
-    else if (raw[i] === ']') depth = Math.max(0, depth - 1);
-    else if (raw[i] === ':' && depth === 0 && /\s/.test(raw[i + 1] ?? '')) splits.unshift(i);
-  }
-  for (const at of splits) {
-    const target = asTarget(raw.slice(at).replace(/^:\s+/, ''), ctx);
-    if (!target) continue;
-    const label = raw.slice(0, at).trim();
-    if ('kind' in target && target.kind === 'project' && !target.slug) {
-      const slug = ctx.findProject(label);
-      return { label, target: slug ? { kind: 'project', slug } : { todo: `TO DO: which project "${label}" links to` } };
-    }
-    return { label, target };
-  }
-  return { label: raw, target: fallback };
-}
-
-// Quotes under "#### Name" headings, each followed by the quote.
-function quotesFrom(nodes: MdNode[]) {
-  return nodes.map((n) => ({ name: n.heading, quote: n.paragraphs.join(' ').replace(/^["“]|["”]$/g, '') }));
-}
-
-// A bullet ending in ":" with indented "#### Name" + quote lines under it.
-function asQuotes(bullet: Bullet): EvidenceItem {
-  const quotes: { name: string; quote: string }[] = [];
-  for (const line of bullet.nested ?? []) {
-    const name = line.match(/^#{1,6}\s+(.+)$/);
-    if (name) quotes.push({ name: name[1].trim(), quote: '' });
-    else if (!/^#+\s*$/.test(line) && quotes.length) {
-      const last = quotes[quotes.length - 1];
-      last.quote = `${last.quote} ${line}`.trim();
-    }
-  }
-  for (const q of quotes) q.quote = q.quote.replace(/^["“]|["”]$/g, '');
-  return { label: bullet.raw.replace(/:\s*$/, ''), target: { kind: 'quotes', quotes } };
-}
-
 // ---------- page sections ----------
 
 const tree = parseTree(source);
@@ -402,7 +355,7 @@ export const projects: Project[] = projectNodes.map((node, index) => {
 
   // The case study is every "###" part that isn't one of the named parts below, in copy.md order,
   // so each project can use its own headings ("What I did" or "What I built", and so on).
-  const namedParts = /^(The skills I could bring|More details about this project|Pull quote|Further reading|Learn more|Try it yourself|Exhibition list)/i;
+  const namedParts = /^(The skills I could bring|Pull quote|Further reading|Learn more|Try it yourself|Exhibition list)/i;
   const story = node.children
     .filter((part) => !namedParts.test(part.heading) && part.paragraphs.length)
     .map((part) => ({ heading: part.heading, blocks: part.blocks, parts: part.children }));
@@ -412,17 +365,6 @@ export const projects: Project[] = projectNodes.map((node, index) => {
   if (!skillsNode || !(skillsNode.paragraphs.length || skillsNode.bullets.length))
     errors.push(`${where} is missing "### The skills I could bring to your team"`);
 
-  const evidenceNode = child(node, 'More details about this project');
-  if (!evidenceNode || !(evidenceNode.bullets.length || evidenceNode.children.length))
-    errors.push(`${where} is missing "### More details about this project"`);
-  const evidence = (evidenceNode?.bullets ?? []).map((b) =>
-    b.nested?.length ? asQuotes(b) : asEvidence(b.raw, ctx, evidenceLink),
-  );
-  // "Feedback from 3 users:" followed by "#### Name" headings, each with its quote.
-  if (evidenceNode?.children.length && evidenceNode.paragraphs.length) {
-    const label = evidenceNode.paragraphs.at(-1)?.replace(/:\s*$/, '') ?? '';
-    evidence.push({ label, target: { kind: 'quotes', quotes: quotesFrom(evidenceNode.children) } });
-  }
 
   const quoteNode = child(node, 'Pull quote');
   if (!quoteNode) errors.push(`${where} is missing "### Pull quote"`);
@@ -497,9 +439,6 @@ export const projects: Project[] = projectNodes.map((node, index) => {
       paragraphs: skillsNode?.paragraphs ?? [],
       bullets: (skillsNode?.bullets ?? []).map((b) => b.raw),
     },
-    headings: { moreDetails: evidenceNode?.heading ?? '' },
-    moreDetails: evidenceNode ?? { heading: '', level: 0, bullets: [], paragraphs: [], blocks: [], children: [] },
-    evidence,
     pullQuote,
     extras,
     tryItYourself,

@@ -1,0 +1,50 @@
+---
+// "Business success and failure: my reflections", after the Worker Feedback Club research graphic:
+// a wavy line, the heading, the paragraph and a link to the essay. Words from the "####" of the
+// same name (Link text and Link). Placed with "[... goes here]" like other graphics.
+import { optional, type MdNode } from '../../lib/content';
+import { inline } from '../../lib/inline';
+import ExternalLink from '../ExternalLink.astro';
+import WavyRule from '../WavyRule.astro';
+
+interface Props {
+  node: MdNode;
+}
+const { node } = Astro.props;
+
+function field(label: string) {
+  const value = optional(node, label);
+  if (!value) throw new Error(`copy.md: "${node.heading}" is missing "${label}: ..."`);
+  return value;
+}
+---
+
+<div class="reflections">
+  <WavyRule />
+  <h4 class="reflections__heading">{node.heading}</h4>
+  {node.paragraphs.map((p) => <p class="reflections__text" set:html={inline(p)} />)}
+  <ExternalLink href={field('Link')}>{field('Link text')}</ExternalLink>
+</div>
+
+<style>
+  .reflections {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 10px;
+  }
+
+  .reflections__heading {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    font-stretch: 62%;
+    line-height: 1;
+  }
+
+  .reflections__text {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+</style>

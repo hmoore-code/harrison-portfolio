@@ -1,28 +1,26 @@
 ---
-// "More details about this project" for the writing workshop (design/15-workshop-popup.html).
-// Its words come from copy.md: Writeup button and Writeup link on the section itself; the "####" is
-// the library of forms (each "#####" is a form: a description, Benefits, and an optional Example with
-// its Example link). Sizes and colours are the design's exact values.
+// "Try a whole library of forms", the writing workshop's form generator at the end of The impact
+// (design/15-workshop-popup.html), placed with "[... goes here]" like other graphics. Its words are the
+// "####" of the same name: each "#####" is a form (a description, Benefits, and an optional Example
+// with its Example link). Sizes and colours are the design's exact values.
 import { optional, type MdNode, type Project } from '../../lib/content';
 import { projectsIntro } from '../../lib/content';
 import { inline } from '../../lib/inline';
-import Icon from '../Icon.astro';
 import WavyRule from '../WavyRule.astro';
 
 interface Props {
+  node: MdNode;
   project: Project;
 }
-const { project } = Astro.props;
+const { node: library, project } = Astro.props;
 
 function need<T>(value: T | undefined, what: string): T {
   if (!value || (Array.isArray(value) && !value.length))
-    throw new Error(`copy.md: "${project.name}", "More details about this project" is missing ${what}`);
+    throw new Error(`copy.md: "${project.name}", "${library.heading}" is missing ${what}`);
   return value;
 }
 const field = (node: MdNode, label: string) => need(optional(node, label), `"${label}: ..." under "${node.heading}"`);
 
-const details = project.moreDetails;
-const [library] = need(details.children, 'its "####" part (the library of forms)');
 
 const libraryForms = need(library.children, 'the library of forms').map((form) => {
   const example = optional(form, 'Example');
@@ -54,6 +52,7 @@ const libraryCard = (form: LibraryForm) =>
 const first = Math.min(2, libraryForms.length - 1);
 ---
 
+<div class="form-library">
 <h4 class="workshop__subheading" set:html={inline(library.heading)} />
 {library.paragraphs.map((p) => <p class="workshop__text" set:html={inline(p)} />)}
 
@@ -72,12 +71,7 @@ const first = Math.min(2, libraryForms.length - 1);
   </div>
   {libraryForms.map((form) => <template data-library-form set:html={libraryCard(form)} />)}
 </div>
-
-<a class="pill pill--outline workshop__writeup" href={field(details, 'Writeup link')} target="_blank" rel="noopener">
-  {field(details, 'Writeup button')}
-  <Icon name="external" />
-  <span class="visually-hidden"> ({projectsIntro.newTabHint})</span>
-</a>
+</div>
 
 <script>
   // "Generate a new form": a different random form each time, never the same one twice in a row.
@@ -95,6 +89,14 @@ const first = Math.min(2, libraryForms.length - 1);
 </script>
 
 <style>
+  /* Inside the case study, but spaced like its own section, 10px clear of the paragraph above. */
+  .form-library {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 10px;
+  }
+
   .workshop__subheading {
     margin: 0;
     font-size: 24px;
@@ -206,10 +208,5 @@ const first = Math.min(2, libraryForms.length - 1);
   /* Inside the card's rounded corners, so the focus outline sits just inside the strip. */
   .library__button:focus-visible {
     outline-offset: -4px;
-  }
-
-  .workshop__writeup {
-    gap: 10px;
-    padding: 0 16px;
   }
 </style>
