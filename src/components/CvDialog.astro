@@ -16,7 +16,7 @@ const pdf = findPdf({ file: 'cv.pdf' });
   {cv.body.map((part) => (isTodo(part) ? <Todo text={part.todo} block /> : <p class="cv__text" set:html={inline(part)} />))}
   {
     pdf ? (
-      <a class="pill pill--solid" href={pdf} download>
+      <a class="pill pill--outline" href={pdf} download>
         <Icon name="pdf" />
         {cv.downloadButton ?? <Todo text="TO DO: add 'Download button: ...' to the CV section" />}
       </a>

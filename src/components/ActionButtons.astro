@@ -1,6 +1,7 @@
 ---
-// Share this site (full width), then View my CV and Get in touch side by side. Used at the top of
-// the page and again after the career highlights. Words come from "## Top of page".
+// "Get in touch" full width (the site's only solid button), then View my CV and Share this site
+// side by side as outline pills. Used at the top of the page and again after the career highlights.
+// Words come from "## Top of page".
 import { hero, meta, topBar } from '../lib/content';
 import Icon from './Icon.astro';
 
@@ -11,25 +12,25 @@ const { class: className } = Astro.props;
 ---
 
 <div class:list={['actions', className]}>
-  <button
-    class="pill pill--solid"
-    type="button"
-    data-share
-    data-share-title={meta.pageTitle}
-    data-share-confirmation={topBar.shareConfirmation}
-  >
-    <Icon name="share" />
-    {hero.mainButton}
-  </button>
+  <a class="pill pill--solid" href={`mailto:${hero.email}`}>
+    <Icon name="mail" />
+    {hero.emailButton}
+  </a>
   <div class="actions__pair">
     <a class="pill pill--outline" href="#my-cv" data-open-dialog="my-cv">
       <Icon name="document" />
       {hero.cvLink}
     </a>
-    <a class="pill pill--outline" href={`mailto:${hero.email}`}>
-      <Icon name="mail" />
-      {hero.emailButton}
-    </a>
+    <button
+      class="pill pill--outline"
+      type="button"
+      data-share
+      data-share-title={meta.pageTitle}
+      data-share-confirmation={topBar.shareConfirmation}
+    >
+      <Icon name="share" />
+      {hero.mainButton}
+    </button>
   </div>
 </div>
 

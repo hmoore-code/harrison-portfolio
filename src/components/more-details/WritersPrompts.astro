@@ -19,7 +19,7 @@ if (!links.length) throw new Error(`copy.md: "${project.name}", "More details ab
 
 {
   links.map((link) => (
-    <a class="pill pill--solid prompts__link" href={link.href} target="_blank" rel="noopener">
+    <a class="pill pill--outline prompts__link" href={link.href} target="_blank" rel="noopener">
       {link.text}
       <Icon name="external" />
       <span class="visually-hidden"> ({projectsIntro.newTabHint})</span>

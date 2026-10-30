@@ -133,7 +133,7 @@ const essayLink = field(reflections, 'Link');
     <p class="wfc__text" set:html={inline(field(method, 'Next text'))} />
   </div>
 
-  <button class="pill pill--solid wfc__button" type="button" data-show-tab={`${id}-tab-findings`}>
+  <button class="pill pill--outline wfc__button" type="button" data-show-tab={`${id}-tab-findings`}>
     {field(method, 'Button')}
     <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
       <path d="M3 8 H13 M9 4 L13 8 L9 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -176,7 +176,7 @@ const essayLink = field(reflections, 'Link');
     <p class="wfc__text wfc__text--large" set:html={inline(field(findings, 'Next text'))} />
   </div>
 
-  <button class="pill pill--outline wfc__button wfc__button--back" type="button" data-show-tab={`${id}-tab-method`}>
+  <button class="pill pill--outline wfc__button" type="button" data-show-tab={`${id}-tab-method`}>
     <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
       <path d="M13 8 H3 M7 4 L3 8 L7 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
     </svg>
@@ -330,10 +330,6 @@ const essayLink = field(reflections, 'Link');
     width: 100%;
     font-size: 16px;
     font-weight: 700;
-  }
-
-  .wfc__button--back {
-    background: var(--white);
   }
 
   .wfc__scale {

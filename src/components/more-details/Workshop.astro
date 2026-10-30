@@ -73,7 +73,7 @@ const first = Math.min(2, libraryForms.length - 1);
   {libraryForms.map((form) => <template data-library-form set:html={libraryCard(form)} />)}
 </div>
 
-<a class="pill pill--solid workshop__writeup" href={field(details, 'Writeup link')} target="_blank" rel="noopener">
+<a class="pill pill--outline workshop__writeup" href={field(details, 'Writeup link')} target="_blank" rel="noopener">
   {field(details, 'Writeup button')}
   <Icon name="external" />
   <span class="visually-hidden"> ({projectsIntro.newTabHint})</span>

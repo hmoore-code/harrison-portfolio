@@ -219,8 +219,12 @@ const extras = project.extras.map((extra) => ({
     }
     <p class="skills-box__closing" set:html={inline(projectsIntro.skillsBoxClosingLine)} />
     <div class="skills-box__actions">
+      <a class="pill pill--solid" href={`mailto:${hero.email}`}>
+        <Icon name="mail" />
+        {projectsIntro.getInTouchButton}
+      </a>
       <button
-        class="pill pill--solid"
+        class="pill pill--outline"
         type="button"
         data-share
         data-share-hash={`#${project.slug}`}
@@ -230,10 +234,6 @@ const extras = project.extras.map((extra) => ({
         <Icon name="share" />
         {projectsIntro.shareProjectButton}
       </button>
-      <a class="pill pill--outline" href={`mailto:${hero.email}`}>
-        <Icon name="mail" />
-        {projectsIntro.getInTouchButton}
-      </a>
     </div>
   </section>
 
@@ -313,14 +313,14 @@ const extras = project.extras.map((extra) => ({
     (extras.length > 0 || project.tryItYourself) && (
       <div class="extras">
         {project.tryItYourself && (
-          <a class="pill pill--solid" href={`#${project.slug}-try`} data-open-dialog={`${project.slug}-try`}>
+          <a class="pill pill--outline" href={`#${project.slug}-try`} data-open-dialog={`${project.slug}-try`}>
             {project.tryItYourself.button}
           </a>
         )}
         {extras.map((extra) =>
           extra.resolved ? (
             <a
-              class="pill pill--solid"
+              class="pill pill--outline"
               href={extra.resolved.href}
               target={extra.resolved.external ? '_blank' : undefined}
               rel={extra.resolved.external ? 'noopener' : undefined}
