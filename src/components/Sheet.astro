@@ -139,8 +139,9 @@ const { id, labelledby, label, filterId, parent, cover } = Astro.props;
   .sheet__body {
     display: flex;
     flex-direction: column;
-    gap: var(--space-5);
-    padding: var(--space-2) var(--gutter) 56px;
+    /* Pop-up spacing is the designs' exact px values (20% more room than at first). */
+    gap: 32px;
+    padding: 12px var(--gutter) 67px;
   }
 
   .sheet__body :global(.sheet__title) {

@@ -290,7 +290,7 @@ const extras = project.extras.map((extra) => ({
   .sheet__intro {
     display: flex;
     flex-direction: column;
-    gap: var(--space-5);
+    gap: 24px;
   }
 
 
@@ -375,8 +375,8 @@ const extras = project.extras.map((extra) => ({
   .skills-box {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
-    padding: calc(5px + var(--space-5)) calc(5px + var(--space-5));
+    gap: 12px;
+    padding: 38px 32px;
     background:
       url('../../assets/svg/rule-wavy.svg') top / 100% 10px no-repeat,
       url('../../assets/svg/rule-wavy.svg') bottom / 100% 10px no-repeat,
@@ -414,17 +414,17 @@ const extras = project.extras.map((extra) => ({
     background: url('../../assets/svg/star.svg') center / contain no-repeat;
   }
 
-  /* 14px above in all (the box's gap plus this margin). */
+  /* 16px above in all (the box's gap plus this margin). */
   .skills-box .skills-box__closing {
-    margin-top: calc(14px - var(--space-2));
+    margin-top: 4px;
   }
 
-  /* Share this project and Get in touch, stacked; 18px above them in all (the box's gap plus this margin). */
+  /* Get in touch and Share this project, stacked; 22px above them in all (the box's gap plus this margin). */
   .skills-box__actions {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-top: calc(18px - var(--space-2));
+    margin-top: 10px;
   }
 
   .skills-box__actions .pill {
@@ -447,18 +447,18 @@ const extras = project.extras.map((extra) => ({
   /* A whole 16:9 picture, not cropped to a square. */
   .story :global(.story__image.story__image--wide) {
     aspect-ratio: 16 / 9;
-    margin: 8px 0;
+    margin: 10px 0;
   }
 
   /* A whole picture in its own shape, not cropped, with no border. */
   .story :global(.story__image.story__image--whole) {
     aspect-ratio: auto;
-    margin: 8px 0;
+    margin: 10px 0;
     border: 0;
   }
 
   .story__video {
-    margin: 8px 0;
+    margin: 10px 0;
   }
 
   .story__list {
@@ -475,7 +475,7 @@ const extras = project.extras.map((extra) => ({
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin: 8px 0;
+    margin: 10px 0;
   }
 
   .story__figure :global(img) {
@@ -539,7 +539,7 @@ const extras = project.extras.map((extra) => ({
   }
 
   .pull-quote figcaption {
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 15px;
     font-weight: 600;
   }
