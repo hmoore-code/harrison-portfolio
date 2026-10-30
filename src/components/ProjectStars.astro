@@ -1,0 +1,51 @@
+---
+// A row of 6 star links, one per project in card order, each opening that project's pop-up.
+// The current project (in a pop-up) is a bigger filled star; the others are outlines.
+import { projects, projectsIntro } from '../lib/content';
+import Star from './Star.astro';
+
+interface Props {
+  current?: string;
+}
+const { current } = Astro.props;
+---
+
+<ol class="project-stars" role="list">
+  {
+    projects.map((project, i) => (
+      <li>
+        <a
+          class="project-stars__link"
+          href={`#${project.slug}`}
+          data-open-dialog={project.slug}
+          aria-current={project.slug === current ? 'true' : undefined}
+          aria-label={projectsIntro.starLabel.replace('{number}', String(i + 1)).replace('{title}', project.title)}
+        >
+          {project.slug === current ? <Star size={30} /> : <Star size={20} outline />}
+        </a>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .project-stars {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Each star sits in a 44px tap target. */
+  .project-stars__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    color: var(--ink);
+  }
+</style>

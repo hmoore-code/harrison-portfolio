@@ -1,0 +1,54 @@
+---
+// At the foot of each pop-up: a straight line, the 6 project stars (this one filled),
+// "Project N of 6" and a button to the next project, looping from the last to the first.
+import { projects, projectsIntro, type Project } from '../lib/content';
+import Icon from './Icon.astro';
+import ProjectStars from './ProjectStars.astro';
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+const index = projects.findIndex((p) => p.slug === project.slug);
+const next = projects[(index + 1) % projects.length];
+const count = projectsIntro.projectCount
+  .replace('{number}', String(index + 1))
+  .replace('{total}', String(projects.length));
+---
+
+<nav class="next-project" aria-label={projectsIntro.navLabel}>
+  <div class="next-project__rule" aria-hidden="true"></div>
+  <ProjectStars current={project.slug} />
+  <p class="next-project__count">{count}</p>
+  <a class="pill pill--outline next-project__button" href={`#${next.slug}`} data-open-dialog={next.slug}>
+    {project.nextButton}
+    <Icon name="arrow" />
+  </a>
+</nav>
+
+<style>
+  .next-project {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding-top: 16px;
+  }
+
+  .next-project__rule {
+    height: 2px;
+    background: var(--ink);
+  }
+
+  .next-project__count {
+    margin: 0;
+    color: var(--grey);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .next-project__button {
+    gap: 10px;
+    white-space: nowrap;
+  }
+</style>

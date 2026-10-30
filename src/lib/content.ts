@@ -86,6 +86,7 @@ export interface Project {
   result: string;
   skills: string;
   cardButton: string;
+  nextButton: string;
   evidenceLinkText: Text;
   evidenceLink: Target;
   image: FileRef | Todo;
@@ -358,6 +359,11 @@ export const projectsIntro = {
   // Read out after links that open in a new tab.
   newTabHint: required(projectsNode, 'New tab hint'),
   skillsBoxClosingLine: required(projectsNode, 'Skills box closing line'),
+  // The row of 6 stars and "Next" button at the foot of each pop-up and of the page.
+  navLabel: required(projectsNode, 'Projects nav label'),
+  starLabel: required(projectsNode, 'Star label'),
+  projectCount: required(projectsNode, 'Project count'),
+  checkOutProjectsButton: required(projectsNode, 'Check out projects button'),
 };
 
 const projectNodes = live.children.filter((c) => /^Project:/i.test(c.heading));
@@ -476,6 +482,7 @@ export const projects: Project[] = projectNodes.map((node, index) => {
     result: required(node, 'Result'),
     skills: required(node, 'Skills'),
     cardButton: required(node, 'Card button'),
+    nextButton: required(node, 'Next button'),
     evidenceLinkText: asText(required(node, 'Evidence link text')),
     evidenceLink,
     image: asImage(required(node, 'Image')),
