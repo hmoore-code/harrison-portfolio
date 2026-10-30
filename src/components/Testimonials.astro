@@ -1,59 +1,187 @@
 ---
+// Testimonials as a carousel (design/18-homepage.html): one quote at a time, then a row of name pills.
+// Each quote shows for max(7, round(words / 3.3) + 3) seconds and moves on by itself, looping.
+// Holding the quote pauses; swiping or tapping a name moves and restarts the countdown.
+// Words come from "## Quotes": each "### Name" with its Role and quote.
 import { testimonials } from '../lib/content';
-import Star from './Star.astro';
+
+const slides = testimonials.quotes.map((t, i) => ({
+  ...t,
+  id: `testimonial-${i + 1}`,
+  firstName: t.name.split(' ')[0],
+  seconds: Math.max(7, Math.round(t.quote.split(/\s+/).length / 3.3) + 3),
+}));
 ---
 
 <section class="testimonials column" aria-labelledby="testimonials-heading">
   <h2 id="testimonials-heading" class="section-heading">{testimonials.heading}</h2>
-  {
-    testimonials.quotes.map((t) => (
-      <figure class="testimonial">
-        <blockquote>
-          “{t.quote}” <Star size={13} class="testimonial__end" />
-        </blockquote>
-        <figcaption>
-          <span class="testimonial__name">{t.name}</span>
-          {t.role && <span class="testimonial__role">{t.role}</span>}
-        </figcaption>
-      </figure>
-    ))
-  }
+  <div
+    class="carousel"
+    role="region"
+    aria-roledescription={testimonials.carouselDescription}
+    aria-labelledby="testimonials-heading"
+    data-carousel
+  >
+    <div class="carousel__slides" data-carousel-slides>
+      {
+        slides.map((t, i) => (
+          <figure class="testimonial" id={t.id} data-slide data-seconds={t.seconds} hidden={i !== 0}>
+            <span class="testimonial__mark" aria-hidden="true">
+              “
+            </span>
+            <blockquote>{t.quote}”</blockquote>
+            <figcaption>
+              <span class="testimonial__name">{t.name}</span>
+              <span class="testimonial__role">{t.role}</span>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+    <div class="carousel__names" role="group" aria-label={testimonials.namesLabel} data-carousel-names>
+      {
+        slides.map((t, i) => (
+          <button
+            class="name-pill"
+            type="button"
+            aria-controls={t.id}
+            aria-current={i === 0 ? 'true' : undefined}
+            data-pick={i}
+          >
+            {t.firstName}
+            <span class="name-pill__bar" aria-hidden="true" />
+          </button>
+        ))
+      }
+    </div>
+  </div>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((carousel) => {
+    const slidesBox = carousel.querySelector<HTMLElement>('[data-carousel-slides]')!;
+    const slides = [...carousel.querySelectorAll<HTMLElement>('[data-slide]')];
+    const names = carousel.querySelector<HTMLElement>('[data-carousel-names]')!;
+    const pills = [...carousel.querySelectorAll<HTMLButtonElement>('[data-pick]')];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    let current = 0;
+    let elapsed = 0; // seconds shown so far
+    let held = false; // finger or mouse held down on the quote
+    let focused = false; // keyboard focus is inside, so it waits for the reader
+    let last = performance.now();
+    let startX: number | null = null;
+
+    function show(index: number) {
+      current = (index + slides.length) % slides.length;
+      elapsed = 0;
+      slides.forEach((slide, i) => (slide.hidden = i !== current));
+      pills.forEach((pill, i) => {
+        if (i === current) pill.setAttribute('aria-current', 'true');
+        else pill.removeAttribute('aria-current');
+        pill.style.setProperty('--progress', '0');
+      });
+      // Bring the chosen name into view by scrolling the row only, never the page.
+      const pill = pills[current];
+      const left = pill.offsetLeft - names.offsetLeft - (names.clientWidth - pill.offsetWidth) / 2;
+      names.scrollTo({ left, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+    }
+
+    function tick(now: number) {
+      const step = (now - last) / 1000;
+      last = now;
+      if (!held && !focused && document.visibilityState === 'visible') {
+        elapsed += step;
+        const duration = Number(slides[current].dataset.seconds);
+        if (elapsed >= duration) show(current + 1);
+        else pills[current].style.setProperty('--progress', String(elapsed / duration));
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    pills.forEach((pill, i) => pill.addEventListener('click', () => show(i)));
+
+    // Hold to pause; swipe left or right to move on or back.
+    slidesBox.addEventListener('pointerdown', (event) => {
+      held = true;
+      startX = event.clientX;
+    });
+    const letGo = (event: PointerEvent) => {
+      if (startX !== null && event.type === 'pointerup') {
+        const dx = event.clientX - startX;
+        if (Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
+      }
+      held = false;
+      startX = null;
+    };
+    slidesBox.addEventListener('pointerup', letGo);
+    slidesBox.addEventListener('pointercancel', letGo);
+    slidesBox.addEventListener('pointerleave', letGo);
+    slidesBox.addEventListener('contextmenu', (event) => event.preventDefault());
+
+    carousel.addEventListener('focusin', (event) => {
+      focused = (event.target as Element).matches(':focus-visible');
+    });
+    carousel.addEventListener('focusout', (event) => {
+      if (!carousel.contains(event.relatedTarget as Node)) focused = false;
+    });
+  });
+</script>
 
 <style>
   .testimonials {
     display: flex;
     flex-direction: column;
-    gap: var(--space-5);
+    gap: 24px;
+    padding-bottom: 56px;
+  }
+
+  .carousel {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  /* Holding a finger down pauses, so it mustn't select text or open the callout menu. */
+  .carousel__slides {
+    touch-action: pan-y;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   .testimonial {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     margin: 0;
-    padding: var(--space-4);
-    border: var(--line);
-    border-radius: var(--radius-card);
-    background: var(--white);
+  }
+
+  .testimonial[hidden] {
+    display: none;
+  }
+
+  .testimonial__mark {
+    height: 44px;
+    font-family: var(--font-quote);
+    font-size: 96px;
+    line-height: 0.6;
   }
 
   .testimonial blockquote {
     margin: 0;
     font-family: var(--font-quote);
-    font-size: 21px;
+    font-size: 24px;
     font-style: italic;
     font-weight: 400;
-    line-height: 1.35;
-  }
-
-  .testimonial :global(.testimonial__end) {
-    display: inline-block;
-    vertical-align: -1px;
+    line-height: 1.22;
   }
 
   .testimonial figcaption {
     display: flex;
     flex-direction: column;
-    margin-top: var(--space-3);
-    padding-top: var(--space-3);
+    padding-top: 12px;
     border-top: var(--line);
   }
 
@@ -66,5 +194,55 @@ import Star from './Star.astro';
     color: var(--grey);
     font-size: 13px;
     font-weight: 600;
+  }
+
+  .carousel__names {
+    display: flex;
+    gap: 6px;
+    padding: 4px 0;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+  }
+
+  .name-pill {
+    position: relative;
+    flex: none;
+    min-height: 44px;
+    padding: 0 14px;
+    overflow: hidden;
+    border: var(--line);
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 700;
+    scroll-snap-align: start;
+  }
+
+  .name-pill[aria-current='true'] {
+    background: var(--ink);
+    color: var(--yellow);
+  }
+
+  /* Fills up along the bottom of the current name as its countdown runs. */
+  .name-pill__bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--yellow);
+    transform: scaleX(var(--progress, 0));
+    transform-origin: left;
+  }
+
+  .name-pill:not([aria-current='true']) .name-pill__bar {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .name-pill__bar {
+      display: none;
+    }
   }
 </style>

@@ -5,9 +5,7 @@ import Hero from '../components/Hero.astro';
 import TrackRecord from '../components/TrackRecord.astro';
 import StarDivider from '../components/StarDivider.astro';
 import Projects from '../components/Projects.astro';
-import Causes from '../components/Causes.astro';
 import Testimonials from '../components/Testimonials.astro';
-import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import ProjectDialog from '../components/ProjectDialog.astro';
 import TryDialog from '../components/TryDialog.astro';
@@ -19,16 +17,12 @@ import { meta, projects } from '../lib/content';
   <TopBar />
   <main id="top">
     <Hero />
-    <StarDivider />
     <Projects />
-    <StarDivider />
-    <TrackRecord />
-    <StarDivider />
-    <Causes />
-    <StarDivider />
-    <Testimonials />
-    <StarDivider />
-    <Contact />
+    <div class="yellow-zone">
+      <TrackRecord />
+      <StarDivider />
+      <Testimonials />
+    </div>
   </main>
   <Footer />
   {projects.map((project) => <ProjectDialog project={project} />)}

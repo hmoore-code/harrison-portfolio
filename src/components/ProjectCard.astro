@@ -107,13 +107,11 @@ const headingId = `card-${project.slug}`;
     line-height: 1.4;
   }
 
-  /* The diamond glints every 4 seconds: a diagonal shine sweeps across it, it grows a touch,
-     and a small sparkle appears and fades. The glint takes the first 0.6s (15%) of each cycle. */
+  /* The diamond glints every 4 seconds: a diagonal shine sweeps across it in the first 0.5s. */
   .gem {
     position: relative;
     flex: none;
     display: inline-block;
-    animation: gem-pop 4s ease-out var(--gem-delay, 0s) infinite;
   }
 
   .gem__emoji {
@@ -133,31 +131,6 @@ const headingId = `card-${project.slug}`;
     animation: gem-shine 4s ease-in-out var(--gem-delay, 0s) infinite;
   }
 
-  .gem::after {
-    content: '';
-    position: absolute;
-    top: -3px;
-    right: -4px;
-    width: 7px;
-    height: 7px;
-    background: var(--ink);
-    clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
-    opacity: 0;
-    transform: scale(0);
-    animation: gem-sparkle 4s ease-out var(--gem-delay, 0s) infinite;
-  }
-
-  @keyframes gem-pop {
-    0%,
-    15%,
-    100% {
-      transform: scale(1);
-    }
-    6% {
-      transform: scale(1.12);
-    }
-  }
-
   @keyframes gem-shine {
     0% {
       transform: translateX(0) skewX(-20deg);
@@ -168,30 +141,7 @@ const headingId = `card-${project.slug}`;
     }
   }
 
-  @keyframes gem-sparkle {
-    0%,
-    3% {
-      opacity: 0;
-      transform: scale(0) rotate(0deg);
-    }
-    8% {
-      opacity: 1;
-      transform: scale(1) rotate(45deg);
-    }
-    15%,
-    100% {
-      opacity: 0;
-      transform: scale(0.4) rotate(90deg);
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .gem,
-    .gem__emoji::before,
-    .gem::after {
-      animation: none;
-    }
-
     .gem__emoji::before {
       display: none;
     }

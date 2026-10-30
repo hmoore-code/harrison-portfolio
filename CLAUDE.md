@@ -33,13 +33,13 @@ Full spec: `BUILD-BRIEF.md` (read it before any non-trivial change). This file i
 - **Assets: `assets/`** (`images/`, `svg/`, `graphics/`, `fonts/`). Missing assets get visible placeholders.
 
 ## Page order
-Follows copy.md: sticky top bar, top of page ("Top B"), selected projects (filters + 6 cards in copy.md order), track record (3 figures), what I want to work on (with people I'd like to meet, then the 3 buttons again), testimonials, contact (one "Get in touch" pill, then round LinkedIn and Substack icons; no email address shown, no CV button) and footer. Pop-ups: one per project, "Try it yourself", CV (last).
+Follows copy.md (design/18-homepage.html): sticky top bar, top of page ("Top B"), selected projects (filters + 6 cards in copy.md order), then the yellow band: "My CV and career highlights" (#cv: 3 figures, closing line, the main buttons again, "Share this site with" box), a star divider and the testimonials carousel; then on white, Back to top and the footer. No "What I want to work on" or "Contact me" sections. Pop-ups: one per project, "Try it yourself", CV (last, #my-cv).
 
 ## Top of page ("Top B")
-Fields under `## Top of page`: Name, Headline, Subtitle, Main button, Email button, CV link, Contact email, plus `### Share this site with` (lead-in paragraph + bullets) and `### Closing line` (paragraph). Order: portrait (200px, 50% 28%, 2px border, radius 20, no cover), h1 headline (40/800/62%/0.92), subtitle (17/500/1.45, bold 800, italics), wavy-bordered share box (lead-in 22/800/62%/1, list 16/1.4), closing line (16/1.5), stacked buttons (`ActionButtons`, 10px gap): black share pill, outline "Get in touch" pill (mailto), centred underlined CV link. The same 3 buttons repeat after "People I'd like to meet", before the testimonials. 20px gutter, 18px gaps; these are Harrison's exact px values, not scaled `--space-*` steps.
+Fields under `## Top of page`: Name, Headline, Subtitle, Main button, Email button, CV link, Contact email, plus `### Share this site with` (lead-in paragraph + bullets) and `### Closing line` (paragraph). Order: portrait (200px, 50% 28%, 2px border, radius 20, no cover), h1 headline (40/800/62%/0.92), subtitle (17/500/1.45, bold 800, italics), wavy-bordered share box (lead-in 22/800/62%/1, list 16/1.4), closing line (16/1.5), buttons (`ActionButtons`, 10px gap): full-width black share pill, then "View my CV" (opens #my-cv) and "Get in touch" (mailto) as 2 equal outline pills side by side. The same buttons repeat after the career highlights' closing line. 20px gutter, 18px gaps; these are Harrison's exact px values, not scaled `--space-*` steps.
 
 ## Design tokens
-- Colours only: ink #111111, paper #FAFAF7, white #FFFFFF, grey #4A4A46 (small labels only).
+- Colours only: ink #111111, paper #FAFAF7, white #FFFFFF, grey #4A4A46 (small labels only), and yellow #F5FF90 (`--yellow`) for the career highlights and testimonials band (Harrison's addition).
 - Archivo, headings 800 weight at 62% width. Headline 58, pop-up title 72, section heading 56, card title/pull quote 40, sub-heading 28, body 17/1.55, labels 13/600. Shrink headings below 360px.
 - Lines always 2px ink, straight or wavy (use provided SVGs). Star is the only filled mark.
 - Radii: cards/images 20 (16 in pop-ups), thumbnails 10, sheet top 24, pill buttons. Touch targets 44px+, main buttons 52px.

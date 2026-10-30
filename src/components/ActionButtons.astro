@@ -1,6 +1,6 @@
 ---
-// Share this site, Get in touch and View my CV, stacked. Used at the top of the page
-// and again after "People I'd like to meet". Words come from "## Top of page".
+// Share this site (full width), then View my CV and Get in touch side by side. Used at the top of
+// the page and again after the career highlights. Words come from "## Top of page".
 import { hero, meta, topBar } from '../lib/content';
 import Icon from './Icon.astro';
 
@@ -21,11 +21,16 @@ const { class: className } = Astro.props;
     <Icon name="share" />
     {hero.mainButton}
   </button>
-  <a class="pill pill--outline" href={`mailto:${hero.email}`}>
-    <Icon name="mail" />
-    {hero.emailButton}
-  </a>
-  <a class="actions__cv" href="#cv" data-open-dialog="cv">{hero.cvLink}</a>
+  <div class="actions__pair">
+    <a class="pill pill--outline" href="#my-cv" data-open-dialog="my-cv">
+      <Icon name="document" />
+      {hero.cvLink}
+    </a>
+    <a class="pill pill--outline" href={`mailto:${hero.email}`}>
+      <Icon name="mail" />
+      {hero.emailButton}
+    </a>
+  </div>
 </div>
 
 <style>
@@ -41,13 +46,29 @@ const { class: className } = Astro.props;
     font-weight: 700;
   }
 
-  .actions__cv {
-    align-self: center;
+  /* Two equal outline pills; labels stay on one line, a touch smaller on very small phones. */
+  .actions__pair {
     display: flex;
-    align-items: center;
-    min-height: 44px;
+    gap: 10px;
+  }
+
+  .actions__pair .pill {
+    flex: 1 1 0;
+    gap: 7px;
+    min-width: 0;
+    min-height: 48px;
+    padding: 0 10px;
     font-size: 15px;
-    font-weight: 600;
-    text-align: center;
+    white-space: nowrap;
+  }
+
+  .actions__pair .pill :global(svg) {
+    flex: none;
+  }
+
+  @media (max-width: 339px) {
+    .actions__pair .pill {
+      font-size: 14px;
+    }
   }
 </style>

@@ -311,9 +311,16 @@ export const hero = {
 };
 
 const recordNode = section(live, 'Track record');
+const recordShareNode = child(recordNode, 'Share this site with');
 export const trackRecord = {
   label: required(recordNode, 'Label'),
   intro: optional(recordNode, 'Intro'),
+  closingLine: required(recordNode, 'Closing line'),
+  // "Share this site with:" and the 3 kinds of people, each with an icon to come.
+  shareWith: {
+    leadIn: recordShareNode?.paragraphs[0] ?? '',
+    people: recordShareNode ? list(recordShareNode) : [],
+  },
   figures: recordNode.children
     .filter((c) => /^Figure/i.test(c.heading))
     .map((figure) => ({
@@ -324,6 +331,8 @@ export const trackRecord = {
     })),
 };
 if (trackRecord.figures.length !== 3) errors.push(`Track record needs 3 figures, found ${trackRecord.figures.length}`);
+if (!trackRecord.shareWith.leadIn || trackRecord.shareWith.people.length !== 3)
+  errors.push('Track record needs "### Share this site with" with its lead-in line and 3 kinds of people');
 
 const projectsNode = section(live, 'Projects');
 const filtersNode = section(projectsNode, 'Filters');
@@ -492,42 +501,24 @@ export const projects: Project[] = projectNodes.map((node, index) => {
 });
 if (projects.length !== 6) errors.push(`Expected 6 projects, found ${projects.length}`);
 
-const causesNode = section(live, 'What I want to work on');
-const causeLabels = ['Heading', 'Intro', 'Closing ask'];
-const peopleNode = child(causesNode, "People I'd like to meet");
-export const causes = {
-  heading: required(causesNode, 'Heading'),
-  intro: required(causesNode, 'Intro'),
-  items: unlabelled(causesNode, causeLabels),
-  closingAsk: required(causesNode, 'Closing ask'),
-  people: peopleNode && { heading: peopleNode.heading, items: list(peopleNode) },
-};
-
 const quotesNode = section(live, 'Quotes');
+// Each "### Name" under "## Quotes" is one testimonial: its Role and the quote as a paragraph.
 export const testimonials = {
   heading: required(quotesNode, 'Heading'),
-  quotes: quotesNode.bullets
-    .filter((b) => /^Quote \d+$/i.test(b.label ?? ''))
-    .map((b): Testimonial => {
-      const match = b.value!.match(/^[“"](.*)[”"]\s*[–—-]\s*(.+)$/s);
-      if (!match) {
-        errors.push(`Testimonial "${b.label}" should look like “quote” – Name, Role`);
-        return { quote: b.value!, name: '', role: '' };
-      }
-      // "Name, Role" or "Name - Role": split at the first comma or dash.
-      const [, name, role = ''] = match[2].match(/^(.+?)(?:,\s+|\s+[-–—]\s+)(.+)$/) ?? [, match[2]];
-      return { quote: match[1].trim(), name: name!.trim(), role: role.trim() };
-    }),
+  carouselDescription: required(quotesNode, 'Carousel description'),
+  namesLabel: required(quotesNode, 'Names label'),
+  quotes: quotesNode.children.map((node): Testimonial => {
+    const quote = node.paragraphs.join(' ');
+    if (!quote) errors.push(`Testimonial "${node.heading}" has no quote`);
+    return { quote, name: node.heading, role: required(node, 'Role') };
+  }),
 };
+if (!testimonials.quotes.length) errors.push('"## Quotes" has no testimonials ("### Name", "- Role: ..." and the quote)');
 
 const contactNode = section(live, 'Contact and footer');
 export const contact = {
-  heading: asText(required(contactNode, 'Heading')),
-  line: optional(contactNode, 'Contact line') ? asText(optional(contactNode, 'Contact line')!) : undefined,
   email: required(contactNode, 'Email'),
-  linkedin: asText(required(contactNode, 'LinkedIn')),
-  substack: asText(required(contactNode, 'Substack')),
-  emailButton: required(contactNode, 'Email button'),
+  backToTop: required(contactNode, 'Back to top'),
   footer: asText(required(contactNode, 'Footer')),
 };
 

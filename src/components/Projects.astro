@@ -65,6 +65,9 @@ const buttons = [{ id: 'all', label: projectsIntro.allFilter }, ...filters].map(
     display: flex;
     flex-direction: column;
     gap: var(--space-5);
+    /* No star divider above or below any more, so the section brings its own room (design/18). */
+    padding-top: 48px;
+    padding-bottom: 50px;
   }
 
   .projects__intro {

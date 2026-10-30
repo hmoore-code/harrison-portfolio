@@ -1,20 +1,48 @@
 ---
+// The end of the page, on white below the yellow band: Back to top, then the footer line.
+import { contact } from '../lib/content';
+import Icon from './Icon.astro';
 import SiteCredit from './SiteCredit.astro';
 ---
 
-<footer class="footer">
-  <div class="column footer__inner">
-    <SiteCredit />
+<div class="page-end">
+  <div class="column page-end__top">
+    <a class="pill pill--outline" href="#top">
+      <Icon name="up" />
+      {contact.backToTop}
+    </a>
   </div>
-</footer>
+  <footer class="footer">
+    <div class="column footer__inner">
+      <SiteCredit />
+    </div>
+  </footer>
+</div>
 
 <style>
+  .page-end {
+    border-top: var(--line);
+    background: var(--white);
+  }
+
+  .page-end__top {
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+  }
+
+  .page-end__top .pill {
+    gap: 10px;
+    min-height: 52px;
+  }
+
   .footer {
+    margin-top: 40px;
     border-top: var(--line);
   }
 
   .footer__inner {
-    padding-top: var(--space-5);
-    padding-bottom: var(--space-6);
+    padding-top: 32px;
+    padding-bottom: 48px;
   }
 </style>

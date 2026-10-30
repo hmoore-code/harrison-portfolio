@@ -56,6 +56,8 @@ const wideLead = [
 ].includes(project.slug);
 // A project's logo (Logo field) shows in the Organisation square instead of the name; screen readers still hear the name.
 const logoSvg = project.logo && findSvg(project.logo);
+// The 🫵 at the end of "The skills I could bring to your team 🫵" jabs every 4 seconds.
+const [, skillsHeading, pointing] = project.skillsBox.heading.match(/^(.*?)\s*(🫵\S*)?$/u) ?? [, project.skillsBox.heading];
 const titleId = `${project.slug}-title`;
 const evidence = sortEvidence(project);
 const facts = [
@@ -198,7 +200,11 @@ const extras = project.extras.map((extra) => ({
   </figure>
 
   <section class="skills-box">
-    <h3 class="subheading">{project.skillsBox.heading}</h3>
+    <h3 class="subheading">
+      {skillsHeading}
+      {pointing && ' '}
+      {pointing && <span class="point" aria-hidden="true">{pointing}</span>}
+    </h3>
     {project.skillsBox.paragraphs.map((p) => <p set:html={inline(p)} />)}
     {
       project.skillsBox.bullets.length > 0 && (
@@ -548,6 +554,38 @@ const extras = project.extras.map((extra) => ({
     color: var(--grey);
     font-size: 12px;
     line-height: 1.4;
+  }
+
+  .point {
+    display: inline-block;
+    transform-origin: 50% 60%;
+    animation: point-jab 4s ease-in-out infinite;
+  }
+
+  @keyframes point-jab {
+    0%,
+    62%,
+    100% {
+      transform: scale(1) translateY(0);
+    }
+    70% {
+      transform: scale(1.7) translateY(-2px) rotate(-4deg);
+    }
+    76% {
+      transform: scale(1.45) translateY(-1px);
+    }
+    82% {
+      transform: scale(1.75) translateY(-2px) rotate(-4deg);
+    }
+    92% {
+      transform: scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .point {
+      animation: none;
+    }
   }
 
   .pull-quote {

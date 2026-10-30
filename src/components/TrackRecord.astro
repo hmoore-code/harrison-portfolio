@@ -1,44 +1,63 @@
 ---
-import { projectsIntro, trackRecord } from '../lib/content';
+// "My CV and career highlights" (#cv), at the top of the yellow band (design/18-homepage.html):
+// 3 figures side by side, the closing line, the main buttons again, then who to share the site with.
+// Words come from "## Track record". Sizes are the design's exact px values.
+import { trackRecord } from '../lib/content';
+import { inline } from '../lib/inline';
+import ActionButtons from './ActionButtons.astro';
 import WavyRule from './WavyRule.astro';
 ---
 
-<section class="record column" aria-labelledby="record-heading">
+<section class="record column" id="cv" aria-labelledby="record-heading">
   <div class="record__intro">
     <h2 id="record-heading" class="section-heading">{trackRecord.label}</h2>
     {trackRecord.intro && <p>{trackRecord.intro}</p>}
   </div>
-  <ul class="record__list">
+
+  <ul class="record__figures" role="list">
     {
       trackRecord.figures.map((figure) => (
-        <li class="record__item">
+        <li class="record__figure">
           <WavyRule />
           <p class="record__number">{figure.number}</p>
-          <p class="record__label">{figure.label}</p>
-          {figure.link && figure.linkText && (
-            <a class="record__link" href={figure.link} target="_blank" rel="noopener">
-              {figure.linkText}
-              <span class="visually-hidden"> ({projectsIntro.newTabHint})</span>
-            </a>
-          )}
+          <p class="record__label" set:html={inline(figure.label)} />
         </li>
       ))
     }
-    <li aria-hidden="true"><WavyRule /></li>
   </ul>
+
+  <p class="record__closing" set:html={inline(trackRecord.closingLine)} />
+
+  <ActionButtons />
+
+  <div class="share-with">
+    <p class="share-with__lead">{trackRecord.shareWith.leadIn}</p>
+    <ul class="share-with__people" role="list">
+      {
+        trackRecord.shareWith.people.map((person) => (
+          <li>
+            {/* Harrison's drawings will go here. */}
+            <span class="share-with__icon" aria-hidden="true" />
+            <span class="share-with__label">{person}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </section>
 
 <style>
   .record {
     display: flex;
     flex-direction: column;
-    gap: var(--space-5);
+    gap: 27.5px;
+    padding-top: 48px;
   }
 
   .record__intro {
     display: flex;
     flex-direction: column;
-    gap: calc(10px * var(--spacing-scale));
+    gap: 12px;
   }
 
   .record__intro p {
@@ -48,44 +67,97 @@ import WavyRule from './WavyRule.astro';
     line-height: 1.45;
   }
 
-  .record__list {
+  .record__figures {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  .record__item {
+  .record__figure {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
-    padding-bottom: var(--space-4);
-  }
-
-  .record__item :global(.wavy-rule) {
-    margin-bottom: var(--space-3);
+    gap: 8px;
   }
 
   .record__number {
-    margin: 0;
-    font-size: var(--size-headline);
+    margin: 2px 0 0;
+    font-size: 38px;
     font-weight: 800;
     font-stretch: 62%;
-    line-height: 0.88;
+    line-height: 0.9;
+    white-space: nowrap;
   }
 
   .record__label {
     margin: 0;
-    font-size: 17px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+
+  .record__label :global(strong) {
+    font-weight: 800;
+  }
+
+  .record__closing {
+    margin: 0;
+    font-size: 19px;
     font-weight: 500;
     line-height: 1.4;
   }
 
-  .record__link {
-    align-self: flex-start;
+  /* A box drawn with wavy lines on all 4 sides, like the one at the top of the page. */
+  .share-with {
     display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: calc(5px + 20px) calc(5px + 16px) calc(5px + 22px);
+    background:
+      url('../../assets/svg/rule-wavy.svg') top / 100% 10px no-repeat,
+      url('../../assets/svg/rule-wavy.svg') bottom / 100% 10px no-repeat,
+      url('../../assets/svg/wave-v.svg') left / 10px 100% no-repeat,
+      url('../../assets/svg/wave-v.svg') right / 10px 100% no-repeat;
+  }
+
+  .share-with__lead {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    font-stretch: 62%;
+    line-height: 1;
+  }
+
+  .share-with__people {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .share-with__people li {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    min-height: 44px;
-    font-size: 15px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  /* A dashed circle until Harrison's drawings arrive. */
+  .share-with__icon {
+    width: 76px;
+    height: 76px;
+    border: 2px dashed var(--ink);
+    border-radius: 50%;
+  }
+
+  .share-with__label {
+    font-size: 12.5px;
     font-weight: 600;
+    line-height: 1.3;
   }
 </style>

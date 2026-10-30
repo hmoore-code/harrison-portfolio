@@ -15,7 +15,7 @@ This tab holds only the words that go on the site, in page order. The site is bu
 - Label: Harrison Moore's Portfolio
 - Share button: Share
 - Share confirmation: Link copied
-- Email button: Email me
+- Email button: Contact
 
 ## Top of page
 
@@ -728,55 +728,217 @@ I can develop creative solutions by researching in the field, design for partici
 
 ## Track record
 
-- Label: Beyond these projects
-- Intro: Some of my biggest impact came from day-to-day roles.
+- Label: My CV and career highlights
+- Intro: Everything I build starts with curiosity, empathy and user research, which is how I secure funding and support for the people who need it.
+- Closing line: I am a people-loving, end-to-end builder who combines research, creative production and coaching - and I'm looking for a team solving problems in the future of education and work. If that sounds like you, let's talk!
 
 ### Figure 1
 
 - Number: 500+
-- Label: As a mentor at Write of Passage: professionals I mentored and coached, 2024 to 2026
+- Label: professionals mentored at Write of Passage to overcome technical and psychological barriers and **confidently publish their work**
 
 ### Figure 2
 
-- Number: 43%
-- Label: As a mentor at Write of Passage: my sales conversion rate, helping bring in $1m, 2024
+- Number: 1,000+
+- Label: hours of research with frontline users in high-stakes environments to uncover hidden problems and **shape product strategy**
 
 ### Figure 3
 
-- Number: 4+ years
-- Label: As a writer: publishing Creative Thought Partner, my regular Substack on psychology and creativity, 1,000+ subscribers
-- Link text: Read my newsletter
-- Link: https://www.thenewworkday.com/
+- Number: £500k
+- Label: raised and 3 incubators completed with the Royal Society of Arts, BGV, and the Resolution Foundation to **launch communication tools**
 
-## What I want to work on
+### Share this site with
 
-- Heading: What I want to work on now
-- Intro: Causes I care about most are:
-- Lifelong learning and access to it
-- Reclaiming and protecting attention
-- Connecting people with meaningful work
-- Closing ask: If you're a team solving problems in any of these areas, let's talk! If you know someone who is, you can forward this website to them (thanks!)
-
-### People I'd like to meet
+Share this site with:
 
 - Heads of learning, community or programme teams
-- Founders building learning or future of education products
-- People who run research teams at think tanks and innovation hubs
+- Founders building learning or future-of-education products
+- People running research teams at think tanks and innovation hubs
 
 ## Quotes
 
 - Heading: Testimonials
-- Quote 1: “Harrison absolutely aced the editor “exam” during our training (60/60), and has helped two cohorts of students around a range of technical and psychological blocks. His experience in art school enables him to give a perspective shift to anyone he works with.” – Michael, Editor-in-Chief at Write of Passage
-- Quote 2: “What I found most helpful from a “coaching skills” perspective was your commitment to not answering my questions directly or solving my problems. You are so committed to helping your clients find their own answers. It’s very, very empowering... And Harrison, I have to say it continues to strike me that you should be teaching AI to groups of people for money because you’re very good at this.” – Judy, Marketing Consultant
-- Quote 3: “Harrison’s own multifaceted career makes him a Swiss Army knife of a coach. Since leaving full-time employment and navigating my own evolving career and interests, he has seamlessly moved between being my writing coach, business coach, and art coach as needed... What sets him apart is not just his exceptional range of coaching skills, but his genuine professional understanding across fields.” – Yujia, Climate Leader
+- Carousel description: carousel
+- Names label: Choose a testimonial
+
+### Judy Murdoch
+
+- Role: Independent Marketing Consultant
+
+What I found most helpful from a ‘coaching skills’ perspective was your commitment to not answering my questions directly or solving my problems. You are so committed to helping your clients find their own answers. It’s very, very empowering. And Harrison, I have to say it continues to strike me that you should be teaching AI to groups of people for money because you’re very good at this.
+
+### Yujia Du
+
+- Role: Climate Industry Leader
+
+Harrison’s own multifaceted career makes him a Swiss Army knife of a coach. Since leaving full-time employment and navigating my own evolving career and interests, he has seamlessly moved between being my writing coach, business coach, and art coach as needed… What sets him apart is not just his exceptional range of coaching skills, but his genuine professional understanding across fields.
+
+### Michael Skinner
+
+- Role: Real Estate Entrepreneur
+
+Think of a sounding board, but better - like an intellectual creativity board. That’s one of the many talents Harrison offers: he stimulates, nurtures, and empowers the creative inside of you.
+
+### Gloria Castillo
+
+- Role: Business Executive & Civic Leader
+
+This coaching experience gave me a sense of confidence that I was going to do something new that I really hadn’t done before, that I wasn’t repeating myself. Repeating yourself is easy, and particularly when you’re pretty senior in your career, doing something new gets harder and scarier… It’s Harrison’s listening skills, and being able to distill from that what’s needed to achieve whatever goal is in front of you.
+
+### Taylin Simmonds
+
+- Role: Writer, Musician & Entrepreneur
+
+Harrison asks really good questions and he helped me arrive at my own conclusions, which was more valuable than just giving me the answers.
+
+### Justin Nothling
+
+- Role: Technology Entrepreneur
+
+The value of your coaching comes from those moments that are difficult to replicate alone. It could be that ‘reps’ are almost as effective alone as they are with a coach. But those ‘aha’ moments that happen during conversation are unique. Just bouncing ideas gave me access to a part of my brain that is usually difficult to access alone.
+
+### Jerry Johnston
+
+- Role: Management Consultant
+
+Harrison came into my life and introduced me to coaching, and I appreciate all the insight, patience, time, and energy that he’s given to me. His brain is great, and he’s someone I’ve enjoyed learning from. He was gracious enough to hear me express some of the things that made me uncomfortable, and still brought me to places where there’s real beautiful stuff that we talked about and realised together.
+
+### Jennifer Scott
+
+- Role: Poet
+
+Harrison is so much more than simply an ‘accountability’ coach. He is a nimble, high-idea-generating, creative troubleshooter. He can weave effortlessly back and forth between strategy and tactics (and then zoom out, and operate at a level even more meta than that)!
+
+### Daniel Hunter
+
+- Role: Senior Software Engineering Manager
+
+When I was building a new web application… I couldn’t figure out how to present it all… This is when I reached out to Harrison. He has a rare gift: the ability to give real-time feedback that’s both emotional and precise. Whether it’s an essay or software, he can immediately articulate how something feels... and equally as important, why it feels that way. He points out what’s confusing, what’s distracting, and what might be turning people off, even if it’s subtle.
+
+### Jeremy Mathew
+
+- Role: Social Worker & Artist
+
+When I began working with Harrison as a mentee, I felt overwhelmed, lost, and uncertain about my creative path. I was working on an application for my first artist’s residency, submitting an ambitious project that I struggled to communicate clearly to my audience. Harrison went above and beyond every step of the way. His mentorship helped me not only clarify the core concepts behind my project but also find confidence in my own voice and perspectives.
+
+### Michael Dean
+
+- Role: Editor-in-Chief at Write of Passage
+
+Harrison absolutely aced the editor “exam” during our training (60/60), and has helped two cohorts of students around a range of technical and psychological blocks. His experience in art school enables him to give a perspective shift to anyone he works with.
+
+### See Eun Ma
+
+- Role: Entrepreneur & Investor
+
+Harrison’s approach to nonfiction writing was a much-needed change of pace. He made real the idea of playfulness and patience, transforming what felt like a giant, overwhelming task into flexible, bitesize explorations every week.
+
+### Owen Fitzpatrick
+
+- Role: Psychologist, Coach & Author
+
+Working with Harrison was invaluable in helping me identify my writing weaknesses. He was able to shine a light on why some of my writing wasn’t working. This has made a huge difference, as I now understand what I need to improve on and work on the most.
+
+### Becky Isjwara
+
+- Role: Artist & Writer
+
+Harrison is a discerning, collaborative, and attentive creative partner. He’s helped me out with my writing for over a year now and I just know that whatever piece I’m working on will be a few notches better once it’s got a ‘Harrison pass’. He’s also incredibly resourceful, being able to pull in a variety of prompts and references from his ever-growing library.
+
+### Matheus Felipe
+
+- Role: Engineering Consultant
+
+The most valuable aspect of working with you was discussing new ideas and getting new thoughts about things I didn’t even think of checking.
+
+### Ved Shankar
+
+- Role: Strategy Consultant
+
+Harrison helped me clarify my thinking much earlier in the writing process. His Strategic Questions have become a go-to tool I use after a first draft to catch logic gaps before getting too deep into revisions.
+
+### Marios Georgiou
+
+- Role: Clinical Psychologist
+
+You are personable and approachable in a way that puts me at ease but also passionate about writing and expression, which I think is important when trying to strike a balance between ‘taking something seriously’ and being playful and curious.
+
+### Hugo Lebarrois
+
+- Role: Product Manager
+
+Harrison helped me overcome a creative block while I was rewriting a few essays. His questions—always rich and unexpected—pushed me to think and feel differently. He’s the kind of person who opens your eyes to things you didn’t realize were missing.
+
+### Linart Seprioto
+
+- Role: Marketing Lead
+
+When you point out things about me that I did not notice initially, I always find that to be powerful. I get to know myself better through your coaching.
+
+### Darren Farfan
+
+- Role: Coach
+
+You are a great facilitator, Harrison. You have a wonderful way of being that is both humble yet oozing competence.
+
+### Christer Holloman
+
+- Role: CEO
+
+I've had the pleasure of mentoring Harrison throughout his journey… He's always ready to listen, take on board advice, and then act decisively.
+
+### Stan Krasnoyarov
+
+- Role: CTO
+
+It's not every day you meet a man so passionate about his startup. I was particularly impressed by Harrison's ability to grab the attention of larger construction companies, and he's a great guy to have a cup of coffee with at the end of the day.
+
+### Steve Everhard
+
+- Role: Investor
+
+Harrison is a very engaging character to mentor. He asks questions early, so there is time to formulate a plan. He listens very well and is full of ideas and innovations. Harrison is determined but not blind to opportunity, driven but capable of direction adjustment… On top of that, he is a really nice guy to know.
+
+### Darren Cockburn
+
+- Role: Senior Business Executive
+
+Harrison combines a strategic view of the sector with a real understanding of what is important to construction workers. This makes him extremely effective as a founder, since he gets user needs and motivations. At the same time, he doesn't lose sight of the long-term goal of building a platform that will deliver change for good.
+
+### Rowan Conway
+
+- Role: Director of Innovation
+
+Harrison is a socially minded and strategic entrepreneur, a natural problem solver with exceptional and natural leadership skills.
+
+### Pontus Denlew
+
+- Role: Investor
+
+I had the pleasure of working with Harrison on Worker Feedback Club for over a year. I learned a lot about leadership and company building from him, and it was a pleasure to work closely with him throughout his funding round.
+
+### Christina Richardson
+
+- Role: CEO
+
+A driven founder who is a pleasure to work with due to his reflective, humble, and down-to-earth style.
+
+### Isabel Hopkins
+
+- Role: Research Analyst
+
+If I had to identify one key strength, it is that Harrison is a big-picture thinker, and he doesn't get bogged down by details and barriers. He has a vision and is committed to achieving it, which is inspiring to work with. He was adept at managing the day-to-day issues that cropped up in developing a product and keeping that central vision in mind.
+
+### Peter Blake
+
+- Role: Investor
+
+I first met Harrison at the BGV accelerator programme and was struck by his vision for Worker Feedback Club and his talent for communicating its positive impact on the industry. Harrison combines ambition with pragmatism, always pushing the business forward with a learning mindset and an open approach to building relationships with clients, advisors, and investors.
 
 ## Contact and footer
 
-- Heading: Contact me
 - Email: harrison@thenewworkday.com
-- LinkedIn: https://www.linkedin.com/in/mrharrisonmoore
-- Substack: https://www.thenewworkday.com/
-- Email button: Get in touch
+- Back to top: Back to top
 - Footer: 🎨 I built this website myself—from concept to copywriting to coding in Claude. If you need a website, I'd be happy to [chat](mailto:harrison@thenewworkday.com).
 
 ## CV
