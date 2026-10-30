@@ -97,7 +97,7 @@ button {
 }
 
 /* From the career highlights to the end of the testimonials: yellow, with a 2px ink line on top,
-   the straight diagonal cover pattern at 9% (multiply) and a light grain over it. */
+   the straight diagonal cover pattern at 6.75% (multiply) and a light grain over it. */
 .yellow-zone {
   position: relative;
   isolation: isolate;
@@ -118,7 +118,7 @@ button {
 
 .yellow-zone::before {
   background: url('../../assets/svg/cover-straight.svg') 0 0 / 390px auto repeat;
-  opacity: 0.09;
+  opacity: 0.0675;
   mix-blend-mode: multiply;
 }
 
