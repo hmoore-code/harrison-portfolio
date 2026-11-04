@@ -292,6 +292,53 @@ html:has(dialog[open]) {
   line-height: 1.55;
 }
 
+/* Every bulleted list: indented from the text around it (20px, 24px on wide screens), the marker in
+   its own column so a long item's second line lines up with the first line's text, not the marker.
+   Each item's words go in one <span>, so bold words and links stay part of the same line.
+   Add bullets--star (the site's star), bullets--emoji (the item's own emoji in .bullets__marker) or
+   bullets--disc (a round dot). Each list keeps its own gap between items. role="list" keeps it a list
+   for VoiceOver, which drops list-style: none lists. */
+.bullets {
+  --list-indent: 20px;
+  margin: 0;
+  padding: 0 0 0 var(--list-indent);
+  list-style: none;
+}
+
+@media (min-width: 760px) {
+  .bullets {
+    --list-indent: 24px;
+  }
+}
+
+.bullets > li {
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr);
+  column-gap: 10px;
+}
+
+/* The star: 12px, centred on the first line. */
+.bullets--star > li::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  margin-top: calc((1.55em - 12px) / 2);
+  background: url('../../assets/svg/star.svg') center / contain no-repeat;
+}
+
+.bullets--disc > li::before {
+  content: '•' / '';
+  text-align: center;
+}
+
+.bullets--emoji > li {
+  grid-template-columns: 1.4em minmax(0, 1fr);
+}
+
+.bullets__marker {
+  text-align: center;
+}
+
 .links {
   display: flex;
   flex-direction: column;

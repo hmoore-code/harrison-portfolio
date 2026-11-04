@@ -29,9 +29,11 @@ const id = `${project.slug}-try`;
         {form.paragraphs.map((p) => (
           <p set:html={inline(p)} />
         ))}
-        <ul class="try__rules">
+        <ul class="try__rules bullets bullets--disc" role="list">
           {form.rules.map((rule) => (
-            <li set:html={inline(rule)} />
+            <li>
+              <span set:html={inline(rule)} />
+            </li>
           ))}
         </ul>
       </section>
@@ -68,7 +70,8 @@ const id = `${project.slug}-try`;
     flex-direction: column;
     gap: var(--space-2);
     margin: 0;
-    padding: var(--space-4) var(--space-4) var(--space-4) 2.2em;
+    /* In its own box, so the box's padding is its indent. */
+    padding: var(--space-4);
     border: var(--line);
     border-radius: var(--radius-inner);
     background: var(--white);

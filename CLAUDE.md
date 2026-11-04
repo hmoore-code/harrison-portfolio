@@ -45,6 +45,7 @@ Fields under `## Top of page`: Name, Headline, Location, Main button, Email butt
 - Radii: cards/images 20 (16 in pop-ups), thumbnails 10, sheet top 24, pill buttons. Touch targets 44px+, main buttons 52px.
 - Spacing steps 4, 8, 14, 18, 22, 28, 40, multiplied by `--spacing-scale: 1.25` (Harrison wanted 25% more room). Use the `--space-*` tokens, never raw px for spacing. Gutter 20, card padding 18. Desktop: one centred column ~680–720px, never multi-column.
 - Icons: 16px line icons, 1.5px stroke.
+- Bulleted lists: always the shared `.bullets` class in global.css (plus `bullets--star`, `bullets--emoji` or `bullets--disc`), indented 20px (24px on desktop), wrapped lines aligned with the text, each item's words in one `<span>`. Not for button lists, name chips or the share drawings.
 
 ## Harrison's decisions (override the brief)
 - Project cards show a plain, static, full-colour photo: no pattern covers or scroll effects (removed 4 November 2026). The pattern strip above each pop-up stays.

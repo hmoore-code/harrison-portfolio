@@ -20,11 +20,11 @@ import SharePeople from './SharePeople.astro';
 
     <div class="hero__group">
       <p class="hero__text" set:html={inline(hero.strengths.leadIn)} />
-      <ul class="hero__list hero__list--emoji" role="list">
+      <ul class="hero__list bullets bullets--emoji" role="list">
         {
           hero.strengths.items.map((item) => (
             <li>
-              <span class="hero__emoji" aria-hidden="true">{item.emoji}</span>
+              <span class="bullets__marker" aria-hidden="true">{item.emoji}</span>
               <span set:html={inline(item.text)} />
             </li>
           ))
@@ -34,8 +34,14 @@ import SharePeople from './SharePeople.astro';
 
     <div class="hero__group">
       <p class="hero__text" set:html={inline(hero.roles.leadIn)} />
-      <ul class="hero__list hero__list--stars" role="list">
-        {hero.roles.items.map((item) => <li set:html={inline(item)} />)}
+      <ul class="hero__list bullets bullets--star" role="list">
+        {
+          hero.roles.items.map((item) => (
+            <li>
+              <span set:html={inline(item)} />
+            </li>
+          ))
+        }
       </ul>
     </div>
 
@@ -100,42 +106,11 @@ import SharePeople from './SharePeople.astro';
     gap: 10px;
   }
 
-  /* role="list" keeps it a list for VoiceOver, which drops list-style: none lists. */
   .hero__list {
     display: grid;
     gap: 8px;
-    margin: 0;
-    padding: 0;
     font-size: var(--size-body);
     line-height: 1.55;
-    list-style: none;
-  }
-
-  .hero__list li {
-    display: grid;
-    column-gap: 10px;
-  }
-
-  /* Strengths: the item's own emoji is the marker. */
-  .hero__list--emoji li {
-    grid-template-columns: 1.4em 1fr;
-  }
-
-  .hero__emoji {
-    text-align: center;
-  }
-
-  /* Roles: the star as the bullet, as in the pop-ups' skills box: 12px, centred on the line. */
-  .hero__list--stars li {
-    grid-template-columns: 12px 1fr;
-  }
-
-  .hero__list--stars li::before {
-    content: '';
-    width: 12px;
-    height: 12px;
-    margin-top: calc((1.55em - 12px) / 2);
-    background: url('../../assets/svg/star.svg') center / contain no-repeat;
   }
 
   /* A box drawn with wavy lines on all 4 sides. */
