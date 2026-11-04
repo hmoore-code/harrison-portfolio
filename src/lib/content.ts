@@ -266,28 +266,15 @@ export const hero = {
 };
 
 const recordNode = section(live, 'Track record');
-const recordShareNode = child(recordNode, 'Share this site with');
+const recordShareNode = section(recordNode, 'Share this site with');
+// "Help me find the right team" (#cv): the heading, one paragraph, then the 3 kinds of people.
 export const trackRecord = {
   label: required(recordNode, 'Label'),
-  intro: optional(recordNode, 'Intro'),
-  closingLine: required(recordNode, 'Closing line'),
-  // "Share this site with:" and the 3 kinds of people, each with an icon to come.
-  shareWith: {
-    leadIn: recordShareNode?.paragraphs[0] ?? '',
-    people: recordShareNode ? list(recordShareNode) : [],
-  },
-  figures: recordNode.children
-    .filter((c) => /^Figure/i.test(c.heading))
-    .map((figure) => ({
-      number: required(figure, 'Number'),
-      label: required(figure, 'Label'),
-      linkText: optional(figure, 'Link text'),
-      link: optional(figure, 'Link'),
-    })),
+  intro: required(recordNode, 'Intro'),
+  people: list(recordShareNode),
 };
-if (trackRecord.figures.length !== 3) errors.push(`Track record needs 3 figures, found ${trackRecord.figures.length}`);
-if (!trackRecord.shareWith.leadIn || trackRecord.shareWith.people.length !== 3)
-  errors.push('Track record needs "### Share this site with" with its lead-in line and 3 kinds of people');
+if (trackRecord.people.length !== 3)
+  errors.push('Track record needs "### Share this site with" with 3 kinds of people');
 
 const projectsNode = section(live, 'Projects');
 const filtersNode = section(projectsNode, 'Filters');

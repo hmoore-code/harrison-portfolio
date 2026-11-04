@@ -726,28 +726,10 @@ I can develop creative solutions by researching in the field, design for partici
 
 ## Track record
 
-- Label: My CV and career highlights
-- Intro: Everything I build starts with curiosity, empathy and user research, which is how I secure funding and support for the people who need it.
-- Closing line: I am a people-loving, end-to-end builder who combines research, creative production and coaching - and I'm looking for a team solving problems in the future of education and work. If that sounds like you, let's talk!
-
-### Figure 1
-
-- Number: 500+
-- Label: professionals mentored at Write of Passage to overcome technical and psychological barriers and **confidently publish their work**
-
-### Figure 2
-
-- Number: 1,000+
-- Label: hours of research with frontline users in high-stakes environments to uncover hidden problems and **shape product strategy**
-
-### Figure 3
-
-- Number: £500k
-- Label: raised and 3 incubators completed with the Royal Society of Arts, BGV, and the Resolution Foundation to **launch communication tools**
+- Label: Help me find the right team
+- Intro: I'm a people-loving, end-to-end builder who combines user research, creative production, and coaching. I care about lifelong learning and access to it, reclaiming attention, and connecting people with meaningful work. If you're working on one of the above challenges, or you know someone who is, get in touch or share this portfolio with them.
 
 ### Share this site with
-
-Share this site with:
 
 - Heads of learning, community or programme teams
 - Founders building learning or future-of-education products

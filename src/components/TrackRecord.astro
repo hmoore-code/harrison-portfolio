@@ -1,40 +1,24 @@
 ---
-// "My CV and career highlights" (#cv), after the projects (design/18-homepage.html):
-// 3 figures side by side, the closing line, the main buttons again, then who to share the site with.
-// Words come from "## Track record". Sizes are the design's exact px values.
+// "Help me find the right team" (#cv), after the projects: the heading, one paragraph, the 3 kinds
+// of people to share the site with in a wavy box, then the CV, Share and Contact buttons.
+// Words come from "## Track record".
 import { trackRecord } from '../lib/content';
 import { inline } from '../lib/inline';
 import ActionButtons from './ActionButtons.astro';
 import SharePeople from './SharePeople.astro';
-import WavyRule from './WavyRule.astro';
 ---
 
 <section class="record column" id="cv" aria-labelledby="record-heading">
   <div class="record__intro">
     <h2 id="record-heading" class="section-heading">{trackRecord.label}</h2>
-    {trackRecord.intro && <p>{trackRecord.intro}</p>}
+    <p set:html={inline(trackRecord.intro)} />
   </div>
-
-  <ul class="record__figures" role="list">
-    {
-      trackRecord.figures.map((figure) => (
-        <li class="record__figure">
-          <WavyRule />
-          <p class="record__number">{figure.number}</p>
-          <p class="record__label" set:html={inline(figure.label)} />
-        </li>
-      ))
-    }
-  </ul>
-
-  <p class="record__closing" set:html={inline(trackRecord.closingLine)} />
-
-  <ActionButtons />
 
   <div class="share-with">
-    <p class="subheading">{trackRecord.shareWith.leadIn}</p>
-    <SharePeople people={trackRecord.shareWith.people} size={96} />
+    <SharePeople people={trackRecord.people} size={96} />
   </div>
+
+  <ActionButtons />
 </section>
 
 <style>
@@ -42,7 +26,9 @@ import WavyRule from './WavyRule.astro';
     display: flex;
     flex-direction: column;
     gap: 27.5px;
+    /* No star divider below any more, so the section brings its own room before the testimonials. */
     padding-top: 48px;
+    padding-bottom: 64px;
   }
 
   .record__intro {
@@ -57,53 +43,9 @@ import WavyRule from './WavyRule.astro';
     line-height: 1.55;
   }
 
-  .record__figures {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .record__figure {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .record__number {
-    margin: 2px 0 0;
-    font-size: 38px;
-    font-weight: 800;
-    font-stretch: 62%;
-    line-height: 0.9;
-    white-space: nowrap;
-  }
-
-  .record__label {
-    margin: 0;
-    font-size: var(--size-label);
-    font-weight: 500;
-    line-height: 1.35;
-  }
-
-  .record__label :global(strong) {
-    font-weight: 800;
-  }
-
-  .record__closing {
-    margin: 0;
-    font-size: var(--size-body);
-    line-height: 1.55;
-  }
-
   /* A box drawn with wavy lines on all 4 sides, like the one at the top of the page. */
   .share-with {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    padding: calc(5px + 20px) calc(5px + 16px) calc(5px + 22px);
+    padding: calc(5px + 22px) calc(5px + 16px);
     background:
       url('../../assets/svg/rule-wavy.svg') top / 100% 10px no-repeat,
       url('../../assets/svg/rule-wavy.svg') bottom / 100% 10px no-repeat,

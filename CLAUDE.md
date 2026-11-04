@@ -33,7 +33,7 @@ Full spec: `BUILD-BRIEF.md` (read it before any non-trivial change). This file i
 - **Assets: `assets/`** (`images/`, `svg/`, `graphics/`, `fonts/`). Missing assets get visible placeholders.
 
 ## Page order
-Follows copy.md (design/18-homepage.html): sticky top bar, top of page ("Top B"), selected projects (6 cards in copy.md order, no filters), "My CV and career highlights" (#cv: 3 figures, closing line, the CV/Share/Contact buttons, "Share this site with" box), a star divider, the testimonials carousel on a full-width blue band, then Back to top and the footer. All off-white except the blue band. No "What I want to work on" or "Contact me" sections. Pop-ups: one per project, "Try it yourself", CV (last, #my-cv).
+Follows copy.md (design/18-homepage.html): sticky top bar, top of page ("Top B"), selected projects (6 cards in copy.md order, no filters), "Help me find the right team" (#cv: heading, one paragraph, the wavy box of 3 share drawings, then the CV/Share/Contact buttons; no figures or star divider), the testimonials carousel on a full-width blue band, then Back to top and the footer. All off-white except the blue band. No "What I want to work on" or "Contact me" sections. Pop-ups: one per project, "Try it yourself", CV (last, #my-cv).
 
 ## Top of page ("Top B")
 Fields under `## Top of page`: Name, Headline, Subtitle, Main button, Email button, CV link, Contact email, plus `### Share this site with` (lead-in paragraph + bullets) and `### Closing line` (paragraph). Order: portrait (200px, 50% 28%, 2px border, radius 20), h1 headline (40/800/62%/0.92), subtitle (17/500/1.45, bold 800), wavy-bordered share box (28px subheading lead-in, then the 3 share drawings at 56px in a row, 13px labels), closing line (body). No buttons at the top of the page (Harrison, 4 November 2026). 20px gutter, 18px gaps; these are Harrison's exact px values, not scaled `--space-*` steps.
@@ -49,7 +49,7 @@ Fields under `## Top of page`: Name, Headline, Subtitle, Main button, Email butt
 ## Harrison's decisions (override the brief)
 - Project cards show a plain, static, full-colour photo: no pattern covers or scroll effects (removed 4 November 2026). The pattern strip above each pop-up stays.
 - No filters (removed 4 November 2026): all 6 cards always show. The category label (icon + text) stays on cards and pop-ups.
-- Button rows: one row, equal widths, never stacked, all fitting on one line at 320px, 44px+ tall. "My CV" section: CV, Share, Contact (`ActionButtons`). Pop-ups: Share, Contact. These are blue pills (`pill--cta`); every other pill is an outline on white. Labels come from copy.md.
+- Button rows: one row, equal widths, never stacked, all fitting on one line at 320px, 44px+ tall. "Help me find the right team" section: CV, Share, Contact (`ActionButtons`). Pop-ups: Share, Contact. These are blue pills (`pill--cta`); every other pill is an outline on white. Labels come from copy.md.
 - Top bar: name, then CV (opens #my-cv), Share, Contact as blue text links, no icons, all on one line at 320px.
 - CV pop-up shows only the "Message" from `## CV` and the close button, sized to its content (`compact` sheet), until the CV is ready.
 - Share drawings live in `assets/share-icons/` (`SharePeople`): 96px in the "Share this site with" box, 56px in the top of page box; empty alt text.
