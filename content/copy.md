@@ -739,7 +739,7 @@ I can develop creative solutions by researching in the field, design for partici
 ## Track record
 
 - Label: Help me find the right team
-- Intro: I'm a people-loving, end-to-end builder who combines user research, creative production, and coaching. I care about lifelong learning and access to it, reclaiming attention, and connecting people with meaningful work. If you're working on one of the above challenges, or you know someone who is, get in touch or share this portfolio with them.
+- Intro: I'm a people-loving, end-to-end builder who combines user research, creative production, coaching and mentoring. If you're working on the future of learning and work, or you know someone who is, get in touch or share this portfolio with them. Thanks for your help!
 
 ## Quotes
 
