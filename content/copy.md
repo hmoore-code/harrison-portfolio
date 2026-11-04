@@ -38,7 +38,7 @@ I've been an electrician, an artist, a VC-backed founder, and I've studied at th
 
 ### My strengths
 
-In terms of skills, my biggest strengths are:
+**Skills**-wise, my biggest strengths are:
 
 - 📰 Writing and content design
 - 🎨 Creative strategy and production
@@ -48,7 +48,7 @@ In terms of skills, my biggest strengths are:
 
 ### Roles
 
-Titles don't mean much to me, but I'd excel in the following role types in a mission-driven team:
+**Titles** don't mean much to me, but I'd excel in the following role types in a mission-driven team:
 
 - Creative strategist, creative producer or content designer
 - Learning and development designer or coordinator
