@@ -22,7 +22,9 @@ This tab holds only the words that go on the site, in page order. The site is bu
 
 - Name: Harrison Moore
 - Headline: Hey, I'm Harrison, I'm looking to join a team working on the future of education
-- Subtitle: My strengths are **writing**, **creative production**, **user research**, **coaching**, and **partnerships**. I value craftsmanship and autonomy, and I want to help people build a great relationship with learning.
+- Mission: Helping people build a great relationship with learning. Reclaiming attention so we can create and connect more meaningfully. Building the conditions for open-ended exploration and self-directed inquiry. These are the things that light me up and what I want to be working on.
+- Subtitle: My strengths are **writing**, **creative production**, **user research**, **coaching**, and **partnerships**. I value craftsmanship, transparency, autonomy, and humour.
+- Availability: I'm UK-based (prefer hybrid, but open to remote) and available to start immediately.
 - Main button: Share
 - Email button: Contact
 - CV link: CV

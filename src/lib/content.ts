@@ -255,8 +255,10 @@ const shareWithNode = section(heroNode, 'Share this site with');
 export const hero = {
   name: required(heroNode, 'Name'),
   headline: required(heroNode, 'Headline'),
-  // May hold **bold**: render with inline().
+  // These 3 paragraphs may hold **bold**: render with inline().
+  mission: required(heroNode, 'Mission'),
   subtitle: required(heroNode, 'Subtitle'),
+  availability: required(heroNode, 'Availability'),
   mainButton: required(heroNode, 'Main button'),
   emailButton: required(heroNode, 'Email button'),
   cvLink: required(heroNode, 'CV link'),

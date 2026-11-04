@@ -15,12 +15,14 @@ import SharePeople from './SharePeople.astro';
     eager
   />
   <h1 id="headline" class="hero__headline">{hero.headline}</h1>
-  <p class="hero__subtitle" set:html={inline(hero.subtitle)} />
+  <p class="hero__text" set:html={inline(hero.mission)} />
+  <p class="hero__text" set:html={inline(hero.subtitle)} />
+  <p class="hero__text" set:html={inline(hero.availability)} />
 
   <div class="hero__share-with">
     <div class="hero__share-inner">
       <p class="subheading">{hero.shareWith.leadIn}</p>
-      <SharePeople people={hero.shareWith.people} size={56} />
+      <SharePeople people={hero.shareWith.people} size={28} />
     </div>
   </div>
 
@@ -52,13 +54,13 @@ import SharePeople from './SharePeople.astro';
     line-height: 0.92;
   }
 
-  .hero__subtitle {
+  .hero__text {
     margin: 0;
     font-size: var(--size-body);
     line-height: 1.55;
   }
 
-  .hero__subtitle :global(strong) {
+  .hero__text :global(strong) {
     font-weight: 800;
   }
 

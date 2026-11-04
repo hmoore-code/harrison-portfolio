@@ -9,7 +9,12 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/assets/{images,gra
   eager: true,
 });
 const svgs = import.meta.glob<string>('/assets/images/*.svg', { eager: true, query: '?url', import: 'default' });
-const shareIcons = import.meta.glob<string>('/assets/share-icons/*.svg', { eager: true, query: '?url', import: 'default' });
+// Served as their own .svg files, never inlined into the page.
+const shareIcons = import.meta.glob<string>('/assets/share-icons/*.svg', {
+  eager: true,
+  query: '?url&no-inline',
+  import: 'default',
+});
 const pdfs = import.meta.glob<string>('/assets/pdfs/*.pdf', { eager: true, query: '?url', import: 'default' });
 const videos = import.meta.glob<string>('/assets/videos/*.{mp4,webm}', { eager: true, query: '?url', import: 'default' });
 
