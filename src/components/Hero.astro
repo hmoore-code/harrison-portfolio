@@ -16,7 +16,13 @@ import SharePeople from './SharePeople.astro';
   />
   <h1 id="headline" class="hero__headline">{hero.headline}</h1>
   <p class="hero__text" set:html={inline(hero.mission)} />
-  <p class="hero__text" set:html={inline(hero.subtitle)} />
+  <div class="hero__strengths">
+    <p class="hero__text" set:html={inline(hero.strengths.leadIn)} />
+    <ul class="hero__strengths-list" role="list">
+      {hero.strengths.items.map((item) => <li set:html={inline(item)} />)}
+    </ul>
+  </div>
+  <p class="hero__text" set:html={inline(hero.values)} />
   <p class="hero__text" set:html={inline(hero.availability)} />
 
   <div class="hero__share-with">
@@ -62,6 +68,39 @@ import SharePeople from './SharePeople.astro';
 
   .hero__text :global(strong) {
     font-weight: 800;
+  }
+
+  .hero__strengths {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* role="list" keeps it a list for VoiceOver, which drops list-style: none lists. */
+  .hero__strengths-list {
+    display: grid;
+    gap: var(--space-1);
+    margin: 0;
+    padding: 0;
+    font-size: var(--size-body);
+    font-weight: 800;
+    line-height: 1.55;
+    list-style: none;
+  }
+
+  /* The star as the bullet, as in the pop-ups' skills box: 12px, centred on the line, 10px before the text. */
+  .hero__strengths-list li {
+    display: grid;
+    grid-template-columns: 12px 1fr;
+    column-gap: 10px;
+  }
+
+  .hero__strengths-list li::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    margin-top: calc((1.55em - 12px) / 2);
+    background: url('../../assets/svg/star.svg') center / contain no-repeat;
   }
 
   /* A box drawn with wavy lines on all 4 sides. */
