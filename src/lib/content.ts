@@ -255,11 +255,18 @@ const shareWithNode = section(heroNode, 'Share this site with');
 export const hero = {
   name: required(heroNode, 'Name'),
   headline: required(heroNode, 'Headline'),
-  // These paragraphs and the strengths may hold **bold**: render with inline().
-  mission: required(heroNode, 'Mission'),
-  strengths: { leadIn: prose(section(heroNode, 'My strengths')), items: list(section(heroNode, 'My strengths')) },
-  values: required(heroNode, 'Values'),
-  availability: required(heroNode, 'Availability'),
+  // The paragraphs and lists may hold **bold**: render with inline().
+  about: section(heroNode, 'About me').paragraphs,
+  // Each strength starts with its emoji, which shows as the list marker.
+  strengths: {
+    leadIn: prose(section(heroNode, 'My strengths')),
+    items: list(section(heroNode, 'My strengths')).map((item) => {
+      const [, emoji = '', text = item] = item.match(/^(\p{Extended_Pictographic}\uFE0F?)\s*(.*)$/u) ?? [];
+      return { emoji, text };
+    }),
+  },
+  roles: { leadIn: prose(section(heroNode, 'Roles')), items: list(section(heroNode, 'Roles')) },
+  location: required(heroNode, 'Location'),
   mainButton: required(heroNode, 'Main button'),
   emailButton: required(heroNode, 'Email button'),
   cvLink: required(heroNode, 'CV link'),
@@ -267,6 +274,7 @@ export const hero = {
   shareWith: { leadIn: prose(shareWithNode), people: list(shareWithNode) },
   closingLine: prose(section(heroNode, 'Closing line')),
 };
+if (!hero.about.length) errors.push('"About me" under Top of page is missing its paragraphs');
 
 const recordNode = section(live, 'Track record');
 // "Help me find the right team" (#cv): the heading and one paragraph, then the buttons.

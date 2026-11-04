@@ -15,15 +15,32 @@ import SharePeople from './SharePeople.astro';
     eager
   />
   <h1 id="headline" class="hero__headline">{hero.headline}</h1>
-  <p class="hero__text" set:html={inline(hero.mission)} />
-  <div class="hero__strengths">
-    <p class="hero__text" set:html={inline(hero.strengths.leadIn)} />
-    <ul class="hero__strengths-list" role="list">
-      {hero.strengths.items.map((item) => <li set:html={inline(item)} />)}
-    </ul>
+  <div class="hero__copy">
+    {hero.about.map((p) => <p class="hero__text" set:html={inline(p)} />)}
+
+    <div class="hero__group">
+      <p class="hero__text" set:html={inline(hero.strengths.leadIn)} />
+      <ul class="hero__list hero__list--emoji" role="list">
+        {
+          hero.strengths.items.map((item) => (
+            <li>
+              <span class="hero__emoji" aria-hidden="true">{item.emoji}</span>
+              <span set:html={inline(item.text)} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="hero__group">
+      <p class="hero__text" set:html={inline(hero.roles.leadIn)} />
+      <ul class="hero__list hero__list--stars" role="list">
+        {hero.roles.items.map((item) => <li set:html={inline(item)} />)}
+      </ul>
+    </div>
+
+    <p class="hero__text" set:html={inline(hero.location)} />
   </div>
-  <p class="hero__text" set:html={inline(hero.values)} />
-  <p class="hero__text" set:html={inline(hero.availability)} />
 
   <div class="hero__share-with">
     <div class="hero__share-inner">
@@ -70,32 +87,50 @@ import SharePeople from './SharePeople.astro';
     font-weight: 800;
   }
 
-  .hero__strengths {
+  /* The paragraphs and lists, spaced out so they're easy to scan on a phone. */
+  .hero__copy {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 22px;
+  }
+
+  .hero__group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   /* role="list" keeps it a list for VoiceOver, which drops list-style: none lists. */
-  .hero__strengths-list {
+  .hero__list {
     display: grid;
-    gap: var(--space-1);
+    gap: 8px;
     margin: 0;
     padding: 0;
     font-size: var(--size-body);
-    font-weight: 800;
     line-height: 1.55;
     list-style: none;
   }
 
-  /* The star as the bullet, as in the pop-ups' skills box: 12px, centred on the line, 10px before the text. */
-  .hero__strengths-list li {
+  .hero__list li {
     display: grid;
-    grid-template-columns: 12px 1fr;
     column-gap: 10px;
   }
 
-  .hero__strengths-list li::before {
+  /* Strengths: the item's own emoji is the marker. */
+  .hero__list--emoji li {
+    grid-template-columns: 1.4em 1fr;
+  }
+
+  .hero__emoji {
+    text-align: center;
+  }
+
+  /* Roles: the star as the bullet, as in the pop-ups' skills box: 12px, centred on the line. */
+  .hero__list--stars li {
+    grid-template-columns: 12px 1fr;
+  }
+
+  .hero__list--stars li::before {
     content: '';
     width: 12px;
     height: 12px;

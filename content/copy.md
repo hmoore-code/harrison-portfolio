@@ -21,28 +21,44 @@ This tab holds only the words that go on the site, in page order. The site is bu
 ## Top of page
 
 - Name: Harrison Moore
-- Headline: Hey, I'm Harrison, I'm looking to join a team working on the future of education
-- Mission: Helping people build a great relationship with learning. Reclaiming attention so we can create and connect more meaningfully. Building the conditions for open-ended exploration and self-directed inquiry. These are the things that light me up and what I want to be working on.
-- Values: I value craftsmanship, transparency, autonomy, and humour.
-- Availability: I'm UK-based (prefer hybrid, but open to remote) and available to start immediately.
+- Headline: Hey, I'm Harrison, I'm looking to join a team working on the future of education or work
+- Location: 📍 I'm UK-based (I'd prefer hybrid, but open to remote) and available to start immediately.
 - Main button: Share
 - Email button: Contact
 - CV link: CV
 - Contact email: harrison@thenewworkday.com
 
+### About me
+
+Despite being capable, I underperformed at school because I didn't feel engaged. But I got a second chance at my education in my 20s, and it completely changed my life. **My mission is to help others develop a better relationship with learning.**
+
+As part of this, I care about making lifelong learning exciting and accessible, protecting attention so people can learn more effectively, and creating conditions that support “open-ended exploration” so that people can follow their curiosity and discover what they're capable of.
+
+I've been an electrician, an artist, a VC-backed founder, and I've studied at the world's best art and design schools. I want to join a team whose products or services empower people to learn, connect and do their best work.
+
 ### My strengths
 
-My strengths are:
+In terms of skills, my biggest strengths are:
 
-- Writing
-- Creative production
-- User research
-- Coaching
-- Partnerships
+- 📰 Writing and content design
+- 🎨 Creative strategy and production
+- 🧭 Coaching, mentoring and facilitating events
+- 🔍 Conducting front-line user research
+- 🤝 Deepening relationships and building partnerships
+
+### Roles
+
+Titles don't mean much to me, but I'd excel in the following role types in a mission-driven team:
+
+- Creative strategist, creative producer or content designer
+- Learning and development designer or coordinator
+- Coach or mentor
+- Head of community or student experience
+- Customer education manager
 
 ### Share this site with
 
-To help me find a team, you could share this site with:
+To help me find a team, you could share this site with…
 
 - Heads of learning, community or programme teams
 - Founders building learning or future of education products
