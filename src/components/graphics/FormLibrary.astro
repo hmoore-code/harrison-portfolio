@@ -99,7 +99,7 @@ const first = Math.min(2, libraryForms.length - 1);
 
   .workshop__subheading {
     margin: 0;
-    font-size: 24px;
+    font-size: var(--size-subheading);
     font-weight: 800;
     font-stretch: 62%;
     line-height: 1;
@@ -112,7 +112,7 @@ const first = Math.min(2, libraryForms.length - 1);
 
   .workshop__text {
     margin: 0;
-    font-size: 17px;
+    font-size: var(--size-body);
     line-height: 1.55;
   }
 
@@ -139,15 +139,15 @@ const first = Math.min(2, libraryForms.length - 1);
   .library__card :global(.library__name) {
     margin: 0;
     font-family: var(--font-quote);
-    font-size: 44px;
+    font-size: var(--size-card-title);
     font-weight: 400;
     line-height: 1;
   }
 
   .library__card :global(.library__description) {
     margin: 0;
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: var(--size-body);
+    line-height: 1.55;
   }
 
   .library__card :global(.library__part) {
@@ -160,7 +160,7 @@ const first = Math.min(2, libraryForms.length - 1);
   .library__card :global(.library__label) {
     margin: 0;
     color: var(--grey);
-    font-size: 12px;
+    font-size: var(--size-label);
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -168,15 +168,15 @@ const first = Math.min(2, libraryForms.length - 1);
 
   .library__card :global(.library__value) {
     margin: 0;
-    font-size: 15px;
-    line-height: 1.5;
+    font-size: var(--size-body);
+    line-height: 1.55;
   }
 
   .library__card :global(.library__example) {
     display: inline-flex;
     gap: 6px;
-    font-size: 15px;
-    line-height: 1.5;
+    font-size: var(--size-body);
+    line-height: 1.55;
   }
 
   .library__card :global(.library__example svg) {
@@ -196,7 +196,7 @@ const first = Math.min(2, libraryForms.length - 1);
     border: 0;
     background: #eef57a;
     color: var(--ink);
-    font-size: 17px;
+    font-size: var(--size-small);
     font-weight: 800;
     text-align: left;
   }

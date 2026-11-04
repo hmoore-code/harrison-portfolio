@@ -13,6 +13,7 @@ This tab holds only the words that go on the site, in page order. The site is bu
 ## Top bar
 
 - Label: Harrison Moore's Portfolio
+- CV button: CV
 - Share button: Share
 - Share confirmation: Link copied
 - Email button: Contact
@@ -940,4 +941,4 @@ I first met Harrison at the BGV accelerator programme and was struck by his visi
 
 ## CV
 
-- &#91;TO DO: written last, opens in a pop-up with a download option\]
+- Message: Come back shortly, I'm just giving my CV a revamp!

@@ -244,6 +244,7 @@ export const meta = {
 const topBarNode = section(live, 'Top bar');
 export const topBar = {
   label: required(topBarNode, 'Label'),
+  cvButton: required(topBarNode, 'CV button'),
   shareButton: required(topBarNode, 'Share button'),
   emailButton: required(topBarNode, 'Email button'),
   shareConfirmation: required(topBarNode, 'Share confirmation'),
@@ -467,10 +468,9 @@ export const contact = {
 };
 
 const cvNode = section(live, 'CV');
+// For now the CV pop-up shows just this message while the CV is being revamped.
 export const cv = {
-  heading: cvNode.heading,
-  body: cvNode.bullets.map((b) => asText(b.raw)).concat(cvNode.paragraphs.map(asText)),
-  downloadButton: optional(cvNode, 'Download button'),
+  message: required(cvNode, 'Message'),
 };
 
 if (errors.length) {

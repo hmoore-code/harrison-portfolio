@@ -224,7 +224,7 @@ const extras = project.extras.map((extra) => ({
     <p class="skills-box__closing" set:html={inline(projectsIntro.skillsBoxClosingLine)} />
     <div class="skills-box__actions">
       <button
-        class="pill pill--outline"
+        class="pill pill--cta"
         type="button"
         data-share
         data-share-hash={`#${project.slug}`}
@@ -234,7 +234,7 @@ const extras = project.extras.map((extra) => ({
         <Icon name="share" />
         {projectsIntro.shareProjectButton}
       </button>
-      <a class="pill pill--solid" href={`mailto:${hero.email}`}>
+      <a class="pill pill--cta" href={`mailto:${hero.email}`}>
         <Icon name="mail" />
         {projectsIntro.getInTouchButton}
       </a>
@@ -318,6 +318,17 @@ const extras = project.extras.map((extra) => ({
     padding: 10px 14px;
   }
 
+  /* Very small phones: a little less padding so "Organisation" fits inside its square. */
+  @media (max-width: 359px) {
+    .facts__square {
+      padding: 10px 9px;
+    }
+
+    .facts dt {
+      font-stretch: 85%;
+    }
+  }
+
   /* Square on phones; on wide screens squares would be needlessly tall. */
   @media (min-width: 760px) {
     .facts__square {
@@ -328,7 +339,7 @@ const extras = project.extras.map((extra) => ({
 
   .facts dt {
     color: var(--grey);
-    font-size: 11px;
+    font-size: var(--size-label);
     font-weight: 500;
   }
 
@@ -350,7 +361,7 @@ const extras = project.extras.map((extra) => ({
 
   .facts dd {
     margin: 0;
-    font-size: 12.5px;
+    font-size: var(--size-label);
     font-weight: 500;
     font-stretch: 85%;
     line-height: 1.25;
@@ -387,7 +398,7 @@ const extras = project.extras.map((extra) => ({
   .skills-box p,
   .skills-box ul {
     margin: 0;
-    font-size: 17px;
+    font-size: var(--size-body);
     line-height: 1.55;
   }
 
@@ -432,7 +443,6 @@ const extras = project.extras.map((extra) => ({
     min-width: 0;
     min-height: 48px;
     padding: 0 8px;
-    font-size: 15px;
     white-space: nowrap;
   }
 
@@ -474,7 +484,7 @@ const extras = project.extras.map((extra) => ({
     gap: 4px;
     margin: 0;
     padding-left: 22px;
-    font-size: 17px;
+    font-size: var(--size-body);
     line-height: 1.55;
   }
 
@@ -494,7 +504,7 @@ const extras = project.extras.map((extra) => ({
 
   .story__figure figcaption {
     color: var(--grey);
-    font-size: 12px;
+    font-size: var(--size-label);
     line-height: 1.4;
   }
 
@@ -539,7 +549,7 @@ const extras = project.extras.map((extra) => ({
     /* A word too long for the screen wraps rather than pushing the pop-up wider. */
     overflow-wrap: break-word;
     font-family: var(--font-quote);
-    font-size: var(--size-card-title);
+    font-size: var(--size-pull-quote);
     font-style: italic;
     font-weight: 400;
     line-height: 1.05;
@@ -547,7 +557,7 @@ const extras = project.extras.map((extra) => ({
 
   .pull-quote figcaption {
     margin-top: 12px;
-    font-size: 15px;
+    font-size: var(--size-small);
     font-weight: 600;
   }
 
@@ -576,13 +586,13 @@ const extras = project.extras.map((extra) => ({
   .video figcaption {
     padding: 10px 14px;
     border-top: var(--line);
-    font-size: 15px;
+    font-size: var(--size-label);
   }
 
   .exhibitions {
     margin: 0;
     padding-left: 1.2em;
-    font-size: 15px;
-    line-height: 1.5;
+    font-size: var(--size-body);
+    line-height: 1.55;
   }
 </style>

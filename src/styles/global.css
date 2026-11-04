@@ -12,8 +12,11 @@
   --paper: #fafaf7;
   --white: #ffffff;
   --grey: #4a4a46;
-  /* The testimonials band (Harrison's addition to the 4 colours), with white text on it. */
+  /* Harrison's additions to the 4 colours: blue for the CV, Share and Contact buttons, the top bar
+     links and the current testimonial name; periwinkle behind the testimonials, with #333 roles on it. */
   --blue: #1f1fb3;
+  --periwinkle: #b0b9f0;
+  --grey-dark: #333333;
 
   --line: 2px solid var(--ink);
   /* Every quote and testimonial. */
@@ -36,17 +39,26 @@
   --radius-thumb: 10px;
   --radius-sheet: 24px;
 
-  --size-headline: 58px;
+  /* The type scale: every piece of text uses one of these (big stat numbers keep their own size).
+     Headings are Archivo 800 at 62% width. */
   /* Shrinks on phones so the longest title word ("communication", ~5.3 x font size) fits. */
-  --size-popup-title: min(72px, calc((100vw - 40px) / 5.4));
+  --size-popup-title: min(65px, calc((100vw - 40px) / 5.4));
   --size-section: 56px;
+  /* Hero headline and card titles. */
   --size-card-title: 40px;
   --size-subheading: 28px;
+  --size-body: 17px;
+  /* Testimonial names, links and buttons. */
+  --size-small: 15px;
+  /* Labels and captions. */
+  --size-label: 13px;
+  --size-pull-quote: 32px;
+  --size-carousel-quote: 24px;
 }
 
+/* Below 360px the biggest headings shrink a little so long words still fit. */
 @media (max-width: 359px) {
   :root {
-    --size-headline: 48px;
     --size-section: 46px;
     --size-card-title: 34px;
     --size-subheading: 24px;
@@ -68,7 +80,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: 'Archivo', system-ui, sans-serif;
-  font-size: 17px;
+  font-size: var(--size-body);
   font-weight: 400;
   line-height: 1.55;
 }
@@ -127,7 +139,7 @@ button {
   border-radius: 8px;
   background: var(--white);
   color: var(--ink);
-  font-size: 15px;
+  font-size: var(--size-small);
   font-weight: 700;
 }
 
@@ -186,7 +198,7 @@ button {
   border-radius: var(--radius-thumb);
   background: var(--paper);
   color: var(--ink);
-  font-size: 13px;
+  font-size: var(--size-label);
   font-weight: 600;
   line-height: 1.4;
 }
@@ -208,27 +220,28 @@ button {
   padding: 0 var(--space-5);
   border: 2px solid var(--ink);
   border-radius: 999px;
-  font-size: 17px;
+  font-size: var(--size-small);
   font-weight: 700;
   line-height: 1.2;
   text-align: center;
   text-decoration: none;
 }
 
-.pill--solid {
-  background: var(--ink);
-  color: var(--paper);
+.pill--outline {
+  background: var(--white);
+  color: var(--ink);
 }
 
-.pill--outline {
-  background: transparent;
-  color: var(--ink);
+/* CV, Share and Contact: blue with white words and icons. */
+.pill--cta {
+  border-color: var(--blue);
+  background: var(--blue);
+  color: var(--white);
 }
 
 .pill--small {
   min-height: 48px;
   padding: 0 20px;
-  font-size: 15px;
 }
 
 .section-heading {
@@ -241,7 +254,7 @@ button {
 
 .label {
   margin: 0;
-  font-size: 13px;
+  font-size: var(--size-label);
   font-weight: 600;
   line-height: 1.3;
 }
@@ -275,7 +288,7 @@ html:has(dialog[open]) {
 .story p,
 .shows p {
   margin: 0;
-  font-size: 17px;
+  font-size: var(--size-body);
   line-height: 1.55;
 }
 
@@ -297,7 +310,7 @@ html:has(dialog[open]) {
   padding: 10px 16px 10px 20px;
   border: var(--line);
   border-radius: 26px;
-  font-size: 15px;
+  font-size: var(--size-small);
   font-weight: 600;
   line-height: 1.3;
   text-decoration: none;
@@ -308,7 +321,7 @@ html:has(dialog[open]) {
   flex: none;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
+  font-size: var(--size-label);
 }
 
 .extras {

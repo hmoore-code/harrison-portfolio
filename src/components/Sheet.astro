@@ -8,23 +8,30 @@ import SiteCredit from './SiteCredit.astro';
 interface Props {
   id: string;
   labelledby: string;
-  label: string;
+  // Left out for a bare pop-up: then only the close button shows in the bar, and there's no footer.
+  label?: string;
   // A project pop-up passes its filter so the label gets the filter's icon.
   filterId?: string;
   parent?: string;
+  // Only as tall as its content, sitting at the bottom of the screen (centred on wide screens).
+  compact?: boolean;
   // A project pop-up's backdrop on phones uses its filter's cover pattern, like its card.
   cover?: 'wavy' | 'straight' | 'contour';
 }
 
-const { id, labelledby, label, filterId, parent, cover } = Astro.props;
+const { id, labelledby, label, filterId, parent, cover, compact } = Astro.props;
 ---
 
-<dialog class="sheet" id={id} aria-labelledby={labelledby} data-dialog data-parent={parent} data-cover={cover}>
+<dialog class:list={['sheet', compact && 'sheet--compact']} id={id} aria-labelledby={labelledby} data-dialog data-parent={parent} data-cover={cover}>
   <div class="sheet__bar">
-    <p class="label sheet__label">
-      {filterId && <FilterIcon filterId={filterId} />}
-      {label}
-    </p>
+    {
+      label && (
+        <p class="label sheet__label">
+          {filterId && <FilterIcon filterId={filterId} />}
+          {label}
+        </p>
+      )
+    }
     <button class="sheet__close" type="button" data-close-dialog aria-label="Close">
       <Icon name="close" />
     </button>
@@ -32,13 +39,18 @@ const { id, labelledby, label, filterId, parent, cover } = Astro.props;
   <div class="sheet__body">
     <slot />
   </div>
-  <footer class="sheet__footer">
-    <SiteCredit />
-  </footer>
+  {
+    label && (
+      <footer class="sheet__footer">
+        <SiteCredit />
+      </footer>
+    )
+  }
 </dialog>
 
 <style>
   .sheet__label {
+    margin-right: auto;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -60,6 +72,14 @@ const { id, labelledby, label, filterId, parent, cover } = Astro.props;
     border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
     background: var(--paper);
     color: var(--ink);
+  }
+
+  .sheet--compact {
+    top: auto;
+  }
+
+  .sheet--compact .sheet__body {
+    padding-bottom: var(--space-7);
   }
 
   .sheet[open] {
@@ -94,6 +114,18 @@ const { id, labelledby, label, filterId, parent, cover } = Astro.props;
       border-bottom: 0;
     }
 
+    .sheet--compact {
+      top: 50%;
+      bottom: auto;
+      border-bottom: var(--line);
+      border-radius: var(--radius-sheet);
+      transform: translateY(-50%);
+    }
+
+    .sheet--compact[open] {
+      animation: none;
+    }
+
     .sheet::backdrop,
     .sheet[data-cover]::backdrop {
       background: rgb(17 17 17 / 60%);
@@ -113,7 +145,7 @@ const { id, labelledby, label, filterId, parent, cover } = Astro.props;
     z-index: 2;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: var(--space-3);
     padding: var(--space-3) var(--gutter) var(--space-2);
     background: var(--paper);

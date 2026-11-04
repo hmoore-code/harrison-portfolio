@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Founder building a learning product"><defs><filter id="wob-share-founders"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="1"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter></defs><g fill="none" stroke="#1a1a1a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#wob-share-founders)"><path d="M26 200 C36 152 164 152 174 200 Z" fill="#fbfaf6"></path><path d="M70 156 q30 30 60 0" fill="#fbfaf6"></path>
+<path d="M90 168 v20 M110 168 v20" stroke-width="4"></path><circle cx="90" cy="190" r="3" fill="#1a1a1a"></circle><circle cx="110" cy="190" r="3" fill="#1a1a1a"></circle>
+<path d="M88 128 v24 M112 128 v24"></path>
+<path d="M66 106 q-8 2 -4 12 q4 4 6 0 M134 106 q8 2 4 12 q-4 4 -6 0" fill="#fbfaf6" stroke-width="4"></path>
+<ellipse cx="100" cy="102" rx="33" ry="36" fill="#fbfaf6"></ellipse>
+<path d="M64 90 Q66 46 100 44 Q134 46 136 90 Z" fill="#fbfaf6"></path>
+<path d="M60 84 H140 V98 H60 Z" fill="#fbfaf6"></path>
+<path d="M70 84 v14 M80 84 v14 M90 84 v14 M100 84 v14 M110 84 v14 M120 84 v14 M130 84 v14" stroke-width="3"></path>
+<circle cx="100" cy="40" r="10" fill="#fbfaf6" stroke-width="5"></circle>
+<path d="M80 104 l12 -2 M108 102 l12 2" stroke-width="4"></path>
+<path d="M88 110 v2 M112 110 v2" stroke-width="5"></path><path d="M91 120 q9 8 18 0" stroke-width="3.5"></path><circle cx="84" cy="122" r="1.4" fill="#1a1a1a" stroke="none"></circle><circle cx="90" cy="128" r="1.4" fill="#1a1a1a" stroke="none"></circle><circle cx="96" cy="131" r="1.4" fill="#1a1a1a" stroke="none"></circle><circle cx="104" cy="131" r="1.4" fill="#1a1a1a" stroke="none"></circle><circle cx="110" cy="128" r="1.4" fill="#1a1a1a" stroke="none"></circle><circle cx="116" cy="122" r="1.4" fill="#1a1a1a" stroke="none"></circle><circle cx="88" cy="120" r="1.4" fill="#1a1a1a" stroke="none"></circle><circle cx="112" cy="120" r="1.4" fill="#1a1a1a" stroke="none"></circle><circle cx="100" cy="127" r="1.4" fill="#1a1a1a" stroke="none"></circle><circle cx="93" cy="124" r="1.4" fill="#1a1a1a" stroke="none"></circle><circle cx="107" cy="124" r="1.4" fill="#1a1a1a" stroke="none"></circle></g></svg>

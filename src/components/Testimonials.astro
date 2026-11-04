@@ -132,21 +132,17 @@ const slides = testimonials.quotes.map((t, i) => ({
 </script>
 
 <style>
-  /* Blue from edge to edge, everything on it in white (at least 7:1 contrast). */
+  /* Periwinkle from edge to edge: ink text on it is about 9.9:1, the #333 roles about 6.6:1. */
   .testimonials {
     padding: 48px 0 56px;
-    background: var(--blue);
-    color: var(--white);
+    background: var(--periwinkle);
+    color: var(--ink);
   }
 
   .testimonials__inner {
     display: flex;
     flex-direction: column;
     gap: 24px;
-  }
-
-  .testimonials :focus-visible {
-    outline-color: var(--white);
   }
 
   .carousel {
@@ -184,7 +180,7 @@ const slides = testimonials.quotes.map((t, i) => ({
   .testimonial blockquote {
     margin: 0;
     font-family: var(--font-quote);
-    font-size: 24px;
+    font-size: var(--size-carousel-quote);
     font-style: italic;
     font-weight: 400;
     line-height: 1.22;
@@ -194,17 +190,17 @@ const slides = testimonials.quotes.map((t, i) => ({
     display: flex;
     flex-direction: column;
     padding-top: 12px;
-    border-top: 2px solid var(--white);
+    border-top: var(--line);
   }
 
   .testimonial__name {
-    font-size: 15px;
+    font-size: var(--size-small);
     font-weight: 700;
   }
 
   .testimonial__role {
-    color: rgb(255 255 255 / 80%);
-    font-size: 13px;
+    color: var(--grey-dark);
+    font-size: var(--size-label);
     font-weight: 600;
   }
 
@@ -222,18 +218,19 @@ const slides = testimonials.quotes.map((t, i) => ({
     min-height: 44px;
     padding: 0 14px;
     overflow: hidden;
-    border: 2px solid var(--white);
+    border: var(--line);
     border-radius: 999px;
-    background: transparent;
-    color: var(--white);
-    font-size: 14px;
+    background: var(--white);
+    color: var(--ink);
+    font-size: var(--size-small);
     font-weight: 700;
     scroll-snap-align: start;
   }
 
   .name-pill[aria-current='true'] {
-    background: var(--white);
-    color: var(--blue);
+    border-color: var(--blue);
+    background: var(--blue);
+    color: var(--white);
   }
 
   /* Fills up along the bottom of the current name as its countdown runs. */
@@ -243,7 +240,7 @@ const slides = testimonials.quotes.map((t, i) => ({
     left: 0;
     width: 100%;
     height: 3px;
-    background: var(--blue);
+    background: var(--white);
     transform: scaleX(var(--progress, 0));
     transform-origin: left;
   }

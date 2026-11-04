@@ -1,0 +1,69 @@
+---
+// The 3 kinds of people to share the site with, each drawing above its label, in a row of 3.
+// The drawings come from assets/share-icons/ in this order; a dashed circle stands in for a missing one.
+// The alt text is empty because each label says who it is.
+import { findShareIcon } from '../lib/assets';
+
+interface Props {
+  people: string[];
+  // Drawing size in px: about 96 in the box near the bottom, 56 in the top of page box.
+  size: number;
+}
+const { people, size } = Astro.props;
+const files = ['share-heads-of-learning.svg', 'share-founders.svg', 'share-researchers.svg'];
+---
+
+<ul class="share-people" role="list" style={`--icon-size: ${size}px`}>
+  {
+    people.map((person, i) => {
+      const src = files[i] && findShareIcon(files[i]);
+      return (
+        <li>
+          {src ? (
+            <img class="share-people__icon" src={src} alt="" width={size} height={size} loading="lazy" />
+          ) : (
+            <span class="share-people__icon share-people__icon--missing" aria-hidden="true" />
+          )}
+          <span class="share-people__label">{person}</span>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style>
+  .share-people {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .share-people li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .share-people__icon {
+    width: var(--icon-size);
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .share-people__icon--missing {
+    border: 2px dashed var(--ink);
+    border-radius: 50%;
+  }
+
+  .share-people__label {
+    font-size: var(--size-label);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+</style>

@@ -4,6 +4,7 @@
 import { hero, meta } from '../lib/content';
 import { inline } from '../lib/inline';
 import Photo from './Photo.astro';
+import SharePeople from './SharePeople.astro';
 ---
 
 <section class="hero column" aria-labelledby="headline">
@@ -18,10 +19,8 @@ import Photo from './Photo.astro';
 
   <div class="hero__share-with">
     <div class="hero__share-inner">
-      <p class="hero__lead-in">{hero.shareWith.leadIn}</p>
-      <ul class="hero__people">
-        {hero.shareWith.people.map((person) => <li>{person}</li>)}
-      </ul>
+      <p class="subheading">{hero.shareWith.leadIn}</p>
+      <SharePeople people={hero.shareWith.people} size={56} />
     </div>
   </div>
 
@@ -47,7 +46,7 @@ import Photo from './Photo.astro';
 
   .hero__headline {
     margin: 0;
-    font-size: 40px;
+    font-size: var(--size-card-title);
     font-weight: 800;
     font-stretch: 62%;
     line-height: 0.92;
@@ -55,9 +54,8 @@ import Photo from './Photo.astro';
 
   .hero__subtitle {
     margin: 0;
-    font-size: 17px;
-    font-weight: 500;
-    line-height: 1.45;
+    font-size: var(--size-body);
+    line-height: 1.55;
   }
 
   .hero__subtitle :global(strong) {
@@ -77,30 +75,13 @@ import Photo from './Photo.astro';
   .hero__share-inner {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding: 18px 18px 20px;
-  }
-
-  .hero__lead-in {
-    margin: 0;
-    font-size: 22px;
-    font-weight: 800;
-    font-stretch: 62%;
-    line-height: 1;
-  }
-
-  .hero__people {
-    display: grid;
-    gap: 8px;
-    margin: 0;
-    padding-left: 1.2em;
-    font-size: 16px;
-    line-height: 1.4;
+    gap: 18px;
+    padding: 18px 16px 20px;
   }
 
   .hero__closing {
     margin: 0;
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: var(--size-body);
+    line-height: 1.55;
   }
 </style>

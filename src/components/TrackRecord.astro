@@ -5,6 +5,7 @@
 import { trackRecord } from '../lib/content';
 import { inline } from '../lib/inline';
 import ActionButtons from './ActionButtons.astro';
+import SharePeople from './SharePeople.astro';
 import WavyRule from './WavyRule.astro';
 ---
 
@@ -31,18 +32,8 @@ import WavyRule from './WavyRule.astro';
   <ActionButtons />
 
   <div class="share-with">
-    <p class="share-with__lead">{trackRecord.shareWith.leadIn}</p>
-    <ul class="share-with__people" role="list">
-      {
-        trackRecord.shareWith.people.map((person) => (
-          <li>
-            {/* Harrison's drawings will go here. */}
-            <span class="share-with__icon" aria-hidden="true" />
-            <span class="share-with__label">{person}</span>
-          </li>
-        ))
-      }
-    </ul>
+    <p class="subheading">{trackRecord.shareWith.leadIn}</p>
+    <SharePeople people={trackRecord.shareWith.people} size={96} />
   </div>
 </section>
 
@@ -62,9 +53,8 @@ import WavyRule from './WavyRule.astro';
 
   .record__intro p {
     margin: 0;
-    font-size: 17px;
-    font-weight: 500;
-    line-height: 1.45;
+    font-size: var(--size-body);
+    line-height: 1.55;
   }
 
   .record__figures {
@@ -93,7 +83,7 @@ import WavyRule from './WavyRule.astro';
 
   .record__label {
     margin: 0;
-    font-size: 12px;
+    font-size: var(--size-label);
     font-weight: 500;
     line-height: 1.35;
   }
@@ -104,9 +94,8 @@ import WavyRule from './WavyRule.astro';
 
   .record__closing {
     margin: 0;
-    font-size: 19px;
-    font-weight: 500;
-    line-height: 1.4;
+    font-size: var(--size-body);
+    line-height: 1.55;
   }
 
   /* A box drawn with wavy lines on all 4 sides, like the one at the top of the page. */
@@ -120,44 +109,5 @@ import WavyRule from './WavyRule.astro';
       url('../../assets/svg/rule-wavy.svg') bottom / 100% 10px no-repeat,
       url('../../assets/svg/wave-v.svg') left / 10px 100% no-repeat,
       url('../../assets/svg/wave-v.svg') right / 10px 100% no-repeat;
-  }
-
-  .share-with__lead {
-    margin: 0;
-    font-size: 22px;
-    font-weight: 800;
-    font-stretch: 62%;
-    line-height: 1;
-  }
-
-  .share-with__people {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .share-with__people li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    text-align: center;
-  }
-
-  /* A dashed circle until Harrison's drawings arrive. */
-  .share-with__icon {
-    width: 76px;
-    height: 76px;
-    border: 2px dashed var(--ink);
-    border-radius: 50%;
-  }
-
-  .share-with__label {
-    font-size: 12.5px;
-    font-weight: 600;
-    line-height: 1.3;
   }
 </style>

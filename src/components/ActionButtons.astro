@@ -1,5 +1,5 @@
 ---
-// CV, Share and Contact in one row, sharing it equally; Contact is the site's only solid button.
+// CV, Share and Contact in one row, sharing it equally, as blue pills.
 // Shown after the career highlights. Words come from "## Top of page".
 import { hero, meta, topBar } from '../lib/content';
 import Icon from './Icon.astro';
@@ -11,12 +11,12 @@ const { class: className } = Astro.props;
 ---
 
 <div class:list={['actions', className]}>
-  <a class="pill pill--outline" href="#my-cv" data-open-dialog="my-cv">
+  <a class="pill pill--cta" href="#my-cv" data-open-dialog="my-cv">
     <Icon name="document" />
     {hero.cvLink}
   </a>
   <button
-    class="pill pill--outline"
+    class="pill pill--cta"
     type="button"
     data-share
     data-share-title={meta.pageTitle}
@@ -25,7 +25,7 @@ const { class: className } = Astro.props;
     <Icon name="share" />
     {hero.mainButton}
   </button>
-  <a class="pill pill--solid" href={`mailto:${hero.email}`}>
+  <a class="pill pill--cta" href={`mailto:${hero.email}`}>
     <Icon name="mail" />
     {hero.emailButton}
   </a>
@@ -44,7 +44,6 @@ const { class: className } = Astro.props;
     min-width: 0;
     min-height: 48px;
     padding: 0 8px;
-    font-size: 15px;
     white-space: nowrap;
   }
 

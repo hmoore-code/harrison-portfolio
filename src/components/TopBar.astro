@@ -1,6 +1,5 @@
 ---
 import { hero, topBar, meta } from '../lib/content';
-import Icon from './Icon.astro';
 ---
 
 <header class="top-bar">
@@ -9,10 +8,7 @@ import Icon from './Icon.astro';
       {topBar.label}
     </a>
     <div class="top-bar__actions">
-      <a class="top-bar__action" href={`mailto:${hero.email}`}>
-        <Icon name="mail" />
-        {topBar.emailButton}
-      </a>
+      <a class="top-bar__action" href="#my-cv" data-open-dialog="my-cv">{topBar.cvButton}</a>
       <button
         class="top-bar__action"
         type="button"
@@ -20,9 +16,9 @@ import Icon from './Icon.astro';
         data-share-title={meta.pageTitle}
         data-share-confirmation={topBar.shareConfirmation}
       >
-        <Icon name="share" />
         {topBar.shareButton}
       </button>
+      <a class="top-bar__action" href={`mailto:${hero.email}`}>{topBar.emailButton}</a>
     </div>
   </div>
 </header>
@@ -70,22 +66,20 @@ import Icon from './Icon.astro';
     height: 100%;
     max-width: var(--column);
     margin: 0 auto;
-    padding: 0 var(--space-2) 0 var(--gutter);
+    padding: 0 var(--gutter);
   }
 
+  /* Name and links all stay on one line, down to 320px wide. */
   .top-bar__name {
     display: flex;
     align-items: center;
+    min-width: 0;
     min-height: 44px;
-    font-size: 13px;
+    font-size: var(--size-label);
     font-weight: 600;
     line-height: 1.2;
     text-decoration: none;
-  }
-
-  /* The icons keep their size; on very small phones the name wraps instead. */
-  .top-bar__action :global(svg) {
-    flex: none;
+    white-space: nowrap;
   }
 
   .top-bar__actions {
@@ -93,30 +87,37 @@ import Icon from './Icon.astro';
     flex: none;
   }
 
-
   .top-bar__action {
     display: flex;
     align-items: center;
-    gap: 7px;
     min-height: 44px;
-    padding: 0 12px;
+    padding: 0 10px;
     border: 0;
     background: transparent;
-    font-size: 14px;
+    color: var(--blue);
+    font-size: var(--size-label);
     font-weight: 700;
     text-decoration: none;
     white-space: nowrap;
   }
 
-  /* Very small phones: tighter buttons so the name keeps to 2 lines at most. */
+  .top-bar__action:last-child {
+    padding-right: 0;
+  }
+
+  /* Very small phones: a touch smaller and tighter so everything still fits on one line. */
   @media (max-width: 359px) {
     .top-bar__inner {
-      padding-left: 16px;
+      padding: 0 16px;
+    }
+
+    .top-bar__name,
+    .top-bar__action {
+      font-size: 12px;
     }
 
     .top-bar__action {
-      gap: 5px;
-      padding: 0 7px;
+      padding: 0 6px;
     }
   }
 </style>
