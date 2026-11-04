@@ -66,7 +66,7 @@ To help me find a team, you could share this site with…
 
 ### Closing line
 
-Below are selected projects that showcase my skills and experience. Thanks for your help!
+Below are selected projects that showcase my experience. You can view my CV for a more in-depth look. Thanks for your help!
 
 ## Projects
 
