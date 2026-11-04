@@ -729,12 +729,6 @@ I can develop creative solutions by researching in the field, design for partici
 - Label: Help me find the right team
 - Intro: I'm a people-loving, end-to-end builder who combines user research, creative production, and coaching. I care about lifelong learning and access to it, reclaiming attention, and connecting people with meaningful work. If you're working on one of the above challenges, or you know someone who is, get in touch or share this portfolio with them.
 
-### Share this site with
-
-- Heads of learning, community or programme teams
-- Founders building learning or future-of-education products
-- People running research teams at think tanks and innovation hubs
-
 ## Quotes
 
 - Heading: Testimonials

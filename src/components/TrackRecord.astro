@@ -1,21 +1,16 @@
 ---
-// "Help me find the right team" (#cv), after the projects: the heading, one paragraph, the 3 kinds
-// of people to share the site with in a wavy box, then the CV, Share and Contact buttons.
+// "Help me find the right team" (#cv), after the projects: the heading, one paragraph, then the
+// CV, Share and Contact buttons.
 // Words come from "## Track record".
 import { trackRecord } from '../lib/content';
 import { inline } from '../lib/inline';
 import ActionButtons from './ActionButtons.astro';
-import SharePeople from './SharePeople.astro';
 ---
 
 <section class="record column" id="cv" aria-labelledby="record-heading">
   <div class="record__intro">
     <h2 id="record-heading" class="section-heading">{trackRecord.label}</h2>
     <p set:html={inline(trackRecord.intro)} />
-  </div>
-
-  <div class="share-with">
-    <SharePeople people={trackRecord.people} size={96} />
   </div>
 
   <ActionButtons />
@@ -41,15 +36,5 @@ import SharePeople from './SharePeople.astro';
     margin: 0;
     font-size: var(--size-body);
     line-height: 1.55;
-  }
-
-  /* A box drawn with wavy lines on all 4 sides, like the one at the top of the page. */
-  .share-with {
-    padding: calc(5px + 22px) calc(5px + 16px);
-    background:
-      url('../../assets/svg/rule-wavy.svg') top / 100% 10px no-repeat,
-      url('../../assets/svg/rule-wavy.svg') bottom / 100% 10px no-repeat,
-      url('../../assets/svg/wave-v.svg') left / 10px 100% no-repeat,
-      url('../../assets/svg/wave-v.svg') right / 10px 100% no-repeat;
   }
 </style>

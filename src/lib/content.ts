@@ -266,15 +266,11 @@ export const hero = {
 };
 
 const recordNode = section(live, 'Track record');
-const recordShareNode = section(recordNode, 'Share this site with');
-// "Help me find the right team" (#cv): the heading, one paragraph, then the 3 kinds of people.
+// "Help me find the right team" (#cv): the heading and one paragraph, then the buttons.
 export const trackRecord = {
   label: required(recordNode, 'Label'),
   intro: required(recordNode, 'Intro'),
-  people: list(recordShareNode),
 };
-if (trackRecord.people.length !== 3)
-  errors.push('Track record needs "### Share this site with" with 3 kinds of people');
 
 const projectsNode = section(live, 'Projects');
 const filtersNode = section(projectsNode, 'Filters');
