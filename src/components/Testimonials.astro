@@ -13,46 +13,48 @@ const slides = testimonials.quotes.map((t, i) => ({
 }));
 ---
 
-<section class="testimonials column" aria-labelledby="testimonials-heading">
-  <h2 id="testimonials-heading" class="section-heading">{testimonials.heading}</h2>
-  <div
-    class="carousel"
-    role="region"
-    aria-roledescription={testimonials.carouselDescription}
-    aria-labelledby="testimonials-heading"
-    data-carousel
-  >
-    <div class="carousel__slides" data-carousel-slides>
-      {
-        slides.map((t, i) => (
-          <figure class="testimonial" id={t.id} data-slide data-seconds={t.seconds} hidden={i !== 0}>
-            <span class="testimonial__mark" aria-hidden="true">
-              “
-            </span>
-            <blockquote>{t.quote}”</blockquote>
-            <figcaption>
-              <span class="testimonial__name">{t.name}</span>
-              <span class="testimonial__role">{t.role}</span>
-            </figcaption>
-          </figure>
-        ))
-      }
-    </div>
-    <div class="carousel__names" role="group" aria-label={testimonials.namesLabel} data-carousel-names>
-      {
-        slides.map((t, i) => (
-          <button
-            class="name-pill"
-            type="button"
-            aria-controls={t.id}
-            aria-current={i === 0 ? 'true' : undefined}
-            data-pick={i}
-          >
-            {t.firstName}
-            <span class="name-pill__bar" aria-hidden="true" />
-          </button>
-        ))
-      }
+<section class="testimonials" aria-labelledby="testimonials-heading">
+  <div class="testimonials__inner column">
+    <h2 id="testimonials-heading" class="section-heading">{testimonials.heading}</h2>
+    <div
+      class="carousel"
+      role="region"
+      aria-roledescription={testimonials.carouselDescription}
+      aria-labelledby="testimonials-heading"
+      data-carousel
+    >
+      <div class="carousel__slides" data-carousel-slides>
+        {
+          slides.map((t, i) => (
+            <figure class="testimonial" id={t.id} data-slide data-seconds={t.seconds} hidden={i !== 0}>
+              <span class="testimonial__mark" aria-hidden="true">
+                “
+              </span>
+              <blockquote>{t.quote}”</blockquote>
+              <figcaption>
+                <span class="testimonial__name">{t.name}</span>
+                <span class="testimonial__role">{t.role}</span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+      <div class="carousel__names" role="group" aria-label={testimonials.namesLabel} data-carousel-names>
+        {
+          slides.map((t, i) => (
+            <button
+              class="name-pill"
+              type="button"
+              aria-controls={t.id}
+              aria-current={i === 0 ? 'true' : undefined}
+              data-pick={i}
+            >
+              {t.firstName}
+              <span class="name-pill__bar" aria-hidden="true" />
+            </button>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
@@ -130,11 +132,21 @@ const slides = testimonials.quotes.map((t, i) => ({
 </script>
 
 <style>
+  /* Blue from edge to edge, everything on it in white (at least 7:1 contrast). */
   .testimonials {
+    padding: 48px 0 56px;
+    background: var(--blue);
+    color: var(--white);
+  }
+
+  .testimonials__inner {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    padding-bottom: 56px;
+  }
+
+  .testimonials :focus-visible {
+    outline-color: var(--white);
   }
 
   .carousel {
@@ -182,7 +194,7 @@ const slides = testimonials.quotes.map((t, i) => ({
     display: flex;
     flex-direction: column;
     padding-top: 12px;
-    border-top: var(--line);
+    border-top: 2px solid var(--white);
   }
 
   .testimonial__name {
@@ -191,7 +203,7 @@ const slides = testimonials.quotes.map((t, i) => ({
   }
 
   .testimonial__role {
-    color: var(--grey);
+    color: rgb(255 255 255 / 80%);
     font-size: 13px;
     font-weight: 600;
   }
@@ -210,18 +222,18 @@ const slides = testimonials.quotes.map((t, i) => ({
     min-height: 44px;
     padding: 0 14px;
     overflow: hidden;
-    border: var(--line);
+    border: 2px solid var(--white);
     border-radius: 999px;
-    background: var(--white);
-    color: var(--ink);
+    background: transparent;
+    color: var(--white);
     font-size: 14px;
     font-weight: 700;
     scroll-snap-align: start;
   }
 
   .name-pill[aria-current='true'] {
-    background: var(--ink);
-    color: var(--yellow);
+    background: var(--white);
+    color: var(--blue);
   }
 
   /* Fills up along the bottom of the current name as its countdown runs. */
@@ -231,7 +243,7 @@ const slides = testimonials.quotes.map((t, i) => ({
     left: 0;
     width: 100%;
     height: 3px;
-    background: var(--yellow);
+    background: var(--blue);
     transform: scaleX(var(--progress, 0));
     transform-origin: left;
   }

@@ -1,7 +1,6 @@
 ---
-// "Get in touch" full width (the site's only solid button), then View my CV and Share this site
-// side by side as outline pills. Used at the top of the page and again after the career highlights.
-// Words come from "## Top of page".
+// CV, Share and Contact in one row, sharing it equally; Contact is the site's only solid button.
+// Shown after the career highlights. Words come from "## Top of page".
 import { hero, meta, topBar } from '../lib/content';
 import Icon from './Icon.astro';
 
@@ -12,64 +11,46 @@ const { class: className } = Astro.props;
 ---
 
 <div class:list={['actions', className]}>
+  <a class="pill pill--outline" href="#my-cv" data-open-dialog="my-cv">
+    <Icon name="document" />
+    {hero.cvLink}
+  </a>
+  <button
+    class="pill pill--outline"
+    type="button"
+    data-share
+    data-share-title={meta.pageTitle}
+    data-share-confirmation={topBar.shareConfirmation}
+  >
+    <Icon name="share" />
+    {hero.mainButton}
+  </button>
   <a class="pill pill--solid" href={`mailto:${hero.email}`}>
     <Icon name="mail" />
     {hero.emailButton}
   </a>
-  <div class="actions__pair">
-    <a class="pill pill--outline" href="#my-cv" data-open-dialog="my-cv">
-      <Icon name="document" />
-      {hero.cvLink}
-    </a>
-    <button
-      class="pill pill--outline"
-      type="button"
-      data-share
-      data-share-title={meta.pageTitle}
-      data-share-confirmation={topBar.shareConfirmation}
-    >
-      <Icon name="share" />
-      {hero.mainButton}
-    </button>
-  </div>
 </div>
 
 <style>
+  /* Sized so all 3 labels stay on one line even at 320px wide. */
   .actions {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
 
   .actions .pill {
-    min-height: 52px;
-    font-size: 17px;
-    font-weight: 700;
-  }
-
-  /* Two equal outline pills; labels stay on one line, a touch smaller on very small phones. */
-  .actions__pair {
-    display: flex;
-    gap: 10px;
-  }
-
-  .actions__pair .pill {
     flex: 1 1 0;
-    gap: 7px;
+    gap: 6px;
     min-width: 0;
     min-height: 48px;
-    padding: 0 10px;
+    padding: 0 8px;
     font-size: 15px;
     white-space: nowrap;
   }
 
-  .actions__pair .pill :global(svg) {
+  .actions .pill :global(svg) {
     flex: none;
-  }
-
-  @media (max-width: 339px) {
-    .actions__pair .pill {
-      font-size: 14px;
-    }
+    width: 14px;
+    height: 14px;
   }
 </style>

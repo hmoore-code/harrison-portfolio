@@ -21,10 +21,10 @@ This tab holds only the words that go on the site, in page order. The site is bu
 
 - Name: Harrison Moore
 - Headline: Hey, I'm Harrison, I'm looking to join a team working on the future of education
-- Subtitle: My strengths are **writing**, **creative production**, **user research**, **coaching**, and **partnerships**. I value *craftsmanship* and *autonomy*, and I want to help people build a great relationship with learning.
-- Main button: Share this site
-- Email button: Get in touch
-- CV link: View my CV
+- Subtitle: My strengths are **writing**, **creative production**, **user research**, **coaching**, and **partnerships**. I value craftsmanship and autonomy, and I want to help people build a great relationship with learning.
+- Main button: Share
+- Email button: Contact
+- CV link: CV
 - Contact email: harrison@thenewworkday.com
 
 ### Share this site with
@@ -44,9 +44,8 @@ Below are selected projects that showcase my skills and experience. Thanks for y
 - Heading: Selected projects
 - Intro: I design experiences, tools, and cultural artefacts that help people learn, communicate and do their best work.
 - Evidence gallery hint: Tap an image to view it
-- Filter label: Filter by
-- Share project button: Share this project
-- Get in touch button: Get in touch
+- Share project button: Share
+- Get in touch button: Contact
 - Card title hint: case study
 - New tab hint: opens in a new tab
 - Skills box closing line: If you're in a team working on one of these problems, or you know someone who is, please get in touch or share this project with them. Thanks!
@@ -57,7 +56,6 @@ Below are selected projects that showcase my skills and experience. Thanks for y
 
 ### Filters
 
-- All: All
 - Filter 1: Helping people learn
 - Filter 2: Building communication tools
 - Filter 3: Designing compelling experiences
@@ -227,7 +225,7 @@ Users valued Tempr's questions more than its answers. People found it useful to 
 
 ### The skills I could bring to your team 🫵
 
-I can turn expert methods into something a beginner can use, design for people to *learn by doing*, and write instructions that make an AI behave well. I can use these skills equally well in learning and education settings. For example, in:
+I can turn expert methods into something a beginner can use, design for people to learn by doing, and write instructions that make an AI behave well. I can use these skills equally well in learning and education settings. For example, in:
 
 - Helping learners ask for what they need
 - Turning expert methods into guided practice
@@ -377,7 +375,7 @@ Expressing their ideas by email, questioning their motivations, and experimentin
 
 [Try a whole library of forms goes here]
 
-#### Try a whole *library* of forms
+#### Try a whole library of forms
 
 A letter, a listicle and a dialogue are just the start! Tap to generate new writing forms.
 
@@ -700,7 +698,7 @@ I went home to Sheffield and gave myself 6 weeks to make and sell out a solo sho
 
 ![A Sheffield road sign reading Sheffield You Were History, beside 4 faces of Sheffielders from the film](sheffielders.png){whole}
 
-Because the show simply *had* to sell out, I made many pieces in batches, reminiscent of the city's factories, with a range of prices starting at £20 so everybody could take something home. I organised everything myself, from research to production to hanging the show, with backing from 4 local businesses.
+Because the show simply had to sell out, I made many pieces in batches, reminiscent of the city's factories, with a range of prices starting at £20 so everybody could take something home. I organised everything myself, from research to production to hanging the show, with backing from 4 local businesses.
 
 ![4 views of the show: word mirrors, bright portraits, a row of framed drawings and small casts of Sheffield's outline](artworks.png)
 

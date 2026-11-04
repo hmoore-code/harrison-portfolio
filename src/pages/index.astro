@@ -18,11 +18,9 @@ import { meta, projects } from '../lib/content';
   <main id="top">
     <Hero />
     <Projects />
-    <div class="yellow-zone">
-      <TrackRecord />
-      <StarDivider />
-      <Testimonials />
-    </div>
+    <TrackRecord />
+    <StarDivider />
+    <Testimonials />
   </main>
   <Footer />
   {projects.map((project) => <ProjectDialog project={project} />)}

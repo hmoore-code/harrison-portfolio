@@ -1,7 +1,7 @@
 ---
 import { projectsIntro, type Project } from '../lib/content';
-import CoveredImage from './CoveredImage.astro';
 import FilterIcon from './FilterIcon.astro';
+import Photo from './Photo.astro';
 
 interface Props {
   project: Project;
@@ -13,8 +13,8 @@ const { project, index } = Astro.props;
 const headingId = `card-${project.slug}`;
 ---
 
-<article class="card" data-filter={project.filter.id} aria-labelledby={headingId}>
-  <CoveredImage class="card__image" image={project.image} alt={project.imageAlt} cover={project.filter.cover} />
+<article class="card" aria-labelledby={headingId}>
+  <Photo class="card__image" image={project.image} alt={project.imageAlt} />
   <div class="card__body">
     <p class="label card__label">
       <FilterIcon filterId={project.filter.id} />
@@ -48,13 +48,19 @@ const headingId = `card-${project.slug}`;
     background: var(--white);
   }
 
-  .card[hidden] {
-    display: none;
+  .card :global(.card__image) {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: var(--line);
   }
 
-  .card :global(.card__image) {
-    height: 220px;
+  .card :global(.photo-missing) {
+    border: 0;
     border-bottom: var(--line);
+    border-radius: 0;
+    outline: 2px dashed var(--ink);
+    outline-offset: -10px;
   }
 
   .card__body {

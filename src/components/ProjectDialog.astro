@@ -223,10 +223,6 @@ const extras = project.extras.map((extra) => ({
     }
     <p class="skills-box__closing" set:html={inline(projectsIntro.skillsBoxClosingLine)} />
     <div class="skills-box__actions">
-      <a class="pill pill--solid" href={`mailto:${hero.email}`}>
-        <Icon name="mail" />
-        {projectsIntro.getInTouchButton}
-      </a>
       <button
         class="pill pill--outline"
         type="button"
@@ -238,6 +234,10 @@ const extras = project.extras.map((extra) => ({
         <Icon name="share" />
         {projectsIntro.shareProjectButton}
       </button>
+      <a class="pill pill--solid" href={`mailto:${hero.email}`}>
+        <Icon name="mail" />
+        {projectsIntro.getInTouchButton}
+      </a>
     </div>
   </section>
 
@@ -419,18 +419,25 @@ const extras = project.extras.map((extra) => ({
     margin-top: 4px;
   }
 
-  /* Get in touch and Share this project, stacked; 22px above them in all (the box's gap plus this margin). */
+  /* Share and Contact side by side, sharing the row; 22px above them in all (the box's gap plus this margin). */
   .skills-box__actions {
     display: flex;
-    flex-direction: column;
     gap: 8px;
     margin-top: 10px;
   }
 
   .skills-box__actions .pill {
-    min-height: 52px;
-    font-size: 17px;
-    font-weight: 700;
+    flex: 1 1 0;
+    gap: 6px;
+    min-width: 0;
+    min-height: 48px;
+    padding: 0 8px;
+    font-size: 15px;
+    white-space: nowrap;
+  }
+
+  .skills-box__actions .pill :global(svg) {
+    flex: none;
   }
 
   /* A picture inside the case study text: square, cropped to fill. */

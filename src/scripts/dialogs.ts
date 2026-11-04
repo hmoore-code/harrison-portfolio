@@ -28,7 +28,6 @@ function show(id: string) {
   dialog.showModal();
   dialog.scrollTop = 0;
   dialog.querySelector<HTMLElement>('[data-close-dialog]')?.focus();
-  requestAnimationFrame(() => document.dispatchEvent(new Event('covers:refresh')));
 }
 
 // Close via history when we added the entry, so the back button and close button agree.

@@ -254,7 +254,7 @@ const shareWithNode = section(heroNode, 'Share this site with');
 export const hero = {
   name: required(heroNode, 'Name'),
   headline: required(heroNode, 'Headline'),
-  // May hold **bold** and *italics*: render with inline().
+  // May hold **bold**: render with inline().
   subtitle: required(heroNode, 'Subtitle'),
   mainButton: required(heroNode, 'Main button'),
   emailButton: required(heroNode, 'Email button'),
@@ -303,8 +303,6 @@ export const projectsIntro = {
   heading: required(projectsNode, 'Heading'),
   intro: required(projectsNode, 'Intro'),
   galleryHint: required(projectsNode, 'Evidence gallery hint'),
-  allFilter: required(filtersNode, 'All'),
-  filterLabel: required(projectsNode, 'Filter label'),
   shareProjectButton: required(projectsNode, 'Share project button'),
   getInTouchButton: required(projectsNode, 'Get in touch button'),
   // Read out after a card's title link, so screen readers say where it goes.

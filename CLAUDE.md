@@ -15,7 +15,7 @@ Full spec: `BUILD-BRIEF.md` (read it before any non-trivial change). This file i
 - British English, sentence case, no em dashes.
 
 ## Stack
-- Astro, static output, no client-side framework. Small plain JS only (filters, pop-ups, scroll covers, share, copy).
+- Astro, static output, no client-side framework. Small plain JS only (pop-ups, carousel, share, copy).
 - Hosted on Vercel Hobby, deploys on every push.
 - Archivo variable font self-hosted (`assets/fonts/archivo-variable.woff2` or `@fontsource-variable/archivo`). Never load Google Fonts.
 - Quotes and testimonials: Instrument Serif italic 400 (`@fontsource/instrument-serif`, `--font-quote`).
@@ -26,20 +26,20 @@ Full spec: `BUILD-BRIEF.md` (read it before any non-trivial change). This file i
   - A fresh export can bring back things he already decided against (dropped files, TO DO wrappers on confirmed links, missing image references). Restore those decisions in copy.md, keep his wording, and tell him what you restored.
   - "Publish my copy changes" = build, commit and push copy.md.
   - `## Section` / `## Project: <name>`, `###` sub-parts, `####` items, `Label: value` short fields, plain paragraphs for prose.
-  - Unescape `\[` `\]`. Support `[text](url)` links, `**bold**` (strong, 800) and `*italics*` in prose.
+  - Unescape `\[` `\]`. Support `[text](url)` links and `**bold**` (strong, 800) in prose. `*italics*` render as plain text: only quotes and testimonials are italic.
   - `[TO DO]` must render as a visible dashed-outline gap, never hidden.
-  - Parse into typed data (sections, 6 projects, filters); fail the build loudly on missing required fields.
+  - Parse into typed data (sections, 6 projects, categories); fail the build loudly on missing required fields.
 - **Look: `design/*.html`** (390px phone mock-ups). Reference only: rebuild as clean Astro components, no inline styles, ignore `{{...}}`.
 - **Assets: `assets/`** (`images/`, `svg/`, `graphics/`, `fonts/`). Missing assets get visible placeholders.
 
 ## Page order
-Follows copy.md (design/18-homepage.html): sticky top bar, top of page ("Top B"), selected projects (filters + 6 cards in copy.md order), then the yellow band: "My CV and career highlights" (#cv: 3 figures, closing line, the main buttons again, "Share this site with" box), a star divider and the testimonials carousel; then on white, Back to top and the footer. No "What I want to work on" or "Contact me" sections. Pop-ups: one per project, "Try it yourself", CV (last, #my-cv).
+Follows copy.md (design/18-homepage.html): sticky top bar, top of page ("Top B"), selected projects (6 cards in copy.md order, no filters), "My CV and career highlights" (#cv: 3 figures, closing line, the CV/Share/Contact buttons, "Share this site with" box), a star divider, the testimonials carousel on a full-width blue band, then Back to top and the footer. All off-white except the blue band. No "What I want to work on" or "Contact me" sections. Pop-ups: one per project, "Try it yourself", CV (last, #my-cv).
 
 ## Top of page ("Top B")
-Fields under `## Top of page`: Name, Headline, Subtitle, Main button, Email button, CV link, Contact email, plus `### Share this site with` (lead-in paragraph + bullets) and `### Closing line` (paragraph). Order: portrait (200px, 50% 28%, 2px border, radius 20, no cover), h1 headline (40/800/62%/0.92), subtitle (17/500/1.45, bold 800, italics), wavy-bordered share box (lead-in 22/800/62%/1, list 16/1.4), closing line (16/1.5), buttons (`ActionButtons`, 10px gap): full-width solid "Get in touch" (mailto), then "View my CV" (opens #my-cv) and "Share this site" as 2 equal outline pills side by side. The same buttons repeat after the career highlights' closing line. 20px gutter, 18px gaps; these are Harrison's exact px values, not scaled `--space-*` steps.
+Fields under `## Top of page`: Name, Headline, Subtitle, Main button, Email button, CV link, Contact email, plus `### Share this site with` (lead-in paragraph + bullets) and `### Closing line` (paragraph). Order: portrait (200px, 50% 28%, 2px border, radius 20), h1 headline (40/800/62%/0.92), subtitle (17/500/1.45, bold 800), wavy-bordered share box (lead-in 22/800/62%/1, list 16/1.4), closing line (16/1.5). No buttons at the top of the page (Harrison, 4 November 2026). 20px gutter, 18px gaps; these are Harrison's exact px values, not scaled `--space-*` steps.
 
 ## Design tokens
-- Colours only: ink #111111, paper #FAFAF7, white #FFFFFF, grey #4A4A46 (small labels only), and yellow #F5FF90 (`--yellow`) for the career highlights and testimonials band (Harrison's addition).
+- Colours only: ink #111111, paper #FAFAF7, white #FFFFFF, grey #4A4A46 (small labels only), and blue #1F1FB3 (`--blue`) for the testimonials band only, with all text on it white (role 80% white). No yellow, diagonal pattern or grain (removed 4 November 2026).
 - Archivo, headings 800 weight at 62% width. Headline 58, pop-up title 72, section heading 56, card title/pull quote 40, sub-heading 28, body 17/1.55, labels 13/600. Shrink headings below 360px.
 - Lines always 2px ink, straight or wavy (use provided SVGs). Star is the only filled mark.
 - Radii: cards/images 20 (16 in pop-ups), thumbnails 10, sheet top 24, pill buttons. Touch targets 44px+, main buttons 52px.
@@ -47,6 +47,9 @@ Fields under `## Top of page`: Name, Headline, Subtitle, Main button, Email butt
 - Icons: 16px line icons, 1.5px stroke.
 
 ## Harrison's decisions (override the brief)
+- Project cards show a plain, static, full-colour photo: no pattern covers or scroll effects (removed 4 November 2026). The pattern strip above each pop-up stays.
+- No filters (removed 4 November 2026): all 6 cards always show. The category label (icon + text) stays on cards and pop-ups.
+- Button rows: one row, equal widths, never stacked, all fitting on one line at 320px, 44px+ tall. "My CV" section: CV, Share, Contact (`ActionButtons`). Pop-ups: Share, Contact. Labels come from copy.md.
 - Project cards have ONE action: each project's own "Card button" from copy.md, which opens its pop-up. The card title is also a link to the pop-up (looks unchanged, underline on hover). Cards also show a 💎 skills line from the per-project "Skills" field. No evidence link on the card (evidence links live in the pop-up).
 - Design proposal PDF: sensitive details are covered with black boxes and every page flattened to an image (no hidden text). Done; the unredacted original lives only in `originals/`.
 - No pre-written forwarding message. The top of page's main button shares the portfolio link; people add their own words.
@@ -56,14 +59,12 @@ Fields under `## Top of page`: Name, Headline, Subtitle, Main button, Email butt
 - Asset files use lowercase-hyphen names. copy.md may name them with a different ending (.jpg vs .png); lookup ignores the ending.
 
 ## Pop-up content
-No "More details about this project" section any more. In the case study, `[... goes here]` places a graphic from `src/components/graphics/` (words under the `####` of the same name) and `[Text](link){button}` places an outline pill opening a link or PDF in a new tab. After the skills box, every pop-up ends with `NextProject` (6 stars + "Next: ..." button). "Get in touch" is the only solid button on the site; all other pills are outlines. Colour only inside data graphics. Full rules in the brief (section 5, "Update, 30 October 2026").
+No "More details about this project" section any more. In the case study, `[... goes here]` places a graphic from `src/components/graphics/` (words under the `####` of the same name) and `[Text](link){button}` places an outline pill opening a link or PDF in a new tab. After the skills box, every pop-up ends with `NextProject` (6 stars + "Next: ..." button). "Contact" is the only solid button on the site; all other pills are outlines. Colour only inside data graphics. Full rules in the brief (section 5, "Update, 30 October 2026").
 ## Behaviour essentials
-- Filters: `aria-pressed`, "All" active on load, URL kept in sync (`?filter=`).
-- Card covers slide right (0 to 92%) and photo goes greyscale to colour with scroll; formula in brief section 5. Respect reduced motion. Never cover the portrait.
 - Pop-ups: real dialogs, focus trap, close on button/Escape/back, own URL hash, restore scroll and focus.
 
 ## Quality bar
 Semantic HTML, visible focus (2px ink outline with offset), 4.5:1 contrast, Lighthouse 90+ mobile, no layout shift, optimised responsive images. Check at 390px, 320px and desktop.
 
 ## Build order
-Repo + Astro, copy.md + parser, then top bar, top of page, filters and cards, covers, pop-up, evidence gallery, remaining sections, CV pop-up, share card.
+Repo + Astro, copy.md + parser, then top bar, top of page, cards, pop-up, evidence gallery, remaining sections, CV pop-up, share card.
